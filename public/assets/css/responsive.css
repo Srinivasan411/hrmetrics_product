@@ -1,0 +1,207 @@
+@media only screen and (max-width: 991px){
+body .wow {
+    visibility: visible !important;
+}
+}
+@media only screen and (max-width: 767px){
+.banner-style-four-area .row {
+    flex-direction: column-reverse;
+}
+.project-style-three-item img{
+    width: 100% !important;
+}
+.rightbox {
+    margin-right: 0;
+}
+.leftbox {
+    margin-left: 0;
+}
+.whatsapp-float {
+    left: 8px;
+    bottom: 2% !important;
+}
+.banner-four-top-info h1 {
+    font-size: 24px;
+}
+.project-style-three-info h4{
+    font-size: 24px;
+}
+.faq-accordion-content{
+    padding:10px;
+}
+.faq-accordion-content .accordion .accordion-title {
+    line-height: 24px;
+}
+.area2 .row {
+    flex-direction: column-reverse;
+}
+.project-style-three-items {
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 3px 10px;
+    margin-bottom: 25px;
+    overflow: hidden;
+    border-radius: 10px;
+}
+.project-style-three-item {
+    margin-bottom: 0;
+}
+.modal-dialog.modal-lg {
+    max-width: 100% !important;
+}
+.modalboxx .row {
+    flex-direction: column-reverse;
+}
+.modalimgg {
+    margin-bottom: 30px;
+}
+.modal-backdrop {
+    z-index: 99999;
+}
+.cd-headline.clip .cd-words-wrapper::after{
+    height: 18px;
+}
+.modal {
+    z-index: 999999;
+}
+.grid-container{
+    display: block;
+}
+.pl-50{
+    padding-left: 20px;
+}
+
+.it-up-ft-shape2 {
+    top: 78px;
+    left: 0;
+}
+.it-up-ft-shape2 img {
+    height: 30px;
+}
+.hrms-banner-shape {
+    top: 60%;
+    inset-inline-end: -20px;
+}
+.form-container{padding:15px;margin-bottom: 30px;}
+    .banner-style-four-area h2 {
+        font-size: 26px;
+    }
+    .banner-four-bottom-info p {
+    font-size: 16px;
+}
+.banner-style-six-video {
+    text-align: center;
+    margin-top: 15px;
+}
+.banner-style-four-area {
+    padding-top:90px !important;
+    padding-bottom: 40px !important;
+}
+.title {
+        font-size: 26px;
+    }
+    .about-thumb {
+    margin-bottom: 30px;
+}
+.sub-title{font-size: 16px;}
+.content-box-over {
+    text-align: left;
+    position: static;
+    width: 100%;
+    margin-top: 20px;
+}
+.platform-section .nav-tabs .nav-link {
+    padding: 5px;
+}
+.tab-hold img {
+    height: 30px;
+}
+.platform-section .tab-content .row {
+    flex-direction: column-reverse;
+}
+.tech-index-two-item a{
+    padding: 10px;
+}
+.technolgy-index-two-area:after{
+    background-position:center;
+}
+.pricing-section {
+    padding-top: 0;
+    padding-bottom: 40px;
+}
+.pricing-section h2{
+   font-size: 26px;  
+}
+    .col-md-6.priceimge.mb-4.mb-md-0 {
+        margin-bottom: 20px !important;
+        margin-top: 35px;
+        border-bottom: 1px solid rgb(255 255 255 / 15%);
+    }
+.default-padding.bottom-less {
+    padding-top: 25px;
+}
+.blog-style-one h4 {
+    font-size: 20px;
+}
+.blog-style-one .thumb img {
+    margin-bottom: 15px;
+}
+.award-section .col-md-2 {
+    width: 50%;
+    display: inline-block;
+    margin: 5px 0;
+}
+.awardbox {
+    border: 1px dashed #ddd;
+    padding: 10px;
+    border-radius: 8px;
+}
+footer.footer-bg {
+    padding-top: 40px;
+}
+footer.footer-bg .logo{
+    display: block !important;
+}
+.awrd-box
+ {
+    gap: 10px;
+    justify-content: start;
+    margin-top: 25px;
+}
+.wsmenu>.wsmenu-list>li.wscarticon {
+    display: block !important;
+    padding: 10px;
+}
+.wsmenu>.wsmenu-list>li.wscarticon .btn{
+    margin-top: 4px;
+}
+.trust-section img {
+    border: 1px solid #eee;
+    padding: 10px;
+    margin-top: 10px;
+}
+h3 {
+    font-size: 24px;
+}
+}
+@media only screen and (max-width: 575px){
+.tab_section_layout.layoet_main_2 .nav {
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+    overflow-y: auto !important;
+    padding: 5px 0;
+    white-space: nowrap;
+}
+img.img22 {
+    width: 100%;
+}
+.d-flex.gap-3.mt-4.justify-content-md-start.justify-content-center .btn {
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+}
+.d-flex.gap-3.mt-4.justify-content-md-start.justify-content-center {
+    flex-direction: column;
+}
+.myflex{
+    display: block;
+}
+}

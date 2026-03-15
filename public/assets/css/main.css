@@ -1,0 +1,125 @@
+span.menu-iconn img {
+    height: 25px;
+     margin-left: auto;
+    margin-right: auto;
+    display: table;
+}
+.wsmenu>.wsmenu-list>li .wstliststy02
+ {
+    text-align: center !important;
+}
+span.menu-iconn {
+    display: block;
+}
+.form-control:focus{
+border-color: #e43d4c;
+box-shadow:none;
+}
+select.form-select:focus{
+border-color: #e43d4c;
+box-shadow:none;
+}
+.box {
+      border: 1px solid #ddd;
+      padding:15px;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-align: left;
+    }
+    .box i {
+    font-size: 24px;
+    color: #ed2327;
+}
+    .box p {
+      margin: 0;
+      font-weight: 500;
+    }
+    .grid-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: auto auto;
+      gap: 1px;
+    }
+
+    .box-know {
+    grid-column: 1 / 2;
+    grid-row: 2 / 3;
+}
+    .box-emp { grid-column: 2 / 3; }
+    .box-access { grid-column: 3 / 4; }
+    .box-roles { grid-column: 4 / 5; grid-row: span 2; }
+    .box-audit { grid-column: 2 / 3; grid-row: 2 / 3; }
+    .box-hr {
+    grid-column: 6 / 5;
+    grid-row: 2 / 3;
+}
+    .box-notif { grid-column: 4 / 3; grid-row: 2 / 3; }
+
+    .grid-container {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: repeat(2, 1fr);
+    }
+    .grid-container.maincustom {
+    grid-template-columns: repeat(3, 1fr);
+}
+.maincustom .bx1 {
+    grid-column: auto;
+    grid-row: auto;
+}
+    .icon-text {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      white-space: pre-wrap;
+    }
+    .icon-text p {
+    line-height: 18px;
+}
+    .ul-coustom ul li {
+    padding-left: 20px;
+    position: relative;
+}
+.ul-coustom ul li:before {
+    content: "\f1ce";
+    font-family: "FontAwesome";
+    position: absolute;
+    left: 0;
+    font-size: 14px;
+    color: #ed2125;
+    top: 3px;
+}
+.ul-coustom ul{
+    margin-bottom: 20px;
+}
+.raitingboxx img {
+    height: 40px;
+}
+.raitingboxx p {
+    margin-bottom: 0;
+    font-size: 14px;
+    line-height: 1.2em;
+}
+.raitingboxx {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+span.starricon i {
+    color: #f6be25;
+}
+@media (max-width: 400px) {
+.raitingboxx {
+    display: block;
+}
+.raitingboxx p {
+    margin-top: 10px;
+}
+.btn-center .btn {
+    margin: 4px 0;
+}
+}
+
+
