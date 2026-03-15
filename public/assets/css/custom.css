@@ -934,3 +934,28 @@ Faq Area CSS
 .faq-accordion-content .accordion .accordion-content.show {
   display: block;
 }
+
+/* Split header logo (icon + text) */
+.split-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.split-logo .brand-logo__icon {
+  height: 42px;
+  width: auto;
+}
+
+.split-logo .brand-logo__text {
+  height: 38px;
+  width: auto;
+}
+
+.wsmobileheader .split-logo .brand-logo__icon {
+  height: 34px;
+}
+
+.wsmobileheader .split-logo .brand-logo__text {
+  height: 30px;
+}
