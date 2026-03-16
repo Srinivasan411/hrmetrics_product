@@ -60,9 +60,8 @@ const ActivityManagementSoftwarePage = () => {
         {/* Mobile Header */}
         <div className="wsmobileheader clearfix">
           <a className="wsanimated-arrow" href="javascript:void(0)" id="wsnavtoggle"><span></span></a>
-          <span className="smllogo split-logo">
-            <img alt="HRMetricS" className="brand-logo__icon" src="/assets/images/Logo.png" />
-            <img alt="" aria-hidden="true" className="brand-logo__text" src="/assets/images/HRMetricSLogoText.png" />
+          <span className="smllogo">
+            <img alt="HRMetricS" className="brand-logo" src="/assets/images/logo1.png" />
           </span>
         </div>
         {/* Mobile Header */}
@@ -70,9 +69,8 @@ const ActivityManagementSoftwarePage = () => {
           <div className="container">
             <div className="wsmain clearfix">
               <div className="smllogo">
-                <a className="split-logo" href="/">
-                  <img alt="HRMetricS" className="brand-logo__icon" src="/assets/images/Logo.png" />
-                  <img alt="" aria-hidden="true" className="brand-logo__text" src="/assets/images/HRMetricSLogoText.png" />
+                <a href="/">
+                  <img alt="HRMetricS" className="brand-logo" src="/assets/images/logo1.png" />
                 </a>
               </div>
               <nav className="wsmenu clearfix">

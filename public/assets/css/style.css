@@ -13,7 +13,8 @@
 	--dark: #14334f;
 	--dark-secondary: #1e3373;
 	--white: #ffffff;
-	--color-primary: #ed2024;
+	/* Brand primary (logo blue) */
+	--color-primary: #0168de;
 	--color-secondary: #425487;
 	--color-style-two: #B700C4;
 	--color-style-three: #FF9B0D;
@@ -23,7 +24,7 @@
 	--box-shadow-secondary: 0 10px 30px 0 rgba(44, 130, 237, 0.4);
 	--box-shadow-regular: 0px 2px 12px 0px #e7e7e7;
 	--bg-gray: #eff6fe;
-	--bg-gradient: linear-gradient(90deg, #ed2024 0%, #14334f 100%);
+	--bg-gradient: linear-gradient(90deg, var(--color-primary) 0%, #315f88 100%);
     --bg-gradient-secondary: linear-gradient(0deg, var(--color-primary) 0%, #14334f 100%);
 	--bg-gradient-two: linear-gradient(90deg, var(--color-style-two)  0%, var(--color-style-three) 100%);
 }

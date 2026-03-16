@@ -1,7 +1,7 @@
 :root{
     --color-style-two: #B700C4;
     --color-style-three: #FF9B0D;
-     --bg-gradient-two: linear-gradient(129deg, rgb(20 51 79) 13%, rgb(20 51 79) 13%, rgb(237 32 36) 100%);
+     --bg-gradient-two: linear-gradient(129deg, rgb(115, 149, 179) 13%, rgb(20 51 79) 13%, rgb(91, 160, 250) 100%);
 }
 @media (min-width: 1200px) {
     .container, .container-lg, .container-md, .container-sm, .container-xl {
@@ -17,11 +17,11 @@
       text-align: center;
     }
     .btn-orange {
-      background-color: #f15b3e;
+      background-color: var(--color-primary);
       color: white;
     }
     .btn-orange:hover {
-      background-color: #d94f34;
+      background-color: #538fe3;
     }
     .rating-stars {
       color: #f4b400;
@@ -186,7 +186,7 @@ img.img22 {
 }
 .content-box-over {
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-    border: 1px solid #e23c4b;
+    border: 1px solid var(--color-primary);
     padding: 20px;
     border-radius: 10px;
     width: 300px;
@@ -698,7 +698,7 @@ opacity: 1;
     color: var(--color-paragraph);
 }
 .hrmstabs .nav button a:hover {
-    color: #ed2024;
+    color: var(--color-primary);
 }
 .tab_section_layout .nav li .nav-link.active .akkbg svg path {
     stroke: #fff !important;
@@ -902,7 +902,7 @@ Faq Area CSS
   width: 40px;
   text-align: center;
   height: 100%;
-  background: #ed2024;
+  background: var(--color-primary);
   color: #ffffff;
 }
 
@@ -958,4 +958,14 @@ Faq Area CSS
 
 .wsmobileheader .split-logo .brand-logo__text {
   height: 30px;
+}
+
+/* Composite header logo (single image) */
+.smllogo .brand-logo {
+  height: 42px;
+  width: auto;
+}
+
+.wsmobileheader .smllogo .brand-logo {
+  height: 34px;
 }
