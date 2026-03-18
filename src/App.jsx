@@ -2,6 +2,7 @@ import { Suspense, lazy, useEffect, useMemo } from "react";
 import { Navigate, Route, Routes, useLocation, useParams } from "react-router-dom";
 import { initLegacyDomEnhancements } from "./legacyDomEnhancements.js";
 import { useSiteSettings } from "./siteSettings.jsx";
+import { LeadModals } from "./components/LeadModals.jsx";
 
 export default function App() {
   const location = useLocation();
@@ -100,6 +101,7 @@ export default function App() {
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
         <FloatingActions />
+        <LeadModals />
       </>
     </Suspense>
   );
@@ -127,11 +129,13 @@ function FloatingActions() {
       </a>
       <button
         type="button"
-        className="bookdemo-float btn btn-theme text-white btn-md radius"
+        className="bookdemo-float btn"
         data-bs-toggle="modal"
         data-bs-target="#bookdemo-modal"
+        aria-label="Book a demo"
       >
-        Book a demo
+        <i className="fas fa-calendar-check" aria-hidden="true" />
+        <span>Book a demo</span>
       </button>
     </>
   );

@@ -12,13 +12,27 @@
  .form-container {
       background: white;
       padding:20px;
-      border-radius: 8px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      border-radius: 14px;
+      border: 1px solid rgba(15, 23, 42, 0.08);
+      box-shadow: 0 12px 30px rgba(15, 23, 42, 0.10);
       text-align: center;
+    }
+    .form-container .form-control,
+    .form-container .form-select {
+      border-radius: 10px;
+      padding: 12px 14px;
+      border-color: rgba(15, 23, 42, 0.12);
+    }
+    .form-container .form-control:focus,
+    .form-container .form-select:focus {
+      border-color: rgba(83, 143, 227, 0.8);
+      box-shadow: 0 0 0 0.25rem rgba(83, 143, 227, 0.18);
     }
     .btn-orange {
       background-color: var(--color-primary);
       color: white;
+      border-radius: 10px;
+      font-weight: 600;
     }
     .btn-orange:hover {
       background-color: #538fe3;
@@ -999,8 +1013,72 @@ Faq Area CSS
 
 .bookdemo-float {
   position: fixed;
-  right: calc(16px + env(safe-area-inset-right, 0px));
+  left: calc(16px + env(safe-area-inset-left, 0px) + 64px);
+  right: auto;
   bottom: calc(16px + env(safe-area-inset-bottom, 0px));
   z-index: 1040;
-  box-shadow: rgba(0, 0, 0, 0.2) 0px 6px 18px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 16px;
+  border-radius: 10px;
+  border: 0;
+  background: var(--bg-gradient-two);
+  color: #ffffff;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+  box-shadow: rgba(0, 0, 0, 0.22) 0px 10px 26px;
+  transition: transform 0.15s ease-in-out, filter 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.bookdemo-float i {
+  font-size: 16px;
+}
+
+.bookdemo-float:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.02);
+}
+
+.bookdemo-float:active {
+  transform: translateY(0);
+}
+
+.bookdemo-float:focus-visible {
+  outline: none;
+  box-shadow: rgba(0, 0, 0, 0.22) 0px 10px 26px, 0 0 0 0.25rem rgba(83, 143, 227, 0.25);
+}
+
+/* Legacy floating "Book a demo" (old template uses .box-transform) */
+.box-transform {
+  position: fixed !important;
+  top: auto !important;
+  left: calc(16px + env(safe-area-inset-left, 0px) + 64px) !important;
+  right: auto !important;
+  bottom: calc(16px + env(safe-area-inset-bottom, 0px)) !important;
+  transform: none !important;
+  margin: 0 !important;
+  display: block !important;
+  z-index: 1040;
+}
+
+.box-transform > a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 12px 16px;
+  border-radius: 10px;
+  border: 0;
+  background: var(--bg-gradient-two) !important;
+  color: #ffffff !important;
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: rgba(0, 0, 0, 0.22) 0px 10px 26px;
+  transition: transform 0.15s ease-in-out, filter 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.box-transform > a:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.02);
 }

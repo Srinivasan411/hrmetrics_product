@@ -95,8 +95,8 @@ const defaultSiteSettings = {
   primary_phone: "+91 99102 24881",
   secondary_phone: "+91 8800 1148 22",
   primary_email: "marketing@unistal.com",
-  new_delhi_address: "408 Siddharth Building, 96 Nehru Place, New Delhi 110019, India",
-  noida_address: "C-20, Sector - 65, Noida - 201301, India",
+  new_delhi_address: "408 Siddharth Building, 96 Nehru Place, Maldives 110019, India",
+  noida_address: "C-20, Sector - 65, Madurai - 201301, India",
   google_maps_embed_url:
     "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3504.7084052583864!2d77.25087587508038!3d28.548483087893292!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ce3c5622de301%3A0xf45228a6f3859bfa!2sUnistal%20Systems%20Pvt%20Ltd!5e0!3m2!1sen!2sin!4v1690783449740!5m2!1sen!2sin",
   linkedin_url: "https://www.linkedin.com/showcase/hrmmitra",
