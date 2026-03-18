@@ -1,8 +1,84 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { useSiteSettings } from "../siteSettings.jsx";
+
+const fallbackTestimonials = [
+  {
+    id: 1,
+    clientName: "Tapasya",
+    clientRole: "HR Head",
+    companyName: "IndiaIT360",
+    imageUrl: "assets/images/testhr.png",
+    testimonial:
+      "It's easy to manage HR processes than what we where doing it manually. After adopting HRMetricS, we are able to same time by automating all the manual processes from attendance tracking to leave approvals and payslip generation, everything is now automated and accessible in just a few clicks. Our employees love the self-service portal, and our HR team has finally moved from firefighting to strategic planning.",
+    rating: 5,
+  },
+  {
+    id: 2,
+    clientName: "Vivek Arora",
+    clientRole: "HR Head",
+    companyName: "Simsona",
+    imageUrl: "assets/images/test4.jpg",
+    testimonial:
+      "At Simsona, we have completely transformed the way we handle recruitment and performance reviews. The platform is intuitive, fast, and incredibly powerful. We've reduced our employee onboarding to exit process by nearly 40% and gained real-time visibility into employee performance metrics.",
+    rating: 5,
+  },
+  {
+    id: 3,
+    clientName: "Anita Mishra",
+    clientRole: "VP of Employee Relations",
+    companyName: "",
+    imageUrl: "assets/images/test3.jpg",
+    testimonial:
+      "HRMetricS has made our payroll processing seamless and efficient. What used to take several days now takes less than two days with error-free calculations and payslip generation at the click of a button.",
+    rating: 5,
+  },
+  {
+    id: 4,
+    clientName: "Kritika Sharma",
+    clientRole: "Employee Relation Manager",
+    companyName: "",
+    imageUrl: "assets/images/test5.avif",
+    testimonial:
+      "HRMetricS is built for every kind of workforce. Our field employees can now mark their attendance and submit expenses on the go, right from their mobile devices.",
+    rating: 5,
+  },
+];
+
+function formatClientMeta(testimonial) {
+  const clientRole = String(testimonial.clientRole ?? "").trim();
+  const companyName = String(testimonial.companyName ?? "").trim();
+  if (clientRole && companyName) return `${clientRole}, ${companyName}`;
+  return clientRole || companyName;
+}
 
 export default function HomePage() {
+  const [testimonials, setTestimonials] = useState(fallbackTestimonials);
+  const { siteSettings } = useSiteSettings();
+
   useEffect(() => {
     document.title = "Best HRM Solution In India, Saas Based HRM Solution, Performance Management in HRMS- HRMetricS";
+  }, []);
+
+  useEffect(() => {
+    let ignore = false;
+
+    async function loadTestimonials() {
+      try {
+        const response = await fetch("/api/testimonials");
+        if (!response.ok) return;
+        const payload = await response.json();
+        if (!ignore && Array.isArray(payload.data) && payload.data.length > 0) {
+          setTestimonials(payload.data);
+        }
+      } catch {
+        // Keep the seeded fallback content on the page if the API is unavailable.
+      }
+    }
+
+    loadTestimonials();
+    return () => {
+      ignore = true;
+    };
   }, []);
 
   return (
@@ -19,27 +95,27 @@ export default function HomePage() {
               <div className="social">
                 <ul>
                   <li>
-                    <a href="https://mv.linkedin.com/company/systems-solutions-pvt-ltd" target="_blank">
+                    <a href={siteSettings.linkedin_url} target="_blank" rel="noopener noreferrer">
                       <i className="fab fa-linkedin-in" />
                     </a>
                   </li>
                   <li>
-                    <a href="https://www.facebook.com" target="_blank">
+                    <a href={siteSettings.facebook_url} target="_blank" rel="noopener noreferrer">
                       <i className="fab fa-facebook-f" />
                     </a>
                   </li>
                   <li>
-                    <a href="https://x.com" target="_blank">
+                    <a href={siteSettings.x_url} target="_blank" rel="noopener noreferrer">
                       <i className="">X</i>
                     </a>
                   </li>
                   <li>
-                    <a href="https://www.instagram.com" target="_blank">
+                    <a href={siteSettings.instagram_url} target="_blank" rel="noopener noreferrer">
                       <i className="fab fa-instagram" />
                     </a>
                   </li>
                   <li>
-                    <a href="https://wa.me/919910224881?text=I%27m%20interested%20in%20HRMMitra" target="_blank">
+                    <a href={siteSettings.whatsapp_url} target="_blank" rel="noopener noreferrer">
                       <i className="fab fa-whatsapp" />
                     </a>
                   </li>
@@ -150,7 +226,7 @@ export default function HomePage() {
                   <li aria-haspopup="true"><a className="navtext" href="contact/index.html"><span /> <span>Contact</span></a>
                   </li>
                   <li className="wscarticon clearfix">
-                    <a className="btn btn-theme text-white btn-md radius" href="https://demo.hrmmitra.in/" target="_blank">Login</a>
+                    <a className="btn btn-theme text-white btn-md radius" href={siteSettings.demo_login_url} target="_blank" rel="noopener noreferrer">Login</a>
                     <a className="btn btn-theme text-white btn-md radius" data-bs-target="#demoshedule-modal" data-bs-toggle="modal" href="javascript:void(0)">Schedule a demo</a>
                   </li>
                 </ul>
@@ -1018,6 +1094,34 @@ export default function HomePage() {
             <div className="col-lg-112">
               <div className="testimonial-style-four-carousel swiper">
                 <div className="swiper-wrapper">
+                  {testimonials.map((item) => (
+                    <div key={item.id} className="swiper-slide">
+                      <div className="testimonial-style-four">
+                        <div className="quote">
+                          <img alt="Quote" src="assets/images/quote.png" />
+                        </div>
+                        <div className="provider">
+                          <div className="thumb">
+                            <img alt={item.clientName} src={item.imageUrl || "assets/images/testhr.png"} />
+                          </div>
+                          <div className="info">
+                            <h4>{item.clientName}</h4>
+                            <span>{formatClientMeta(item)}</span>
+                          </div>
+                        </div>
+                        <p className="moretext" data-fulltext={item.testimonial}>{item.testimonial}</p>
+                        <div className="bottom-info mt-2">
+                          <div className="icon">
+                            {Array.from({ length: Math.max(1, Math.min(5, Number(item.rating) || 5)) }).map((_, index) => (
+                              <i key={`${item.id}-star-${index}`} className="fas fa-star" />
+                            ))}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                  {false && (
+                    <>
                   <div className="swiper-slide">
                     <div className="testimonial-style-four">
                       <div className="quote">
@@ -1202,6 +1306,8 @@ export default function HomePage() {
                       </div>
                     </div>
                   </div>
+                    </>
+                  )}
                 </div>
               </div>
             </div>
@@ -1353,27 +1459,27 @@ export default function HomePage() {
                   </p>
                   <ul className="footer-social mt-0">
                     <li>
-                      <a href="https://www.linkedin.com/showcase/hrmmitra" target="_blank">
+                      <a href={siteSettings.linkedin_url} target="_blank" rel="noopener noreferrer">
                         <i className="fab fa-linkedin-in" />
                       </a>
                     </li>
                     <li>
-                      <a href="https://www.facebook.com/hrmmitra" target="_blank">
+                      <a href={siteSettings.facebook_url} target="_blank" rel="noopener noreferrer">
                         <i className="fab fa-facebook-f" />
                       </a>
                     </li>
                     <li>
-                      <a href="https://x.com/hrmmitra" target="_blank">
+                      <a href={siteSettings.x_url} target="_blank" rel="noopener noreferrer">
                         <i className="">X</i>
                       </a>
                     </li>
                     <li>
-                      <a href="https://www.instagram.com/hrmmitra" target="_blank">
+                      <a href={siteSettings.instagram_url} target="_blank" rel="noopener noreferrer">
                         <i className="fab fa-instagram" />
                       </a>
                     </li>
                     <li>
-                      <a href="https://wa.me/919910224881?text=I%27m%20interested%20in%20HRMMitra" target="_blank">
+                      <a href={siteSettings.whatsapp_url} target="_blank" rel="noopener noreferrer">
                         <i className="fab fa-whatsapp" />
                       </a>
                     </li>
@@ -1423,11 +1529,11 @@ export default function HomePage() {
                   <ul className="mt-3 mb-3">
                     <li>
                       <strong>Location:</strong>
-                      <div className="working-day mb-2"><strong>Noida:</strong>  C-20, Sector - 65, Noida - 201301, India</div>
-                      <div className="working-day"><strong>New Delhi:</strong> 408 Siddharth Building, 96 Nehru Place, New Delhi 110019, India</div>
-                      <div className="working-hour mt-2"><strong>Phone:</strong><a href="https://wa.me/919910224881" target="_blank"> +91 99102 24881</a>, <a href="tel:+918800114822">+91 8800 1148 22</a></div>
+                      <div className="working-day mb-2"><strong>Noida:</strong>  {siteSettings.noida_address}</div>
+                      <div className="working-day"><strong>New Delhi:</strong> {siteSettings.new_delhi_address}</div>
+                      <div className="working-hour mt-2"><strong>Phone:</strong><a href={siteSettings.whatsapp_direct_url} target="_blank" rel="noopener noreferrer"> {siteSettings.primary_phone}</a>, <a href={siteSettings.secondary_phone_href}>{siteSettings.secondary_phone}</a></div>
                       <div className="working-hour"><strong>Email:</strong>
-                        <a href="mailto:marketing@unistal.com">marketing@unistal.com</a></div>
+                        <a href={siteSettings.primary_email_href}>{siteSettings.primary_email}</a></div>
                     </li>
                   </ul>
                 </div>
@@ -1439,7 +1545,7 @@ export default function HomePage() {
           <div className="container">
             <div className="row">
               <div className="col-lg-12 text-center">
-                <p>© Copyright 2026 <a href="https://unistal.com/" style={{color: '#f03041', fontWeight: 500}} target="_blank">Unistal Systems Pvt. Ltd</a> All Rights Reserved</p>
+                <p>© Copyright 2026 <a href={siteSettings.company_url} style={{color: '#f03041', fontWeight: 500}} target="_blank" rel="noopener noreferrer">{siteSettings.company_legal_name}</a> All Rights Reserved</p>
               </div>
             </div>
           </div>

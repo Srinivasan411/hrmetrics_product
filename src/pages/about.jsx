@@ -1,6 +1,9 @@
 import React from 'react';
+import { useSiteSettings } from "../siteSettings.jsx";
 
 const AboutPage = () => {
+  const { siteSettings } = useSiteSettings();
+
   return (
     <div>
       {/* Google Tag Manager */}
@@ -24,27 +27,27 @@ const AboutPage = () => {
               <div className="social">
                 <ul>
                   <li>
-                    <a href="https://www.linkedin.com/showcase/hrmmitra" target="_blank" rel="noopener noreferrer">
+                    <a href={siteSettings.linkedin_url} target="_blank" rel="noopener noreferrer">
                       <i className="fab fa-linkedin-in"></i>
                     </a>
                   </li>
                   <li>
-                    <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">
+                    <a href={siteSettings.facebook_url} target="_blank" rel="noopener noreferrer">
                       <i className="fab fa-facebook-f"></i>
                     </a>
                   </li>
                   <li>
-                    <a href="https://x.com" target="_blank" rel="noopener noreferrer">
+                    <a href={siteSettings.x_url} target="_blank" rel="noopener noreferrer">
                       <i className="">X</i>
                     </a>
                   </li>
                   <li>
-                    <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer">
+                    <a href={siteSettings.instagram_url} target="_blank" rel="noopener noreferrer">
                       <i className="fab fa-instagram"></i>
                     </a>
                   </li>
                   <li>
-                    <a href="https://wa.me/919910224881?text=I%27m%20interested%20in%20HRMMitra" target="_blank" rel="noopener noreferrer">
+                    <a href={siteSettings.whatsapp_url} target="_blank" rel="noopener noreferrer">
                       <i className="fab fa-whatsapp"></i>
                     </a>
                   </li>
@@ -180,7 +183,7 @@ const AboutPage = () => {
                   <li aria-haspopup="true"><a className="navtext" href="/blog" target="_blank"><span></span> <span>Blog</span></a></li>
                   <li aria-haspopup="true"><a className="navtext" href="/contact"><span></span> <span>Contact</span></a></li>
                   <li className="wscarticon clearfix">
-                    <a className="btn btn-theme text-white btn-md radius" href="https://demo.hrmmitra.in/" target="_blank">Login</a>
+                    <a className="btn btn-theme text-white btn-md radius" href={siteSettings.demo_login_url} target="_blank" rel="noopener noreferrer">Login</a>
                     <a className="btn btn-theme text-white btn-md radius" data-bs-target="#demoshedule-modal" data-bs-toggle="modal" href="javascript:void(0)">Schedule a demo</a>
                   </li>
                 </ul>
@@ -461,27 +464,27 @@ const AboutPage = () => {
                   </p>
                   <ul className="footer-social mt-0">
                     <li>
-                      <a href="https://www.linkedin.com/showcase/hrmmitra" target="_blank" rel="noopener noreferrer">
+                      <a href={siteSettings.linkedin_url} target="_blank" rel="noopener noreferrer">
                         <i className="fab fa-linkedin-in"></i>
                       </a>
                     </li>
                     <li>
-                      <a href="https://www.facebook.com/hrmmitra" target="_blank" rel="noopener noreferrer">
+                      <a href={siteSettings.facebook_url} target="_blank" rel="noopener noreferrer">
                         <i className="fab fa-facebook-f"></i>
                       </a>
                     </li>
                     <li>
-                      <a href="https://x.com/hrmmitra" target="_blank" rel="noopener noreferrer">
+                      <a href={siteSettings.x_url} target="_blank" rel="noopener noreferrer">
                         <i className="">X</i>
                       </a>
                     </li>
                     <li>
-                      <a href="https://www.instagram.com/hrmmitra" target="_blank" rel="noopener noreferrer">
+                      <a href={siteSettings.instagram_url} target="_blank" rel="noopener noreferrer">
                         <i className="fab fa-instagram"></i>
                       </a>
                     </li>
                     <li>
-                      <a href="https://wa.me/919910224881?text=I%27m%20interested%20in%20HRMMitra" target="_blank" rel="noopener noreferrer">
+                      <a href={siteSettings.whatsapp_url} target="_blank" rel="noopener noreferrer">
                         <i className="fab fa-whatsapp"></i>
                       </a>
                     </li>
@@ -531,11 +534,11 @@ const AboutPage = () => {
                   <ul className="mt-3 mb-3">
                     <li>
                       <strong>Location:</strong>
-                      <div className="working-day mb-2"><strong>Noida:</strong>  C-20, Sector - 65, Noida - 201301, India</div>
-                      <div className="working-day"><strong>New Delhi:</strong> 408 Siddharth Building, 96 Nehru Place, New Delhi 110019, India</div>
-                      <div className="working-hour mt-2"><strong>Phone:</strong><a href="https://wa.me/919910224881" target="_blank"> +91 99102 24881</a>, <a href="tel:+918800114822">+91 8800 1148 22</a></div>
+                      <div className="working-day mb-2"><strong>Noida:</strong>  {siteSettings.noida_address}</div>
+                      <div className="working-day"><strong>New Delhi:</strong> {siteSettings.new_delhi_address}</div>
+                      <div className="working-hour mt-2"><strong>Phone:</strong><a href={siteSettings.whatsapp_direct_url} target="_blank" rel="noopener noreferrer"> {siteSettings.primary_phone}</a>, <a href={siteSettings.secondary_phone_href}>{siteSettings.secondary_phone}</a></div>
                       <div className="working-hour"><strong>Email:</strong>
-                        <a href="mailto:marketing@unistal.com">marketing@unistal.com</a>
+                        <a href={siteSettings.primary_email_href}>{siteSettings.primary_email}</a>
                       </div>
                     </li>
                   </ul>
@@ -549,7 +552,7 @@ const AboutPage = () => {
           <div className="container">
             <div className="row">
               <div className="col-lg-12 text-center">
-                <p>© Copyright 2026 <a href="https://unistal.com/" style={{color:'#f03041',fontWeight:500}} target="_blank">Unistal Systems Pvt. Ltd</a> All Rights Reserved</p>
+                <p>© Copyright 2026 <a href={siteSettings.company_url} style={{color:'#f03041',fontWeight:500}} target="_blank" rel="noopener noreferrer">{siteSettings.company_legal_name}</a> All Rights Reserved</p>
               </div>
             </div>
           </div>

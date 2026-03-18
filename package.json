@@ -4,17 +4,20 @@
   "version": "0.1.0",
   "type": "module",
   "scripts": {
-    "dev": "concurrently -k -n client,server -c green,cyan \"vite\" \"node server/server.cjs\"",
+    "dev": "concurrently -k -n client,server -c green,cyan \"vite\" \"node server/dev-server.cjs\"",
     "dev:client": "vite",
-    "dev:server": "node server/server.cjs",
+    "dev:server": "node server/dev-server.cjs",
     "build": "vite build",
     "preview": "vite preview",
     "start": "node server/server.cjs"
   },
   "dependencies": {
+    "better-sqlite3": "^12.8.0",
+    "cookie": "^1.1.1",
     "cors": "^2.8.5",
     "dotenv": "^16.6.1",
     "express": "^5.1.0",
+    "multer": "^2.1.1",
     "nodemailer": "^6.10.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",

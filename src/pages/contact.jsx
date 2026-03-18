@@ -1,6 +1,9 @@
 import { useEffect } from "react";
+import { useSiteSettings } from "../siteSettings.jsx";
 
 export default function ContactPage() {
+  const { siteSettings } = useSiteSettings();
+
   useEffect(() => {
     document.title = "Best HRM Solution In India, Saas Based HRM Solution, Performance Management in HRMS- HRMetricS";
   }, []);
@@ -19,27 +22,27 @@ export default function ContactPage() {
               <div className="social">
                 <ul>
                   <li>
-                    <a href="https://www.linkedin.com/showcase/hrmmitra" target="_blank">
+                    <a href={siteSettings.linkedin_url} target="_blank" rel="noopener noreferrer">
                       <i className="fab fa-linkedin-in" />
                     </a>
                   </li>
                   <li>
-                    <a href="https://www.facebook.com" target="_blank">
+                    <a href={siteSettings.facebook_url} target="_blank" rel="noopener noreferrer">
                       <i className="fab fa-facebook-f" />
                     </a>
                   </li>
                   <li>
-                    <a href="https://x.com" target="_blank">
+                    <a href={siteSettings.x_url} target="_blank" rel="noopener noreferrer">
                       <i className="">X</i>
                     </a>
                   </li>
                   <li>
-                    <a href="https://www.instagram.com" target="_blank">
+                    <a href={siteSettings.instagram_url} target="_blank" rel="noopener noreferrer">
                       <i className="fab fa-instagram" />
                     </a>
                   </li>
                   <li>
-                    <a href="https://wa.me/919910224881?text=I%27m%20interested%20in%20HRMMitra" target="_blank">
+                    <a href={siteSettings.whatsapp_url} target="_blank" rel="noopener noreferrer">
                       <i className="fab fa-whatsapp" />
                     </a>
                   </li>
@@ -150,7 +153,7 @@ export default function ContactPage() {
                   <li aria-haspopup="true"><a className="navtext" href="index.html"><span /> <span>Contact</span></a>
                   </li>
                   <li className="wscarticon clearfix">
-                    <a className="btn btn-theme text-white btn-md radius" href="https://demo.hrmmitra.in/" target="_blank">Login</a>
+                    <a className="btn btn-theme text-white btn-md radius" href={siteSettings.demo_login_url} target="_blank" rel="noopener noreferrer">Login</a>
                     <a className="btn btn-theme text-white btn-md radius" data-bs-target="#demoshedule-modal" data-bs-toggle="modal" href="javascript:void(0)">Schedule a demo</a>
                   </li>
                 </ul>
@@ -188,7 +191,7 @@ export default function ContactPage() {
                     </div>
                     <div className="content">
                       <h5 className="title">Call</h5>
-                      <a href="https://wa.me/919910224881" target="_blank"> +91 99102 24881</a><span className="text-white">,</span> <a href="tel:+918800114822">+91 8800 1148 22</a>
+                      <a href={siteSettings.whatsapp_direct_url} target="_blank" rel="noopener noreferrer"> {siteSettings.primary_phone}</a><span className="text-white">,</span> <a href={siteSettings.secondary_phone_href}>{siteSettings.secondary_phone}</a>
                     </div>
                   </li>
                   <li className="wow fadeInUp" data-wow-delay="300ms">
@@ -198,9 +201,9 @@ export default function ContactPage() {
                     <div className="info">
                       <h5 className="title">Our Location</h5>
                       <p>
-                        <strong><span className="dottt" /> New Delhi:</strong> 408 Siddharth Building, 96 Nehru Place, New Delhi 110019, India
+                        <strong><span className="dottt" /> New Delhi:</strong> {siteSettings.new_delhi_address}
                       </p>
-                      <p><strong><span className="dottt" /> Noida:</strong> C-20, Sector - 65, Noida - 201301, India</p>
+                      <p><strong><span className="dottt" /> Noida:</strong> {siteSettings.noida_address}</p>
                     </div>
                   </li>
                   <li className="wow fadeInUp" data-wow-delay="500ms">
@@ -209,7 +212,7 @@ export default function ContactPage() {
                     </div>
                     <div className="info">
                       <h5 className="title">Email</h5>
-                      <a href="mailto:marketing@unistal.com">marketing@unistal.com</a>
+                      <a href={siteSettings.primary_email_href}>{siteSettings.primary_email}</a>
                     </div>
                   </li>
                 </ul>
@@ -290,7 +293,7 @@ export default function ContactPage() {
         </div>
       </div>
       <div className="google-map">
-        <iframe allowFullScreen frameBorder={0} loading="lazy" referrerPolicy="no-referrer-when-downgrade" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3504.7084052583864!2d77.25087587508038!3d28.548483087893292!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ce3c5622de301%3A0xf45228a6f3859bfa!2sUnistal%20Systems%20Pvt%20Ltd!5e0!3m2!1sen!2sin!4v1690783449740!5m2!1sen!2sin" style={{border: 0, width: '100%', height: 350}} />
+        <iframe allowFullScreen frameBorder={0} loading="lazy" referrerPolicy="no-referrer-when-downgrade" src={siteSettings.google_maps_embed_url} style={{border: 0, width: '100%', height: 350}} />
       </div>
       <footer className="footer-bg text-light bg-cover">
         <div className="footer-shape">
@@ -309,27 +312,27 @@ export default function ContactPage() {
                   </p>
                   <ul className="footer-social mt-0">
                     <li>
-                      <a href="https://www.linkedin.com/showcase/hrmmitra" target="_blank">
+                      <a href={siteSettings.linkedin_url} target="_blank" rel="noopener noreferrer">
                         <i className="fab fa-linkedin-in" />
                       </a>
                     </li>
                     <li>
-                      <a href="https://www.facebook.com/hrmmitra" target="_blank">
+                      <a href={siteSettings.facebook_url} target="_blank" rel="noopener noreferrer">
                         <i className="fab fa-facebook-f" />
                       </a>
                     </li>
                     <li>
-                      <a href="https://x.com/hrmmitra" target="_blank">
+                      <a href={siteSettings.x_url} target="_blank" rel="noopener noreferrer">
                         <i className="">X</i>
                       </a>
                     </li>
                     <li>
-                      <a href="https://www.instagram.com/hrmmitra" target="_blank">
+                      <a href={siteSettings.instagram_url} target="_blank" rel="noopener noreferrer">
                         <i className="fab fa-instagram" />
                       </a>
                     </li>
                     <li>
-                      <a href="https://wa.me/919910224881?text=I%27m%20interested%20in%20HRMMitra" target="_blank">
+                      <a href={siteSettings.whatsapp_url} target="_blank" rel="noopener noreferrer">
                         <i className="fab fa-whatsapp" />
                       </a>
                     </li>
@@ -379,11 +382,11 @@ export default function ContactPage() {
                   <ul className="mt-3 mb-3">
                     <li>
                       <strong>Location:</strong>
-                      <div className="working-day mb-2"><strong>Noida:</strong>  C-20, Sector - 65, Noida - 201301, India</div>
-                      <div className="working-day"><strong>New Delhi:</strong> 408 Siddharth Building, 96 Nehru Place, New Delhi 110019, India</div>
-                      <div className="working-hour mt-2"><strong>Phone:</strong><a href="https://wa.me/919910224881" target="_blank"> +91 99102 24881</a>, <a href="tel:+918800114822">+91 8800 1148 22</a></div>
+                      <div className="working-day mb-2"><strong>Noida:</strong>  {siteSettings.noida_address}</div>
+                      <div className="working-day"><strong>New Delhi:</strong> {siteSettings.new_delhi_address}</div>
+                      <div className="working-hour mt-2"><strong>Phone:</strong><a href={siteSettings.whatsapp_direct_url} target="_blank" rel="noopener noreferrer"> {siteSettings.primary_phone}</a>, <a href={siteSettings.secondary_phone_href}>{siteSettings.secondary_phone}</a></div>
                       <div className="working-hour"><strong>Email:</strong>
-                        <a href="mailto:marketing@unistal.com">marketing@unistal.com</a></div>
+                        <a href={siteSettings.primary_email_href}>{siteSettings.primary_email}</a></div>
                     </li>
                   </ul>
                 </div>
@@ -395,7 +398,7 @@ export default function ContactPage() {
           <div className="container">
             <div className="row">
               <div className="col-lg-12 text-center">
-                <p>© Copyright 2026 <a href="https://unistal.com/" style={{color: '#f03041', fontWeight: 500}} target="_blank">Unistal Systems Pvt. Ltd</a> All Rights Reserved</p>
+                <p>© Copyright 2026 <a href={siteSettings.company_url} style={{color: '#f03041', fontWeight: 500}} target="_blank" rel="noopener noreferrer">{siteSettings.company_legal_name}</a> All Rights Reserved</p>
               </div>
             </div>
           </div>
