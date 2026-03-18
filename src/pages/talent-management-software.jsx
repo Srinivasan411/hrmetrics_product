@@ -752,12 +752,6 @@ export default function TalentManagementSoftwarePage() {
           </div>
         </div>
       </div>
-      <div className="box-transform">
-        <a className="btn btn-theme text-white btn-md radius" data-bs-target="#bookdemo-modal" data-bs-toggle="modal" href="javascript:void(0)">Book a demo</a>
-      </div>
-      <a className="whatsapp-float" href="https://wa.me/919910224881" target="_blank" title="Chat with us on WhatsApp">
-        <img alt="WhatsApp Icon" src="../gh/edent/SuperTinyIcons/images/svg/whatsapp.svg" />
-      </a>
     </div>
   );
 }

@@ -1004,14 +1004,7 @@ const ActivityManagementSoftwarePage = () => {
           </div>
         </div>
       </div>
-      
-      <div className="box-transform">
-        <a className="btn btn-theme text-white btn-md radius" data-bs-target="#bookdemo-modal" data-bs-toggle="modal" href="javascript:void(0)">Book a demo</a>
-      </div>
-      <a className="whatsapp-float" href="https://wa.me/919910224881" target="_blank" title="Chat with us on WhatsApp">
-        <img alt="WhatsApp Icon" src="../gh/edent/SuperTinyIcons/images/svg/whatsapp.svg"/>
-      </a>
-      
+
       {/* jQuery Frameworks */}
       <script src="../assets/js/jquery-3.7.1.min.js"></script>
       <script src="../assets/js/bootstrap.bundle.min.js"></script>
@@ -1188,58 +1181,6 @@ const ActivityManagementSoftwarePage = () => {
             max-width: 100% !important;
             min-width: 100% !important;
             width: 100% !important;
-          }
-          .box-transform a {
-            padding: 12px 20px;
-            line-height: 14px;
-            font-size: 15px;
-            background: #fff !important;
-            color: #000 !important;
-            box-shadow: rgba(0, 0, 0, 0.34) 0px 3px 8px;
-          }
-          .box-transform a:hover{
-            color:#fff !important;
-          }
-          .box-transform {
-            position: fixed;
-            top: 35%;
-            right: -53px;
-            transform: rotate(90deg);
-            bottom: 0;
-            margin-top: auto;
-            margin-bottom: auto;
-            display: table;
-            cursor: pointer;
-            z-index: 999;
-          }
-          /* WhatsApp chat icon */
-          .whatsapp-float {
-            position: fixed;
-            bottom:7%;
-            left: 2px;
-            background-color: #25d366;
-            color: white;
-            border-radius: 50%;
-            width: 45px;
-            height: 45px;
-            text-align: center;
-            overflow: hidden;
-            font-size: 30px;
-            box-shadow: 0 0 15px rgba(0, 255, 0, 0.6);
-            z-index: 1000;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: transform 0.3s ease;
-          }
-
-          .whatsapp-float:hover {
-            transform: scale(1.1);
-          }
-
-          .whatsapp-float img {
-            width: 55px;
-            height: 55px;
           }
         `}
       </style>

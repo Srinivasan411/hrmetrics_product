@@ -3,5 +3,11 @@ import react from "@vitejs/plugin-react";
 
 export default defineConfig({
   plugins: [react()],
+  server: {
+    proxy: {
+      "/sendMail.php": "http://localhost:3001",
+      "/sheduleMail.php": "http://localhost:3001",
+      "/api": "http://localhost:3001",
+    },
+  },
 });
-

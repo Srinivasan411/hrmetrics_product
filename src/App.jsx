@@ -47,14 +47,17 @@ export default function App() {
 
   return (
     <Suspense fallback={null}>
-      <Routes>
-        {routes.map(([path, Component]) => (
-          <Route key={path} path={path} element={<Component />} />
-        ))}
-        <Route path="/index.html" element={<Navigate to="/" replace />} />
-        <Route path="/:slug/index.html" element={<IndexHtmlRedirect />} />
-        <Route path="*" element={<Navigate to="/" replace />} />
-      </Routes>
+      <>
+        <Routes>
+          {routes.map(([path, Component]) => (
+            <Route key={path} path={path} element={<Component />} />
+          ))}
+          <Route path="/index.html" element={<Navigate to="/" replace />} />
+          <Route path="/:slug/index.html" element={<IndexHtmlRedirect />} />
+          <Route path="*" element={<Navigate to="/" replace />} />
+        </Routes>
+        <FloatingActions />
+      </>
     </Suspense>
   );
 }
@@ -62,4 +65,29 @@ export default function App() {
 function IndexHtmlRedirect() {
   const { slug } = useParams();
   return <Navigate to={`/${slug || ""}`.replace(/\/+$/, "") || "/"} replace />;
+}
+
+function FloatingActions() {
+  return (
+    <>
+      <a
+        className="whatsapp-float"
+        href="https://wa.me/919910224881"
+        target="_blank"
+        rel="noopener noreferrer"
+        title="Chat with us on WhatsApp"
+        aria-label="Chat with us on WhatsApp"
+      >
+        <img alt="" aria-hidden="true" src="/gh/edent/SuperTinyIcons/images/svg/whatsapp.svg" />
+      </a>
+      <button
+        type="button"
+        className="bookdemo-float btn btn-theme text-white btn-md radius"
+        data-bs-toggle="modal"
+        data-bs-target="#bookdemo-modal"
+      >
+        Book a demo
+      </button>
+    </>
+  );
 }
