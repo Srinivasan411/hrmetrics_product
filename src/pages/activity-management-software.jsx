@@ -25,7 +25,7 @@ const ActivityManagementSoftwarePage = () => {
               <div className="social">
                 <ul>
                   <li>
-                    <a href="https://www.linkedin.com/showcase/hrmmitra" target="_blank" rel="noopener noreferrer">
+                    <a href="https://www.linkedin.com/showcase/hrmetrics" target="_blank" rel="noopener noreferrer">
                       <i className="fab fa-linkedin-in"></i>
                     </a>
                   </li>
@@ -45,7 +45,7 @@ const ActivityManagementSoftwarePage = () => {
                     </a>
                   </li>
                   <li>
-                    <a href="https://wa.me/919910224881?text=I%27m%20interested%20in%20HRMMitra" target="_blank" rel="noopener noreferrer">
+                    <a href="https://wa.me/919910224881?text=I%27m%20interested%20in%20HRMetricS" target="_blank" rel="noopener noreferrer">
                       <i className="fab fa-whatsapp"></i>
                     </a>
                   </li>
@@ -178,10 +178,9 @@ const ActivityManagementSoftwarePage = () => {
                       </div>
                     </div>
                   </li>
-                  <li aria-haspopup="true"><a className="navtext" href="/blog" target="_blank"><span></span> <span>Blog</span></a></li>
                   <li aria-haspopup="true"><a className="navtext" href="/contact"><span></span> <span>Contact</span></a></li>
                   <li className="wscarticon clearfix">
-                    <a className="btn btn-theme text-white btn-md radius" href="https://demo.hrmmitra.in/" target="_blank">Login</a>
+                    <a className="btn btn-theme text-white btn-md radius" href="https://demo.hrmetrics.in/" target="_blank">Login</a>
                     <a className="btn btn-theme text-white btn-md radius" data-bs-target="#demoshedule-modal" data-bs-toggle="modal" href="javascript:void(0)">Schedule a demo</a>
                   </li>
                 </ul>
@@ -235,7 +234,7 @@ const ActivityManagementSoftwarePage = () => {
             <div className="col-lg-10 offset-lg-1">
               <div className="site-heading mb-0 text-center">
                 <h2 className="title split-text mb-0">Track, Prioritize, and Optimize with Ease</h2>
-                <p className="split-text">Unistal's Activity Management solution simplifies task tracking and employee monitoring to enhance efficiency. With features like real-time activity tracking, geolocation, screen captures, face recognition, and admin access, managers gain clear visibility into team performance, empowering smarter workflows and better time management.</p>
+                <p className="split-text">HRMetricS' Activity Management solution simplifies task tracking and employee monitoring to enhance efficiency. With features like real-time activity tracking, geolocation, screen captures, face recognition, and admin access, managers gain clear visibility into team performance, empowering smarter workflows and better time management.</p>
                 <div className="devider"></div>
               </div>
             </div>
@@ -687,27 +686,27 @@ const ActivityManagementSoftwarePage = () => {
                   </p>
                   <ul className="footer-social mt-0">
                     <li>
-                      <a href="https://www.linkedin.com/showcase/hrmmitra" target="_blank" rel="noopener noreferrer">
+                      <a href="https://www.linkedin.com/showcase/hrmetrics" target="_blank" rel="noopener noreferrer">
                         <i className="fab fa-linkedin-in"></i>
                       </a>
                     </li>
                     <li>
-                      <a href="https://www.facebook.com/hrmmitra" target="_blank" rel="noopener noreferrer">
+                      <a href="https://www.facebook.com/hrmetrics" target="_blank" rel="noopener noreferrer">
                         <i className="fab fa-facebook-f"></i>
                       </a>
                     </li>
                     <li>
-                      <a href="https://x.com/hrmmitra" target="_blank" rel="noopener noreferrer">
+                      <a href="https://x.com/hrmetrics" target="_blank" rel="noopener noreferrer">
                         <i className="">X</i>
                       </a>
                     </li>
                     <li>
-                      <a href="https://www.instagram.com/hrmmitra" target="_blank" rel="noopener noreferrer">
+                      <a href="https://www.instagram.com/hrmetrics" target="_blank" rel="noopener noreferrer">
                         <i className="fab fa-instagram"></i>
                       </a>
                     </li>
                     <li>
-                      <a href="https://wa.me/919910224881?text=I%27m%20interested%20in%20HRMMitra" target="_blank" rel="noopener noreferrer">
+                      <a href="https://wa.me/919910224881?text=I%27m%20interested%20in%20HRMetricS" target="_blank" rel="noopener noreferrer">
                         <i className="fab fa-whatsapp"></i>
                       </a>
                     </li>
@@ -744,7 +743,6 @@ const ActivityManagementSoftwarePage = () => {
                   <h4 className="widget-title">Company</h4>
                   <ul>
                     <li><a href="/about">About</a></li>
-                    <li><a href="/blog" target="_blank">Blog</a></li>
                     <li><a href="/contact">Contact</a></li>
                     <li><a href="/terms-services">Terms of service</a></li>
                     <li><a href="/privacy-policy">Privacy policy</a></li>
@@ -761,7 +759,7 @@ const ActivityManagementSoftwarePage = () => {
                       <div className="working-day"><strong>Maldives:</strong> 408 Siddharth Building, 96 Nehru Place, Maldives 110019, India</div>
                       <div className="working-hour mt-2"><strong>Phone:</strong><a href="https://wa.me/919910224881" target="_blank"> +91 99102 24881</a>, <a href="tel:+918800114822">+91 8800 1148 22</a></div>
                       <div className="working-hour"><strong>Email:</strong>
-                        <a href="mailto:marketing@unistal.com">marketing@unistal.com</a>
+                        <a href="mailto:info@hrmetrics.in">info@hrmetrics.in</a>
                       </div>
                     </li>
                   </ul>
@@ -775,7 +773,7 @@ const ActivityManagementSoftwarePage = () => {
           <div className="container">
             <div className="row">
               <div className="col-lg-12 text-center">
-                <p>© Copyright 2026 <a href="https://unistal.com/" style={{color:'#f03041',fontWeight:500}} target="_blank">Unistal Systems Pvt. Ltd</a> All Rights Reserved</p>
+                <p>© Copyright 2026 <a href="https://hrmetrics.in/" style={{color:'#f03041',fontWeight:500}} target="_blank">HRMetricS</a> All Rights Reserved</p>
               </div>
             </div>
           </div>

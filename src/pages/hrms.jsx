@@ -1,10 +1,4 @@
-import { useEffect } from "react";
-
 export default function HrmsPage() {
-  useEffect(() => {
-    document.title = "HRMS Archives - HRMMITRA";
-  }, []);
-
   return (
     <div className="archive category category-hrms category-26 wp-custom-logo wp-embed-responsive wp-theme-sinatra sinatra-topbar__separators-regular sinatra-layout__boxed-separated sinatra-header-layout-1 sinatra-menu-animation-underline sinatra-header__separators-none si-blog-layout-1 si-page-title-align-left si-has-sidebar sinatra-sidebar-style-1 sinatra-sidebar-position__right-sidebar si-sidebar-r__after-content entry-media-hover-style-1 sinatra-copyright-layout-1 si-input-supported validate-comment-form si-menu-accessibility">
       <div className="hfeed site" id="page">
@@ -15,7 +9,7 @@ export default function HrmsPage() {
               <div className="si-container si-header-container">
                 <div className="sinatra-logo si-header-element" itemScope="itemscope" itemType="https://schema.org/Organization">
                   <div className="logo-inner"><a className="" href="../../index.html" itemProp="url" rel="home">
-                      <img alt="HRMMITRA" className="" height={152} itemProp="logo" src="/assets/images/wp-uploads/2023/08/cropped-hr-mitra-logo.png" width={600} />
+                      <img alt="HRMetricS" className="" height={152} itemProp="logo" src="/assets/images/wp-uploads/2023/08/cropped-hrmetrics-logo.png" width={600} />
                     </a></div></div>
                 <nav aria-label="Site Navigation" className="site-navigation main-navigation sinatra-primary-nav sinatra-nav si-header-element" itemScope="itemscope" itemType="https://schema.org/SiteNavigationElement" role="navigation">
                   <ul className="menu" id="sinatra-primary-nav"><li className="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-104" id="menu-item-104"><a href="../../index.html"><span>Home</span></a></li>
@@ -29,7 +23,7 @@ export default function HrmsPage() {
                         <a className="si-search" href="#">
                           <svg aria-label="Search" className="si-icon" height={32} viewBox="0 0 32 32" width={32} xmlns="http://www.w3.org/2000/svg"><path d="M28.962 26.499l-4.938-4.938c1.602-2.002 2.669-4.671 2.669-7.474 0-6.673-5.339-12.012-12.012-12.012s-12.012 5.339-12.012 12.012c0 6.673 5.339 12.012 12.012 12.012 2.803 0 5.472-0.934 7.474-2.669l4.938 4.938c0.267 0.267 0.667 0.4 0.934 0.4s0.667-0.133 0.934-0.4c0.534-0.534 0.534-1.335 0-1.868zM5.339 14.087c0-5.205 4.137-9.342 9.342-9.342s9.342 4.137 9.342 9.342c0 2.536-1.068 4.938-2.669 6.54 0 0 0 0 0 0s0 0 0 0c-1.735 1.735-4.004 2.669-6.54 2.669-5.339 0.133-9.476-4.004-9.476-9.209z" /></svg> </a>
                         <div className="si-search-simple si-search-container dropdown-item">
-                          <form action="https://hrmmitra.com/blog/" aria-label="Site Search" className="si-search-form" method="get" role="search">
+                          <form action="https://hrmetrics.in/blog/" aria-label="Site Search" className="si-search-form" method="get" role="search">
                             <label className="si-form-label">
                               <span className="screen-reader-text">Search for:</span>
                               <input autoComplete="off" className="si-input-search" name="s" placeholder="Search" type="search" defaultValue />
@@ -297,10 +291,10 @@ export default function HrmsPage() {
                   </div>
                 </article>
                 <article className="sinatra-article post-602 post type-post status-publish format-standard has-post-thumbnail hentry category-hrms tag-best-hrms-software tag-dailyprompt tag-dailyprompt-2082 tag-task-management-software" id="post-602" itemScope itemType="https://schema.org/CreativeWork">
-                  <div className="si-blog-entry-content"><div className="post-thumb entry-media thumbnail"><a className="entry-image-link" href="../../hrms/harmonizing-holidays-and-productivity-a-guide-to-leave-management-with-hrm-mitra/index.html"><img alt="Harmonizing Holidays and Productivity: A Guide to Leave Management with HRMetricS" className="attachment-large size-large wp-post-image" height={452} loading="lazy" src="/assets/images/wp-uploads/2024/10/Templates-Apps-1212-x-535-px-1.jpg" width={1024} /></a></div>
+                  <div className="si-blog-entry-content"><div className="post-thumb entry-media thumbnail"><a className="entry-image-link" href="../../hrms/harmonizing-holidays-and-productivity-a-guide-to-leave-management-with-hrmetrics/index.html"><img alt="Harmonizing Holidays and Productivity: A Guide to Leave Management with HRMetricS" className="attachment-large size-large wp-post-image" height={452} loading="lazy" src="/assets/images/wp-uploads/2024/10/Templates-Apps-1212-x-535-px-1.jpg" width={1024} /></a></div>
                     <header className="entry-header">
                       <h2 className="entry-title" itemProp="headline">
-                        <a href="../../hrms/harmonizing-holidays-and-productivity-a-guide-to-leave-management-with-hrm-mitra/index.html" rel="bookmark" title="Harmonizing Holidays and Productivity: A Guide to Leave Management with HRMetricS">Harmonizing Holidays and Productivity: A Guide to Leave Management with HRMetricS</a> </h2>
+                        <a href="../../hrms/harmonizing-holidays-and-productivity-a-guide-to-leave-management-with-hrmetrics/index.html" rel="bookmark" title="Harmonizing Holidays and Productivity: A Guide to Leave Management with HRMetricS">Harmonizing Holidays and Productivity: A Guide to Leave Management with HRMetricS</a> </h2>
                     </header>
                     <div className="entry-meta"><div className="entry-meta-elements"> <span className="post-author">
                           <span className="posted-by vcard author" itemProp="author" itemScope="itemscope" itemType="http://schema.org/Person">
@@ -317,7 +311,7 @@ export default function HrmsPage() {
                       As the festive season approaches in India, it’s a time for joy, family gatherings, and cultural celebrations. However, for businesses, this period often presents unique challenges in managing workforce availability…
                     </div>
                     <footer className="entry-footer">
-                      <a className="si-btn btn-text-1" href="../../hrms/harmonizing-holidays-and-productivity-a-guide-to-leave-management-with-hrm-mitra/index.html"><span>Read More</span></a>
+                      <a className="si-btn btn-text-1" href="../../hrms/harmonizing-holidays-and-productivity-a-guide-to-leave-management-with-hrmetrics/index.html"><span>Read More</span></a>
                     </footer>
                   </div>
                 </article>
@@ -355,7 +349,7 @@ export default function HrmsPage() {
                   <figure className="wp-block-gallery has-nested-images columns-default is-cropped wp-block-gallery-1 is-layout-flex wp-block-gallery-is-layout-flex">
                     <figure className="wp-block-image size-large"><img alt="" className="wp-image-288" data-id={288} decoding="async" height={913} loading="lazy" sizes="auto, (max-width: 914px) 100vw, 914px" src="/assets/images/wp-uploads/2024/01/main-circle-1.png" srcSet="/assets/images/wp-uploads/2024/01/main-circle-1.png 914w, /assets/images/wp-uploads/2024/01/main-circle-1-4.png 300w, /assets/images/wp-uploads/2024/01/main-circle-1-2.png 150w, /assets/images/wp-uploads/2024/01/main-circle-1-3.png 768w" width={914} /></figure>
                   </figure>
-                </div><div className="si-sidebar-widget si-widget si-entry widget widget_block" id="block-20"><center><strong><a className="getstarted scrollto" href="https://calendly.com/unistal-websites/hrm-mitra">Schedule A Demo Now</a></strong></center></div>
+                </div><div className="si-sidebar-widget si-widget si-entry widget widget_block" id="block-20"><center><strong><a className="getstarted scrollto" href="https://hrmetrics.in/contact">Schedule A Demo Now</a></strong></center></div>
               </div>
             </aside>
           </div>
@@ -364,7 +358,7 @@ export default function HrmsPage() {
           <div className="contained-separator" id="sinatra-copyright">
             <div className="si-container">
               <div className="si-flex-row">
-                <div className="col-xs-12 center-xs col-md flex-basis-auto start-md"><div className="si-copyright-widget__text si-copyright-widget sinatra-all"><span>Copyright 2026 — HRMMITRA. All rights reserved. Designed by UNISTAL GLOBAL</span></div></div>
+                <div className="col-xs-12 center-xs col-md flex-basis-auto start-md"><div className="si-copyright-widget__text si-copyright-widget sinatra-all"><span>Copyright 2026 — HRMetricS. All rights reserved. Designed by HRMetricS</span></div></div>
                 <div className="col-xs-12 center-xs col-md flex-basis-auto end-md" />
               </div>
             </div>

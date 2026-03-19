@@ -1,11 +1,6 @@
-import { useEffect } from "react";
 import { TryForFreeCard } from "../components/LeadModals";
 
 export default function EmployeesManagementSoftwarePage() {
-  useEffect(() => {
-    document.title = "Best HRM Solution In India, Saas Based HRM Solution, Performance Management in HRMS- HRMetricS";
-  }, []);
-
   return (
     <div>
       <div className="top-bar-area top-bar-style-one text-light">
@@ -20,7 +15,7 @@ export default function EmployeesManagementSoftwarePage() {
               <div className="social">
                 <ul>
                   <li>
-                    <a href="https://www.linkedin.com/showcase/hrmmitra" target="_blank">
+                    <a href="https://www.linkedin.com/showcase/hrmetrics" target="_blank">
                       <i className="fab fa-linkedin-in" />
                     </a>
                   </li>
@@ -40,7 +35,7 @@ export default function EmployeesManagementSoftwarePage() {
                     </a>
                   </li>
                   <li>
-                    <a href="https://wa.me/919910224881?text=I%27m%20interested%20in%20HRMMitra" target="_blank">
+                    <a href="https://wa.me/919910224881?text=I%27m%20interested%20in%20HRMetricS" target="_blank">
                       <i className="fab fa-whatsapp" />
                     </a>
                   </li>
@@ -146,12 +141,10 @@ export default function EmployeesManagementSoftwarePage() {
                       </div>
                     </div>
                   </li>
-                  <li aria-haspopup="true"><a className="navtext" href="../blog/index.html" target="_blank"><span /> <span>Blog</span></a>
-                  </li>
                   <li aria-haspopup="true"><a className="navtext" href="../contact/index.html"><span /> <span>Contact</span></a>
                   </li>
                   <li className="wscarticon clearfix">
-                    <a className="btn btn-theme text-white btn-md radius" href="https://demo.hrmmitra.in/" target="_blank">Login</a>
+                    <a className="btn btn-theme text-white btn-md radius" href="https://demo.hrmetrics.in/" target="_blank">Login</a>
                     <a className="btn btn-theme text-white btn-md radius" data-bs-target="#demoshedule-modal" data-bs-toggle="modal" href="javascript:void(0)">Schedule a demo</a>
                   </li>
                 </ul>
@@ -205,7 +198,7 @@ export default function EmployeesManagementSoftwarePage() {
             <div className="col-lg-10 offset-lg-1">
               <div className="site-heading mb-0 text-center">
                 <h2 className="title split-text mb-0">Streamline, Engage, and Empower </h2>
-                <p className="split-text">With HRM MITRA's <strong>Employee Management Software</strong>, you can give your employees the autonomy they deserve. It is the most effective platform for recording employees' personal and official information based on their profiles. The solution offers tools for confidentiality, onboarding, data import/export, documentation, hierarchy assignment, access control, and self-service.</p>
+                <p className="split-text">With HRMetricS' <strong>Employee Management Software</strong>, you can give your employees the autonomy they deserve. It is the most effective platform for recording employees' personal and official information based on their profiles. The solution offers tools for confidentiality, onboarding, data import/export, documentation, hierarchy assignment, access control, and self-service.</p>
                 <div className="devider" />
               </div>
             </div>
@@ -579,7 +572,7 @@ export default function EmployeesManagementSoftwarePage() {
                   <i className="fa fa-chevron-down" />
                   How does HRM Mitra support employee onboarding and access control?
                 </a>
-                <p className="accordion-content">The module automates onboarding workflows, allows Excel import/export of employee data, assigns reporting managers, and sets up role-based access rights. <a href="../index.html">hrmmitra.com</a></p>
+                <p className="accordion-content">The module automates onboarding workflows, allows Excel import/export of employee data, assigns reporting managers, and sets up role-based access rights. <a href="../index.html">hrmetrics.in</a></p>
               </li>
               <li className="accordion-item">
                 <a className="accordion-title" href="javascript:void(0)">
@@ -623,27 +616,27 @@ export default function EmployeesManagementSoftwarePage() {
                   </p>
                   <ul className="footer-social mt-0">
                     <li>
-                      <a href="https://www.linkedin.com/showcase/hrmmitra" target="_blank">
+                      <a href="https://www.linkedin.com/showcase/hrmetrics" target="_blank">
                         <i className="fab fa-linkedin-in" />
                       </a>
                     </li>
                     <li>
-                      <a href="https://www.facebook.com/hrmmitra" target="_blank">
+                      <a href="https://www.facebook.com/hrmetrics" target="_blank">
                         <i className="fab fa-facebook-f" />
                       </a>
                     </li>
                     <li>
-                      <a href="https://x.com/hrmmitra" target="_blank">
+                      <a href="https://x.com/hrmetrics" target="_blank">
                         <i className="">X</i>
                       </a>
                     </li>
                     <li>
-                      <a href="https://www.instagram.com/hrmmitra" target="_blank">
+                      <a href="https://www.instagram.com/hrmetrics" target="_blank">
                         <i className="fab fa-instagram" />
                       </a>
                     </li>
                     <li>
-                      <a href="https://wa.me/919910224881?text=I%27m%20interested%20in%20HRMMitra" target="_blank">
+                      <a href="https://wa.me/919910224881?text=I%27m%20interested%20in%20HRMetricS" target="_blank">
                         <i className="fab fa-whatsapp" />
                       </a>
                     </li>
@@ -680,7 +673,6 @@ export default function EmployeesManagementSoftwarePage() {
                   <h4 className="widget-title">Company</h4>
                   <ul>
                     <li><a href="../about/index.html">About</a></li>
-                    <li><a href="../blog/index.html" target="_blank">Blog</a></li>
                     <li><a href="../contact/index.html">Contact</a></li>
                     <li><a href="../terms-services/index.html">Terms of service</a></li>
                     <li><a href="../privacy-policy/index.html">Privacy policy</a></li>
@@ -697,7 +689,7 @@ export default function EmployeesManagementSoftwarePage() {
                       <div className="working-day"><strong>Maldives:</strong> 408 Siddharth Building, 96 Nehru Place, Maldives 110019, India</div>
                       <div className="working-hour mt-2"><strong>Phone:</strong><a href="https://wa.me/919910224881" target="_blank"> +91 99102 24881</a>, <a href="tel:+918800114822">+91 8800 1148 22</a></div>
                       <div className="working-hour"><strong>Email:</strong>
-                        <a href="mailto:marketing@unistal.com">marketing@unistal.com</a></div>
+                        <a href="mailto:info@hrmetrics.in">info@hrmetrics.in</a></div>
                     </li>
                   </ul>
                 </div>
@@ -709,7 +701,7 @@ export default function EmployeesManagementSoftwarePage() {
           <div className="container">
             <div className="row">
               <div className="col-lg-12 text-center">
-                <p>© Copyright 2026 <a href="https://unistal.com/" style={{color: '#f03041', fontWeight: 500}} target="_blank">Unistal Systems Pvt. Ltd</a> All Rights Reserved</p>
+                <p>© Copyright 2026 <a href="https://hrmetrics.in/" style={{color: '#f03041', fontWeight: 500}} target="_blank">HRMetricS</a> All Rights Reserved</p>
               </div>
             </div>
           </div>

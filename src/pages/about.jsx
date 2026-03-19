@@ -180,7 +180,6 @@ const AboutPage = () => {
                       </div>
                     </div>
                   </li>
-                  <li aria-haspopup="true"><a className="navtext" href="/blog" target="_blank"><span></span> <span>Blog</span></a></li>
                   <li aria-haspopup="true"><a className="navtext" href="/contact"><span></span> <span>Contact</span></a></li>
                   <li className="wscarticon clearfix">
                     <a className="btn btn-theme text-white btn-md radius" href={siteSettings.demo_login_url} target="_blank" rel="noopener noreferrer">Login</a>
@@ -221,7 +220,7 @@ const AboutPage = () => {
             <div className="col-lg-6">
               <div className="about-style-two-thumb">
                 <img alt="Image Not Found" className="wow fadeInUp" src="../assets/images/aboutmain.png"/>
-                <img alt="Image Not Found" className="wow fadeInDown" data-wow-delay="100ms" src="../assets/images/unistal-building.png"/>
+                <img alt="Image Not Found" className="wow fadeInDown" data-wow-delay="100ms" src="../assets/images/hrmetrics-building.png"/>
                 <div className="certification wow fadeInUp" data-wow-delay="250ms">
                   <img alt="Image Not Found" src="../assets/images/abtcerti.png"/>
                   <h4> Certified Company</h4>
@@ -232,7 +231,7 @@ const AboutPage = () => {
               <div className="about-style-two-info">
                 <h4 className="sub-title">About Us</h4>
                 <h2 className="title mb-3 split-text">Who We Are</h2>
-                <p>HRMetricS is the brainchild of Unistal Systems Pvt. Ltd.</p>
+                <p>HRMetricS is the brainchild of the HRMetricS team.</p>
                 <p>With an extensive experience in the HRM space, we build automated products that help HR and organizations simplify their processes and meet their goals at a faster rate. Our HRM Software is designed to suit all industry types and sizes with more focus on a user-centric interface. HRMetricS is interwind using products ranging from company, employee, payroll, leave & attendance, <strong>Talent Recognition,</strong> real-time reports & analytics to an easily accessible mobile app. HRMetricS has been designed for quick implementation that enhances productivity using the automated workflow and processes which will reduce work time for HRs by 25%. It also provide great experience to employees with mobile application. Gain more success for your business using the add-on modules for better employee and employer experience. Our Activity management, Task Management, Asset Management, and Field Force Management create a more lucrative work environment, whether your team is working from the office or at home.</p>
               </div>
             </div>
@@ -250,7 +249,7 @@ const AboutPage = () => {
                 <h2 className="title split-text">Our pioneering</h2>
                 <p>HRM solution comes with 4 additional modules that help improve the work process - Activity, Task, and Field Force Management.</p>
                 <p>Join us on this advanced journey and experience the power of HRMetricS in transforming your organization's HR landscape. We are committed to delivering excellence, continuous innovation, and exceptional customer support to help you unlock your organization's full potential. Let HRMetricS be your trusted partner in navigating the dynamic world of Human Resource management.</p>
-                <p>Together, let's simplify, automate, and streamline your HR processes for a brighter and more productive future. Thank you for choosing HRMetricS by Unistal</p>
+                <p>Together, let's simplify, automate, and streamline your HR processes for a brighter and more productive future. Thank you for choosing HRMetricS</p>
                 <div className="devider"></div>
               </div>
             </div>
@@ -521,7 +520,6 @@ const AboutPage = () => {
                   <h4 className="widget-title">Company</h4>
                   <ul>
                     <li><a href="/about">About</a></li>
-                    <li><a href="/blog" target="_blank">Blog</a></li>
                     <li><a href="/contact">Contact</a></li>
                     <li><a href="/terms-services">Terms of service</a></li>
                     <li><a href="/privacy-policy">Privacy policy</a></li>

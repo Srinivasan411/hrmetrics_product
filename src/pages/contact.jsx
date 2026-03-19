@@ -1,12 +1,7 @@
-import { useEffect } from "react";
 import { useSiteSettings } from "../siteSettings.jsx";
 
 export default function ContactPage() {
   const { siteSettings } = useSiteSettings();
-
-  useEffect(() => {
-    document.title = "Best HRM Solution In India, Saas Based HRM Solution, Performance Management in HRMS- HRMetricS";
-  }, []);
 
   return (
     <div>
@@ -147,8 +142,6 @@ export default function ContactPage() {
                         </ul>
                       </div>
                     </div>
-                  </li>
-                  <li aria-haspopup="true"><a className="navtext" href="../blog/index.html" target="_blank"><span /> <span>Blog</span></a>
                   </li>
                   <li aria-haspopup="true"><a className="navtext" href="index.html"><span /> <span>Contact</span></a>
                   </li>
@@ -369,7 +362,6 @@ export default function ContactPage() {
                   <h4 className="widget-title">Company</h4>
                   <ul>
                     <li><a href="../about/index.html">About</a></li>
-                    <li><a href="../blog/index.html" target="_blank">Blog</a></li>
                     <li><a href="index.html">Contact</a></li>
                     <li><a href="../terms-services/index.html">Terms of service</a></li>
                     <li><a href="../privacy-policy/index.html">Privacy policy</a></li>

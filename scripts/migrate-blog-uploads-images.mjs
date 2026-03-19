@@ -3,10 +3,10 @@ import path from "node:path";
 
 const repoRoot = process.cwd();
 
-// User-requested source: public/hrmmitra.com/blog/wp-content/uploads
-const uploadsDir = path.join(repoRoot, "public", "hrmmitra.com", "blog", "wp-content", "uploads");
+// User-requested source: public/hrmetrics.com/blog/wp-content/uploads
+const uploadsDir = path.join(repoRoot, "public", "hrmetrics.com", "blog", "wp-content", "uploads");
 // Fallback source if public uploads were already pruned.
-const distUploadsDir = path.join(repoRoot, "dist", "hrmmitra.com", "blog", "wp-content", "uploads");
+const distUploadsDir = path.join(repoRoot, "dist", "hrmetrics.com", "blog", "wp-content", "uploads");
 const targetImagesDir = path.join(repoRoot, "public", "assets", "images", "wp-uploads");
 
 const SKIP_DIRS = new Set(["node_modules", "dist", ".git"]);
@@ -94,8 +94,8 @@ function normalizeWpUploadsRel(rawUrl) {
 function replaceUploadsImageUrls(text, replacements) {
   // Match any URL that contains wp-content/uploads/...<imageExt>
   // Includes forms like:
-  // - ../../../hrmmitra.com/blog/wp-content/uploads/2025/06/x.png
-  // - https://i0.wp.com/hrmmitra.com/blog/wp-content/uploads/...
+  // - ../../../hrmetrics.com/blog/wp-content/uploads/2025/06/x.png
+  // - https://i0.wp.com/hrmetrics.com/blog/wp-content/uploads/...
   // - /wp-content/uploads/...
   const re =
     /(?:https?:\/\/[^\s"'<>]+)?[^\s"'<>]*?(?:\/)?wp-content\/uploads\/([^\s"'<>?,#]+\.(?:png|jpe?g|gif|webp|avif|svg|ico))(?:\?[^"'<>]*)?(?:#[^"'<>]*)?/gi;

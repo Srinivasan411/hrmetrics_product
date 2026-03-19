@@ -1,10 +1,4 @@
-import { useEffect } from "react";
-
 export default function TermsServicesPage() {
-  useEffect(() => {
-    document.title = "Best HRM Solution In India, Saas Based HRM Solution, Performance Management in HRMS- HRMetricS";
-  }, []);
-
   return (
     <div>
       <div className="top-bar-area top-bar-style-one text-light">
@@ -19,7 +13,7 @@ export default function TermsServicesPage() {
               <div className="social">
                 <ul>
                   <li>
-                    <a href="https://www.linkedin.com/showcase/hrmmitra" target="_blank">
+                    <a href="https://www.linkedin.com/showcase/hrmetrics" target="_blank">
                       <i className="fab fa-linkedin-in" />
                     </a>
                   </li>
@@ -39,7 +33,7 @@ export default function TermsServicesPage() {
                     </a>
                   </li>
                   <li>
-                    <a href="https://wa.me/919910224881?text=I%27m%20interested%20in%20HRMMitra" target="_blank">
+                    <a href="https://wa.me/919910224881?text=I%27m%20interested%20in%20HRMetricS" target="_blank">
                       <i className="fab fa-whatsapp" />
                     </a>
                   </li>
@@ -145,12 +139,10 @@ export default function TermsServicesPage() {
                       </div>
                     </div>
                   </li>
-                  <li aria-haspopup="true"><a className="navtext" href="../blog/index.html" target="_blank"><span /> <span>Blog</span></a>
-                  </li>
                   <li aria-haspopup="true"><a className="navtext" href="../contact/index.html"><span /> <span>Contact</span></a>
                   </li>
                   <li className="wscarticon clearfix">
-                    <a className="btn btn-theme text-white btn-md radius" href="https://demo.hrmmitra.in/" target="_blank">Login</a>
+                    <a className="btn btn-theme text-white btn-md radius" href="https://demo.hrmetrics.in/" target="_blank">Login</a>
                     <a className="btn btn-theme text-white btn-md radius" data-bs-target="#demoshedule-modal" data-bs-toggle="modal" href="javascript:void(0)">Schedule a demo</a>
                   </li>
                 </ul>
@@ -189,7 +181,7 @@ export default function TermsServicesPage() {
               <h4>4. Data Ownership and Privacy</h4>
               <p>You retain ownership of any data you provide. We are committed to protecting your privacy in accordance with our <a href="#">Privacy Policy</a>, which outlines how we collect, use, and safeguard your personal information.</p>
               <h4>5. Intellectual Property</h4>
-              <p>All content on HRMetricS, including software, logos, trademarks, and related materials, is the intellectual property of Unistal. You may not copy, modify, distribute, or reproduce any part of the platform without prior written consent from Unistal.</p>
+              <p>All content on HRMetricS, including software, logos, trademarks, and related materials, is the intellectual property of HRMetricS. You may not copy, modify, distribute, or reproduce any part of the platform without prior written consent from HRMetricS.</p>
               <h4>6. Third-Party Content</h4>
               <p>HRMetricS may include links to third-party websites or services. We are not responsible for the accuracy, content, or practices of third-party sites. Any use or interaction with such content is at your own risk.</p>
               <h4>7. Service Modifications</h4>
@@ -197,19 +189,19 @@ export default function TermsServicesPage() {
               <h4>8. Limitation of Liability</h4>
               <p>HRMetricS is provided on an “as-is” and “as-available” basis, without warranties of any kind. We are not liable for any direct, indirect, incidental, or consequential damages arising from your use—or inability to use—the service.</p>
               <h4>9. Indemnification</h4>
-              <p>You agree to indemnify and hold harmless HRMetricS, Unistal, its affiliates, and personnel from any claims, damages, losses, or liabilities resulting from your breach of these Terms and Conditions.</p>
+              <p>You agree to indemnify and hold harmless HRMetricS, HRMetricS, its affiliates, and personnel from any claims, damages, losses, or liabilities resulting from your breach of these Terms and Conditions.</p>
               <h4>10. Governing Law</h4>
-              <p>These Terms and Conditions are governed by the laws of the jurisdiction in which Unistal is registered. Any legal disputes shall be subject to the exclusive jurisdiction of the competent courts in that region.</p>
+              <p>These Terms and Conditions are governed by the laws of the jurisdiction in which HRMetricS is registered. Any legal disputes shall be subject to the exclusive jurisdiction of the competent courts in that region.</p>
               <h4>11. Termination</h4>
               <p>We reserve the right to suspend or terminate your access to HRMetricS at our discretion, particularly in cases of violations of these Terms and Conditions or any other misuse of the platform.</p>
               <h4>12. Contact Information</h4>
-              <p>If you have any questions or concerns regarding these Terms and Conditions, please contact us at <a href="mailto:info@hrmmitra.com">info@hrmmitra.com</a></p>
+              <p>If you have any questions or concerns regarding these Terms and Conditions, please contact us at <a href="mailto:info@hrmetrics.in">info@hrmetrics.in</a></p>
               <address>
-                HRM mitra<br />
+                HRMetricS<br />
                 Maldives: 408 Siddharth Building, 96 Nehru Place, Maldives 110019, India<br />Madurai: C-20, Sector - 65, Madurai - 201301, India
                 Phone:  +91 8800 1148 22<br />
-                Email: marketing@unistal.com<br />
-                Website: <a href="../index.html" target="_blank">hrmmitra.com</a>
+                Email: info@hrmetrics.in<br />
+                Website: <a href="../index.html" target="_blank">hrmetrics.in</a>
               </address>
             </div>
           </div>
@@ -232,27 +224,27 @@ export default function TermsServicesPage() {
                   </p>
                   <ul className="footer-social mt-0">
                     <li>
-                      <a href="https://www.linkedin.com/showcase/hrmmitra" target="_blank">
+                      <a href="https://www.linkedin.com/showcase/hrmetrics" target="_blank">
                         <i className="fab fa-linkedin-in" />
                       </a>
                     </li>
                     <li>
-                      <a href="https://www.facebook.com/hrmmitra" target="_blank">
+                      <a href="https://www.facebook.com/hrmetrics" target="_blank">
                         <i className="fab fa-facebook-f" />
                       </a>
                     </li>
                     <li>
-                      <a href="https://x.com/hrmmitra" target="_blank">
+                      <a href="https://x.com/hrmetrics" target="_blank">
                         <i className="">X</i>
                       </a>
                     </li>
                     <li>
-                      <a href="https://www.instagram.com/hrmmitra" target="_blank">
+                      <a href="https://www.instagram.com/hrmetrics" target="_blank">
                         <i className="fab fa-instagram" />
                       </a>
                     </li>
                     <li>
-                      <a href="https://wa.me/919910224881?text=I%27m%20interested%20in%20HRMMitra" target="_blank">
+                      <a href="https://wa.me/919910224881?text=I%27m%20interested%20in%20HRMetricS" target="_blank">
                         <i className="fab fa-whatsapp" />
                       </a>
                     </li>
@@ -289,7 +281,6 @@ export default function TermsServicesPage() {
                   <h4 className="widget-title">Company</h4>
                   <ul>
                     <li><a href="../about/index.html">About</a></li>
-                    <li><a href="../blog/index.html" target="_blank">Blog</a></li>
                     <li><a href="../contact/index.html">Contact</a></li>
                     <li><a href="index.html">Terms of service</a></li>
                     <li><a href="../privacy-policy/index.html">Privacy policy</a></li>
@@ -306,7 +297,7 @@ export default function TermsServicesPage() {
                       <div className="working-day"><strong>Maldives:</strong> 408 Siddharth Building, 96 Nehru Place, Maldives 110019, India</div>
                       <div className="working-hour mt-2"><strong>Phone:</strong><a href="https://wa.me/919910224881" target="_blank"> +91 99102 24881</a>, <a href="tel:+918800114822">+91 8800 1148 22</a></div>
                       <div className="working-hour"><strong>Email:</strong>
-                        <a href="mailto:marketing@unistal.com">marketing@unistal.com</a></div>
+                        <a href="mailto:info@hrmetrics.in">info@hrmetrics.in</a></div>
                     </li>
                   </ul>
                 </div>
@@ -318,7 +309,7 @@ export default function TermsServicesPage() {
           <div className="container">
             <div className="row">
               <div className="col-lg-12 text-center">
-                <p>© Copyright 2026 <a href="https://unistal.com/" style={{color: '#f03041', fontWeight: 500}} target="_blank">Unistal Systems Pvt. Ltd</a> All Rights Reserved</p>
+                <p>© Copyright 2026 <a href="https://hrmetrics.in/" style={{color: '#f03041', fontWeight: 500}} target="_blank">HRMetricS</a> All Rights Reserved</p>
               </div>
             </div>
           </div>

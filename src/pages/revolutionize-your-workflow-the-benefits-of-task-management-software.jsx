@@ -1,10 +1,4 @@
-import { useEffect } from "react";
-
 export default function RevolutionizeYourWorkflowTheBenefitsOfTaskManagementSoftwarePage() {
-  useEffect(() => {
-    document.title = "Revolutionize Your Workflow: The Benefits of Task Management Software - HRMMITRA";
-  }, []);
-
   return (
     <div className="wp-singular post-template-default single single-post postid-559 single-format-standard wp-custom-logo wp-embed-responsive wp-theme-sinatra sinatra-topbar__separators-regular sinatra-layout__boxed-separated sinatra-header-layout-1 sinatra-menu-animation-underline sinatra-header__separators-none si-single-title-in-content narrow-content si-page-title-align-left si-has-sidebar sinatra-sidebar-style-1 sinatra-sidebar-position__right-sidebar si-sidebar-r__after-content entry-media-hover-style-1 sinatra-copyright-layout-1 si-input-supported validate-comment-form si-menu-accessibility">
       <div className="hfeed site" id="page">
@@ -15,7 +9,7 @@ export default function RevolutionizeYourWorkflowTheBenefitsOfTaskManagementSoft
               <div className="si-container si-header-container">
                 <div className="sinatra-logo si-header-element" itemScope="itemscope" itemType="https://schema.org/Organization">
                   <div className="logo-inner"><a className="" href="../../index.html" itemProp="url" rel="home">
-                      <img alt="HRMMITRA" className="" height={152} itemProp="logo" src="/assets/images/wp-uploads/2023/08/cropped-hr-mitra-logo.png" width={600} />
+                      <img alt="HRMetricS" className="" height={152} itemProp="logo" src="/assets/images/wp-uploads/2023/08/cropped-hrmetrics-logo.png" width={600} />
                     </a></div></div>
                 <nav aria-label="Site Navigation" className="site-navigation main-navigation sinatra-primary-nav sinatra-nav si-header-element" itemScope="itemscope" itemType="https://schema.org/SiteNavigationElement" role="navigation">
                   <ul className="menu" id="sinatra-primary-nav"><li className="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-104" id="menu-item-104"><a href="../../index.html"><span>Home</span></a></li>
@@ -29,7 +23,7 @@ export default function RevolutionizeYourWorkflowTheBenefitsOfTaskManagementSoft
                         <a className="si-search" href="#">
                           <svg aria-label="Search" className="si-icon" height={32} viewBox="0 0 32 32" width={32} xmlns="http://www.w3.org/2000/svg"><path d="M28.962 26.499l-4.938-4.938c1.602-2.002 2.669-4.671 2.669-7.474 0-6.673-5.339-12.012-12.012-12.012s-12.012 5.339-12.012 12.012c0 6.673 5.339 12.012 12.012 12.012 2.803 0 5.472-0.934 7.474-2.669l4.938 4.938c0.267 0.267 0.667 0.4 0.934 0.4s0.667-0.133 0.934-0.4c0.534-0.534 0.534-1.335 0-1.868zM5.339 14.087c0-5.205 4.137-9.342 9.342-9.342s9.342 4.137 9.342 9.342c0 2.536-1.068 4.938-2.669 6.54 0 0 0 0 0 0s0 0 0 0c-1.735 1.735-4.004 2.669-6.54 2.669-5.339 0.133-9.476-4.004-9.476-9.209z" /></svg> </a>
                         <div className="si-search-simple si-search-container dropdown-item">
-                          <form action="https://hrmmitra.com/blog/" aria-label="Site Search" className="si-search-form" method="get" role="search">
+                          <form action="https://hrmetrics.in/blog/" aria-label="Site Search" className="si-search-form" method="get" role="search">
                             <label className="si-form-label">
                               <span className="screen-reader-text">Search for:</span>
                               <input autoComplete="off" className="si-input-search" name="s" placeholder="Search" type="search" defaultValue />
@@ -93,7 +87,7 @@ export default function RevolutionizeYourWorkflowTheBenefitsOfTaskManagementSoft
                       <p><strong><em>Desmond Tutu, the 1984 Nobel Peace Prize recipient, famously remarked, “There is only one way to devour an elephant, one nibble at a time.”</em></strong></p>
                       <cite><strong><em>Desmond Tutu</em></strong></cite></blockquote>
                     <p>The exact help concept applies to task and project management- task management is actually a subset of project management.</p>
-                    <p><strong>You can also read:</strong> <a href="../../hrms/do-you-find-it-challenging-to-manage-daily-hr-tasks-for-your-startups-small-businesses/index.html">https://hrmmitra.com/blog/hrms/do-you-find-it-challenging-to-manage-daily-hr-tasks-for-your-startups-small-businesses/</a></p>
+                    <p><strong>You can also read:</strong> <a href="../../hrms/do-you-find-it-challenging-to-manage-daily-hr-tasks-for-your-startups-small-businesses/index.html">https://hrmetrics.in/blog/hrms/do-you-find-it-challenging-to-manage-daily-hr-tasks-for-your-startups-small-businesses/</a></p>
                     <p />
                     <h2 className="wp-block-heading"><strong>Task Management Vs. Project Management</strong></h2>
                     <p><strong>Let’s understand this by an example.</strong></p>
@@ -181,7 +175,7 @@ export default function RevolutionizeYourWorkflowTheBenefitsOfTaskManagementSoft
                   <figure className="wp-block-gallery has-nested-images columns-default is-cropped wp-block-gallery-1 is-layout-flex wp-block-gallery-is-layout-flex">
                     <figure className="wp-block-image size-large"><img alt="" className="wp-image-288" data-id={288} decoding="async" height={913} loading="lazy" sizes="auto, (max-width: 914px) 100vw, 914px" src="/assets/images/wp-uploads/2024/01/main-circle-1.png" srcSet="/assets/images/wp-uploads/2024/01/main-circle-1.png 914w, /assets/images/wp-uploads/2024/01/main-circle-1-4.png 300w, /assets/images/wp-uploads/2024/01/main-circle-1-2.png 150w, /assets/images/wp-uploads/2024/01/main-circle-1-3.png 768w" width={914} /></figure>
                   </figure>
-                </div><div className="si-sidebar-widget si-widget si-entry widget widget_block" id="block-20"><center><strong><a className="getstarted scrollto" href="https://calendly.com/unistal-websites/hrm-mitra">Schedule A Demo Now</a></strong></center></div>
+                </div><div className="si-sidebar-widget si-widget si-entry widget widget_block" id="block-20"><center><strong><a className="getstarted scrollto" href="https://hrmetrics.in/contact">Schedule A Demo Now</a></strong></center></div>
               </div>
             </aside>
           </div>
@@ -190,7 +184,7 @@ export default function RevolutionizeYourWorkflowTheBenefitsOfTaskManagementSoft
           <div className="contained-separator" id="sinatra-copyright">
             <div className="si-container">
               <div className="si-flex-row">
-                <div className="col-xs-12 center-xs col-md flex-basis-auto start-md"><div className="si-copyright-widget__text si-copyright-widget sinatra-all"><span>Copyright 2026 — HRMMITRA. All rights reserved. Designed by UNISTAL GLOBAL</span></div></div>
+                <div className="col-xs-12 center-xs col-md flex-basis-auto start-md"><div className="si-copyright-widget__text si-copyright-widget sinatra-all"><span>Copyright 2026 — HRMetricS. All rights reserved. Designed by HRMetricS</span></div></div>
                 <div className="col-xs-12 center-xs col-md flex-basis-auto end-md" />
               </div>
             </div>

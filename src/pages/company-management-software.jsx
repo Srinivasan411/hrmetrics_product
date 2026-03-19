@@ -1,11 +1,6 @@
-import { useEffect } from "react";
 import { TryForFreeCard } from "../components/LeadModals";
 
 export default function CompanyManagementSoftwarePage() {
-  useEffect(() => {
-    document.title = "Best HRM Solution In India, Saas Based HRM Solution, Performance Management in HRMS- HRMetricS";
-  }, []);
-
   return (
     <div>
       <div className="top-bar-area top-bar-style-one text-light">
@@ -20,7 +15,7 @@ export default function CompanyManagementSoftwarePage() {
               <div className="social">
                 <ul>
                   <li>
-                    <a href="https://www.linkedin.com/showcase/hrmmitra" target="_blank">
+                    <a href="https://www.linkedin.com/showcase/hrmetrics" target="_blank">
                       <i className="fab fa-linkedin-in" />
                     </a>
                   </li>
@@ -40,7 +35,7 @@ export default function CompanyManagementSoftwarePage() {
                     </a>
                   </li>
                   <li>
-                    <a href="https://wa.me/919910224881?text=I%27m%20interested%20in%20HRMMitra" target="_blank">
+                    <a href="https://wa.me/919910224881?text=I%27m%20interested%20in%20HRMetricS" target="_blank">
                       <i className="fab fa-whatsapp" />
                     </a>
                   </li>
@@ -146,12 +141,10 @@ export default function CompanyManagementSoftwarePage() {
                       </div>
                     </div>
                   </li>
-                  <li aria-haspopup="true"><a className="navtext" href="../blog/index.html" target="_blank"><span /> <span>Blog</span></a>
-                  </li>
                   <li aria-haspopup="true"><a className="navtext" href="../contact/index.html"><span /> <span>Contact</span></a>
                   </li>
                   <li className="wscarticon clearfix">
-                    <a className="btn btn-theme text-white btn-md radius" href="https://demo.hrmmitra.in/" target="_blank">Login</a>
+                    <a className="btn btn-theme text-white btn-md radius" href="https://demo.hrmetrics.in/" target="_blank">Login</a>
                     <a className="btn btn-theme text-white btn-md radius" data-bs-target="#demoshedule-modal" data-bs-toggle="modal" href="javascript:void(0)">Schedule a demo</a>
                   </li>
                 </ul>
@@ -505,27 +498,27 @@ export default function CompanyManagementSoftwarePage() {
                   </p>
                   <ul className="footer-social mt-0">
                     <li>
-                      <a href="https://www.linkedin.com/showcase/hrmmitra" target="_blank">
+                      <a href="https://www.linkedin.com/showcase/hrmetrics" target="_blank">
                         <i className="fab fa-linkedin-in" />
                       </a>
                     </li>
                     <li>
-                      <a href="https://www.facebook.com/hrmmitra" target="_blank">
+                      <a href="https://www.facebook.com/hrmetrics" target="_blank">
                         <i className="fab fa-facebook-f" />
                       </a>
                     </li>
                     <li>
-                      <a href="https://x.com/hrmmitra" target="_blank">
+                      <a href="https://x.com/hrmetrics" target="_blank">
                         <i className="">X</i>
                       </a>
                     </li>
                     <li>
-                      <a href="https://www.instagram.com/hrmmitra" target="_blank">
+                      <a href="https://www.instagram.com/hrmetrics" target="_blank">
                         <i className="fab fa-instagram" />
                       </a>
                     </li>
                     <li>
-                      <a href="https://wa.me/919910224881?text=I%27m%20interested%20in%20HRMMitra" target="_blank">
+                      <a href="https://wa.me/919910224881?text=I%27m%20interested%20in%20HRMetricS" target="_blank">
                         <i className="fab fa-whatsapp" />
                       </a>
                     </li>
@@ -562,7 +555,6 @@ export default function CompanyManagementSoftwarePage() {
                   <h4 className="widget-title">Company</h4>
                   <ul>
                     <li><a href="../about/index.html">About</a></li>
-                    <li><a href="../blog/index.html" target="_blank">Blog</a></li>
                     <li><a href="../contact/index.html">Contact</a></li>
                     <li><a href="../terms-services/index.html">Terms of service</a></li>
                     <li><a href="../privacy-policy/index.html">Privacy policy</a></li>
@@ -579,7 +571,7 @@ export default function CompanyManagementSoftwarePage() {
                       <div className="working-day"><strong>Maldives:</strong> 408 Siddharth Building, 96 Nehru Place, Maldives 110019, India</div>
                       <div className="working-hour mt-2"><strong>Phone:</strong><a href="https://wa.me/919910224881" target="_blank"> +91 99102 24881</a>, <a href="tel:+918800114822">+91 8800 1148 22</a></div>
                       <div className="working-hour"><strong>Email:</strong>
-                        <a href="mailto:marketing@unistal.com">marketing@unistal.com</a></div>
+                        <a href="mailto:info@hrmetrics.in">info@hrmetrics.in</a></div>
                     </li>
                   </ul>
                 </div>
@@ -591,7 +583,7 @@ export default function CompanyManagementSoftwarePage() {
           <div className="container">
             <div className="row">
               <div className="col-lg-12 text-center">
-                <p>© Copyright 2026 <a href="https://unistal.com/" style={{color: '#f03041', fontWeight: 500}} target="_blank">Unistal Systems Pvt. Ltd</a> All Rights Reserved</p>
+                <p>© Copyright 2026 <a href="https://hrmetrics.in/" style={{color: '#f03041', fontWeight: 500}} target="_blank">HRMetricS</a> All Rights Reserved</p>
               </div>
             </div>
           </div>

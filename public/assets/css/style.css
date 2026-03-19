@@ -1505,7 +1505,7 @@ p {
 	box-shadow: none;
 	font-size: 16px;
 	letter-spacing: 0;
-	padding: 13px 30px;
+	padding: 7px 20px;
 	background: #E7EDF8;
 	position: relative;
 	z-index: 1;
@@ -14503,5 +14503,89 @@ div#bookdemo-modal h4 {
 	100% {
 		height: 80px;
 		transform: rotate(0deg);
+	}
+}
+
+.cookie-consent-banner {
+	position: fixed;
+	left: 24px;
+	right: 24px;
+	bottom: 24px;
+	z-index: 9999;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 24px;
+	padding: 20px 24px;
+	border: 1px solid rgba(1, 104, 222, 0.18);
+	border-radius: 18px;
+	background: rgba(255, 255, 255, 0.96);
+	box-shadow: 0 24px 60px rgba(20, 51, 79, 0.18);
+	backdrop-filter: blur(12px);
+}
+
+.cookie-consent-copy {
+	max-width: 760px;
+}
+
+.cookie-consent-copy h4 {
+	margin-bottom: 8px;
+	color: var(--dark);
+}
+
+.cookie-consent-copy p {
+	margin-bottom: 0;
+	font-size: 15px;
+	line-height: 1.7;
+}
+
+.cookie-consent-copy a {
+	color: var(--color-primary);
+	text-decoration: underline;
+}
+
+.cookie-consent-actions {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	flex-shrink: 0;
+}
+
+.cookie-consent-btn {
+	min-width: 148px;
+	border-radius: 999px;
+}
+
+.btn-outline-secondary.cookie-consent-btn {
+	border: 1px solid rgba(20, 51, 79, 0.18);
+	background: transparent;
+	color: var(--dark);
+}
+
+.btn-outline-secondary.cookie-consent-btn:hover,
+.btn-outline-secondary.cookie-consent-btn:focus {
+	border-color: var(--dark);
+	background: rgba(20, 51, 79, 0.08);
+	color: var(--dark);
+}
+
+@media only screen and (max-width: 767px) {
+	.cookie-consent-banner {
+		left: 16px;
+		right: 16px;
+		bottom: 16px;
+		flex-direction: column;
+		align-items: stretch;
+		padding: 18px;
+		gap: 16px;
+	}
+
+	.cookie-consent-actions {
+		flex-direction: column;
+		align-items: stretch;
+	}
+
+	.cookie-consent-btn {
+		width: 100%;
 	}
 }

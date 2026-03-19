@@ -2,6 +2,9 @@ import { useEffect, useState } from "react";
 import { TryForFreeCard } from "../components/LeadModals.jsx";
 import { useSiteSettings } from "../siteSettings.jsx";
 
+const COOKIE_CONSENT_NAME = "hrmetrics_cookie_consent";
+const COOKIE_CONSENT_MAX_AGE = 60 * 60 * 24 * 180;
+
 const fallbackTestimonials = [
   {
     id: 1,
@@ -52,12 +55,46 @@ function formatClientMeta(testimonial) {
   return clientRole || companyName;
 }
 
+function readCookie(name) {
+  if (typeof document === "undefined") return "";
+
+  const cookies = document.cookie ? document.cookie.split("; ") : [];
+  const cookiePrefix = `${name}=`;
+  const cookieValue = cookies.find((entry) => entry.startsWith(cookiePrefix));
+
+  return cookieValue ? decodeURIComponent(cookieValue.slice(cookiePrefix.length)) : "";
+}
+
+function writeCookie(name, value, maxAge) {
+  if (typeof document === "undefined") return;
+
+  document.cookie = `${name}=${encodeURIComponent(value)}; path=/; max-age=${maxAge}; SameSite=Lax`;
+}
+
+function updateGoogleConsent(consentGranted) {
+  if (typeof window === "undefined" || typeof window.gtag !== "function") return;
+
+  const consentState = consentGranted ? "granted" : "denied";
+  window.gtag("consent", "update", {
+    ad_storage: consentState,
+    ad_user_data: consentState,
+    ad_personalization: consentState,
+    analytics_storage: consentState,
+  });
+}
+
 export default function HomePage() {
   const [testimonials, setTestimonials] = useState(fallbackTestimonials);
+  const [cookieConsent, setCookieConsent] = useState(null);
   const { siteSettings } = useSiteSettings();
 
   useEffect(() => {
-    document.title = "Best HRM Solution In India, Saas Based HRM Solution, Performance Management in HRMS- HRMetricS";
+    const savedConsent = readCookie(COOKIE_CONSENT_NAME);
+
+    if (savedConsent === "accepted" || savedConsent === "declined") {
+      setCookieConsent(savedConsent);
+      updateGoogleConsent(savedConsent === "accepted");
+    }
   }, []);
 
   useEffect(() => {
@@ -81,6 +118,12 @@ export default function HomePage() {
       ignore = true;
     };
   }, []);
+
+  function handleCookieConsent(nextConsent) {
+    setCookieConsent(nextConsent);
+    writeCookie(COOKIE_CONSENT_NAME, nextConsent, COOKIE_CONSENT_MAX_AGE);
+    updateGoogleConsent(nextConsent === "accepted");
+  }
 
   return (
     <div>
@@ -222,8 +265,6 @@ export default function HomePage() {
                       </div>
                     </div>
                   </li>
-                  <li aria-haspopup="true"><a className="navtext" href="blog/index.html" target="_blank"><span /> <span>Blog</span></a>
-                  </li>
                   <li aria-haspopup="true"><a className="navtext" href="contact/index.html"><span /> <span>Contact</span></a>
                   </li>
                   <li className="wscarticon clearfix">
@@ -315,7 +356,7 @@ export default function HomePage() {
                           <a href="https://apps.apple.com/in/app/bss-metrics/id1451487941" target="_blank">
                             <img alt="" src="assets/images/Group-1-2.webp" />
                           </a>
-                          <a href="https://play.google.com/store/apps/details?id=com.solutions.BSSMetricS&hl=en_IN" target="_blank">
+                          <a href="https://play.google.com/store/search?q=hr%20metrics%20pro&c=apps&hl=en_IN" target="_blank">
                             <img alt="" src="assets/images/Group-2-1.webp" />
                           </a>
                         </div>
@@ -686,7 +727,7 @@ export default function HomePage() {
                               <div className="shadowww"> <img alt="" className="img22" src="assets/images/employees.png" /> </div>
                               <div className="content-box-over">
                                 <h5>Employee Management</h5>
-                                <p>With HRM MITRA's Employee Management Software, you can give your employees the autonomy they deserve.
+                                <p>With HRMetricS' Employee Management Software, you can give your employees the autonomy they deserve.
                                 </p>
                                 <div className="btn-center text-left mt-3"> <a className="btn btn-theme btn-md radius animation wow fadeInUp" data-bs-target="#bookdemo-modal" data-bs-toggle="modal" href="javascript:void(0)">Book a demo</a> </div>
                               </div>
@@ -1353,64 +1394,34 @@ export default function HomePage() {
           </div>
         </div>
       </div>
-      <div className="home-blog-area default-padding bottom-less bg-gradientt bg-cover" style={{backgroundImage: 'url(assets/images/banner.jpg)'}}>
-        <div className="container">
-          <div className="row">
-            <div className="col-lg-8 offset-lg-2">
-              <div className="site-heading text-center">
-                <h2 className="title split-text">Our Blog</h2>
-                <div className="devider" />
-              </div>
-            </div>
+      {cookieConsent === null ? (
+        <div className="cookie-consent-banner" role="dialog" aria-live="polite" aria-label="Cookie consent">
+          <div className="cookie-consent-copy">
+            <h4>Allow cookies?</h4>
+            <p>
+              We use cookies to improve site performance and understand traffic. You can accept or decline non-essential cookies.
+              <a href="privacy-policy/index.html"> Privacy policy</a>
+            </p>
+          </div>
+          <div className="cookie-consent-actions">
+            <button
+              className="btn btn-outline-secondary cookie-consent-btn"
+              type="button"
+              onClick={() => handleCookieConsent("declined")}
+            >
+              Decline
+            </button>
+            <button
+              className="btn btn-theme text-white cookie-consent-btn"
+              type="button"
+              onClick={() => handleCookieConsent("accepted")}
+            >
+              Allow cookies
+            </button>
           </div>
         </div>
-        <div className="container">
-          <div className="row g-3">
-            <div className="col-xl-4 col-md-6 mb-30 wow fadeInUp" data-wow-delay="300ms">
-              <div className="blog-style-one">
-                <div className="thumb"> <a href="blog/hrms/how-to-manage-payroll-effectively-a-comprehensive-guide/index.html"><img alt="Thumb" src="assets/images/blog1.jpg" /></a> </div>
-                <div className="info">
-                  <div className="blog-meta">
-                    <ul>
-                      <li> <span>By Divya Giri</span> <a href="blog/hrms/how-to-manage-payroll-effectively-a-comprehensive-guide/index.html" target="_blank">HRMS</a> </li>
-                      <li> May 7, 2025 </li>
-                    </ul>
-                  </div>
-                  <h4> <a href="blog/hrms/how-to-manage-payroll-effectively-a-comprehensive-guide/index.html" target="_blank">How to Manage Payroll Effectively: A Comprehensive Guide</a> </h4> <a className="btn-animate" href="blog/hrms/how-to-manage-payroll-effectively-a-comprehensive-guide/index.html" target="_blank"> <span className="circle"> <span className="icon arrow" /> </span> <span className="button-text">Read More</span> </a>
-                </div>
-              </div>
-            </div>
-            <div className="col-xl-4 col-md-6 mb-30 wow fadeInUp" data-wow-delay="500ms">
-              <div className="blog-style-one">
-                <div className="thumb"> <a href="blog/hrms/from-desk-to-pocket-how-mobile-hr-apps-are-changing-the-way-we-work-in-india/index.html"><img alt="Thumb" src="assets/images/blog2.jpg" /></a> </div>
-                <div className="info">
-                  <div className="blog-meta">
-                    <ul>
-                      <li> <span>By Survi Sahay</span> <a href="blog/hrms/from-desk-to-pocket-how-mobile-hr-apps-are-changing-the-way-we-work-in-india/index.html" target="_blank">HRMS</a> </li>
-                      <li> November 9, 2024 </li>
-                    </ul>
-                  </div>
-                  <h4> <a href="blog/hrms/from-desk-to-pocket-how-mobile-hr-apps-are-changing-the-way-we-work-in-india/index.html" target="_blank">From Desk to Pocket: How Mobile HR Apps Are Changing the Way We Work in India</a> </h4> <a className="btn-animate" href="blog/hrms/from-desk-to-pocket-how-mobile-hr-apps-are-changing-the-way-we-work-in-india/index.html" target="_blank"> <span className="circle"> <span className="icon arrow" /> </span> <span className="button-text">Read More</span> </a>
-                </div>
-              </div>
-            </div>
-            <div className="col-xl-4 col-md-6 mb-30 wow fadeInUp" data-wow-delay="700ms">
-              <div className="blog-style-one">
-                <div className="thumb"> <a href="blog/task-management/revolutionize-your-workflow-the-benefits-of-task-management-software/index.html"><img alt="Thumb" src="assets/images/blog3.jpg" /></a> </div>
-                <div className="info">
-                  <div className="blog-meta">
-                    <ul>
-                      <li> <span>By Survi Sahay</span> <a href="blog/task-management/revolutionize-your-workflow-the-benefits-of-task-management-software/index.html" target="_blank">Task Management</a> </li>
-                      <li> August 24, 2024 </li>
-                    </ul>
-                  </div>
-                  <h4> <a href="blog/task-management/revolutionize-your-workflow-the-benefits-of-task-management-software/index.html" target="_blank">Revolutionize Your Workflow: The Benefits of Task Management Software</a> </h4> <a className="btn-animate" href="blog/task-management/revolutionize-your-workflow-the-benefits-of-task-management-software/index.html" target="_blank"> <span className="circle"> <span className="icon arrow" /> </span> <span className="button-text">Read More</span> </a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      ) : null}
+
       <footer className="footer-bg text-light bg-cover">
         <div className="footer-shape">
           <div className="item">
@@ -1485,7 +1496,6 @@ export default function HomePage() {
                   <h4 className="widget-title">Company</h4>
                   <ul>
                     <li><a href="about/index.html">About</a></li>
-                    <li><a href="blog/index.html" target="_blank">Blog</a></li>
                     <li><a href="contact/index.html">Contact</a></li>
                     <li><a href="terms-services/index.html">Terms of service</a></li>
                     <li><a href="privacy-policy/index.html">Privacy policy</a></li>

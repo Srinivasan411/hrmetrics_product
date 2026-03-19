@@ -37,10 +37,6 @@ export default function AdminPage() {
   const [uploadingImage, setUploadingImage] = useState(false);
 
   useEffect(() => {
-    document.title = "HRMetricS Admin";
-  }, []);
-
-  useEffect(() => {
     let ignore = false;
 
     async function loadSession() {

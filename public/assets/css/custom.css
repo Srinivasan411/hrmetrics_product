@@ -1082,3 +1082,24 @@ Faq Area CSS
   transform: translateY(-1px);
   filter: brightness(1.02);
 }
+
+@media only screen and (min-width: 992px) {
+  .headerfull .smllogo {
+    padding-top: 8px;
+    padding-bottom: 8px;
+  }
+
+  .headerfull .smllogo .brand-logo {
+    height: 36px;
+  }
+
+  .headerfull .wsmenu > .wsmenu-list > li > .navtext {
+    padding-top: 18px;
+    padding-bottom: 18px;
+  }
+
+  .headerfull .wsmenu > .wsmenu-list > li.wscarticon {
+    padding-top: 3px;
+    padding-bottom: 6px;
+  }
+}
