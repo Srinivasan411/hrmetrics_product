@@ -987,38 +987,127 @@ Faq Area CSS
 /* Floating actions (global) */
 .whatsapp-float {
   position: fixed;
-  left: calc(16px + env(safe-area-inset-left, 0px));
-  bottom: calc(16px + env(safe-area-inset-bottom, 0px));
-  width: 52px;
-  height: 52px;
+  left: calc(18px + env(safe-area-inset-left, 0px));
+  bottom: calc(18px + env(safe-area-inset-bottom, 0px));
+  width: 56px;
+  height: 56px;
   border-radius: 9999px;
-  background-color: #25d366;
-  color: #ffffff;
+  background: rgba(37, 211, 102, 0.14);
+  border: 1px solid rgba(37, 211, 102, 0.28);
+  color: #25d366;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: rgba(0, 0, 0, 0.25) 0px 6px 18px;
+  box-shadow: rgba(0, 0, 0, 0.18) 0px 10px 26px;
   z-index: 1040;
-  transition: transform 0.15s ease-in-out;
+  overflow: hidden;
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+  transition: transform 0.18s ease-in-out, box-shadow 0.18s ease-in-out, filter 0.18s ease-in-out;
+}
+
+.whatsapp-float::before {
+  content: "";
+  position: absolute;
+  inset: -10px;
+  border-radius: 9999px;
+  background: radial-gradient(circle, rgba(37, 211, 102, 0.26) 0%, rgba(37, 211, 102, 0) 62%);
+  filter: blur(8px);
+  opacity: 0.6;
+  transform: scale(1);
+  transition: opacity 0.18s ease-in-out, transform 0.18s ease-in-out;
+  pointer-events: none;
 }
 
 .whatsapp-float:hover {
-  transform: translateY(-1px);
+  transform: translateY(-2px) scale(1.04);
+  filter: brightness(1.02);
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 14px 30px;
+}
+
+.whatsapp-float:hover::before {
+  opacity: 1;
+  transform: scale(1.08);
+}
+
+.whatsapp-float:active {
+  transform: translateY(0) scale(0.98);
+}
+
+.whatsapp-float:focus-visible {
+  outline: none;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 14px 30px, 0 0 0 0.25rem rgba(37, 211, 102, 0.22);
 }
 
 .whatsapp-float img {
-  width: 28px;
-  height: 28px;
+  position: relative;
+  z-index: 1;
+  width: 30px;
+  height: 30px;
+  border-radius: 9999px;
+  background: #ffffff;
+  box-shadow: rgba(0, 0, 0, 0.08) 0px 6px 14px;
+}
+
+.bookdemo-float {
+  position: fixed;
+  top: 50%;
+  right: calc(0px + env(safe-area-inset-right, 0px));
+  left: auto;
+  bottom: auto;
+  transform: translateY(-50%);
+  z-index: 1040;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 14px 12px;
+  border-radius: 14px 0 0 14px;
+  border: 0;
+  background: var(--bg-gradient-two);
+  color: #ffffff;
+  font-weight: 800;
+  letter-spacing: 0.3px;
+  box-shadow: rgba(0, 0, 0, 0.22) 0px 10px 26px;
+  transition: transform 0.18s ease-in-out, filter 0.18s ease-in-out, box-shadow 0.18s ease-in-out;
+}
+
+.bookdemo-float i {
+  font-size: 18px;
+}
+
+.bookdemo-float:hover {
+  transform: translateY(-50%) translateX(-6px);
+  filter: brightness(1.02);
+  box-shadow: rgba(0, 0, 0, 0.26) 0px 14px 30px;
+}
+
+.bookdemo-float:active {
+  transform: translateY(-50%) translateX(-2px) scale(0.99);
+}
+
+.bookdemo-float:focus-visible {
+  outline: none;
+  box-shadow: rgba(0, 0, 0, 0.26) 0px 14px 30px, 0 0 0 0.25rem rgba(83, 143, 227, 0.25);
+}
+
+.bookdemo-float span {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  white-space: nowrap;
+  font-size: 13px;
+  line-height: 1;
 }
 
 /* Legacy floating "Book a demo" (old template uses .box-transform) */
 .box-transform {
   position: fixed !important;
-  top: auto !important;
-  left: calc(16px + env(safe-area-inset-left, 0px) + 64px) !important;
-  right: auto !important;
-  bottom: calc(16px + env(safe-area-inset-bottom, 0px)) !important;
-  transform: none !important;
+  top: 50% !important;
+  left: auto !important;
+  right: calc(0px + env(safe-area-inset-right, 0px)) !important;
+  bottom: auto !important;
+  transform: translateY(-50%) !important;
   margin: 0 !important;
   display: block !important;
   z-index: 1040;
@@ -1026,23 +1115,28 @@ Faq Area CSS
 
 .box-transform > a {
   display: inline-flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 10px;
-  padding: 12px 16px;
-  border-radius: 10px;
+  padding: 14px 12px;
+  border-radius: 14px 0 0 14px;
   border: 0;
   background: var(--bg-gradient-two) !important;
   color: #ffffff !important;
-  font-weight: 700;
+  font-weight: 800;
   text-decoration: none;
   box-shadow: rgba(0, 0, 0, 0.22) 0px 10px 26px;
-  transition: transform 0.15s ease-in-out, filter 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  white-space: nowrap;
+  transition: transform 0.18s ease-in-out, filter 0.18s ease-in-out, box-shadow 0.18s ease-in-out;
 }
 
 .box-transform > a:hover {
-  transform: translateY(-1px);
+  transform: translateX(-6px);
   filter: brightness(1.02);
+  box-shadow: rgba(0, 0, 0, 0.26) 0px 14px 30px;
 }
 
 @media only screen and (min-width: 992px) {
@@ -1094,182 +1188,4 @@ Faq Area CSS
 .brand-two-carousel .swiper-slide.brandbox:hover img {
     transform: scale(1.05);
 }
-
-/* --- Redesign to match reference image --- */
-:root {
-  --hrm-red: #e41e23;
-  --hrm-dark: #0f1c24;
-  --hrm-gradient: linear-gradient(90deg, #e41e23 0%, #0f1c24 100%);
-  --hrm-gradient-hover: linear-gradient(90deg, #0f1c24 0%, #e41e23 100%);
-}
-
-/* Red Gradient Buttons */
-.btn.btn-theme,
-.btn-center .btn-theme,
-.btn.btn-theme.radius {
-  background: var(--hrm-gradient) !important;
-  border: none !important;
-  color: #fff !important;
-  font-weight: 700 !important;
-  padding: 12px 25px !important;
-  transition: all 0.3s ease-in-out !important;
-  box-shadow: 0 4px 15px rgba(228, 30, 35, 0.3) !important;
-}
-
-.btn.btn-theme:hover {
-  background: var(--hrm-gradient-hover) !important;
-  transform: translateY(-2px) !important;
-  box-shadow: 0 6px 20px rgba(228, 30, 35, 0.4) !important;
-}
-
-/* Sub-title Bordered Box */
-.sub-title {
-  text-transform: uppercase !important;
-  color: var(--hrm-red) !important;
-  font-weight: 700 !important;
-  border: 2px solid var(--hrm-red) !important;
-  padding: 8px 18px !important;
-  border-radius: 4px !important;
-  background: #ffffff !important;
-  display: inline-block !important;
-  -webkit-background-clip: initial !important;
-  background-clip: initial !important;
-  -webkit-text-fill-color: initial !important;
-  font-size: 14px !important;
-  letter-spacing: 1px !important;
-  margin-bottom: 20px !important;
-}
-
-/* Experience Badge */
-.about-card {
-  background: var(--hrm-gradient) !important;
-  padding: 25px !important;
-  border-radius: 4px !important;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2) !important;
-  position: relative !important;
-  overflow: hidden !important;
-  border: none !important;
-}
-
-.about-card .fun-fact .counter {
-  color: #fff !important;
-  font-size: 48px !important;
-  font-weight: 800 !important;
-  margin-bottom: 0 !important;
-}
-
-.about-card .fun-fact .medium {
-  color: rgba(255, 255, 255, 0.9) !important;
-  font-weight: 500 !important;
-  text-transform: capitalize !important;
-  font-size: 16px !important;
-}
-
-.about-card .icon i {
-  color: #fff !important;
-  font-size: 40px !important;
-  opacity: 0.8 !important;
-}
-
-.about-card li {
-  display: flex !important;
-  align-items: center !important;
-  gap: 20px !important;
-}
-
-/* WhatsApp Floating Button with Pulse */
-.whatsapp-float {
-  position: fixed !important;
-  left: 30px !important;
-  bottom: 110px !important; /* Raised slightly to accommodate chat */
-  width: 60px !important;
-  height: 60px !important;
-  background-color: #25d366 !important;
-  border-radius: 50% !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4) !important;
-  z-index: 1000 !important;
-  animation: pulse-whatsapp 2s infinite !important;
-}
-
-@keyframes pulse-whatsapp {
-  0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
-  70% { transform: scale(1.1); box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
-  100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
-}
-
-/* Vertical "Book A Demo" Tab on Right Side */
-.bookdemo-float {
-  position: fixed !important;
-  right: 0px !important;
-  left: auto !important;
-  top: 50% !important;
-  transform: translateY(-50%) rotate(-90deg) !important;
-  transform-origin: right center !important;
-  width: auto !important;
-  max-width: 200px !important;
-  background: #ffffff !important;
-  color: #333 !important;
-  padding: 10px 25px !important;
-  border-radius: 8px 8px 0 0 !important;
-  font-weight: 700 !important;
-  box-shadow: -4px 0 15px rgba(0,0,0,0.1) !important;
-  z-index: 10001 !important;
-  border: 1px solid #ddd !important;
-  display: flex !important;
-  align-items: center !important;
-  gap: 10px !important;
-  transition: all 0.3s ease !important;
-  white-space: nowrap !important;
-}
-
-.bookdemo-float:hover {
-  right: 5px !important;
-  background: var(--hrm-red) !important;
-  color: #fff !important;
-  text-decoration: none !important;
-}
-
-.bookdemo-float i {
-  transform: rotate(90deg) !important;
-}
-
-/* Online Chat Floating Button */
-.chat-float {
-  position: fixed !important;
-  right: 30px !important;
-  bottom: 0px !important;
-  background-color: var(--hrm-red) !important;
-  color: #fff !important;
-  padding: 12px 30px !important;
-  border-radius: 12px 12px 0 0 !important;
-  font-weight: 700 !important;
-  display: flex !important;
-  align-items: center !important;
-  gap: 10px !important;
-  box-shadow: 0 -4px 15px rgba(228, 30, 35, 0.3) !important;
-  z-index: 1000 !important;
-  cursor: pointer !important;
-  border: none !important;
-  text-decoration: none !important;
-}
-
-.chat-float .badge-count {
-  background-color: #000 !important;
-  color: #fff !important;
-  width: 20px !important;
-  height: 20px !important;
-  border-radius: 50% !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  font-size: 10px !important;
-  position: absolute !important;
-  top: -8px !important;
-  right: 5px !important;
-  border: 2px solid var(--hrm-red) !important;
-}
-
 

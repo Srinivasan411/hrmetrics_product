@@ -267,22 +267,14 @@ function FloatingActions() {
       </a>
       <button
         type="button"
-        className="bookdemo-float"
+        className="bookdemo-float btn"
         data-bs-toggle="modal"
         data-bs-target="#bookdemo-modal"
         aria-label="Book a demo"
       >
-        <i className="fas fa-calendar-alt" aria-hidden="true" />
-        <span>Book A Demo</span>
+        <i className="fas fa-calendar-check" aria-hidden="true" />
+        <span>Book a demo</span>
       </button>
-      <a
-        className="chat-float"
-        href="javascript:void(0)"
-        aria-label="Chat online"
-      >
-        <span>Online</span>
-        <span className="badge-count">1</span>
-      </a>
     </>
   );
 }

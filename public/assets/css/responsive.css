@@ -19,14 +19,50 @@ body .wow {
 .whatsapp-float {
     left: calc(12px + env(safe-area-inset-left, 0px));
     bottom: calc(12px + env(safe-area-inset-bottom, 0px));
-    width: 48px;
-    height: 48px;
+    width: 52px;
+    height: 52px;
 }
 .whatsapp-float img {
-    width: 26px;
-    height: 26px;
+    width: 28px;
+    height: 28px;
+}
+.bookdemo-float {
+    top: auto;
+    left: calc(12px + env(safe-area-inset-left, 0px) + 64px);
+    right: calc(12px + env(safe-area-inset-right, 0px));
+    bottom: calc(12px + env(safe-area-inset-bottom, 0px));
+    transform: none;
+    flex-direction: row;
+    justify-content: center;
+    padding: 12px 14px;
+    gap: 10px;
+    border-radius: 12px;
+    font-size: 14px;
 }
 
+.bookdemo-float span {
+    writing-mode: horizontal-tb;
+    text-orientation: mixed;
+    font-size: 14px;
+}
+
+.box-transform {
+    top: auto !important;
+    left: calc(12px + env(safe-area-inset-left, 0px) + 64px) !important;
+    right: calc(12px + env(safe-area-inset-right, 0px)) !important;
+    bottom: calc(12px + env(safe-area-inset-bottom, 0px)) !important;
+    transform: none !important;
+}
+
+.box-transform > a {
+    width: 100%;
+    flex-direction: row;
+    writing-mode: horizontal-tb;
+    text-orientation: mixed;
+    border-radius: 12px;
+    padding: 12px 14px;
+    font-size: 14px;
+}
 .banner-four-top-info h1 {
     font-size: 24px;
 }
