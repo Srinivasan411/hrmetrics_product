@@ -385,22 +385,88 @@ export default function HomePage() {
               <div className="brand-two-carousel swiper">
                 <div className="swiper-wrapper">
                   <div className="swiper-slide brandbox wow fadeInUp" data-wow-delay="400ms">
-                    <img alt="Image Not Found" src="assets/images/indiait360.png" />
+                    <img alt="aaa Hotels & Resorts" src="assets/images/clients/aaa-Hotels-Resorts.png" />
                   </div>
                   <div className="swiper-slide brandbox wow fadeInUp" data-wow-delay="400ms">
-                    <img alt="Image Not Found" src="assets/images/Simsona.jpeg" />
+                    <img alt="Alia" src="assets/images/clients/Alia.png" />
                   </div>
                   <div className="swiper-slide brandbox wow fadeInUp" data-wow-delay="400ms">
-                    <img alt="Image Not Found" src="assets/images/Khanna.jpeg" />
+                    <img alt="Baglioni Resorts" src="assets/images/clients/Baglioni-Resorts.jpg" />
                   </div>
                   <div className="swiper-slide brandbox wow fadeInUp" data-wow-delay="400ms">
-                    <img alt="Image Not Found" src="assets/images/oriental.png" />
+                    <img alt="City Garden" src="assets/images/clients/City-Garden.png" />
                   </div>
                   <div className="swiper-slide brandbox wow fadeInUp" data-wow-delay="400ms">
-                    <img alt="Image Not Found" src="assets/images/igl.png" />
+                    <img alt="City Investments" src="assets/images/clients/City-Investments.jpg" />
                   </div>
                   <div className="swiper-slide brandbox wow fadeInUp" data-wow-delay="400ms">
-                    <img alt="Image Not Found" src="assets/images/beetel.png" />
+                    <img alt="Cocoon" src="assets/images/clients/Cocoon.png" />
+                  </div>
+                  <div className="swiper-slide brandbox wow fadeInUp" data-wow-delay="400ms">
+                    <img alt="Co Load" src="assets/images/clients/Co-Load.png" />
+                  </div>
+                  <div className="swiper-slide brandbox wow fadeInUp" data-wow-delay="400ms">
+                    <img alt="Colors Of OBLU" src="assets/images/clients/Colors-Of-OBLU.png" />
+                  </div>
+                  <div className="swiper-slide brandbox wow fadeInUp" data-wow-delay="400ms">
+                    <img alt="ECM" src="assets/images/clients/ECM.png" />
+                  </div>
+                  <div className="swiper-slide brandbox wow fadeInUp" data-wow-delay="400ms">
+                    <img alt="Flyme" src="assets/images/clients/Flyme.png" />
+                  </div>
+                  <div className="swiper-slide brandbox wow fadeInUp" data-wow-delay="400ms">
+                    <img alt="FSM" src="assets/images/clients/FSM.png" />
+                  </div>
+                  <div className="swiper-slide brandbox wow fadeInUp" data-wow-delay="400ms">
+                    <img alt="Fun Island" src="assets/images/clients/Fun-Island.png" />
+                  </div>
+                  <div className="swiper-slide brandbox wow fadeInUp" data-wow-delay="400ms">
+                    <img alt="Fushifaru" src="assets/images/clients/Fushifaru.png" />
+                  </div>
+                  <div className="swiper-slide brandbox wow fadeInUp" data-wow-delay="400ms">
+                    <img alt="Gage Fire Safety" src="assets/images/clients/Gage-Fire-Safety.png" />
+                  </div>
+                  <div className="swiper-slide brandbox wow fadeInUp" data-wow-delay="400ms">
+                    <img alt="Happy Market" src="assets/images/clients/Happy-Market.png" />
+                  </div>
+                  <div className="swiper-slide brandbox wow fadeInUp" data-wow-delay="400ms">
+                    <img alt="HDFC" src="assets/images/clients/HDFC.jpg" />
+                  </div>
+                  <div className="swiper-slide brandbox wow fadeInUp" data-wow-delay="400ms">
+                    <img alt="Horizon Fisheries" src="assets/images/clients/Horizon-Fisheries.png" />
+                  </div>
+                  <div className="swiper-slide brandbox wow fadeInUp" data-wow-delay="400ms">
+                    <img alt="IBC" src="assets/images/clients/IBC.png" />
+                  </div>
+                  <div className="swiper-slide brandbox wow fadeInUp" data-wow-delay="400ms">
+                    <img alt="Ilaa" src="assets/images/clients/Ilaa.jpg" />
+                  </div>
+                  <div className="swiper-slide brandbox wow fadeInUp" data-wow-delay="400ms">
+                    <img alt="Island Breeze Maldives" src="assets/images/clients/Island-Breeze-Maldives.png" />
+                  </div>
+                  <div className="swiper-slide brandbox wow fadeInUp" data-wow-delay="400ms">
+                    <img alt="Maldives Stock Exchange" src="assets/images/clients/Maldives-Stock-Exchange.jpg" />
+                  </div>
+                  <div className="swiper-slide brandbox wow fadeInUp" data-wow-delay="400ms">
+                    <img alt="Medianet" src="assets/images/clients/Medianet.jpg" />
+                  </div>
+                  <div className="swiper-slide brandbox wow fadeInUp" data-wow-delay="400ms">
+                    <img alt="Mifco" src="assets/images/clients/Mifco.png" />
+                  </div>
+                  <div className="swiper-slide brandbox wow fadeInUp" data-wow-delay="400ms">
+                    <img alt="OBLU Atmosphere" src="assets/images/clients/OBLU-Atmosphere.jpg" />
+                  </div>
+                  <div className="swiper-slide brandbox wow fadeInUp" data-wow-delay="400ms">
+                    <img alt="Paradise Island Resort" src="assets/images/clients/Paradise-Island-Resort.png" />
+                  </div>
+                  <div className="swiper-slide brandbox wow fadeInUp" data-wow-delay="400ms">
+                    <img alt="Royal Island" src="assets/images/clients/Royal-Island.png" />
+                  </div>
+                  <div className="swiper-slide brandbox wow fadeInUp" data-wow-delay="400ms">
+                    <img alt="TEP Construction" src="assets/images/clients/TEP-Construction.png" />
+                  </div>
+                  <div className="swiper-slide brandbox wow fadeInUp" data-wow-delay="400ms">
+                    <img alt="Voyages Maldives" src="assets/images/clients/Voyages-Maldives.png" />
                   </div>
                 </div>
               </div>
@@ -1396,27 +1462,24 @@ export default function HomePage() {
       </div>
       {cookieConsent === null ? (
         <div className="cookie-consent-banner" role="dialog" aria-live="polite" aria-label="Cookie consent">
-          <div className="cookie-consent-copy">
-            <h4>Allow cookies?</h4>
-            <p>
-              We use cookies to improve site performance and understand traffic. You can accept or decline non-essential cookies.
-              <a href="privacy-policy/index.html"> Privacy policy</a>
-            </p>
-          </div>
+          <p>
+            We use cookies to enhance your experience.
+            <a href="privacy-policy/index.html"> Policy</a>
+          </p>
           <div className="cookie-consent-actions">
             <button
-              className="btn btn-outline-secondary cookie-consent-btn"
+              className="btn-cookie-decline"
               type="button"
               onClick={() => handleCookieConsent("declined")}
             >
               Decline
             </button>
             <button
-              className="btn btn-theme text-white cookie-consent-btn"
+              className="btn-cookie-accept"
               type="button"
               onClick={() => handleCookieConsent("accepted")}
             >
-              Allow cookies
+              Accept All
             </button>
           </div>
         </div>

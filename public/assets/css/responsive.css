@@ -26,25 +26,7 @@ body .wow {
     width: 26px;
     height: 26px;
 }
-.bookdemo-float {
-    left: calc(12px + env(safe-area-inset-left, 0px) + 60px);
-    right: auto;
-    bottom: calc(12px + env(safe-area-inset-bottom, 0px));
-    padding: 10px 12px;
-    gap: 8px;
-    font-size: 14px;
-}
 
-.box-transform {
-    left: calc(12px + env(safe-area-inset-left, 0px) + 60px) !important;
-    right: auto !important;
-    bottom: calc(12px + env(safe-area-inset-bottom, 0px)) !important;
-}
-
-.box-transform > a {
-    padding: 10px 12px;
-    font-size: 14px;
-}
 .banner-four-top-info h1 {
     font-size: 24px;
 }
