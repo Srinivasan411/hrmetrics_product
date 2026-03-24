@@ -83,6 +83,10 @@ function updateGoogleConsent(consentGranted) {
   });
 }
 
+function preventDefault(event) {
+  event.preventDefault();
+}
+
 export default function HomePage() {
   const [testimonials, setTestimonials] = useState(fallbackTestimonials);
   const [cookieConsent, setCookieConsent] = useState(null);
@@ -171,7 +175,7 @@ export default function HomePage() {
       </div>
       <div className="header-new">
         <div className="wsmobileheader clearfix">
-          <a className="wsanimated-arrow" href="javascript:void(0)" id="wsnavtoggle"><span /></a>
+          <a className="wsanimated-arrow" href="#" onClick={preventDefault} id="wsnavtoggle"><span /></a>
           <span className="smllogo"><img alt="" src="assets/images/logo1.png" width={80} /></span>
         </div>
         <div className="headerfull">
@@ -269,7 +273,7 @@ export default function HomePage() {
                   </li>
                   <li className="wscarticon clearfix">
                     <a className="btn btn-theme text-white btn-md radius" href={siteSettings.demo_login_url} target="_blank" rel="noopener noreferrer">Login</a>
-                    <a className="btn btn-theme text-white btn-md radius" data-bs-target="#demoshedule-modal" data-bs-toggle="modal" href="javascript:void(0)">Schedule a demo</a>
+                    <a className="btn btn-theme text-white btn-md radius" data-bs-target="#demoshedule-modal" data-bs-toggle="modal" href="#" onClick={preventDefault}>Schedule a demo</a>
                   </li>
                 </ul>
               </nav>
@@ -782,7 +786,7 @@ export default function HomePage() {
                               <div className="content-box-over">
                                 <h5>Company Management</h5>
                                 <p>Manage your company the way you work best. Our Company Management solution.</p>
-                                <div className="btn-center text-left mt-3"> <a className="btn btn-theme btn-md radius animation wow fadeInUp" data-bs-target="#bookdemo-modal" data-bs-toggle="modal" href="javascript:void(0)">Book a demo</a> </div>
+                                <div className="btn-center text-left mt-3"> <a className="btn btn-theme btn-md radius animation wow fadeInUp" data-bs-target="#bookdemo-modal" data-bs-toggle="modal" href="#" onClick={preventDefault}>Book a demo</a> </div>
                               </div>
                             </div>
                           </div>
@@ -795,7 +799,7 @@ export default function HomePage() {
                                 <h5>Employee Management</h5>
                                 <p>With HRMetricS' Employee Management Software, you can give your employees the autonomy they deserve.
                                 </p>
-                                <div className="btn-center text-left mt-3"> <a className="btn btn-theme btn-md radius animation wow fadeInUp" data-bs-target="#bookdemo-modal" data-bs-toggle="modal" href="javascript:void(0)">Book a demo</a> </div>
+                                <div className="btn-center text-left mt-3"> <a className="btn btn-theme btn-md radius animation wow fadeInUp" data-bs-target="#bookdemo-modal" data-bs-toggle="modal" href="#" onClick={preventDefault}>Book a demo</a> </div>
                               </div>
                             </div>
                           </div>
@@ -807,7 +811,7 @@ export default function HomePage() {
                               <div className="content-box-over">
                                 <h5>Attendance Management</h5>
                                 <p>Automatically calculate employee pay, time off, in-outs, and more with Attendance Management Software. </p>
-                                <div className="btn-center text-left mt-3"> <a className="btn btn-theme btn-md radius animation wow fadeInUp" data-bs-target="#bookdemo-modal" data-bs-toggle="modal" href="javascript:void(0)">Book a demo</a> </div>
+                                <div className="btn-center text-left mt-3"> <a className="btn btn-theme btn-md radius animation wow fadeInUp" data-bs-target="#bookdemo-modal" data-bs-toggle="modal" href="#" onClick={preventDefault}>Book a demo</a> </div>
                               </div>
                             </div>
                           </div>
@@ -820,7 +824,7 @@ export default function HomePage() {
                                 <h5>Leave Management System</h5>
                                 <p>HRMetricS' Leave Management System offers a streamlined approach to workforce management.
                                 </p>
-                                <div className="btn-center text-left mt-3"> <a className="btn btn-theme btn-md radius animation wow fadeInUp" data-bs-target="#bookdemo-modal" data-bs-toggle="modal" href="javascript:void(0)">Book a demo</a> </div>
+                                <div className="btn-center text-left mt-3"> <a className="btn btn-theme btn-md radius animation wow fadeInUp" data-bs-target="#bookdemo-modal" data-bs-toggle="modal" href="#" onClick={preventDefault}>Book a demo</a> </div>
                               </div>
                             </div>
                           </div>
@@ -832,7 +836,7 @@ export default function HomePage() {
                               <div className="content-box-over">
                                 <h5>Payroll Management</h5>
                                 <p>HRMetricS' Payroll Management Software is an integral part of its HRM Solution.</p>
-                                <div className="btn-center text-left mt-3"> <a className="btn btn-theme btn-md radius animation wow fadeInUp" data-bs-target="#bookdemo-modal" data-bs-toggle="modal" href="javascript:void(0)">Book a demo</a> </div>
+                                <div className="btn-center text-left mt-3"> <a className="btn btn-theme btn-md radius animation wow fadeInUp" data-bs-target="#bookdemo-modal" data-bs-toggle="modal" href="#" onClick={preventDefault}>Book a demo</a> </div>
                               </div>
                             </div>
                           </div>
@@ -844,7 +848,7 @@ export default function HomePage() {
                               <div className="content-box-over">
                                 <h5>Talent Management</h5>
                                 <p>Empower your HR team to focus on what truly matters—your people. Our Talent Management Software.</p>
-                                <div className="btn-center text-left mt-3"> <a className="btn btn-theme btn-md radius animation wow fadeInUp" data-bs-target="#bookdemo-modal" data-bs-toggle="modal" href="javascript:void(0)">Book a demo</a> </div>
+                                <div className="btn-center text-left mt-3"> <a className="btn btn-theme btn-md radius animation wow fadeInUp" data-bs-target="#bookdemo-modal" data-bs-toggle="modal" href="#" onClick={preventDefault}>Book a demo</a> </div>
                               </div>
                             </div>
                           </div>
@@ -856,7 +860,7 @@ export default function HomePage() {
                               <div className="content-box-over">
                                 <h5>Reports and Analytics</h5>
                                 <p>Give your HR team the insights they need to plan confidently. Our reporting tool makes it easy to analyze workforce.</p>
-                                <div className="btn-center text-left mt-3"> <a className="btn btn-theme btn-md radius animation wow fadeInUp" data-bs-target="#bookdemo-modal" data-bs-toggle="modal" href="javascript:void(0)">Book a demo</a> </div>
+                                <div className="btn-center text-left mt-3"> <a className="btn btn-theme btn-md radius animation wow fadeInUp" data-bs-target="#bookdemo-modal" data-bs-toggle="modal" href="#" onClick={preventDefault}>Book a demo</a> </div>
                               </div>
                             </div>
                           </div>
@@ -868,7 +872,7 @@ export default function HomePage() {
                               <div className="content-box-over">
                                 <h5>Events and Meetings</h5>
                                 <p>With Event Management Software like HRMetricS, you can easily plan, manage, and evaluate events and meetings across your organisation. </p>
-                                <div className="btn-center text-left mt-3"> <a className="btn btn-theme btn-md radius animation wow fadeInUp" data-bs-target="#bookdemo-modal" data-bs-toggle="modal" href="javascript:void(0)">Book a demo</a> </div>
+                                <div className="btn-center text-left mt-3"> <a className="btn btn-theme btn-md radius animation wow fadeInUp" data-bs-target="#bookdemo-modal" data-bs-toggle="modal" href="#" onClick={preventDefault}>Book a demo</a> </div>
                               </div>
                             </div>
                           </div>
@@ -880,7 +884,7 @@ export default function HomePage() {
                               <div className="content-box-over">
                                 <h5>Mobile App</h5>
                                 <p>The HRMetricS Mobile App revolutionises human resource management, putting power in the palms. </p>
-                                <div className="btn-center text-left mt-3"> <a className="btn btn-theme btn-md radius animation wow fadeInUp" data-bs-target="#bookdemo-modal" data-bs-toggle="modal" href="javascript:void(0)">Book a demo</a> </div>
+                                <div className="btn-center text-left mt-3"> <a className="btn btn-theme btn-md radius animation wow fadeInUp" data-bs-target="#bookdemo-modal" data-bs-toggle="modal" href="#" onClick={preventDefault}>Book a demo</a> </div>
                               </div>
                             </div>
                           </div>
@@ -897,7 +901,7 @@ export default function HomePage() {
                       <div className="content-box-over">
                         <h5>Activity Management Software </h5>
                         <p>Track, manage, and analyse employee activities in real time to ensure optimal performance. </p>
-                        <div className="btn-center text-left mt-3"> <a className="btn btn-theme btn-md radius animation wow fadeInUp" data-bs-target="#bookdemo-modal" data-bs-toggle="modal" href="javascript:void(0)" style={{visibility: 'visible', animationName: 'fadeInUp'}}>Book a demo</a> </div>
+                        <div className="btn-center text-left mt-3"> <a className="btn btn-theme btn-md radius animation wow fadeInUp" data-bs-target="#bookdemo-modal" data-bs-toggle="modal" href="#" onClick={preventDefault} style={{visibility: 'visible', animationName: 'fadeInUp'}}>Book a demo</a> </div>
                       </div>
                     </div>
                   </div>
@@ -910,7 +914,7 @@ export default function HomePage() {
                       <div className="content-box-over">
                         <h5>Task Management Software</h5>
                         <p>Plan, assign, and track tasks effortlessly with automation-driven workflows that improve collaboration.</p>
-                        <div className="btn-center text-left mt-3"> <a className="btn btn-theme btn-md radius animation wow fadeInUp" data-bs-target="#bookdemo-modal" data-bs-toggle="modal" href="javascript:void(0)" style={{visibility: 'visible', animationName: 'fadeInUp'}}>Book a demo</a> </div>
+                        <div className="btn-center text-left mt-3"> <a className="btn btn-theme btn-md radius animation wow fadeInUp" data-bs-target="#bookdemo-modal" data-bs-toggle="modal" href="#" onClick={preventDefault} style={{visibility: 'visible', animationName: 'fadeInUp'}}>Book a demo</a> </div>
                       </div>
                     </div>
                   </div>
@@ -923,7 +927,7 @@ export default function HomePage() {
                       <div className="content-box-over">
                         <h5>Asset Management Software</h5>
                         <p>Gain complete control over your assets—track, monitor, and maintain them in real-time with a platform.</p>
-                        <div className="btn-center text-left mt-3"> <a className="btn btn-theme btn-md radius animation wow fadeInUp" data-bs-target="#bookdemo-modal" data-bs-toggle="modal" href="javascript:void(0)" style={{visibility: 'visible', animationName: 'fadeInUp'}}>Book a demo</a> </div>
+                        <div className="btn-center text-left mt-3"> <a className="btn btn-theme btn-md radius animation wow fadeInUp" data-bs-target="#bookdemo-modal" data-bs-toggle="modal" href="#" onClick={preventDefault} style={{visibility: 'visible', animationName: 'fadeInUp'}}>Book a demo</a> </div>
                       </div>
                     </div>
                   </div>
@@ -936,7 +940,7 @@ export default function HomePage() {
                       <div className="content-box-over">
                         <h5>Field Force Management</h5>
                         <p>Empower your on-ground teams with GPS-based tracking, live updates, task allocation.</p>
-                        <div className="btn-center text-left mt-3"> <a className="btn btn-theme btn-md radius animation wow fadeInUp" data-bs-target="#bookdemo-modal" data-bs-toggle="modal" href="javascript:void(0)" style={{visibility: 'visible', animationName: 'fadeInUp'}}>Book a demo</a> </div>
+                        <div className="btn-center text-left mt-3"> <a className="btn btn-theme btn-md radius animation wow fadeInUp" data-bs-target="#bookdemo-modal" data-bs-toggle="modal" href="#" onClick={preventDefault} style={{visibility: 'visible', animationName: 'fadeInUp'}}>Book a demo</a> </div>
                       </div>
                     </div>
                   </div>
@@ -1085,7 +1089,7 @@ export default function HomePage() {
               </div>
             </div>
           </div>
-          <div className="btn-center text-center mt-5"> <a className="btn btn-theme btn-md radius animation wow scrollToForm fadeInUp" data-bs-target="#bookdemo-modal" data-bs-toggle="modal" href="javascript:void(0)" style={{visibility: 'visible', animationName: 'fadeInUp'}}>Book a demo</a> </div>
+          <div className="btn-center text-center mt-5"> <a className="btn btn-theme btn-md radius animation wow scrollToForm fadeInUp" data-bs-target="#bookdemo-modal" data-bs-toggle="modal" href="#" onClick={preventDefault} style={{visibility: 'visible', animationName: 'fadeInUp'}}>Book a demo</a> </div>
         </div>
       </section>
       <hr />
@@ -1103,42 +1107,42 @@ export default function HomePage() {
           <div className="faq-accordion-content">
             <ul className="accordion">
               <li className="accordion-item">
-                <a className="accordion-title active" href="javascript:void(0)">
+                <a className="accordion-title active" href="#" onClick={preventDefault}>
                   <i className="fa fa-chevron-down" />
                   Is HRMetricS suitable for small businesses and large enterprises alike?
                 </a>
                 <p className="accordion-content show">Yes, HRMetricS is designed to cater to the needs of businesses of all sizes. It can be easily customized and scaled to fit the requirements of small startups, medium-sized companies, and large enterprises.</p>
               </li>
               <li className="accordion-item">
-                <a className="accordion-title" href="javascript:void(0)">
+                <a className="accordion-title" href="#" onClick={preventDefault}>
                   <i className="fa fa-chevron-down" />
                   How user-friendly is HRMetricS?
                 </a>
                 <p className="accordion-content">HRMetricS boasts an intuitive user interface that requires minimal training for users to navigate and operate. Its user-friendly design ensures a smooth onboarding process and allows HR professionals and employees to adapt quickly to the system.</p>
               </li>
               <li className="accordion-item">
-                <a className="accordion-title" href="javascript:void(0)">
+                <a className="accordion-title" href="#" onClick={preventDefault}>
                   <i className="fa fa-chevron-down" />
                   Does HRMetricS comply with data security standards?
                 </a>
                 <p className="accordion-content">Absolutely. HRMetricS prioritizes data security and confidentiality. It adheres to industry best practices and complies with data protection regulations to safeguard sensitive employee information.</p>
               </li>
               <li className="accordion-item">
-                <a className="accordion-title" href="javascript:void(0)">
+                <a className="accordion-title" href="#" onClick={preventDefault}>
                   <i className="fa fa-chevron-down" />
                   How does HRMetricS help with employee engagement?
                 </a>
                 <p className="accordion-content">HRMetricS includes features like employee self-service portals, performance feedback mechanisms, and recognition programs that promote a positive employee experience and foster higher levels of engagement within the workforce.</p>
               </li>
               <li className="accordion-item">
-                <a className="accordion-title" href="javascript:void(0)">
+                <a className="accordion-title" href="#" onClick={preventDefault}>
                   <i className="fa fa-chevron-down" />
                   How can I get started with HRMetricS for my organization?
                 </a>
                 <p className="accordion-content">To get started with HRMetricS, you can request a demo or contact our sales team. They will guide you through the process of implementing HRMetricS to transform your HR operations and elevate your organizational efficiency.</p>
               </li>
               <li className="accordion-item">
-                <a className="accordion-title" href="javascript:void(0)">
+                <a className="accordion-title" href="#" onClick={preventDefault}>
                   <i className="fa fa-chevron-down" />
                   What additional solutions does HRMetricS offer?
                 </a>
@@ -1456,7 +1460,7 @@ export default function HomePage() {
         <div className="container">
           <div className="btn-center text-center myflex">
             <h3>Transform Your HR Process: Take the First Step Towards Automation</h3>
-            <a className="btn btn-theme btn-md radius scrollToForm animation wow fadeInUp" data-bs-target="#bookdemo-modal" data-bs-toggle="modal" href="javascript:void(0)" id style={{visibility: 'visible', animationName: 'fadeInUp'}}>Book a demo</a>
+            <a className="btn btn-theme btn-md radius scrollToForm animation wow fadeInUp" data-bs-target="#bookdemo-modal" data-bs-toggle="modal" href="#" onClick={preventDefault} style={{visibility: 'visible', animationName: 'fadeInUp'}}>Book a demo</a>
           </div>
         </div>
       </div>
