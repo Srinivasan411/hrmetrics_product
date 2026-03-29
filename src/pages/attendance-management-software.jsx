@@ -1,4 +1,5 @@
 import { TryForFreeCard } from "../components/LeadModals";
+import { BannerStyleFourHero } from "../components/BannerStyleFourHero.jsx";
 
 export default function AttendanceManagementSoftwarePage() {
   return (
@@ -153,20 +154,7 @@ export default function AttendanceManagementSoftwarePage() {
           </div>
         </div>
       </div>
-      <div className="banner-style-four-area bg-cover" style={{backgroundImage: 'url("../assets/images/banner-top.jpg")'}}>
-        <span className="it-up-ft-shape2 position-absolute">
-          <img alt="" src="../assets/images/b-shape3.png" />
-        </span>
-        <div className="hrms-banner-shape">
-          <img alt="image" src="../assets/images/triangle-shape.png" />
-        </div>
-        <div className="banner-shape-1">
-          <img alt="Shape" src="../assets/images/bg22.png" />
-        </div>
-        <div className="bg-animation">
-          <img alt="" className="zoom-fade" src="../assets/images/patten1.png" />
-        </div>
-        <div className="container">
+      <BannerStyleFourHero>
           <div className="row align-center">
             <div className="col-lg-8 wow fadeInUp" data-wow-delay="200ms">
               <div className="banner-four-top-info">
@@ -189,8 +177,7 @@ export default function AttendanceManagementSoftwarePage() {
               <TryForFreeCard />
             </div>
           </div>
-        </div>
-      </div>
+      </BannerStyleFourHero>
       <section className="hr_process_section pb-0 default-padding">
         <div className="container">
           <div className="row">
@@ -700,7 +687,7 @@ export default function AttendanceManagementSoftwarePage() {
           <div className="container">
             <div className="row">
               <div className="col-lg-12 text-center">
-                <p>© Copyright 2026 <a href="https://hrmetrics.in/" style={{color: '#f03041', fontWeight: 500}} target="_blank">HRMetricS</a> All Rights Reserved</p>
+                <p>© Copyright 2026 <a href="https://hrmetrics.in/" style={{color: 'var(--color-primary)', fontWeight: 500}} target="_blank">HRMetricS</a> All Rights Reserved</p>
               </div>
             </div>
           </div>

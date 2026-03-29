@@ -12,11 +12,11 @@ span.menu-iconn {
     display: block;
 }
 .form-control:focus{
-border-color: #e43d4c;
+border-color: var(--color-primary);
 box-shadow:none;
 }
 select.form-select:focus{
-border-color: #e43d4c;
+border-color: var(--color-primary);
 box-shadow:none;
 }
 .box {
@@ -30,7 +30,7 @@ box-shadow:none;
     }
     .box i {
     font-size: 24px;
-    color: #ed2327;
+    color: var(--color-primary);
 }
     .box p {
       margin: 0;
@@ -88,7 +88,7 @@ box-shadow:none;
     position: absolute;
     left: 0;
     font-size: 14px;
-    color: #ed2125;
+    color: var(--color-primary);
     top: 3px;
 }
 .ul-coustom ul{

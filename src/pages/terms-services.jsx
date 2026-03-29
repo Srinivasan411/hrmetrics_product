@@ -309,7 +309,7 @@ export default function TermsServicesPage() {
           <div className="container">
             <div className="row">
               <div className="col-lg-12 text-center">
-                <p>© Copyright 2026 <a href="https://hrmetrics.in/" style={{color: '#f03041', fontWeight: 500}} target="_blank">HRMetricS</a> All Rights Reserved</p>
+                <p>© Copyright 2026 <a href="https://hrmetrics.in/" style={{color: 'var(--color-primary)', fontWeight: 500}} target="_blank">HRMetricS</a> All Rights Reserved</p>
               </div>
             </div>
           </div>

@@ -390,7 +390,7 @@ export default function ContactPage() {
           <div className="container">
             <div className="row">
               <div className="col-lg-12 text-center">
-                <p>© Copyright 2026 <a href={siteSettings.company_url} style={{color: '#f03041', fontWeight: 500}} target="_blank" rel="noopener noreferrer">{siteSettings.company_legal_name}</a> All Rights Reserved</p>
+                <p>© Copyright 2026 <a href={siteSettings.company_url} style={{color: 'var(--color-primary)', fontWeight: 500}} target="_blank" rel="noopener noreferrer">{siteSettings.company_legal_name}</a> All Rights Reserved</p>
               </div>
             </div>
           </div>
