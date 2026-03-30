@@ -11,30 +11,16 @@ const DEFAULT_MARKETING_DESCRIPTION =
 const DEFAULT_SOCIAL_IMAGE = "/assets/images/logo1.png";
 
 const DEFAULT_MARKETING_PATHS = new Set([
-  "/",
+  "/dashboard",
   "/about",
-  "/activity-management-software",
-  "/asset-management-software",
-  "/attendance-management-software",
-  "/company-management-software",
   "/contact",
-  "/employees-management-software",
-  "/events-and-meeting-software",
-  "/field-force-management-software",
-  "/hrm-soultion-software",
-  "/leave-management-software",
-  "/mobile-app-software",
-  "/payroll-management",
-  "/payroll-management-software",
   "/privacy-policy",
-  "/report-and-analytics-software",
-  "/talent-management-software",
-  "/task-management-software",
   "/terms-services",
 ]);
 
 const ROUTE_TITLES = {
   "/activity-management": "Activity Management Archives - HRMetricS",
+  "/dashboard": "HRMetricS - Enterprise HRMS Dashboard",
   "/admin": "HRMetricS Admin",
   "/asset-management": "Asset Management Archives - HRMetricS",
   "/building-safe-workplaces-the-essential-role-of-hr-and-hrms-in-womens-safety":

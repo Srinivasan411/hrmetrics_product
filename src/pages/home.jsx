@@ -137,7 +137,7 @@ export default function HomePage() {
           <div className="row align-center">
             <div className="col-lg-8">
               <div className="animate-text text-left">
-                <h1 className="mb-0 typing-animation" style={{fontSize: 16, fontWeight: 400, position: 'relative', top: 2}}>Most Advanced HRM Software in Indian Market Trusted by Many <img alt="" src="assets/images/hand.gif" /></h1>
+                <h1 className="mb-0 typing-animation" style={{ fontSize: 16, fontWeight: 400, position: 'relative', top: 2 }}>Most Advanced HRM Software in Indian Market Trusted by Many <img alt="" src="assets/images/hand.gif" /></h1>
               </div>
             </div>
             <div className="col-lg-4 text-end">
@@ -191,85 +191,8 @@ export default function HomePage() {
                   </li>
                   <li aria-haspopup="true"><a className="navtext" href="about/index.html"><span /> <span>About</span></a>
                   </li>
-                  <li aria-haspopup="true" className="megmeanu">
-                    <a className="navtext" href="#">
-                      <span />
-                      <span>Product</span>
-                    </a>
-                    <div className="wsshoptabing wtsbrandmenu clearfix">
-                      <div className="wsshoptabingwp clearfix">
-                        <ul className="wstabitem02 clearfix">
-                          <li className="wsshoplink-active">
-                            <a href="hrm-soultion-software/index.html">
-                              <i className="fas fa-female" />HRMS </a>
-                            <div className="wsshoptab-active wstbrandbottom clearfix">
-                              <div className="container-fluid">
-                                <div className="row">
-                                  <div className="col-lg-4 col-md-12">
-                                    <ul className="wstliststy02 clearfix">
-                                      <li>
-                                        <a href="company-management-software/index.html">
-                                          <span className="menu-iconn"><img alt="" src="assets/images/icon/organization.png" /></span> Company Management </a>
-                                      </li>
-                                      <li>
-                                        <a href="employees-management-software/index.html"><span className="menu-iconn"><img alt="" src="assets/images/icon/employee.png" /></span> Employee Management </a>
-                                      </li>
-                                      <li>
-                                        <a href="attendance-management-software/index.html"><span className="menu-iconn"><img alt="" src="assets/images/icon/attendance.png" /></span> Attendance Management </a>
-                                      </li>
-                                    </ul>
-                                  </div>
-                                  <div className="col-lg-4 col-md-12">
-                                    <ul className="wstliststy02 clearfix">
-                                      <li>
-                                        <a href="leave-management-software/index.html"><span className="menu-iconn"><img alt="" src="assets/images/icon/leave.png" /></span> Leave Management </a>
-                                      </li>
-                                      <li>
-                                        <a href="payroll-management-software/index.html"><span className="menu-iconn"><img alt="" src="assets/images/icon/payroll.png" /></span> Payroll Management </a>
-                                      </li>
-                                      <li>
-                                        <a href="talent-management-software/index.html"><span className="menu-iconn"><img alt="" src="assets/images/icon/talent-management.png" /></span> Talent Recognition </a>
-                                      </li>
-                                    </ul>
-                                  </div>
-                                  <div className="col-lg-4 col-md-12">
-                                    <ul className="wstliststy02 clearfix">
-                                      <li>
-                                        <a href="report-and-analytics-software/index.html"><span className="menu-iconn"><img alt="" src="assets/images/icon/analytics.png" /></span>Reports and Analytics </a>
-                                      </li>
-                                      <li>
-                                        <a href="events-and-meeting-software/index.html"><span className="menu-iconn"><img alt="" src="assets/images/icon/meeting.png" /></span> Events and Meetings </a>
-                                      </li>
-                                      <li>
-                                        <a href="mobile-app-software/index.html"><span className="menu-iconn"><img alt="" src="assets/images/icon/booking.png" /></span> Mobile App </a>
-                                      </li>
-                                    </ul>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </li>
-                          <li>
-                            <a href="activity-management-software/index.html">
-                              <i className="fas fa-male" /> Activity Management </a>
-                          </li>
-                          <li>
-                            <a href="task-management-software/index.html">
-                              <i className="fas fa-play-circle" /> Task Management </a>
-                          </li>
-                          <li>
-                            <a href="asset-management-software/index.html">
-                              <i className="fas fa-utensils" />
-                              Asset Management </a>
-                          </li>
-                          <li>
-                            <a href="field-force-management-software/index.html">
-                              <i className="fas fa-tv" />Field Force Management </a>
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-                  </li>
+                  {/* Product menu hidden as per request */}
+
                   <li aria-haspopup="true"><a className="navtext" href="contact/index.html"><span /> <span>Contact</span></a>
                   </li>
                   <li className="wscarticon clearfix">
@@ -282,88 +205,44 @@ export default function HomePage() {
           </div>
         </div>
       </div>
-      <BannerStyleFourHero>
-          <div className="row align-center">
-            <div className="col-lg-8">
-              <div className="banner-four-bottom-info mt-3">
-                <div className="row align-items-center">
-                  <div className="col-md-12">
-                    <div className="testimonial-carousel swiper">
-                      <div className="swiper-wrapper">
-                        <div className="swiper-slide wow fadeInUp" data-wow-delay="400ms">
-                          <div className="banner-four-top-info">
-                            <h1 className="cd-headline clip">
-                              A Full-Suite <strong>HRM Software</strong> that Automates all your Complex Business Operations</h1>
-                          </div>
-                          <div className="info">
-                            <p className="text-justify">HRMetricS streamlines everything—from onboarding and attendance to payroll and performance—saving up to 25% on time and cost while delivering a smarter, paperless employee experience.</p>
-                          </div>
-                        </div>
-                        <div className="swiper-slide wow fadeInUp" data-wow-delay="800ms">
-                          <div className="banner-four-top-info">
-                            <h1 className="cd-headline clip">Everything You Need to <strong>Plan, Assign, and Complete Tasks—On Time,</strong> with Full Clarity and Smart Tracking</h1>
-                          </div>
-                          <div className="info">
-                            <p className="text-justify">Plan, assign, and track tasks effortlessly with automation-driven workflows that improve collaboration, boost productivity, and ensure timely execution across teams and help in accessing each employee’s performance.</p>
-                          </div>
-                        </div>
-                        <div className="swiper-slide wow fadeInUp" data-wow-delay="1200ms">
-                          <div className="banner-four-top-info">
-                            <h1 className="cd-headline clip"><strong>Activity Management monitors</strong> activities to Enhance Productivity—Whether Working from Home or in the Office</h1>
-                          </div>
-                          <div className="info">
-                            <p className="text-justify">Track employees’ daily productive and non-productive activities across applications and web portals with real-time admin access. Gain actionable insights that encourage productivity and help manage performance effectively from anywhere. </p>
-                          </div>
-                        </div>
-                        <div className="swiper-slide wow fadeInUp" data-wow-delay="1600ms">
-                          <div className="banner-four-top-info">
-                            <h1 className="cd-headline clip">Unified <strong>Asset Management Software</strong> to Manage and Monitor Your Fixed, Movable, and Consumable Assets and Inventory</h1>
-                          </div>
-                          <div className="info">
-                            <p className="text-justify">Gain complete control over your assets and streamline purchase planning. Monitor the health and usage of laptops, hard drives, and CPUs to ensure efficient operations and prevent data loss.</p>
-                          </div>
-                        </div>
-                        <div className="swiper-slide wow fadeInUp" data-wow-delay="2000ms">
-                          <div className="banner-four-top-info">
-                            <h1 className="cd-headline clip">Real-Time <strong>Field Force Management Solution</strong> for a Sales and Service Workforce</h1>
-                          </div>
-                          <div className="info">
-                            <p className="text-justify">Empower your on-ground teams with GPS-based tracking for location and route with live updates w.r.t, task allocation, distance travelled and performance insights—ensuring efficiency, transparency, and improved customer response time.</p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="raitingboxx animation wow fadeInUp">
-                      <img alt="" src="assets/images/Play-Store-Logo.webp" />
-                      <span className="starricon">
-                        <i className="fa fa-star" />
-                        <i className="fa fa-star" />
-                        <i className="fa fa-star" />
-                        <i className="fa fa-star" />
-                        <i className="fa fa-star-half-o" />
-                      </span>
-                      <p>4.7+ ratings across all platforms</p>
-                    </div>
-                    <div className="row mt-3 align-items-center animation wow fadeInUp">
-                      <div className="col-md-5">
-                        <div className="app-box">
-                          <a href="https://apps.apple.com/in/app/bss-metrics/id1451487941" target="_blank">
-                            <img alt="" src="assets/images/Group-1-2.webp" />
-                          </a>
-                          <a href="https://play.google.com/store/search?q=hr%20metrics%20pro&c=apps&hl=en_IN" target="_blank">
-                            <img alt="" src="assets/images/Group-2-1.webp" />
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="col-lg-4">
-              <TryForFreeCard formId="bookdemo-hero" />
+      <BannerStyleFourHero
+        badgeText="Bss HR Management"
+        title={<>A Full-Suite <span>HRM Software</span> that Automates all your Complex Business Operations</>}
+        description="HRMetricS streamlines everything—from onboarding and attendance to payroll and performance—saving up to 25% on time and cost while delivering a smarter, paperless employee experience."
+        primaryAction={
+          <a className="btn btn-hrms-primary" data-bs-target="#demoshedule-modal" data-bs-toggle="modal" href="#" onClick={(e) => e.preventDefault()}>
+            <i className="fas fa-calendar-check" /> Schedule a Demo
+          </a>
+        }
+        secondaryAction={
+          <a className="btn btn-hrms-secondary" href="#software">
+            Learn More <i className="fas fa-arrow-right" />
+          </a>
+        }
+      >
+        <div className="raitingboxx animation wow fadeInUp">
+          <img alt="" src="assets/images/Play-Store-Logo.webp" />
+          <span className="starricon">
+            <i className="fa fa-star" />
+            <i className="fa fa-star" />
+            <i className="fa fa-star" />
+            <i className="fa fa-star" />
+            <i className="fa fa-star-half-o" />
+          </span>
+          <p>4.7+ ratings across all platforms</p>
+        </div>
+        <div className="row mt-3 justify-content-center animation wow fadeInUp">
+          <div className="col-md-5">
+            <div className="app-box">
+              <a href="https://apps.apple.com/in/app/bss-metrics/id1451487941" target="_blank">
+                <img alt="" src="assets/images/Group-1-2.webp" />
+              </a>
+              <a href="https://play.google.com/store/search?q=hr%20metrics%20pro&c=apps&hl=en_IN" target="_blank">
+                <img alt="" src="assets/images/Group-2-1.webp" />
+              </a>
             </div>
           </div>
+        </div>
       </BannerStyleFourHero>
       <div className="trust-section">
         <div className="container">
@@ -501,13 +380,13 @@ export default function HomePage() {
               <h2 className="title split-text mb-25">Discover HRMetricS Solutions &amp; Technology</h2>
               <div className="wow fadeInUp" data-wow-delay="200ms">
                 <p className="text-justify"> The most trusted All-in-one HRMS suite for your people operations. Run your entire business on HRMetricS with our unified cloud-based HR platform, designed to help you break down silos between departments and increase organizational efficiency. </p>
-                <div className="btn-center text-left mt-3"> <a className="btn btn-theme btn-md radius animation wow fadeInUp" href="about.php" style={{visibility: 'visible', animationName: 'fadeInUp'}}>Read More</a> </div>
+                <div className="btn-center text-left mt-3"> <a className="btn btn-theme btn-md radius animation wow fadeInUp" href="about.php" style={{ visibility: 'visible', animationName: 'fadeInUp' }}>Read More</a> </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <div className="brand-section default-padding animatedBackground" style={{backgroundImage: 'url(assets/images/patten1.png)'}}>
+      <div className="brand-section default-padding animatedBackground" style={{ backgroundImage: 'url(assets/images/patten1.png)' }}>
         <div className="container">
           <div className="row">
             <div className="col-lg-8 offset-lg-2">
@@ -568,203 +447,203 @@ export default function HomePage() {
                     <div className="tab_section_layout hrmstabs">
                       <ul className="nav nav-tabs" id="myTab" role="tablist">
                         <li className="nav-item" role="presentation"> <button className="nav-link active" data-bs-target="#company" data-bs-toggle="tab" id="company-tab" role="tab" type="button"> <span className="svg_bg"><svg fill="currentColor" height="64px" viewBox="0 0 50 50" width="64px" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
-                                <g id="SVGRepo_bgCarrier" strokeWidth={0} />
-                                <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round" />
-                                <g id="SVGRepo_iconCarrier">
-                                  <path d="M8 2L8 6L4 6L4 48L46 48L46 14L30 14L30 6L26 6L26 2 Z M 10 4L24 4L24 8L28 8L28 46L19 46L19 39L15 39L15 46L6 46L6 8L10 8 Z M 10 10L10 12L12 12L12 10 Z M 14 10L14 12L16 12L16 10 Z M 18 10L18 12L20 12L20 10 Z M 22 10L22 12L24 12L24 10 Z M 10 15L10 19L12 19L12 15 Z M 14 15L14 19L16 19L16 15 Z M 18 15L18 19L20 19L20 15 Z M 22 15L22 19L24 19L24 15 Z M 30 16L44 16L44 46L30 46 Z M 32 18L32 20L34 20L34 18 Z M 36 18L36 20L38 20L38 18 Z M 40 18L40 20L42 20L42 18 Z M 10 21L10 25L12 25L12 21 Z M 14 21L14 25L16 25L16 21 Z M 18 21L18 25L20 25L20 21 Z M 22 21L22 25L24 25L24 21 Z M 32 22L32 24L34 24L34 22 Z M 36 22L36 24L38 24L38 22 Z M 40 22L40 24L42 24L42 22 Z M 32 26L32 28L34 28L34 26 Z M 36 26L36 28L38 28L38 26 Z M 40 26L40 28L42 28L42 26 Z M 10 27L10 31L12 31L12 27 Z M 14 27L14 31L16 31L16 27 Z M 18 27L18 31L20 31L20 27 Z M 22 27L22 31L24 31L24 27 Z M 32 30L32 32L34 32L34 30 Z M 36 30L36 32L38 32L38 30 Z M 40 30L40 32L42 32L42 30 Z M 10 33L10 37L12 37L12 33 Z M 14 33L14 37L16 37L16 33 Z M 18 33L18 37L20 37L20 33 Z M 22 33L22 37L24 37L24 33 Z M 32 34L32 36L34 36L34 34 Z M 36 34L36 36L38 36L38 34 Z M 40 34L40 36L42 36L42 34 Z M 32 38L32 40L34 40L34 38 Z M 36 38L36 40L38 40L38 38 Z M 40 38L40 40L42 40L42 38 Z M 10 39L10 44L12 44L12 39 Z M 22 39L22 44L24 44L24 39 Z M 32 42L32 44L34 44L34 42 Z M 36 42L36 44L38 44L38 42 Z M 40 42L40 44L42 44L42 42Z" />
-                                </g>
-                              </svg></span><span>Company Management</span></button> </li>
+                          <g id="SVGRepo_bgCarrier" strokeWidth={0} />
+                          <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round" />
+                          <g id="SVGRepo_iconCarrier">
+                            <path d="M8 2L8 6L4 6L4 48L46 48L46 14L30 14L30 6L26 6L26 2 Z M 10 4L24 4L24 8L28 8L28 46L19 46L19 39L15 39L15 46L6 46L6 8L10 8 Z M 10 10L10 12L12 12L12 10 Z M 14 10L14 12L16 12L16 10 Z M 18 10L18 12L20 12L20 10 Z M 22 10L22 12L24 12L24 10 Z M 10 15L10 19L12 19L12 15 Z M 14 15L14 19L16 19L16 15 Z M 18 15L18 19L20 19L20 15 Z M 22 15L22 19L24 19L24 15 Z M 30 16L44 16L44 46L30 46 Z M 32 18L32 20L34 20L34 18 Z M 36 18L36 20L38 20L38 18 Z M 40 18L40 20L42 20L42 18 Z M 10 21L10 25L12 25L12 21 Z M 14 21L14 25L16 25L16 21 Z M 18 21L18 25L20 25L20 21 Z M 22 21L22 25L24 25L24 21 Z M 32 22L32 24L34 24L34 22 Z M 36 22L36 24L38 24L38 22 Z M 40 22L40 24L42 24L42 22 Z M 32 26L32 28L34 28L34 26 Z M 36 26L36 28L38 28L38 26 Z M 40 26L40 28L42 28L42 26 Z M 10 27L10 31L12 31L12 27 Z M 14 27L14 31L16 31L16 27 Z M 18 27L18 31L20 31L20 27 Z M 22 27L22 31L24 31L24 27 Z M 32 30L32 32L34 32L34 30 Z M 36 30L36 32L38 32L38 30 Z M 40 30L40 32L42 32L42 30 Z M 10 33L10 37L12 37L12 33 Z M 14 33L14 37L16 37L16 33 Z M 18 33L18 37L20 37L20 33 Z M 22 33L22 37L24 37L24 33 Z M 32 34L32 36L34 36L34 34 Z M 36 34L36 36L38 36L38 34 Z M 40 34L40 36L42 36L42 34 Z M 32 38L32 40L34 40L34 38 Z M 36 38L36 40L38 40L38 38 Z M 40 38L40 40L42 40L42 38 Z M 10 39L10 44L12 44L12 39 Z M 22 39L22 44L24 44L24 39 Z M 32 42L32 44L34 44L34 42 Z M 36 42L36 44L38 44L38 42 Z M 40 42L40 44L42 44L42 42Z" />
+                          </g>
+                        </svg></span><span>Company Management</span></button> </li>
                         <li className="nav-item" role="presentation"> <button className="nav-link" data-bs-target="#employee" data-bs-toggle="tab" id="employee-tab" role="tab" type="button"> <span className="svg_bg"> <svg enableBackground="new 0 0 511 511" fill="#000000" height="64px" version="1.1" viewBox="0 0 511 511" width="64px" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
-                                <g id="SVGRepo_bgCarrier" strokeWidth={0} />
-                                <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round" />
-                                <g id="SVGRepo_iconCarrier">
-                                  <g>
-                                    <path d="m503.5,436h-103.705c7.13-9.007 9.992-20.574 7.837-31.891l-21.252-111.577c-2.674-14.037-12.756-25.563-26.312-30.082l-54.196-18.065c-0.954-0.318-1.927-0.43-2.872-0.366v-14.399c10.341-11.62 16-26.396 16-42.12v-17.734c9.29-3.138 16-11.93 16-22.266v-40c0-26.191-21.309-47.5-47.5-47.5h-64c-10.584,0-19.557,7.033-22.489,16.672-14.267,2.999-25.011,15.682-25.011,30.828v40c0,10.335 6.71,19.127 16,22.266v15.387c0,16.529 6.063,31.796 16,43.459v15.407c-0.945-0.063-1.917,0.048-2.872,0.367l-54.196,18.065c-13.556,4.519-23.638,16.045-26.312,30.082l-21.252,111.577c-2.156,11.317 0.707,22.884 7.837,31.891h-103.705c-4.142,0-7.5,3.358-7.5,7.5s3.358,7.5 7.5,7.5h134.67 1.33 16 192 16 1.33 134.67c4.142,0 7.5-3.358 7.5-7.5s-3.358-7.501-7.5-7.501zm-288-177c4.142,0 7.5-3.358 7.5-7.5v-9.919c9.01,5.649 19.437,9.056 30.552,9.39 0.659,0.02 1.315,0.029 1.971,0.029 11.614,0 22.742-3.101 32.477-8.927v9.427c0,4.142 3.358,7.5 7.5,7.5 0.105,0 0.207-0.011 0.311-0.016-1.953,18.497-19.284,33.016-40.311,33.016s-38.358-14.519-40.311-33.016c0.104,0.005 0.206,0.016 0.311,0.016zm-24.5-111.5v-40c0-9.098 7.402-16.5 16.5-16.5 4.142,0 7.5-3.358 7.5-7.5 0-4.687 3.813-8.5 8.5-8.5h64c17.92,0 32.5,14.579 32.5,32.5v40c0,1.442-0.364,2.8-1,3.992v-11.992c0-12.958-10.542-23.5-23.5-23.5h-80c-12.958,0-23.5,10.542-23.5,23.5v11.992c-0.636-1.192-1-2.55-1-3.992zm16-8c0-4.687 3.813-8.5 8.5-8.5h80c4.687,0 8.5,3.813 8.5,8.5v48c0,13.23-5.23,25.593-14.727,34.809-9.493,9.212-22.035,14.065-35.271,13.669-25.917-0.778-47.002-23.579-47.002-50.826v-45.652zm-47.5,296.5c-0.276,0-0.5-0.225-0.5-0.5v-104c0-0.275 0.224-0.5 0.5-0.5h192c0.276,0 0.5,0.225 0.5,0.5v104c0,0.275-0.224,0.5-0.5,0.5h-192zm208,0h-0.525c0.005-0.167 0.025-0.331 0.025-0.5v-104c0-8.547-6.953-15.5-15.5-15.5h-192c-8.547,0-15.5,6.953-15.5,15.5v104c0,0.169 0.02,0.333 0.025,0.5h-0.525-1.33c-7.326,0-14.205-3.237-18.875-8.881-4.67-5.644-6.563-13.007-5.191-20.203l21.252-111.577c1.658-8.706 7.912-15.855 16.32-18.658l44.75-14.917c3.342,25.452 26.757,45.236 55.074,45.236s51.732-19.784 55.075-45.236l44.75,14.916c8.408,2.803 14.662,9.953 16.32,18.659l21.252,111.577c1.371,7.196-0.521,14.56-5.191,20.203-4.67,5.644-11.55,8.881-18.875,8.881h-1.331z" />
-                                    <path d="m255.5,364c-12.958,0-23.5,10.542-23.5,23.5s10.542,23.5 23.5,23.5 23.5-10.542 23.5-23.5-10.542-23.5-23.5-23.5zm0,32c-4.687,0-8.5-3.813-8.5-8.5s3.813-8.5 8.5-8.5 8.5,3.813 8.5,8.5-3.813,8.5-8.5,8.5z" />
-                                  </g>
-                                </g>
-                              </svg></span><span>Employee Management</span></button> </li>
+                          <g id="SVGRepo_bgCarrier" strokeWidth={0} />
+                          <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round" />
+                          <g id="SVGRepo_iconCarrier">
+                            <g>
+                              <path d="m503.5,436h-103.705c7.13-9.007 9.992-20.574 7.837-31.891l-21.252-111.577c-2.674-14.037-12.756-25.563-26.312-30.082l-54.196-18.065c-0.954-0.318-1.927-0.43-2.872-0.366v-14.399c10.341-11.62 16-26.396 16-42.12v-17.734c9.29-3.138 16-11.93 16-22.266v-40c0-26.191-21.309-47.5-47.5-47.5h-64c-10.584,0-19.557,7.033-22.489,16.672-14.267,2.999-25.011,15.682-25.011,30.828v40c0,10.335 6.71,19.127 16,22.266v15.387c0,16.529 6.063,31.796 16,43.459v15.407c-0.945-0.063-1.917,0.048-2.872,0.367l-54.196,18.065c-13.556,4.519-23.638,16.045-26.312,30.082l-21.252,111.577c-2.156,11.317 0.707,22.884 7.837,31.891h-103.705c-4.142,0-7.5,3.358-7.5,7.5s3.358,7.5 7.5,7.5h134.67 1.33 16 192 16 1.33 134.67c4.142,0 7.5-3.358 7.5-7.5s-3.358-7.501-7.5-7.501zm-288-177c4.142,0 7.5-3.358 7.5-7.5v-9.919c9.01,5.649 19.437,9.056 30.552,9.39 0.659,0.02 1.315,0.029 1.971,0.029 11.614,0 22.742-3.101 32.477-8.927v9.427c0,4.142 3.358,7.5 7.5,7.5 0.105,0 0.207-0.011 0.311-0.016-1.953,18.497-19.284,33.016-40.311,33.016s-38.358-14.519-40.311-33.016c0.104,0.005 0.206,0.016 0.311,0.016zm-24.5-111.5v-40c0-9.098 7.402-16.5 16.5-16.5 4.142,0 7.5-3.358 7.5-7.5 0-4.687 3.813-8.5 8.5-8.5h64c17.92,0 32.5,14.579 32.5,32.5v40c0,1.442-0.364,2.8-1,3.992v-11.992c0-12.958-10.542-23.5-23.5-23.5h-80c-12.958,0-23.5,10.542-23.5,23.5v11.992c-0.636-1.192-1-2.55-1-3.992zm16-8c0-4.687 3.813-8.5 8.5-8.5h80c4.687,0 8.5,3.813 8.5,8.5v48c0,13.23-5.23,25.593-14.727,34.809-9.493,9.212-22.035,14.065-35.271,13.669-25.917-0.778-47.002-23.579-47.002-50.826v-45.652zm-47.5,296.5c-0.276,0-0.5-0.225-0.5-0.5v-104c0-0.275 0.224-0.5 0.5-0.5h192c0.276,0 0.5,0.225 0.5,0.5v104c0,0.275-0.224,0.5-0.5,0.5h-192zm208,0h-0.525c0.005-0.167 0.025-0.331 0.025-0.5v-104c0-8.547-6.953-15.5-15.5-15.5h-192c-8.547,0-15.5,6.953-15.5,15.5v104c0,0.169 0.02,0.333 0.025,0.5h-0.525-1.33c-7.326,0-14.205-3.237-18.875-8.881-4.67-5.644-6.563-13.007-5.191-20.203l21.252-111.577c1.658-8.706 7.912-15.855 16.32-18.658l44.75-14.917c3.342,25.452 26.757,45.236 55.074,45.236s51.732-19.784 55.075-45.236l44.75,14.916c8.408,2.803 14.662,9.953 16.32,18.659l21.252,111.577c1.371,7.196-0.521,14.56-5.191,20.203-4.67,5.644-11.55,8.881-18.875,8.881h-1.331z" />
+                              <path d="m255.5,364c-12.958,0-23.5,10.542-23.5,23.5s10.542,23.5 23.5,23.5 23.5-10.542 23.5-23.5-10.542-23.5-23.5-23.5zm0,32c-4.687,0-8.5-3.813-8.5-8.5s3.813-8.5 8.5-8.5 8.5,3.813 8.5,8.5-3.813,8.5-8.5,8.5z" />
+                            </g>
+                          </g>
+                        </svg></span><span>Employee Management</span></button> </li>
                         <li className="nav-item" role="presentation"> <button className="nav-link" data-bs-target="#attendance" data-bs-toggle="tab" id="attendance-tab" role="tab" type="button"> <span className="svg_bg akkbg"> <svg fill="#000000" height="64px" mirror-in-rtl="true" viewBox="0 0 24 24" width="64px" xmlns="http://www.w3.org/2000/svg">
-                                <g id="SVGRepo_bgCarrier" strokeWidth={0} />
-                                <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round" />
-                                <g id="SVGRepo_iconCarrier">
-                                  <path d="M7 11c-1.1 0-2-.9-2-2V8c0-1.1.9-2 2-2s2 .9 2 2v1c0 1.1-.9 2-2 2zm-2 6.993L9 18c.55 0 1-.45 1-1v-2c0-1.65-1.35-3-3-3s-3 1.35-3 3v2c0 .552.448.993 1 .993zM19 18h-6c-.553 0-1-.447-1-1s.447-1 1-1h6c.553 0 1 .447 1 1s-.447 1-1 1zm0-4h-6c-.553 0-1-.448-1-1s.447-1 1-1h6c.553 0 1 .448 1 1s-.447 1-1 1zm0-4h-6c-.553 0-1-.448-1-1s.447-1 1-1h6c.553 0 1 .448 1 1s-.447 1-1 1z" fill="#494c4e" />
-                                  <path d="M22 2H2C.9 2 0 2.9 0 4v16c0 1.1.9 2 2 2h20c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 17.5c0 .28-.22.5-.5.5h-19c-.28 0-.5-.22-.5-.5v-15c0-.28.22-.5.5-.5h19c.28 0 .5.22.5.5v15z" fill="#494c4e" />
-                                </g>
-                              </svg></span><span>Attendance Management</span> </button> </li>
+                          <g id="SVGRepo_bgCarrier" strokeWidth={0} />
+                          <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round" />
+                          <g id="SVGRepo_iconCarrier">
+                            <path d="M7 11c-1.1 0-2-.9-2-2V8c0-1.1.9-2 2-2s2 .9 2 2v1c0 1.1-.9 2-2 2zm-2 6.993L9 18c.55 0 1-.45 1-1v-2c0-1.65-1.35-3-3-3s-3 1.35-3 3v2c0 .552.448.993 1 .993zM19 18h-6c-.553 0-1-.447-1-1s.447-1 1-1h6c.553 0 1 .447 1 1s-.447 1-1 1zm0-4h-6c-.553 0-1-.448-1-1s.447-1 1-1h6c.553 0 1 .448 1 1s-.447 1-1 1zm0-4h-6c-.553 0-1-.448-1-1s.447-1 1-1h6c.553 0 1 .448 1 1s-.447 1-1 1z" fill="#494c4e" />
+                            <path d="M22 2H2C.9 2 0 2.9 0 4v16c0 1.1.9 2 2 2h20c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 17.5c0 .28-.22.5-.5.5h-19c-.28 0-.5-.22-.5-.5v-15c0-.28.22-.5.5-.5h19c.28 0 .5.22.5.5v15z" fill="#494c4e" />
+                          </g>
+                        </svg></span><span>Attendance Management</span> </button> </li>
                         <li className="nav-item" role="presentation"> <button className="nav-link" data-bs-target="#leave" data-bs-toggle="tab" id="leave-tab" role="tab" type="button"> <span className="svg_bg"> <svg fill="#000000" height="64px" id="Capa_1" version="1.1" viewBox="0 0 60 60" width="64px" xmlSpace="preserve" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
-                                <g id="SVGRepo_bgCarrier" strokeWidth={0} />
-                                <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round" />
-                                <g id="SVGRepo_iconCarrier">
-                                  <g>
-                                    <g>
-                                      <path d="M59,0H1C0.4,0,0,0.4,0,1v46c0,0.6,0.4,1,1,1h4v11c0,0.6,0.4,1,1,1h48c0.6,0,1-0.4,1-1V48h4c0.6,0,1-0.4,1-1V1 C60,0.4,59.6,0,59,0z M58,2v6H2V2H58z M53,24H7v-6h46V24z M7,58V26h46v32H7z M55,46V17c0-0.6-0.4-1-1-1H6c-0.6,0-1,0.4-1,1v29H2 V10h56v36H55z" />
-                                      <rect height={2} width={4} x={4} y={4} />
-                                      <rect height={2} width={4} x={10} y={4} />
-                                      <rect height={2} width={4} x={9} y={20} />
-                                      <rect height={2} width={4} x={15} y={20} />
-                                      <rect height={2} width={2} x={54} y={4} />
-                                      <rect height={2} width={2} x={50} y={4} />
-                                      <rect height={2} width={2} x={49} y={20} />
-                                      <rect height={2} width={2} x={45} y={20} />
-                                      <path d="M11,47h16c0.6,0,1-0.4,1-1V30c0-0.6-0.4-1-1-1H11c-0.6,0-1,0.4-1,1v16C10,46.6,10.4,47,11,47z M12,39h6v6h-6V39z M20,45 v-6h6v6H20z M26,37h-6v-6h6V37z M18,31v6h-6v-6H18z" />
-                                      <rect height={2} width={4} x={31} y={29} />
-                                      <rect height={2} width={2} x={31} y={33} />
-                                      <rect height={2} width={2} x={35} y={33} />
-                                      <rect height={2} width={2} x={39} y={33} />
-                                      <rect height={2} width={2} x={43} y={33} />
-                                      <rect height={2} width={2} x={47} y={33} />
-                                      <rect height={2} width={4} x={38} y={29} />
-                                      <rect height={2} width={4} x={45} y={29} />
-                                      <rect height={2} width={18} x={31} y={37} />
-                                      <rect height={2} width={18} x={31} y={41} />
-                                      <rect height={2} width={18} x={31} y={45} />
-                                      <rect height={2} width={2} x={10} y={51} />
-                                      <rect height={2} width={2} x={14} y={51} />
-                                      <rect height={2} width={2} x={18} y={51} />
-                                      <rect height={2} width={27} x={22} y={51} />
-                                    </g>
-                                  </g>
-                                </g>
-                              </svg></span><span>Leave Management</span> </button> </li>
+                          <g id="SVGRepo_bgCarrier" strokeWidth={0} />
+                          <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round" />
+                          <g id="SVGRepo_iconCarrier">
+                            <g>
+                              <g>
+                                <path d="M59,0H1C0.4,0,0,0.4,0,1v46c0,0.6,0.4,1,1,1h4v11c0,0.6,0.4,1,1,1h48c0.6,0,1-0.4,1-1V48h4c0.6,0,1-0.4,1-1V1 C60,0.4,59.6,0,59,0z M58,2v6H2V2H58z M53,24H7v-6h46V24z M7,58V26h46v32H7z M55,46V17c0-0.6-0.4-1-1-1H6c-0.6,0-1,0.4-1,1v29H2 V10h56v36H55z" />
+                                <rect height={2} width={4} x={4} y={4} />
+                                <rect height={2} width={4} x={10} y={4} />
+                                <rect height={2} width={4} x={9} y={20} />
+                                <rect height={2} width={4} x={15} y={20} />
+                                <rect height={2} width={2} x={54} y={4} />
+                                <rect height={2} width={2} x={50} y={4} />
+                                <rect height={2} width={2} x={49} y={20} />
+                                <rect height={2} width={2} x={45} y={20} />
+                                <path d="M11,47h16c0.6,0,1-0.4,1-1V30c0-0.6-0.4-1-1-1H11c-0.6,0-1,0.4-1,1v16C10,46.6,10.4,47,11,47z M12,39h6v6h-6V39z M20,45 v-6h6v6H20z M26,37h-6v-6h6V37z M18,31v6h-6v-6H18z" />
+                                <rect height={2} width={4} x={31} y={29} />
+                                <rect height={2} width={2} x={31} y={33} />
+                                <rect height={2} width={2} x={35} y={33} />
+                                <rect height={2} width={2} x={39} y={33} />
+                                <rect height={2} width={2} x={43} y={33} />
+                                <rect height={2} width={2} x={47} y={33} />
+                                <rect height={2} width={4} x={38} y={29} />
+                                <rect height={2} width={4} x={45} y={29} />
+                                <rect height={2} width={18} x={31} y={37} />
+                                <rect height={2} width={18} x={31} y={41} />
+                                <rect height={2} width={18} x={31} y={45} />
+                                <rect height={2} width={2} x={10} y={51} />
+                                <rect height={2} width={2} x={14} y={51} />
+                                <rect height={2} width={2} x={18} y={51} />
+                                <rect height={2} width={27} x={22} y={51} />
+                              </g>
+                            </g>
+                          </g>
+                        </svg></span><span>Leave Management</span> </button> </li>
                         <li className="nav-item" role="presentation"> <button className="nav-link" data-bs-target="#payroll" data-bs-toggle="tab" id="payroll-tab" role="tab" type="button"> <span className="svg_bg"> <svg fill="#000000" height="64px" id="Layer_1_1_" version="1.1" viewBox="0 0 64 64" width="64px" xmlSpace="preserve" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
-                                <g id="SVGRepo_bgCarrier" strokeWidth={0} />
-                                <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round" />
-                                <g id="SVGRepo_iconCarrier">
-                                  <g>
-                                    <path d="M60,3h-9.184C50.402,1.839,49.302,1,48,1H34c-1.302,0-2.402,0.839-2.816,2H22c-1.654,0-3,1.346-3,3v13h-3.406 c-1.217,0-2.418,0.319-3.474,0.923L6.734,23H1v18h6.697l4.236,2.824C13.087,44.594,14.43,45,15.816,45H19v15c0,1.654,1.346,3,3,3 h38c1.654,0,3-1.346,3-3V6C63,4.346,61.654,3,60,3z M25,27h2c2.206,0,4-1.794,4-4s-1.794-4-4-4h-2V9h6.184 c0.414,1.161,1.514,2,2.816,2h14c1.302,0,2.402-0.839,2.816-2H57v48H25V27z M33,4c0-0.552,0.448-1,1-1h14c0.552,0,1,0.448,1,1v4 c0,0.552-0.448,1-1,1H34c-0.552,0-1-0.448-1-1V4z M21,6c0-0.552,0.448-1,1-1h9v2h-8v12h-2V6z M15.816,43 c-0.99,0-1.949-0.29-2.773-0.84L8.303,39H3V25h4.266l5.847-3.341C13.867,21.228,14.725,21,15.594,21H27c1.103,0,2,0.897,2,2 s-0.897,2-2,2H15v1c0,2.757-2.243,5-5,5v2c3.521,0,6.442-2.612,6.929-6H19v16H15.816z M61,60c0,0.552-0.448,1-1,1H22 c-0.552,0-1-0.448-1-1V27h2v32h36V7h-8V5h9c0.552,0,1,0.448,1,1V60z" />
-                                    <rect height={2} width={2} x={35} y={5} />
-                                    <rect height={2} width={2} x={45} y={5} />
-                                    <path d="M48.373,47.209l-3.375-0.964l-0.001-0.507C46.81,44.472,48,42.374,48,40v-2c0-3.859-3.141-7-7-7s-7,3.141-7,7v2 c0,2.372,1.189,4.469,3,5.736v0.51l-3.374,0.963C31.491,47.82,30,49.797,30,52.018V55h22v-2.982 C52,49.797,50.509,47.82,48.373,47.209z M36,40v-2c0-2.757,2.243-5,5-5s5,2.243,5,5v2c0,2.757-2.243,5-5,5S36,42.757,36,40z M42.965,46.714L41,49.333l-1.965-2.619C39.659,46.897,40.318,47,41,47S42.341,46.897,42.965,46.714z M50,53H32v-0.982 c0-1.332,0.895-2.519,2.176-2.885l3.437-0.982L41,52.667l3.387-4.516l3.437,0.982C49.105,49.499,50,50.686,50,52.018V53z" />
-                                    <rect height={2} width={2} x={27} y={13} />
-                                    <rect height={2} width={24} x={31} y={13} />
-                                    <rect height={2} width={22} x={33} y={17} />
-                                    <rect height={2} width={22} x={33} y={21} />
-                                    <rect height={2} width={2} x={53} y={25} />
-                                    <rect height={2} width={18} x={33} y={25} />
-                                  </g>
-                                </g>
-                              </svg></span><span>Payroll Management</span> </button> </li>
+                          <g id="SVGRepo_bgCarrier" strokeWidth={0} />
+                          <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round" />
+                          <g id="SVGRepo_iconCarrier">
+                            <g>
+                              <path d="M60,3h-9.184C50.402,1.839,49.302,1,48,1H34c-1.302,0-2.402,0.839-2.816,2H22c-1.654,0-3,1.346-3,3v13h-3.406 c-1.217,0-2.418,0.319-3.474,0.923L6.734,23H1v18h6.697l4.236,2.824C13.087,44.594,14.43,45,15.816,45H19v15c0,1.654,1.346,3,3,3 h38c1.654,0,3-1.346,3-3V6C63,4.346,61.654,3,60,3z M25,27h2c2.206,0,4-1.794,4-4s-1.794-4-4-4h-2V9h6.184 c0.414,1.161,1.514,2,2.816,2h14c1.302,0,2.402-0.839,2.816-2H57v48H25V27z M33,4c0-0.552,0.448-1,1-1h14c0.552,0,1,0.448,1,1v4 c0,0.552-0.448,1-1,1H34c-0.552,0-1-0.448-1-1V4z M21,6c0-0.552,0.448-1,1-1h9v2h-8v12h-2V6z M15.816,43 c-0.99,0-1.949-0.29-2.773-0.84L8.303,39H3V25h4.266l5.847-3.341C13.867,21.228,14.725,21,15.594,21H27c1.103,0,2,0.897,2,2 s-0.897,2-2,2H15v1c0,2.757-2.243,5-5,5v2c3.521,0,6.442-2.612,6.929-6H19v16H15.816z M61,60c0,0.552-0.448,1-1,1H22 c-0.552,0-1-0.448-1-1V27h2v32h36V7h-8V5h9c0.552,0,1,0.448,1,1V60z" />
+                              <rect height={2} width={2} x={35} y={5} />
+                              <rect height={2} width={2} x={45} y={5} />
+                              <path d="M48.373,47.209l-3.375-0.964l-0.001-0.507C46.81,44.472,48,42.374,48,40v-2c0-3.859-3.141-7-7-7s-7,3.141-7,7v2 c0,2.372,1.189,4.469,3,5.736v0.51l-3.374,0.963C31.491,47.82,30,49.797,30,52.018V55h22v-2.982 C52,49.797,50.509,47.82,48.373,47.209z M36,40v-2c0-2.757,2.243-5,5-5s5,2.243,5,5v2c0,2.757-2.243,5-5,5S36,42.757,36,40z M42.965,46.714L41,49.333l-1.965-2.619C39.659,46.897,40.318,47,41,47S42.341,46.897,42.965,46.714z M50,53H32v-0.982 c0-1.332,0.895-2.519,2.176-2.885l3.437-0.982L41,52.667l3.387-4.516l3.437,0.982C49.105,49.499,50,50.686,50,52.018V53z" />
+                              <rect height={2} width={2} x={27} y={13} />
+                              <rect height={2} width={24} x={31} y={13} />
+                              <rect height={2} width={22} x={33} y={17} />
+                              <rect height={2} width={22} x={33} y={21} />
+                              <rect height={2} width={2} x={53} y={25} />
+                              <rect height={2} width={18} x={33} y={25} />
+                            </g>
+                          </g>
+                        </svg></span><span>Payroll Management</span> </button> </li>
                         <li className="nav-item" role="presentation"> <button className="nav-link" data-bs-target="#talent" data-bs-toggle="tab" id="talent-tab" role="tab" type="button"> <span className="svg_bg"> <svg fill="#000000" height="64px" id="Layer_1" version="1.1" viewBox="0 0 512 512" width="64px" xmlSpace="preserve" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
-                                <g id="SVGRepo_bgCarrier" strokeWidth={0} />
-                                <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round" />
-                                <g id="SVGRepo_iconCarrier">
-                                  <g>
-                                    <g>
-                                      <rect height="15.77" width={512} y="483.614" />
-                                    </g>
-                                  </g>
-                                  <g>
-                                    <g>
-                                      <path d="M487.359,12.616h-80.492v174.522h15.77v-78.85h64.723c4.534,0,8.087,3.463,8.087,7.885s-3.552,7.885-8.087,7.885h-56.313 v15.77h56.313c13.151,0,23.852-10.605,23.857-23.643l0.119-80.064C511.336,23.16,500.58,12.616,487.359,12.616z M495.48,93.928 c-2.535-0.913-5.271-1.411-8.121-1.411h-64.723v-31.54V28.386h64.723c4.602,0,8.207,3.397,8.207,7.722L495.48,93.928z" />
-                                    </g>
-                                  </g>
-                                  <g>
-                                    <g>
-                                      <polygon points="399.511,43.846 284.043,43.846 303.169,91.662 284.043,139.477 399.508,139.477 399.508,123.707 307.337,123.707 320.155,91.662 307.337,59.616 399.511,59.616 " />
-                                    </g>
-                                  </g>
-                                  <g>
-                                    <g>
-                                      <rect height="15.77" width="152.444" x="15.77" y="44.156" />
-                                    </g>
-                                  </g>
-                                  <g>
-                                    <g>
-                                      <rect height="15.77" width="48.361" x="15.77" y="76.747" />
-                                    </g>
-                                  </g>
-                                  <g>
-                                    <g>
-                                      <rect height="15.77" width="39.951" x="79.901" y="76.747" />
-                                    </g>
-                                  </g>
-                                  <g>
-                                    <g>
-                                      <rect height="15.77" width="72.542" x="15.77" y="107.236" />
-                                    </g>
-                                  </g>
-                                  <g>
-                                    <g>
-                                      <rect height="15.77" width="24.181" x="15.77" y="139.828" />
-                                    </g>
-                                  </g>
-                                  <g>
-                                    <g>
-                                      <path d="M207.943,275.447v199.555h15.77v-63.93h64.091V475h15.77V275.447H207.943z M287.805,395.302h-64.091v-16.821h64.091 V395.302z M287.805,362.711h-64.091v-71.494h64.091V362.711z" />
-                                    </g>
-                                  </g>
-                                  <g>
-                                    <g>
-                                      <path d="M48.218,363.294V475h15.77v-16.618h64.091V475h15.771V363.294H48.218z M128.08,442.612H63.988v-15.77h64.091V442.612z M128.08,411.072H63.988v-32.008h64.091V411.072z" />
-                                    </g>
-                                  </g>
-                                  <g>
-                                    <g>
-                                      <path d="M367.668,195.584V475h15.77V275.45h64.093V475h15.77V195.584H367.668z M447.53,259.68h-64.093v-15.77h64.093V259.68z M447.53,228.14h-64.093v-16.786h64.093V228.14z" />
-                                    </g>
-                                  </g>
-                                </g>
-                              </svg></span><span>Talent Management</span> </button> </li>
+                          <g id="SVGRepo_bgCarrier" strokeWidth={0} />
+                          <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round" />
+                          <g id="SVGRepo_iconCarrier">
+                            <g>
+                              <g>
+                                <rect height="15.77" width={512} y="483.614" />
+                              </g>
+                            </g>
+                            <g>
+                              <g>
+                                <path d="M487.359,12.616h-80.492v174.522h15.77v-78.85h64.723c4.534,0,8.087,3.463,8.087,7.885s-3.552,7.885-8.087,7.885h-56.313 v15.77h56.313c13.151,0,23.852-10.605,23.857-23.643l0.119-80.064C511.336,23.16,500.58,12.616,487.359,12.616z M495.48,93.928 c-2.535-0.913-5.271-1.411-8.121-1.411h-64.723v-31.54V28.386h64.723c4.602,0,8.207,3.397,8.207,7.722L495.48,93.928z" />
+                              </g>
+                            </g>
+                            <g>
+                              <g>
+                                <polygon points="399.511,43.846 284.043,43.846 303.169,91.662 284.043,139.477 399.508,139.477 399.508,123.707 307.337,123.707 320.155,91.662 307.337,59.616 399.511,59.616 " />
+                              </g>
+                            </g>
+                            <g>
+                              <g>
+                                <rect height="15.77" width="152.444" x="15.77" y="44.156" />
+                              </g>
+                            </g>
+                            <g>
+                              <g>
+                                <rect height="15.77" width="48.361" x="15.77" y="76.747" />
+                              </g>
+                            </g>
+                            <g>
+                              <g>
+                                <rect height="15.77" width="39.951" x="79.901" y="76.747" />
+                              </g>
+                            </g>
+                            <g>
+                              <g>
+                                <rect height="15.77" width="72.542" x="15.77" y="107.236" />
+                              </g>
+                            </g>
+                            <g>
+                              <g>
+                                <rect height="15.77" width="24.181" x="15.77" y="139.828" />
+                              </g>
+                            </g>
+                            <g>
+                              <g>
+                                <path d="M207.943,275.447v199.555h15.77v-63.93h64.091V475h15.77V275.447H207.943z M287.805,395.302h-64.091v-16.821h64.091 V395.302z M287.805,362.711h-64.091v-71.494h64.091V362.711z" />
+                              </g>
+                            </g>
+                            <g>
+                              <g>
+                                <path d="M48.218,363.294V475h15.77v-16.618h64.091V475h15.771V363.294H48.218z M128.08,442.612H63.988v-15.77h64.091V442.612z M128.08,411.072H63.988v-32.008h64.091V411.072z" />
+                              </g>
+                            </g>
+                            <g>
+                              <g>
+                                <path d="M367.668,195.584V475h15.77V275.45h64.093V475h15.77V195.584H367.668z M447.53,259.68h-64.093v-15.77h64.093V259.68z M447.53,228.14h-64.093v-16.786h64.093V228.14z" />
+                              </g>
+                            </g>
+                          </g>
+                        </svg></span><span>Talent Management</span> </button> </li>
                         <li className="nav-item" role="presentation"> <button className="nav-link" data-bs-target="#reports" data-bs-toggle="tab" id="reports-tab" role="tab" type="button"> <span className="svg_bg"> <svg fill="#000000" height="64px" version="1.1" viewBox="0 0 512 512" width="64px" xmlSpace="preserve" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
-                                <g id="SVGRepo_bgCarrier" strokeWidth={0} />
-                                <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round" />
-                                <g id="SVGRepo_iconCarrier">
-                                  <g id="_x30_7_x2C__Analytics_x2C__laptop_x2C__statistics_x2C__web_x2C__computer">
-                                    <g id="XMLID_858_">
-                                      <g id="XMLID_197_">
-                                        <path d="M351,237.458h-70c-1.788,0-3.439-0.955-4.332-2.503l-26.627-46.209 c-0.983-1.706-0.874-3.829,0.279-5.424l20.793-28.791c0.94-1.301,2.448-2.072,4.054-2.072h21.666 c1.605,0,3.113,0.771,4.054,2.073l54.167,75c1.099,1.522,1.253,3.532,0.398,5.204C354.597,236.407,352.878,237.458,351,237.458z M283.89,227.458h57.331l-46.944-65h-16.553l-17.403,24.097L283.89,227.458z" id="XMLID_699_" />
-                                      </g>
-                                      <g id="XMLID_196_">
-                                        <path d="M281,237.458H151c-1.786,0-3.436-0.952-4.329-2.498s-0.895-3.451-0.003-4.999l51.861-90 c0.893-1.549,2.544-2.503,4.332-2.503h26.277c1.788,0,3.439,0.955,4.332,2.503l25.234,43.791l0,0l26.627,46.209 c0.892,1.547,0.891,3.453-0.003,4.999S282.785,237.458,281,237.458z M159.652,227.458h112.697l-46.1-80h-20.498L159.652,227.458z " id="XMLID_696_" />
-                                      </g>
-                                      <g id="XMLID_195_">
-                                        <path d="M371,237.458H131c-2.761,0-5-2.239-5-5s2.239-5,5-5h240c2.762,0,5,2.239,5,5 S373.762,237.458,371,237.458z" id="XMLID_695_" />
-                                      </g>
-                                      <g id="XMLID_194_">
-                                        <path d="M181,312.458h-50c-2.761,0-5-2.238-5-5v-50c0-2.761,2.239-5,5-5h50c2.761,0,5,2.239,5,5v50 C186,310.22,183.761,312.458,181,312.458z M136,302.458h40v-40h-40V302.458z" id="XMLID_692_" />
-                                      </g>
-                                      <g id="XMLID_193_">
-                                        <path d="M241,267.458h-40c-2.761,0-5-2.238-5-5s2.239-5,5-5h40c2.761,0,5,2.238,5,5S243.761,267.458,241,267.458 z" id="XMLID_691_" />
-                                      </g>
-                                      <g id="XMLID_192_">
-                                        <path d="M241,287.458h-40c-2.761,0-5-2.238-5-5s2.239-5,5-5h40c2.761,0,5,2.238,5,5S243.761,287.458,241,287.458 z" id="XMLID_690_" />
-                                      </g>
-                                      <g id="XMLID_191_">
-                                        <path d="M316,312.458h-50c-2.762,0-5-2.238-5-5v-50c0-2.761,2.238-5,5-5h50c2.762,0,5,2.239,5,5v50 C321,310.22,318.762,312.458,316,312.458z M271,302.458h40v-40h-40V302.458z" id="XMLID_687_" />
-                                      </g>
-                                      <g id="XMLID_190_">
-                                        <path d="M376,267.458h-40c-2.762,0-5-2.238-5-5s2.238-5,5-5h40c2.762,0,5,2.238,5,5S378.762,267.458,376,267.458 z" id="XMLID_686_" />
-                                      </g>
-                                      <g id="XMLID_189_">
-                                        <path d="M376,287.458h-40c-2.762,0-5-2.238-5-5s2.238-5,5-5h40c2.762,0,5,2.238,5,5S378.762,287.458,376,287.458 z" id="XMLID_685_" />
-                                      </g>
-                                      <g id="XMLID_859_">
-                                        <g id="XMLID_860_">
-                                          <g id="XMLID_188_">
-                                            <path d="M450,412.458H62c-17.093,0-31-13.906-31-31v-18c0-17.094,13.907-31,31-31h144c2.761,0,5,2.238,5,5v15 h90v-15c0-2.762,2.238-5,5-5h144c17.094,0,31,13.906,31,31v18C481,398.552,467.094,412.458,450,412.458z M62,342.458 c-11.58,0-21,9.421-21,21v18c0,11.579,9.42,21,21,21h388c11.579,0,21-9.421,21-21v-18c0-11.579-9.421-21-21-21H311v15 c0,2.762-2.238,5-5,5H206c-2.761,0-5-2.238-5-5v-15H62z" id="XMLID_682_" />
-                                          </g>
-                                          <g id="XMLID_187_">
-                                            <path d="M446.477,342.458c-2.762,0-5-2.238-5-5V147.28c0-20.809-16.93-37.738-37.738-37.738H108.262 c-20.809,0-37.738,16.929-37.738,37.738v190.178c0,2.762-2.239,5-5,5s-5-2.238-5-5V147.28 c0-26.323,21.415-47.738,47.738-47.738h295.477c26.323,0,47.738,21.416,47.738,47.738v190.178 C451.477,340.22,449.238,342.458,446.477,342.458z" id="XMLID_681_" />
-                                          </g>
-                                          <g id="XMLID_186_">
-                                            <path d="M445.091,312.458H66.909c-2.761,0-5-2.238-5-5s2.239-5,5-5h378.182c2.762,0,5,2.238,5,5 S447.853,312.458,445.091,312.458z" id="XMLID_676_" />
-                                          </g>
-                                        </g>
-                                      </g>
+                          <g id="SVGRepo_bgCarrier" strokeWidth={0} />
+                          <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round" />
+                          <g id="SVGRepo_iconCarrier">
+                            <g id="_x30_7_x2C__Analytics_x2C__laptop_x2C__statistics_x2C__web_x2C__computer">
+                              <g id="XMLID_858_">
+                                <g id="XMLID_197_">
+                                  <path d="M351,237.458h-70c-1.788,0-3.439-0.955-4.332-2.503l-26.627-46.209 c-0.983-1.706-0.874-3.829,0.279-5.424l20.793-28.791c0.94-1.301,2.448-2.072,4.054-2.072h21.666 c1.605,0,3.113,0.771,4.054,2.073l54.167,75c1.099,1.522,1.253,3.532,0.398,5.204C354.597,236.407,352.878,237.458,351,237.458z M283.89,227.458h57.331l-46.944-65h-16.553l-17.403,24.097L283.89,227.458z" id="XMLID_699_" />
+                                </g>
+                                <g id="XMLID_196_">
+                                  <path d="M281,237.458H151c-1.786,0-3.436-0.952-4.329-2.498s-0.895-3.451-0.003-4.999l51.861-90 c0.893-1.549,2.544-2.503,4.332-2.503h26.277c1.788,0,3.439,0.955,4.332,2.503l25.234,43.791l0,0l26.627,46.209 c0.892,1.547,0.891,3.453-0.003,4.999S282.785,237.458,281,237.458z M159.652,227.458h112.697l-46.1-80h-20.498L159.652,227.458z " id="XMLID_696_" />
+                                </g>
+                                <g id="XMLID_195_">
+                                  <path d="M371,237.458H131c-2.761,0-5-2.239-5-5s2.239-5,5-5h240c2.762,0,5,2.239,5,5 S373.762,237.458,371,237.458z" id="XMLID_695_" />
+                                </g>
+                                <g id="XMLID_194_">
+                                  <path d="M181,312.458h-50c-2.761,0-5-2.238-5-5v-50c0-2.761,2.239-5,5-5h50c2.761,0,5,2.239,5,5v50 C186,310.22,183.761,312.458,181,312.458z M136,302.458h40v-40h-40V302.458z" id="XMLID_692_" />
+                                </g>
+                                <g id="XMLID_193_">
+                                  <path d="M241,267.458h-40c-2.761,0-5-2.238-5-5s2.239-5,5-5h40c2.761,0,5,2.238,5,5S243.761,267.458,241,267.458 z" id="XMLID_691_" />
+                                </g>
+                                <g id="XMLID_192_">
+                                  <path d="M241,287.458h-40c-2.761,0-5-2.238-5-5s2.239-5,5-5h40c2.761,0,5,2.238,5,5S243.761,287.458,241,287.458 z" id="XMLID_690_" />
+                                </g>
+                                <g id="XMLID_191_">
+                                  <path d="M316,312.458h-50c-2.762,0-5-2.238-5-5v-50c0-2.761,2.238-5,5-5h50c2.762,0,5,2.239,5,5v50 C321,310.22,318.762,312.458,316,312.458z M271,302.458h40v-40h-40V302.458z" id="XMLID_687_" />
+                                </g>
+                                <g id="XMLID_190_">
+                                  <path d="M376,267.458h-40c-2.762,0-5-2.238-5-5s2.238-5,5-5h40c2.762,0,5,2.238,5,5S378.762,267.458,376,267.458 z" id="XMLID_686_" />
+                                </g>
+                                <g id="XMLID_189_">
+                                  <path d="M376,287.458h-40c-2.762,0-5-2.238-5-5s2.238-5,5-5h40c2.762,0,5,2.238,5,5S378.762,287.458,376,287.458 z" id="XMLID_685_" />
+                                </g>
+                                <g id="XMLID_859_">
+                                  <g id="XMLID_860_">
+                                    <g id="XMLID_188_">
+                                      <path d="M450,412.458H62c-17.093,0-31-13.906-31-31v-18c0-17.094,13.907-31,31-31h144c2.761,0,5,2.238,5,5v15 h90v-15c0-2.762,2.238-5,5-5h144c17.094,0,31,13.906,31,31v18C481,398.552,467.094,412.458,450,412.458z M62,342.458 c-11.58,0-21,9.421-21,21v18c0,11.579,9.42,21,21,21h388c11.579,0,21-9.421,21-21v-18c0-11.579-9.421-21-21-21H311v15 c0,2.762-2.238,5-5,5H206c-2.761,0-5-2.238-5-5v-15H62z" id="XMLID_682_" />
+                                    </g>
+                                    <g id="XMLID_187_">
+                                      <path d="M446.477,342.458c-2.762,0-5-2.238-5-5V147.28c0-20.809-16.93-37.738-37.738-37.738H108.262 c-20.809,0-37.738,16.929-37.738,37.738v190.178c0,2.762-2.239,5-5,5s-5-2.238-5-5V147.28 c0-26.323,21.415-47.738,47.738-47.738h295.477c26.323,0,47.738,21.416,47.738,47.738v190.178 C451.477,340.22,449.238,342.458,446.477,342.458z" id="XMLID_681_" />
+                                    </g>
+                                    <g id="XMLID_186_">
+                                      <path d="M445.091,312.458H66.909c-2.761,0-5-2.238-5-5s2.239-5,5-5h378.182c2.762,0,5,2.238,5,5 S447.853,312.458,445.091,312.458z" id="XMLID_676_" />
                                     </g>
                                   </g>
-                                  <g id="Layer_1" />
                                 </g>
-                              </svg></span><span>Reports and Analytics</span></button> </li>
+                              </g>
+                            </g>
+                            <g id="Layer_1" />
+                          </g>
+                        </svg></span><span>Reports and Analytics</span></button> </li>
                         <li className="nav-item" role="presentation">
                           <button className="nav-link" data-bs-target="#events" data-bs-toggle="tab" id="events-tab" role="tab" type="button">
                             <span className="svg_bg"><svg fill="currentColor" height="64px" viewBox="0 0 50 50" width="64px" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink"><g id="SVGRepo_bgCarrier" strokeWidth={0} /><g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round" /><g id="SVGRepo_iconCarrier"><path d="M8 2L8 6L4 6L4 48L46 48L46 14L30 14L30 6L26 6L26 2 Z M 10 4L24 4L24 8L28 8L28 46L19 46L19 39L15 39L15 46L6 46L6 8L10 8 Z M 10 10L10 12L12 12L12 10 Z M 14 10L14 12L16 12L16 10 Z M 18 10L18 12L20 12L20 10 Z M 22 10L22 12L24 12L24 10 Z M 10 15L10 19L12 19L12 15 Z M 14 15L14 19L16 19L16 15 Z M 18 15L18 19L20 19L20 15 Z M 22 15L22 19L24 19L24 15 Z M 30 16L44 16L44 46L30 46 Z M 32 18L32 20L34 20L34 18 Z M 36 18L36 20L38 20L38 18 Z M 40 18L40 20L42 20L42 18 Z M 10 21L10 25L12 25L12 21 Z M 14 21L14 25L16 25L16 21 Z M 18 21L18 25L20 25L20 21 Z M 22 21L22 25L24 25L24 21 Z M 32 22L32 24L34 24L34 22 Z M 36 22L36 24L38 24L38 22 Z M 40 22L40 24L42 24L42 22 Z M 32 26L32 28L34 28L34 26 Z M 36 26L36 28L38 28L38 26 Z M 40 26L40 28L42 28L42 26 Z M 10 27L10 31L12 31L12 27 Z M 14 27L14 31L16 31L16 27 Z M 18 27L18 31L20 31L20 27 Z M 22 27L22 31L24 31L24 27 Z M 32 30L32 32L34 32L34 30 Z M 36 30L36 32L38 32L38 30 Z M 40 30L40 32L42 32L42 30 Z M 10 33L10 37L12 37L12 33 Z M 14 33L14 37L16 37L16 33 Z M 18 33L18 37L20 37L20 33 Z M 22 33L22 37L24 37L24 33 Z M 32 34L32 36L34 36L34 34 Z M 36 34L36 36L38 36L38 34 Z M 40 34L40 36L42 36L42 34 Z M 32 38L32 40L34 40L34 38 Z M 36 38L36 40L38 40L38 38 Z M 40 38L40 40L42 40L42 38 Z M 10 39L10 44L12 44L12 39 Z M 22 39L22 44L24 44L24 39 Z M 32 42L32 44L34 44L34 42 Z M 36 42L36 44L38 44L38 42 Z M 40 42L40 44L42 44L42 42Z" /></g></svg></span><span>Events and Meetings</span></button>
                         </li>
                         <li className="nav-item" role="presentation">
                           <button className="nav-link" data-bs-target="#mobile" data-bs-toggle="tab" id="mobile-tab" role="tab" type="button"> <span className="svg_bg">
-                              <svg fill="currentColor" height="64px" id="Layer_1" version="1.1" viewBox="0 0 491.52 491.52" width="64px" xmlSpace="preserve" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink"><g id="SVGRepo_bgCarrier" strokeWidth={0} /><g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round" /><g id="SVGRepo_iconCarrier"> <g> <g> <path d="M368.64,163.84V0H0v491.52h368.64V358.4h122.88V163.84H368.64z M450.846,184.32L348.16,260.79l-102.686-76.47H450.846z M297.588,248.662l-72.308,74.294V194.819L297.588,248.662z M20.48,20.48h327.68v40.96H20.48V20.48z M348.16,471.04H20.48V409.6 h327.68V471.04z M348.16,389.12H20.48V81.92h327.68v81.92H204.8V358.4h143.36V389.12z M239.295,337.92l74.863-76.919 l34.002,25.319l34.003-25.319l74.863,76.919H239.295z M471.04,322.957l-72.308-74.294l72.308-53.844V322.957z" /> </g> </g> <g> <g> <rect height="20.48" width="102.4" x="133.12" y="430.08" /> </g> </g> <g> <g> <rect height="20.48" width="61.44" x="133.12" y="30.72" /> </g> </g> <g> <g> <rect height="20.48" width="20.48" x="215.04" y="30.72" /> </g> </g> </g></svg>
-                            </span><span>Mobile App</span></button>
+                            <svg fill="currentColor" height="64px" id="Layer_1" version="1.1" viewBox="0 0 491.52 491.52" width="64px" xmlSpace="preserve" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink"><g id="SVGRepo_bgCarrier" strokeWidth={0} /><g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round" /><g id="SVGRepo_iconCarrier"> <g> <g> <path d="M368.64,163.84V0H0v491.52h368.64V358.4h122.88V163.84H368.64z M450.846,184.32L348.16,260.79l-102.686-76.47H450.846z M297.588,248.662l-72.308,74.294V194.819L297.588,248.662z M20.48,20.48h327.68v40.96H20.48V20.48z M348.16,471.04H20.48V409.6 h327.68V471.04z M348.16,389.12H20.48V81.92h327.68v81.92H204.8V358.4h143.36V389.12z M239.295,337.92l74.863-76.919 l34.002,25.319l34.003-25.319l74.863,76.919H239.295z M471.04,322.957l-72.308-74.294l72.308-53.844V322.957z" /> </g> </g> <g> <g> <rect height="20.48" width="102.4" x="133.12" y="430.08" /> </g> </g> <g> <g> <rect height="20.48" width="61.44" x="133.12" y="30.72" /> </g> </g> <g> <g> <rect height="20.48" width="20.48" x="215.04" y="30.72" /> </g> </g> </g></svg>
+                          </span><span>Mobile App</span></button>
                         </li>
                       </ul>
                       <div className="tab-content mt-3" id="myTabContent">
@@ -890,7 +769,7 @@ export default function HomePage() {
                       <div className="content-box-over">
                         <h5>Activity Management Software </h5>
                         <p>Track, manage, and analyse employee activities in real time to ensure optimal performance. </p>
-                        <div className="btn-center text-left mt-3"> <a className="btn btn-theme btn-md radius animation wow fadeInUp" data-bs-target="#bookdemo-modal" data-bs-toggle="modal" href="#" onClick={preventDefault} style={{visibility: 'visible', animationName: 'fadeInUp'}}>Book a demo</a> </div>
+                        <div className="btn-center text-left mt-3"> <a className="btn btn-theme btn-md radius animation wow fadeInUp" data-bs-target="#bookdemo-modal" data-bs-toggle="modal" href="#" onClick={preventDefault} style={{ visibility: 'visible', animationName: 'fadeInUp' }}>Book a demo</a> </div>
                       </div>
                     </div>
                   </div>
@@ -903,7 +782,7 @@ export default function HomePage() {
                       <div className="content-box-over">
                         <h5>Task Management Software</h5>
                         <p>Plan, assign, and track tasks effortlessly with automation-driven workflows that improve collaboration.</p>
-                        <div className="btn-center text-left mt-3"> <a className="btn btn-theme btn-md radius animation wow fadeInUp" data-bs-target="#bookdemo-modal" data-bs-toggle="modal" href="#" onClick={preventDefault} style={{visibility: 'visible', animationName: 'fadeInUp'}}>Book a demo</a> </div>
+                        <div className="btn-center text-left mt-3"> <a className="btn btn-theme btn-md radius animation wow fadeInUp" data-bs-target="#bookdemo-modal" data-bs-toggle="modal" href="#" onClick={preventDefault} style={{ visibility: 'visible', animationName: 'fadeInUp' }}>Book a demo</a> </div>
                       </div>
                     </div>
                   </div>
@@ -916,7 +795,7 @@ export default function HomePage() {
                       <div className="content-box-over">
                         <h5>Asset Management Software</h5>
                         <p>Gain complete control over your assets—track, monitor, and maintain them in real-time with a platform.</p>
-                        <div className="btn-center text-left mt-3"> <a className="btn btn-theme btn-md radius animation wow fadeInUp" data-bs-target="#bookdemo-modal" data-bs-toggle="modal" href="#" onClick={preventDefault} style={{visibility: 'visible', animationName: 'fadeInUp'}}>Book a demo</a> </div>
+                        <div className="btn-center text-left mt-3"> <a className="btn btn-theme btn-md radius animation wow fadeInUp" data-bs-target="#bookdemo-modal" data-bs-toggle="modal" href="#" onClick={preventDefault} style={{ visibility: 'visible', animationName: 'fadeInUp' }}>Book a demo</a> </div>
                       </div>
                     </div>
                   </div>
@@ -929,7 +808,7 @@ export default function HomePage() {
                       <div className="content-box-over">
                         <h5>Field Force Management</h5>
                         <p>Empower your on-ground teams with GPS-based tracking, live updates, task allocation.</p>
-                        <div className="btn-center text-left mt-3"> <a className="btn btn-theme btn-md radius animation wow fadeInUp" data-bs-target="#bookdemo-modal" data-bs-toggle="modal" href="#" onClick={preventDefault} style={{visibility: 'visible', animationName: 'fadeInUp'}}>Book a demo</a> </div>
+                        <div className="btn-center text-left mt-3"> <a className="btn btn-theme btn-md radius animation wow fadeInUp" data-bs-target="#bookdemo-modal" data-bs-toggle="modal" href="#" onClick={preventDefault} style={{ visibility: 'visible', animationName: 'fadeInUp' }}>Book a demo</a> </div>
                       </div>
                     </div>
                   </div>
@@ -953,20 +832,20 @@ export default function HomePage() {
           </div>
           <ul className="nav nav-tabs justify-content-center mb-4" id="roleTabs" role="tablist">
             <li className="nav-item" role="presentation"> <button className="nav-link active" data-bs-target="#chro" data-bs-toggle="tab" id="chro-tab" role="tab" type="button">
-                <div className="tab-hold"> <img alt="" src="assets/images/human-resources.png" /> <span className="d-block">CHRO</span> </div>
-              </button> </li>
+              <div className="tab-hold"> <img alt="" src="assets/images/human-resources.png" /> <span className="d-block">CHRO</span> </div>
+            </button> </li>
             <li className="nav-item" role="presentation"> <button className="nav-link" data-bs-target="#manager" data-bs-toggle="tab" id="manager-tab" role="tab" type="button">
-                <div className="tab-hold"> <img alt="" src="assets/images/manager.png" /> <span className="d-block">Manager</span> </div>
-              </button> </li>
+              <div className="tab-hold"> <img alt="" src="assets/images/manager.png" /> <span className="d-block">Manager</span> </div>
+            </button> </li>
             <li className="nav-item" role="presentation"> <button className="nav-link" data-bs-target="#management" data-bs-toggle="tab" id="management-tab" role="tab" type="button">
-                <div className="tab-hold"> <img alt="" src="assets/images/management.png" /> <span className="d-block">Management</span> </div>
-              </button> </li>
+              <div className="tab-hold"> <img alt="" src="assets/images/management.png" /> <span className="d-block">Management</span> </div>
+            </button> </li>
             <li className="nav-item" role="presentation"> <button className="nav-link" data-bs-target="#employee1" data-bs-toggle="tab" id="employee-tab" role="tab" type="button">
-                <div className="tab-hold"> <img alt="" src="assets/images/employee.png" /> <span className="d-block">Employee</span> </div>
-              </button> </li>
+              <div className="tab-hold"> <img alt="" src="assets/images/employee.png" /> <span className="d-block">Employee</span> </div>
+            </button> </li>
             <li className="nav-item" role="presentation"> <button className="nav-link" data-bs-target="#finance" data-bs-toggle="tab" id="finance-tab" role="tab" type="button">
-                <div className="tab-hold"> <img alt="" src="assets/images/business-and-finance.png" /> <span className="d-block">Finance</span> </div>
-              </button> </li>
+              <div className="tab-hold"> <img alt="" src="assets/images/business-and-finance.png" /> <span className="d-block">Finance</span> </div>
+            </button> </li>
           </ul>
           <div className="tab-content" id="roleTabsContent">
             <div className="tab-pane fade show active" id="chro" role="tabpanel">
@@ -1078,7 +957,7 @@ export default function HomePage() {
               </div>
             </div>
           </div>
-          <div className="btn-center text-center mt-5"> <a className="btn btn-theme btn-md radius animation wow scrollToForm fadeInUp" data-bs-target="#bookdemo-modal" data-bs-toggle="modal" href="#" onClick={preventDefault} style={{visibility: 'visible', animationName: 'fadeInUp'}}>Book a demo</a> </div>
+          <div className="btn-center text-center mt-5"> <a className="btn btn-theme btn-md radius animation wow scrollToForm fadeInUp" data-bs-target="#bookdemo-modal" data-bs-toggle="modal" href="#" onClick={preventDefault} style={{ visibility: 'visible', animationName: 'fadeInUp' }}>Book a demo</a> </div>
         </div>
       </section>
       <hr />
@@ -1141,7 +1020,7 @@ export default function HomePage() {
           </div>
         </div>
       </section>
-      <div className="tesimoinial-style-four-area bg-gray default-padding bg-cover" style={{backgroundImage: 'url(assets/img/shape/38.png)'}}>
+      <div className="tesimoinial-style-four-area bg-gray default-padding bg-cover" style={{ backgroundImage: 'url(assets/img/shape/38.png)' }}>
         <div className="container">
           <div className="left-heading">
             <div className="row">
@@ -1191,190 +1070,190 @@ export default function HomePage() {
                   ))}
                   {false && (
                     <>
-                  <div className="swiper-slide">
-                    <div className="testimonial-style-four">
-                      <div className="quote">
-                        <img alt="Image Not Found" src="assets/images/quote.png" />
-                      </div>
-                      <div className="provider">
-                        <div className="thumb">
-                          <img alt="Image Not Found" src="assets/images/testhr.png" />
-                        </div>
-                        <div className="info">
-                          <h4>Tapasya</h4>
-                          <span>HR Head, IndiaIT360</span>
-                        </div>
-                      </div>
-                      <div className="more">
-                        <p className="moretext" data-fulltext=" It's easy to manage HR processes than what we where doing it manually. After adopting HRMetricS, we are able to same time by automating all the manual processes from attendance tracking to leave approvals and payslip generation, everything is now automated and accessible in just a few clicks. Our employees love the self-service portal, and our HR team has finally moved from firefighting to strategic planning. Kudos to the HRMetricS intuitive HRMS platform for such a comprehensive solution!" />
-                      </div>
-                      <div className="bottom-info mt-2">
-                        <div className="icon">
-                          <i className="fas fa-star" />
-                          <i className="fas fa-star" />
-                          <i className="fas fa-star" />
-                          <i className="fas fa-star" />
-                          <i className="fas fa-star" />
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="swiper-slide">
-                    <div className="testimonial-style-four">
-                      <div className="quote">
-                        <img alt="Image Not Found" src="assets/images/quote.png" />
-                      </div>
-                      <div className="provider">
-                        <div className="thumb">
-                          <img alt="Image Not Found" src="assets/images/test4.jpg" />
-                        </div>
-                        <div className="info">
-                          <h4>Vivek Arora</h4>
-                          <span>HR Head, Simsona</span>
+                      <div className="swiper-slide">
+                        <div className="testimonial-style-four">
+                          <div className="quote">
+                            <img alt="Image Not Found" src="assets/images/quote.png" />
+                          </div>
+                          <div className="provider">
+                            <div className="thumb">
+                              <img alt="Image Not Found" src="assets/images/testhr.png" />
+                            </div>
+                            <div className="info">
+                              <h4>Tapasya</h4>
+                              <span>HR Head, IndiaIT360</span>
+                            </div>
+                          </div>
+                          <div className="more">
+                            <p className="moretext" data-fulltext=" It's easy to manage HR processes than what we where doing it manually. After adopting HRMetricS, we are able to same time by automating all the manual processes from attendance tracking to leave approvals and payslip generation, everything is now automated and accessible in just a few clicks. Our employees love the self-service portal, and our HR team has finally moved from firefighting to strategic planning. Kudos to the HRMetricS intuitive HRMS platform for such a comprehensive solution!" />
+                          </div>
+                          <div className="bottom-info mt-2">
+                            <div className="icon">
+                              <i className="fas fa-star" />
+                              <i className="fas fa-star" />
+                              <i className="fas fa-star" />
+                              <i className="fas fa-star" />
+                              <i className="fas fa-star" />
+                            </div>
+                          </div>
                         </div>
                       </div>
-                      <p className="moretext" data-fulltext="At Simsona, we have completely transformed the way we handle recruitment and performance reviews. The platform is intuitive, fast, and incredibly powerful. We’ve reduced our employee onboarding  to exit process by nearly 40% and gained real-time visibility into employee performance metrics. It's like having an extra HR manager onboard—only smarter!" />
-                      <div className="bottom-info mt-2">
-                        <div className="icon">
-                          <i className="fas fa-star" />
-                          <i className="fas fa-star" />
-                          <i className="fas fa-star" />
-                          <i className="fas fa-star" />
-                          <i className="fas fa-star" />
+                      <div className="swiper-slide">
+                        <div className="testimonial-style-four">
+                          <div className="quote">
+                            <img alt="Image Not Found" src="assets/images/quote.png" />
+                          </div>
+                          <div className="provider">
+                            <div className="thumb">
+                              <img alt="Image Not Found" src="assets/images/test4.jpg" />
+                            </div>
+                            <div className="info">
+                              <h4>Vivek Arora</h4>
+                              <span>HR Head, Simsona</span>
+                            </div>
+                          </div>
+                          <p className="moretext" data-fulltext="At Simsona, we have completely transformed the way we handle recruitment and performance reviews. The platform is intuitive, fast, and incredibly powerful. We’ve reduced our employee onboarding  to exit process by nearly 40% and gained real-time visibility into employee performance metrics. It's like having an extra HR manager onboard—only smarter!" />
+                          <div className="bottom-info mt-2">
+                            <div className="icon">
+                              <i className="fas fa-star" />
+                              <i className="fas fa-star" />
+                              <i className="fas fa-star" />
+                              <i className="fas fa-star" />
+                              <i className="fas fa-star" />
+                            </div>
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  </div>
-                  <div className="swiper-slide">
-                    <div className="testimonial-style-four">
-                      <div className="quote">
-                        <img alt="Image Not Found" src="assets/images/quote.png" />
-                      </div>
-                      <div className="provider">
-                        <div className="thumb">
-                          <img alt="Image Not Found" src="assets/images/test3.jpg" />
-                        </div>
-                        <div className="info">
-                          <h4>Anita Mishra</h4>
-                          <span>VP of Employee Relations</span>
-                        </div>
-                      </div>
-                      <p className="moretext" data-fulltext=" HRMetricS has made our payroll processing seamless and efficient. What used to take several days now takes less than two days —with error-free calculations and payslip generation at the click of a button" />
-                      <div className="bottom-info mt-2">
-                        <div className="icon">
-                          <i className="fas fa-star" />
-                          <i className="fas fa-star" />
-                          <i className="fas fa-star" />
-                          <i className="fas fa-star" />
-                          <i className="fas fa-star" />
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="swiper-slide">
-                    <div className="testimonial-style-four">
-                      <div className="quote">
-                        <img alt="Image Not Found" src="assets/images/quote.png" />
-                      </div>
-                      <div className="provider">
-                        <div className="thumb">
-                          <img alt="Image Not Found" src="assets/images/test5.avif" />
-                        </div>
-                        <div className="info">
-                          <h4>Kritika Sharma</h4>
-                          <span>Employee Relation Manager</span>
+                      <div className="swiper-slide">
+                        <div className="testimonial-style-four">
+                          <div className="quote">
+                            <img alt="Image Not Found" src="assets/images/quote.png" />
+                          </div>
+                          <div className="provider">
+                            <div className="thumb">
+                              <img alt="Image Not Found" src="assets/images/test3.jpg" />
+                            </div>
+                            <div className="info">
+                              <h4>Anita Mishra</h4>
+                              <span>VP of Employee Relations</span>
+                            </div>
+                          </div>
+                          <p className="moretext" data-fulltext=" HRMetricS has made our payroll processing seamless and efficient. What used to take several days now takes less than two days —with error-free calculations and payslip generation at the click of a button" />
+                          <div className="bottom-info mt-2">
+                            <div className="icon">
+                              <i className="fas fa-star" />
+                              <i className="fas fa-star" />
+                              <i className="fas fa-star" />
+                              <i className="fas fa-star" />
+                              <i className="fas fa-star" />
+                            </div>
+                          </div>
                         </div>
                       </div>
-                      <p className="moretext" data-fulltext="HRMetricS is built for every kind of workforce. Our field employees can now mark their attendance and submit expenses on the go, right from their mobile devices." />
-                      <div className="bottom-info mt-2">
-                        <div className="icon">
-                          <i className="fas fa-star" />
-                          <i className="fas fa-star" />
-                          <i className="fas fa-star" />
-                          <i className="fas fa-star" />
-                          <i className="fas fa-star" />
+                      <div className="swiper-slide">
+                        <div className="testimonial-style-four">
+                          <div className="quote">
+                            <img alt="Image Not Found" src="assets/images/quote.png" />
+                          </div>
+                          <div className="provider">
+                            <div className="thumb">
+                              <img alt="Image Not Found" src="assets/images/test5.avif" />
+                            </div>
+                            <div className="info">
+                              <h4>Kritika Sharma</h4>
+                              <span>Employee Relation Manager</span>
+                            </div>
+                          </div>
+                          <p className="moretext" data-fulltext="HRMetricS is built for every kind of workforce. Our field employees can now mark their attendance and submit expenses on the go, right from their mobile devices." />
+                          <div className="bottom-info mt-2">
+                            <div className="icon">
+                              <i className="fas fa-star" />
+                              <i className="fas fa-star" />
+                              <i className="fas fa-star" />
+                              <i className="fas fa-star" />
+                              <i className="fas fa-star" />
+                            </div>
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  </div>
-                  <div className="swiper-slide">
-                    <div className="testimonial-style-four">
-                      <div className="quote">
-                        <img alt="Image Not Found" src="assets/images/quote.png" />
-                      </div>
-                      <div className="provider">
-                        <div className="thumb">
-                          <img alt="Image Not Found" src="assets/images/test6.jpg" />
-                        </div>
-                        <div className="info">
-                          <h4>Beena Rathi</h4>
-                          <span>Talent Acquisition Coordinator</span>
-                        </div>
-                      </div>
-                      <p className="moretext" data-fulltext=" Our employees appreciate the transparency and convenience HRMetricS offers—easy access to personal data, a clear and timely payroll process, and smooth leave and attendance management. The platform’s secure data handling also builds trust. It’s more than just an HR tool—it’s an asset to employee satisfaction." />
-                      <div className="bottom-info mt-2">
-                        <div className="icon">
-                          <i className="fas fa-star" />
-                          <i className="fas fa-star" />
-                          <i className="fas fa-star" />
-                          <i className="fas fa-star" />
-                          <i className="fas fa-star" />
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="swiper-slide">
-                    <div className="testimonial-style-four">
-                      <div className="quote">
-                        <img alt="Image Not Found" src="assets/images/quote.png" />
-                      </div>
-                      <div className="provider">
-                        <div className="thumb">
-                          <img alt="Image Not Found" src="assets/images/test7.jpeg" />
-                        </div>
-                        <div className="info">
-                          <h4>Carmen Bety</h4>
-                          <span>Talent Acquisition Specialist</span>
+                      <div className="swiper-slide">
+                        <div className="testimonial-style-four">
+                          <div className="quote">
+                            <img alt="Image Not Found" src="assets/images/quote.png" />
+                          </div>
+                          <div className="provider">
+                            <div className="thumb">
+                              <img alt="Image Not Found" src="assets/images/test6.jpg" />
+                            </div>
+                            <div className="info">
+                              <h4>Beena Rathi</h4>
+                              <span>Talent Acquisition Coordinator</span>
+                            </div>
+                          </div>
+                          <p className="moretext" data-fulltext=" Our employees appreciate the transparency and convenience HRMetricS offers—easy access to personal data, a clear and timely payroll process, and smooth leave and attendance management. The platform’s secure data handling also builds trust. It’s more than just an HR tool—it’s an asset to employee satisfaction." />
+                          <div className="bottom-info mt-2">
+                            <div className="icon">
+                              <i className="fas fa-star" />
+                              <i className="fas fa-star" />
+                              <i className="fas fa-star" />
+                              <i className="fas fa-star" />
+                              <i className="fas fa-star" />
+                            </div>
+                          </div>
                         </div>
                       </div>
-                      <p className="moretext" data-fulltext="I’ve always liked the software we were using for years, but after exploring other platforms like HRMetricS, it tuned out to be the best fit for our needs. HRMetricS stood out with its powerful customization options. We’re able to create tailored workflows that fit our unique processes—something I haven’t seen with other HR solutions. It offers outstanding value." />
-                      <div className="bottom-info mt-2">
-                        <div className="icon">
-                          <i className="fas fa-star" />
-                          <i className="fas fa-star" />
-                          <i className="fas fa-star" />
-                          <i className="fas fa-star" />
-                          <i className="fas fa-star" />
+                      <div className="swiper-slide">
+                        <div className="testimonial-style-four">
+                          <div className="quote">
+                            <img alt="Image Not Found" src="assets/images/quote.png" />
+                          </div>
+                          <div className="provider">
+                            <div className="thumb">
+                              <img alt="Image Not Found" src="assets/images/test7.jpeg" />
+                            </div>
+                            <div className="info">
+                              <h4>Carmen Bety</h4>
+                              <span>Talent Acquisition Specialist</span>
+                            </div>
+                          </div>
+                          <p className="moretext" data-fulltext="I’ve always liked the software we were using for years, but after exploring other platforms like HRMetricS, it tuned out to be the best fit for our needs. HRMetricS stood out with its powerful customization options. We’re able to create tailored workflows that fit our unique processes—something I haven’t seen with other HR solutions. It offers outstanding value." />
+                          <div className="bottom-info mt-2">
+                            <div className="icon">
+                              <i className="fas fa-star" />
+                              <i className="fas fa-star" />
+                              <i className="fas fa-star" />
+                              <i className="fas fa-star" />
+                              <i className="fas fa-star" />
+                            </div>
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  </div>
-                  <div className="swiper-slide">
-                    <div className="testimonial-style-four">
-                      <div className="quote">
-                        <img alt="Image Not Found" src="assets/images/quote.png" />
-                      </div>
-                      <div className="provider">
-                        <div className="thumb">
-                          <img alt="Image Not Found" src="assets/images/test8.jpg" />
+                      <div className="swiper-slide">
+                        <div className="testimonial-style-four">
+                          <div className="quote">
+                            <img alt="Image Not Found" src="assets/images/quote.png" />
+                          </div>
+                          <div className="provider">
+                            <div className="thumb">
+                              <img alt="Image Not Found" src="assets/images/test8.jpg" />
+                            </div>
+                            <div className="info">
+                              <h4>Ruby Nair</h4>
+                              <span>Chief Human Resources&nbsp;Officer</span>
+                            </div>
+                          </div>
+                          <p className="moretext" data-fulltext="One of the standout features of HRMetricS is its versatility. It’s not just limited to the HR team—our Assets, Office Management, Training, and Finance departments. All use it effectively to streamline their operations." />
+                          <div className="bottom-info mt-2">
+                            <div className="icon">
+                              <i className="fas fa-star" />
+                              <i className="fas fa-star" />
+                              <i className="fas fa-star" />
+                              <i className="fas fa-star" />
+                              <i className="fas fa-star" />
+                            </div>
+                          </div>
                         </div>
-                        <div className="info">
-                          <h4>Ruby Nair</h4>
-                          <span>Chief Human Resources&nbsp;Officer</span>
-                        </div>
                       </div>
-                      <p className="moretext" data-fulltext="One of the standout features of HRMetricS is its versatility. It’s not just limited to the HR team—our Assets, Office Management, Training, and Finance departments. All use it effectively to streamline their operations." />
-                      <div className="bottom-info mt-2">
-                        <div className="icon">
-                          <i className="fas fa-star" />
-                          <i className="fas fa-star" />
-                          <i className="fas fa-star" />
-                          <i className="fas fa-star" />
-                          <i className="fas fa-star" />
-                        </div>
-                      </div>
-                    </div>
-                  </div>
                     </>
                   )}
                 </div>
@@ -1444,12 +1323,12 @@ export default function HomePage() {
         </div>
       </div>
       <div className="dem-section bg-gradientt position-relative py-5">
-        <div className="circle-img" style={{backgroundImage: 'url(assets/images/circlbg.png)'}}>
+        <div className="circle-img" style={{ backgroundImage: 'url(assets/images/circlbg.png)' }}>
         </div>
         <div className="container">
           <div className="btn-center text-center myflex">
             <h3>Transform Your HR Process: Take the First Step Towards Automation</h3>
-            <a className="btn btn-theme btn-md radius scrollToForm animation wow fadeInUp" data-bs-target="#bookdemo-modal" data-bs-toggle="modal" href="#" onClick={preventDefault} style={{visibility: 'visible', animationName: 'fadeInUp'}}>Book a demo</a>
+            <a className="btn btn-theme btn-md radius scrollToForm animation wow fadeInUp" data-bs-target="#bookdemo-modal" data-bs-toggle="modal" href="#" onClick={preventDefault} style={{ visibility: 'visible', animationName: 'fadeInUp' }}>Book a demo</a>
           </div>
         </div>
       </div>
@@ -1489,7 +1368,7 @@ export default function HomePage() {
             <div className="row mb-4 align-items-center">
               <div className="col-md-5">
                 <div className="f-item about">
-                  <img alt="Logo" className="logo mb-2" src="assets/images/logo.png" style={{height: 45}} />
+                  <img alt="Logo" className="logo mb-2" src="assets/images/logo.png" style={{ height: 45 }} />
                   <p className="mb-0">
                     Experience the power of seamless HR management. Our solution empowers your organization by simplifying tasks, automating workflows, and optimizing HR processes for enhancing the productivity.
                   </p>
@@ -1580,15 +1459,15 @@ export default function HomePage() {
           <div className="container">
             <div className="row">
               <div className="col-lg-12 text-center">
-                <p>© Copyright 2026 <a href={siteSettings.company_url} style={{color: 'var(--color-primary)', fontWeight: 500}} target="_blank" rel="noopener noreferrer">{siteSettings.company_legal_name}</a> All Rights Reserved</p>
+                <p>© Copyright 2026 <a href={siteSettings.company_url} style={{ color: 'var(--color-primary)', fontWeight: 500 }} target="_blank" rel="noopener noreferrer">{siteSettings.company_legal_name}</a> All Rights Reserved</p>
               </div>
             </div>
           </div>
         </div>
       </footer>
       <button id="scrollTopBtn">↑</button>
-      
-      
+
+
     </div>
   );
 }

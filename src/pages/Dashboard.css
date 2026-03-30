@@ -1,0 +1,300 @@
+/* Dashboard.css - Modern Enterprise HRMS Dashboard */
+
+:root {
+    --db-primary: #0e72e4;
+    --db-primary-dark: #0c5bb7;
+    --db-bg: #f8fafc;
+    --db-sidebar: #0f172a;
+    --db-sidebar-hover: #1e293b;
+    --db-text-main: #1e293b;
+    --db-text-muted: #64748b;
+    --db-border: #e2e8f0;
+    --db-white: #ffffff;
+    --db-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    --db-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.db-container {
+    display: flex;
+    min-height: 100vh;
+    background-color: var(--db-bg);
+    font-family: 'Inter', sans-serif;
+    color: var(--db-text-main);
+}
+
+/* Sidebar */
+.db-sidebar {
+    width: 260px;
+    background-color: var(--db-sidebar);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    transition: var(--db-transition);
+    flex-shrink: 0;
+    overflow-y: auto;
+    height: 100vh;
+    position: sticky;
+    top: 0;
+}
+
+.db-sidebar.collapsed {
+    width: 80px;
+}
+
+.db-logo {
+    padding: 24px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.db-logo img {
+    height: 32px;
+}
+
+.db-nav {
+    padding: 20px 0;
+    flex-grow: 1;
+}
+
+.db-nav-item {
+    padding: 12px 24px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    color: rgba(255,255,255,0.7);
+    text-decoration: none;
+    transition: var(--db-transition);
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.db-nav-item:hover, .db-nav-item.active {
+    background-color: var(--db-sidebar-hover);
+    color: white;
+}
+
+.db-nav-item i {
+    font-size: 18px;
+    width: 20px;
+    text-align: center;
+}
+
+.db-nav-group-title {
+    padding: 24px 24px 8px;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: rgba(255,255,255,0.4);
+    font-weight: 700;
+}
+
+/* Main Content */
+.db-main {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+}
+
+.db-header {
+    height: 70px;
+    background-color: var(--db-white);
+    border-bottom: 1px solid var(--db-border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 32px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.db-search {
+    position: relative;
+    max-width: 400px;
+    width: 100%;
+}
+
+.db-search i {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--db-text-muted);
+}
+
+.db-search input {
+    width: 100%;
+    padding: 10px 10px 10px 40px;
+    border: 1px solid var(--db-border);
+    border-radius: 8px;
+    outline: none;
+    font-size: 14px;
+}
+
+.db-user-nav {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.db-icon-btn {
+    font-size: 20px;
+    color: var(--db-text-muted);
+    cursor: pointer;
+    position: relative;
+}
+
+.db-badge {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background-color: #ef4444;
+    color: white;
+    font-size: 10px;
+    padding: 2px 5px;
+    border-radius: 10px;
+}
+
+/* Dashboard Content */
+.db-content {
+    padding: 32px;
+}
+
+.db-title-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 32px;
+}
+
+.db-title-row h2 {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 4px;
+}
+
+.db-breadcrumb {
+    font-size: 13px;
+    color: var(--db-text-muted);
+}
+
+/* Stat Cards */
+.db-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 24px;
+    margin-bottom: 32px;
+}
+
+.db-stat-card {
+    background: var(--db-white);
+    padding: 24px;
+    border-radius: 12px;
+    box-shadow: var(--db-shadow);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.db-stat-info h3 {
+    font-size: 14px;
+    color: var(--db-text-muted);
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+.db-stat-info .value {
+    font-size: 28px;
+    font-weight: 800;
+}
+
+.db-stat-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+}
+
+.icon-blue { background: #eff6ff; color: #3b82f6; }
+.icon-green { background: #f0fdf4; color: #22c55e; }
+.icon-purple { background: #faf5ff; color: #a855f7; }
+.icon-orange { background: #fff7ed; color: #f97316; }
+
+/* Data Table */
+.db-card {
+    background: var(--db-white);
+    border-radius: 12px;
+    box-shadow: var(--db-shadow);
+    overflow: hidden;
+}
+
+.db-card-header {
+    padding: 20px 24px;
+    border-bottom: 1px solid var(--db-border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.db-card-header h4 {
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.db-table-wrapper {
+    overflow-x: auto;
+}
+
+.db-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.db-table th {
+    text-align: left;
+    padding: 16px 24px;
+    background: #f8fafc;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--db-text-muted);
+    border-bottom: 1px solid var(--db-border);
+}
+
+.db-table td {
+    padding: 16px 24px;
+    font-size: 14px;
+    border-bottom: 1px solid var(--db-border);
+}
+
+.db-status-badge {
+    padding: 4px 10px;
+    border-radius: 100px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.status-active { background: #dcfce7; color: #166534; }
+.status-pending { background: #fef9c3; color: #854d0e; }
+.status-away { background: #fee2e2; color: #991b1b; }
+
+.db-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: #e2e8f0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 12px;
+    font-weight: 700;
+    font-size: 12px;
+    color: var(--db-text-muted);
+}

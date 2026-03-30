@@ -30,17 +30,34 @@
     }
     .btn-orange {
       background-color: var(--color-primary);
-      color: white;
+      color: #fff;
       border-radius: 10px;
       font-weight: 600;
+      transition: var(--transition-smooth);
+      box-shadow: var(--box-shadow-soft);
     }
     .btn-orange:hover {
-      background-color: #538fe3;
+      background-color: var(--color-primary-dark);
+      transform: translateY(-2px);
+      box-shadow: var(--box-shadow-hover);
+      color: #fff;
     }
     .rating-stars {
       color: #f4b400;
     }
-      .logo2 {
+    .btn-theme {
+      background-color: var(--color-primary) !important;
+      color: #fff !important;
+      border: none;
+      transition: var(--transition-smooth);
+    }
+    .btn-theme:hover {
+      background-color: var(--color-primary-dark) !important;
+      transform: translateY(-2px);
+      box-shadow: var(--box-shadow-hover);
+      color: #fff !important;
+    }
+    .logo2 {
       width: 20px;
     }
 .partner-marquee
@@ -199,15 +216,16 @@ img.img22 {
     width: 65%;
 }
 .content-box-over {
-    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-    border: 1px solid var(--color-primary);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    border: 1px solid var(--color-primary-light);
     padding: 20px;
-    border-radius: 10px;
+    border-radius: 12px;
     width: 300px;
     position: absolute;
     bottom: 9%;
     right: 4%;
     background: #fff;
+    transition: var(--transition-smooth);
 }
 .content-box-over {
     text-align: left;

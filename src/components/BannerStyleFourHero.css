@@ -1,0 +1,160 @@
+.banner-style-four-area.hrmetrics-hero {
+    background: radial-gradient(circle at 50% -20%, rgba(14, 114, 228, 0.08) 0%, transparent 70%),
+        #ffffff;
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+}
+
+.hrms-hero-content {
+    max-width: 900px;
+    margin: 0 auto;
+    z-index: 2;
+    position: relative;
+}
+
+.hrms-pill-badge {
+    display: inline-flex;
+    align-items: center;
+    background: var(--color-primary-light);
+    padding: 8px 16px;
+    border-radius: 100px;
+    margin-bottom: 30px;
+    border: 1px solid rgba(14, 114, 228, 0.1);
+    box-shadow: 0 4px 12px rgba(14, 114, 228, 0.05);
+}
+
+.hrms-pill-dot {
+    width: 6px;
+    height: 6px;
+    background: var(--color-primary);
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.hrms-pill-text {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--color-heading);
+    letter-spacing: 0.5px;
+}
+
+.hrms-hero-title {
+    font-size: 64px;
+    line-height: 1.1;
+    color: var(--color-heading);
+    margin-bottom: 25px;
+    font-weight: 700;
+}
+
+.hrms-hero-title span {
+    color: var(--color-primary);
+}
+
+.hrms-hero-description {
+    font-size: 18px;
+    line-height: 1.6;
+    color: var(--color-paragraph);
+    margin-bottom: 40px;
+    max-width: 710px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.hrms-hero-actions {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.btn-hrms-primary {
+    background: var(--color-primary);
+    color: #ffffff;
+    padding: 16px 36px;
+    border-radius: 10px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: var(--transition-smooth);
+    box-shadow: 0 10px 25px rgba(14, 114, 228, 0.15);
+    border: 1px solid transparent;
+}
+
+.btn-hrms-primary:hover {
+    background: var(--color-primary-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 15px 30px rgba(14, 114, 228, 0.25);
+    color: #ffffff;
+}
+
+.btn-hrms-secondary {
+    background: #ffffff;
+    color: var(--color-heading);
+    padding: 16px 36px;
+    border-radius: 10px;
+    font-weight: 600;
+    border: 1px solid #e2e8f0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: var(--transition-smooth);
+}
+
+.btn-hrms-secondary:hover {
+    background: #f8fafc;
+    border-color: var(--color-primary);
+    transform: translateY(-2px);
+    color: var(--color-primary);
+}
+
+/* Background shapes refinements */
+.hrms-shape-left,
+.hrms-shape-right {
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(14, 114, 228, 0.05) 0%, transparent 70%);
+    border-radius: 50%;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.hrms-shape-left {
+    top: -100px;
+    left: -150px;
+}
+
+.hrms-shape-right {
+    bottom: -100px;
+    right: -150px;
+}
+
+.bg-animation {
+    display: none;
+    /* Removed for simplicity */
+}
+
+@media (max-width: 991px) {
+    .hrms-hero-title {
+        font-size: 48px;
+    }
+
+}
+
+@media (max-width: 767px) {
+    .hrms-hero-title {
+        font-size: 36px;
+    }
+
+    .hrms-hero-actions {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .btn-hrms-primary,
+    .btn-hrms-secondary {
+        width: 100%;
+        justify-content: center;
+    }
+}

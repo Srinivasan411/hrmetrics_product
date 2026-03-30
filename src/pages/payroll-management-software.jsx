@@ -154,29 +154,21 @@ export default function PayrollManagementSoftwarePage() {
           </div>
         </div>
       </div>
-      <BannerStyleFourHero>
-          <div className="row align-center">
-            <div className="col-lg-8 wow fadeInUp" data-wow-delay="200ms">
-              <div className="banner-four-top-info">
-                <h1><strong>Make Payroll  Management:</strong> Pay right, every time—accurate, automated, and audit-ready</h1>
-              </div>
-              <div className="banner-four-bottom-info mt-3">
-                <div className="row align-items-center">
-                  <div className="col-md-12">
-                    <div className="info">
-                      <p>
-                        Get access to 100% digitized, accurate, and audit-ready payroll management on one unified platform that simplifies workflow by automating processes. Auto-calculate TDS as per income slabs and rules, customize TDS parameters for employee-specific needs, and get real-time tax deduction reports with ease.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="col-lg-4">
-              <TryForFreeCard />
-            </div>
-          </div>
-      </BannerStyleFourHero>
+      <BannerStyleFourHero
+        badgeText="Payroll Management"
+        title={<><span>Make Payroll Management:</span> Pay right, every time—accurate, automated, and audit-ready</>}
+        description="Get access to 100% digitized, accurate, and audit-ready payroll management on one unified platform that simplifies workflow by automating processes."
+        primaryAction={
+          <a className="btn btn-hrms-primary" data-bs-target="#demoshedule-modal" data-bs-toggle="modal" href="#" onClick={(e) => e.preventDefault()}>
+            <i className="fas fa-calendar-check" /> Schedule a Demo
+          </a>
+        }
+        secondaryAction={
+          <a className="btn btn-hrms-secondary" href="#software1">
+            Learn More <i className="fas fa-arrow-right" />
+          </a>
+        }
+      />
       <section className="hr_process_section pb-0 default-padding">
         <div className="container">
           <div className="row">

@@ -12,21 +12,40 @@
 	--black: #000000;
 	--dark: #14334f;
 	--dark-secondary: #1e3373;
-	--white: #ffffff;
-	/* Brand primary (logo blue) */
+	/* Refined SaaS Palette (Derived from HRMetrics Logo) */
 	--color-primary: #0e72e4;
+	/* Brand Blue */
+	--color-primary-dark: #0c5bb7;
+	/* 8-10% Darker for Hover */
+	--color-primary-light: #f0f7ff;
+	/* Very Light Tint for Backgrounds */
 	--color-secondary: #425487;
-	--color-style-two: #B700C4;
-	--color-style-three: #FF9B0D;
-	--color-heading: #0e0e0e;
-	--color-paragraph: #666666;
-	--box-shadow-primary: -1px 3px 10px 0 rgba(0, 0, 0, 0.6);
-	--box-shadow-secondary: 0 10px 30px 0 rgba(14, 114, 228, 0.4);
-	--box-shadow-regular: 0px 2px 12px 0px #e7e7e7;
-	--bg-gray: #eff6fe;
-	--bg-gradient: linear-gradient(90deg, var(--color-primary) 0%, #315f88 100%);
-	--bg-gradient-secondary: linear-gradient(0deg, var(--color-primary) 0%, #14334f 100%);
-	--bg-gradient-two: linear-gradient(90deg, var(--color-style-two) 0%, var(--color-style-three) 100%);
+	--color-accent: #00d084;
+	/* Derived from Logo Green */
+
+	/* Legacy Compat (Updated for Harmony) */
+	--color-style-two: #0e72e4;
+	/* Map to primary for consistency */
+	--color-style-three: #1e40af;
+	/* Darker blue */
+
+	/* SaaS-like Text Palette */
+	--color-heading: #0f172a;
+	/* Slate-900 */
+	--color-paragraph: #475569;
+	/* Slate-600 */
+
+	/* Utilities */
+	--transition-smooth: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+	--box-shadow-soft: 0 4px 14px 0 rgba(14, 114, 228, 0.1);
+	--box-shadow-hover: 0 6px 20px rgba(14, 114, 228, 0.2);
+
+	--white: #ffffff;
+	--bg-gray: #f8fafc;
+	/* Soft neutral gray */
+	--bg-gradient: linear-gradient(135deg, var(--color-primary) 0%, #1e40af 100%);
+	--bg-gradient-secondary: linear-gradient(180deg, var(--color-primary) 0%, #1e3a8a 100%);
+	--bg-gradient-two: linear-gradient(90deg, var(--color-primary) 0%, var(--color-style-three) 100%);
 }
 
 
@@ -301,8 +320,8 @@ h6 {
 a,
 .btn,
 button {
-	-webkit-transition: all 0.35s ease-in-out;
-	transition: all 0.35s ease-in-out;
+	-webkit-transition: var(--transition-smooth);
+	transition: var(--transition-smooth);
 	outline: medium none;
 	text-decoration: none;
 	font-weight: 600;
@@ -1577,8 +1596,10 @@ p {
 }
 
 .btn:hover {
-	background-color: var(--color-primary);
+	background-color: var(--color-primary-dark);
 	color: var(--white);
+	transform: translateY(-1px);
+	box-shadow: var(--box-shadow-soft);
 }
 
 .btn.radius {
@@ -4187,7 +4208,7 @@ p {
 
 /* Banner Four */
 .banner-style-four-area {
-	padding-top: 35px;
+	padding-top: 15px;
 	overflow: hidden;
 	padding-bottom: 40px;
 }

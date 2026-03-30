@@ -9,7 +9,7 @@ export default function CompanyManagementSoftwarePage() {
           <div className="row align-center">
             <div className="col-lg-8">
               <div className="animate-text text-left">
-                <h1 className="mb-0 typing-animation" style={{fontSize: 16, fontWeight: 400, position: 'relative', top: 2}}>Most Advanced HRM Software in Indian Market Trusted by Many <img alt="" src="../assets/images/hand.gif" /></h1>
+                <h1 className="mb-0 typing-animation" style={{ fontSize: 16, fontWeight: 400, position: 'relative', top: 2 }}>Most Advanced HRM Software in Indian Market Trusted by Many <img alt="" src="../assets/images/hand.gif" /></h1>
               </div>
             </div>
             <div className="col-lg-4 text-end">
@@ -155,28 +155,28 @@ export default function CompanyManagementSoftwarePage() {
         </div>
       </div>
       <BannerStyleFourHero>
-          <div className="row align-center">
-            <div className="col-lg-8 wow fadeInUp" data-wow-delay="200ms">
-              <div className="banner-four-top-info">
-                <h1>Manage Complete <strong>Company Structure by Mapping</strong> your sister companies, roles, and policies - without using spreadsheets</h1>
-              </div>
-              <div className="banner-four-bottom-info mt-3">
-                <div className="row align-items-center">
-                  <div className="col-md-12">
-                    <div className="info">
-                      <p>
-                        Managing a growing organization shouldn’t feel scattered. With HRMetricS, bring all your company details—branches, departments, hierarchies, and policies—into one connected platform.
-                      </p>
-                      <p>Seamlessly define your structure, enable smoother workflows, and stay future-ready as you scale. Because better structure means better business.</p>
-                    </div>
+        <div className="row align-center">
+          <div className="col-lg-8 wow fadeInUp" data-wow-delay="200ms">
+            <div className="banner-four-top-info">
+              <h1>Manage Complete <strong>Company Structure by Mapping</strong> your sister companies, roles, and policies - without using spreadsheets</h1>
+            </div>
+            <div className="banner-four-bottom-info mt-3">
+              <div className="row align-items-center">
+                <div className="col-md-12">
+                  <div className="info">
+                    <p>
+                      Managing a growing organization shouldn’t feel scattered. With HRMetricS, bring all your company details—branches, departments, hierarchies, and policies—into one connected platform.
+                    </p>
+                    <p>Seamlessly define your structure, enable smoother workflows, and stay future-ready as you scale. Because better structure means better business.</p>
                   </div>
                 </div>
               </div>
             </div>
-            <div className="col-lg-4">
-              <TryForFreeCard />
-            </div>
           </div>
+          <div className="col-lg-4">
+            <TryForFreeCard />
+          </div>
+        </div>
       </BannerStyleFourHero>
       <section className="hr_process_section pb-0 default-padding">
         <div className="container">
@@ -331,66 +331,7 @@ export default function CompanyManagementSoftwarePage() {
           </div>
         </div>
       </div>
-      <div className="project-style-three-area area2" id="software4">
-        <div className="container-fluid">
-          <div className="project-style-three-items">
-            <div className="project-style-three-item">
-              <div className="row g-0">
-                <div className="col-xl-6 col-lg-6">
-                  <div className="project-style-three-info wow fadeInUp" data-wow-delay="500ms">
-                    <h4><a href="#">Enhanced Communication</a></h4>
-                    <p>
-                      Foster better internal collaboration
-                    </p>
-                    <div className="ul-coustom">
-                      <ul>
-                        <li>Enable smooth information sharing across teams</li>
-                        <li>Reduce dependency on third-party communication tools</li>
-                        <li>Keep everyone in sync with centralised messaging options</li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-                <div className="col-xl-6 col-lg-6">
-                  <div className="procut-img bg_4 rightbox wow fadeInUp" data-wow-delay="500ms">
-                    <img alt="Image Not Found" src="../assets/images/comunication.png" />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div className="project-style-three-area" id="software5">
-        <div className="container-fluid">
-          <div className="project-style-three-items">
-            <div className="project-style-three-item">
-              <div className="row g-0">
-                <div className="col-xl-6 col-lg-6">
-                  <div className="procut-img bg_1 leftbox wow fadeInUp" data-wow-delay="600ms">
-                    <img alt="Image Not Found" src="../assets/images/management-org.png" />
-                  </div>
-                </div>
-                <div className="col-xl-6 col-lg-6">
-                  <div className="project-style-three-info wow fadeInUp" data-wow-delay="600ms">
-                    <h4><a href="#">Centralised Management</a></h4>
-                    <p>
-                      Oversee operations with a unified control centre
-                    </p>
-                    <div className="ul-coustom">
-                      <ul>
-                        <li>Monitor all HR activities from one dashboard</li>
-                        <li>Simplify coordination between different company units</li>
-                        <li>Improve decision-making with a complete view of operations</li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+
       <div className="project-style-three-area area2" id="software6">
         <div className="container-fluid">
           <div className="project-style-three-items">
@@ -479,7 +420,7 @@ export default function CompanyManagementSoftwarePage() {
             <div className="row mb-4 align-items-center">
               <div className="col-md-5">
                 <div className="f-item about">
-                  <img alt="Logo" className="logo mb-2" src="../assets/images/logo.png" style={{height: 45}} />
+                  <img alt="Logo" className="logo mb-2" src="../assets/images/logo.png" style={{ height: 45 }} />
                   <p className="mb-0">
                     Experience the power of seamless HR management. Our solution empowers your organization by simplifying tasks, automating workflows, and optimizing HR processes for enhancing the productivity.
                   </p>
@@ -570,15 +511,15 @@ export default function CompanyManagementSoftwarePage() {
           <div className="container">
             <div className="row">
               <div className="col-lg-12 text-center">
-                <p>© Copyright 2026 <a href="https://hrmetrics.in/" style={{color: 'var(--color-primary)', fontWeight: 500}} target="_blank">HRMetricS</a> All Rights Reserved</p>
+                <p>© Copyright 2026 <a href="https://hrmetrics.in/" style={{ color: 'var(--color-primary)', fontWeight: 500 }} target="_blank">HRMetricS</a> All Rights Reserved</p>
               </div>
             </div>
           </div>
         </div>
       </footer>
       <button id="scrollTopBtn">↑</button>
-      
-      
+
+
     </div>
   );
 }

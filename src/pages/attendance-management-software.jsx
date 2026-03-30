@@ -154,30 +154,21 @@ export default function AttendanceManagementSoftwarePage() {
           </div>
         </div>
       </div>
-      <BannerStyleFourHero>
-          <div className="row align-center">
-            <div className="col-lg-8 wow fadeInUp" data-wow-delay="200ms">
-              <div className="banner-four-top-info">
-                <h1><strong>Customize policies,</strong> track time, and automate attendance—zero manual effort</h1>
-              </div>
-              <div className="banner-four-bottom-info mt-3">
-                <div className="row align-items-center">
-                  <div className="col-md-12">
-                    <div className="info">
-                      <p>
-                        Seamlessly integrate and automate your HR workflows for effortless attendance management. HRMetricS eliminates scattered data and manual tracking and helps you streamline processes, save time, and focus on building a more flexible and efficient workplace.
-                      </p>
-                      <p>Easily monitor attendance, manage time-offs and holidays, and auto-calculate paydays—all from a single, smart platform.</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="col-lg-4">
-              <TryForFreeCard />
-            </div>
-          </div>
-      </BannerStyleFourHero>
+      <BannerStyleFourHero
+        badgeText="Attendance Management"
+        title={<><span>Customize policies,</span> track time, and automate attendance—zero manual effort</>}
+        description="Seamlessly integrate and automate your HR workflows for effortless attendance management. HRMetricS eliminates scattered data and manual tracking and helps you streamline processes, save time, and focus on building a more flexible and efficient workplace."
+        primaryAction={
+          <a className="btn btn-hrms-primary" data-bs-target="#demoshedule-modal" data-bs-toggle="modal" href="#" onClick={(e) => e.preventDefault()}>
+            <i className="fas fa-calendar-check" /> Schedule a Demo
+          </a>
+        }
+        secondaryAction={
+          <a className="btn btn-hrms-secondary" href="#software1">
+            Learn More <i className="fas fa-arrow-right" />
+          </a>
+        }
+      />
       <section className="hr_process_section pb-0 default-padding">
         <div className="container">
           <div className="row">

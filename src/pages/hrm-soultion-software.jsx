@@ -154,28 +154,21 @@ export default function HrmSoultionSoftwarePage() {
           </div>
         </div>
       </div>
-      <BannerStyleFourHero>
-          <div className="row align-center">
-            <div className="col-lg-8 wow fadeInUp" data-wow-delay="200ms">
-              <div className="banner-four-top-info">
-                <h1>Save 25% on Time &amp; Cost - Switch to a Paperless <strong>HRMS Solution </strong>for Effortless Efficiency</h1>
-              </div>
-              <div className="banner-four-bottom-info mt-3">
-                <div className="row align-items-center">
-                  <div className="col-md-12">
-                    <div className="info">
-                      <p>Move ahead of spreadsheets, manual approvals and tiring payroll processing.</p>
-                      <p>HRMetricS automates your HR processes—so you can focus on what truly matters: your people. From onboarding to attendance, payroll to performance—manage everything in one powerful, cloud-based platform.</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="col-lg-4">
-              <TryForFreeCard />
-            </div>
-          </div>
-      </BannerStyleFourHero>
+      <BannerStyleFourHero
+        badgeText="Enterprise HR Solution"
+        title={<>Save 25% on Time & Cost - Switch to a Paperless <span>HRMS Solution</span> for Effortless Efficiency</>}
+        description="Move ahead of spreadsheets, manual approvals and tiring payroll processing. HRMetricS automates your HR processes—so you can focus on what truly matters: your people."
+        primaryAction={
+          <a className="btn btn-hrms-primary" data-bs-target="#demoshedule-modal" data-bs-toggle="modal" href="#" onClick={(e) => e.preventDefault()}>
+            <i className="fas fa-calendar-check" /> Schedule a Demo
+          </a>
+        }
+        secondaryAction={
+          <a className="btn btn-hrms-secondary" href="#software">
+            Explore Modules <i className="fas fa-arrow-right" />
+          </a>
+        }
+      />
       <section className="hr_process_section default-padding">
         <div className="container">
           <div className="row">
