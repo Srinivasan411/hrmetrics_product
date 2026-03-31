@@ -42,7 +42,7 @@ export function BannerStyleFourHero({
             </div>
           )}
 
-          {children && <div className="mt-5">{children}</div>}
+          {children && <div className="mt-2">{children}</div>}
         </div>
       </div>
     </div>

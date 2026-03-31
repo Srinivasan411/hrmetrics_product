@@ -19,7 +19,7 @@
     background: var(--color-primary-light);
     padding: 8px 16px;
     border-radius: 100px;
-    margin-bottom: 30px;
+    margin-bottom: 10px;
     border: 1px solid rgba(14, 114, 228, 0.1);
     box-shadow: 0 4px 12px rgba(14, 114, 228, 0.05);
 }
@@ -43,7 +43,6 @@
     font-size: 64px;
     line-height: 1.1;
     color: var(--color-heading);
-    margin-bottom: 25px;
     font-weight: 700;
 }
 
@@ -55,7 +54,6 @@
     font-size: 18px;
     line-height: 1.6;
     color: var(--color-paragraph);
-    margin-bottom: 40px;
     max-width: 710px;
     margin-left: auto;
     margin-right: auto;

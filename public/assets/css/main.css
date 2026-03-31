@@ -103,7 +103,7 @@ box-shadow:none;
     line-height: 1.2em;
 }
 .raitingboxx {
-    display: flex;
+    /* display: flex; */
     align-items: center;
     gap: 10px;
 }
