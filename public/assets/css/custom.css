@@ -1069,19 +1069,19 @@ Faq Area CSS
 
 .bookdemo-float {
   position: fixed;
-  top: 50%;
-  right: calc(0px + env(safe-area-inset-right, 0px));
+  top: auto;
+  right: calc(20px + env(safe-area-inset-right, 0px));
   left: auto;
-  bottom: auto;
-  transform: translateY(-50%);
+  bottom: calc(20px + env(safe-area-inset-bottom, 0px));
+  transform: none;
   z-index: 1040;
   display: inline-flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
   gap: 10px;
-  padding: 14px 12px;
-  border-radius: 14px 0 0 14px;
+  padding: 12px 16px;
+  border-radius: 9999px;
   border: 0;
   background: var(--bg-gradient-two);
   color: #ffffff;
@@ -1096,13 +1096,13 @@ Faq Area CSS
 }
 
 .bookdemo-float:hover {
-  transform: translateY(-50%) translateX(-6px);
+  transform: translateY(-2px) scale(1.02);
   filter: brightness(1.02);
   box-shadow: rgba(0, 0, 0, 0.26) 0px 14px 30px;
 }
 
 .bookdemo-float:active {
-  transform: translateY(-50%) translateX(-2px) scale(0.99);
+  transform: translateY(0) scale(0.99);
 }
 
 .bookdemo-float:focus-visible {
@@ -1111,7 +1111,7 @@ Faq Area CSS
 }
 
 .bookdemo-float span {
-  writing-mode: vertical-rl;
+  writing-mode: horizontal-tb;
   text-orientation: mixed;
   white-space: nowrap;
   font-size: 13px;
@@ -1121,11 +1121,11 @@ Faq Area CSS
 /* Legacy floating "Book a demo" (old template uses .box-transform) */
 .box-transform {
   position: fixed !important;
-  top: 50% !important;
+  top: auto !important;
   left: auto !important;
-  right: calc(0px + env(safe-area-inset-right, 0px)) !important;
-  bottom: auto !important;
-  transform: translateY(-50%) !important;
+  right: calc(20px + env(safe-area-inset-right, 0px)) !important;
+  bottom: calc(20px + env(safe-area-inset-bottom, 0px)) !important;
+  transform: none !important;
   margin: 0 !important;
   display: block !important;
   z-index: 1040;
@@ -1133,26 +1133,24 @@ Faq Area CSS
 
 .box-transform > a {
   display: inline-flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
   gap: 10px;
-  padding: 14px 12px;
-  border-radius: 14px 0 0 14px;
+  padding: 12px 16px;
+  border-radius: 9999px;
   border: 0;
   background: var(--bg-gradient-two) !important;
   color: #ffffff !important;
   font-weight: 800;
   text-decoration: none;
   box-shadow: rgba(0, 0, 0, 0.22) 0px 10px 26px;
-  writing-mode: vertical-rl;
-  text-orientation: mixed;
   white-space: nowrap;
   transition: transform 0.18s ease-in-out, filter 0.18s ease-in-out, box-shadow 0.18s ease-in-out;
 }
 
 .box-transform > a:hover {
-  transform: translateX(-6px);
+  transform: translateY(-2px) scale(1.02);
   filter: brightness(1.02);
   box-shadow: rgba(0, 0, 0, 0.26) 0px 14px 30px;
 }

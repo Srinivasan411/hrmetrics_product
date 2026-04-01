@@ -154,27 +154,21 @@ export default function LeaveManagementSoftwarePage() {
           </div>
         </div>
       </div>
-      <BannerStyleFourHero>
-          <div className="row align-center">
-            <div className="col-lg-8 wow fadeInUp" data-wow-delay="200ms">
-              <div className="banner-four-top-info">
-                <h1>Track and <strong>Manage Leaves Accurately</strong> without the stress - so you can focus on what matters most</h1>
-              </div>
-              <div className="banner-four-bottom-info mt-3">
-                <div className="row align-items-center">
-                  <div className="col-md-12">
-                    <div className="info">
-                      <p>No more tedious email exchanges or lost paperwork—just a smooth, self-service experience for your team. HRMetricS simplifies the process of applying for leave, approving, and tracking by making it completely digital and transparent. From casual leaves to comp-offs, manage every type effortlessly, customize your policies, and keep track of everything in real-time—all in one easy-to-use platform.</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="col-lg-4">
-              <TryForFreeCard />
-            </div>
-          </div>
-      </BannerStyleFourHero>
+      <BannerStyleFourHero
+        badgeText="Leave Management"
+        title={<>Track and <strong>Manage Leaves Accurately</strong> without the stress - so you can focus on what matters most</>}
+        description="No more tedious email exchanges or lost paperwork—just a smooth, self-service experience for your team. HRMetricS simplifies the process of applying for leave, approving, and tracking by making it completely digital and transparent. From casual leaves to comp-offs, manage every type effortlessly, customize your policies, and keep track of everything in real-time—all in one easy-to-use platform."
+        primaryAction={
+          <a className="btn btn-hrms-primary" data-bs-target="#demoshedule-modal" data-bs-toggle="modal" href="#" onClick={(e) => e.preventDefault()}>
+            <i className="fas fa-calendar-check" /> Schedule a Demo
+          </a>
+        }
+        secondaryAction={
+          <a className="btn btn-hrms-secondary" href="#software1">
+            Learn More <i className="fas fa-arrow-right" />
+          </a>
+        }
+      />
       <section className="hr_process_section pb-0 default-padding">
         <div className="container">
           <div className="row">

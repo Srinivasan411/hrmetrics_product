@@ -154,27 +154,21 @@ export default function EventsAndMeetingSoftwarePage() {
           </div>
         </div>
       </div>
-      <BannerStyleFourHero>
-          <div className="row align-center">
-            <div className="col-lg-8 wow fadeInUp" data-wow-delay="200ms">
-              <div className="banner-four-top-info">
-                <h1>Align meetings, <strong>organize events and keep team</strong> updated without the hassle</h1>
-              </div>
-              <div className="banner-four-bottom-info mt-3">
-                <div className="row align-items-center">
-                  <div className="col-md-12">
-                    <div className="info">
-                      <p>Plan, manage, and track all your organizational events and meetings from one place. Whether it’s a town hall, training, or 1:1 review—HRMetricS makes scheduling easy, improves participation, and ensures nothing falls through the cracks.</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="col-lg-4">
-              <TryForFreeCard />
-            </div>
-          </div>
-      </BannerStyleFourHero>
+      <BannerStyleFourHero
+        badgeText="Events & Meetings"
+        title={<>Align meetings, <strong>organize events and keep team</strong> updated without the hassle</>}
+        description="Plan, manage, and track all your organizational events and meetings from one place. Whether it's a town hall, training, or 1:1 review—HRMetricS makes scheduling easy, improves participation, and ensures nothing falls through the cracks."
+        primaryAction={
+          <a className="btn btn-hrms-primary" data-bs-target="#demoshedule-modal" data-bs-toggle="modal" href="#" onClick={(e) => e.preventDefault()}>
+            <i className="fas fa-calendar-check" /> Schedule a Demo
+          </a>
+        }
+        secondaryAction={
+          <a className="btn btn-hrms-secondary" href="#software1">
+            Learn More <i className="fas fa-arrow-right" />
+          </a>
+        }
+      />
       <section className="hr_process_section pb-0 default-padding">
         <div className="container">
           <div className="row">

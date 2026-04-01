@@ -154,30 +154,21 @@ export default function CompanyManagementSoftwarePage() {
           </div>
         </div>
       </div>
-      <BannerStyleFourHero>
-        <div className="row align-center">
-          <div className="col-lg-8 wow fadeInUp" data-wow-delay="200ms">
-            <div className="banner-four-top-info">
-              <h1>Manage Complete <strong>Company Structure by Mapping</strong> your sister companies, roles, and policies - without using spreadsheets</h1>
-            </div>
-            <div className="banner-four-bottom-info mt-3">
-              <div className="row align-items-center">
-                <div className="col-md-12">
-                  <div className="info">
-                    <p>
-                      Managing a growing organization shouldn’t feel scattered. With HRMetricS, bring all your company details—branches, departments, hierarchies, and policies—into one connected platform.
-                    </p>
-                    <p>Seamlessly define your structure, enable smoother workflows, and stay future-ready as you scale. Because better structure means better business.</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="col-lg-4">
-            <TryForFreeCard />
-          </div>
-        </div>
-      </BannerStyleFourHero>
+      <BannerStyleFourHero
+        badgeText="Company Management"
+        title={<>Manage Complete <strong>Company Structure by Mapping</strong> your sister companies, roles, and policies - without using spreadsheets</>}
+        description="Managing a growing organization shouldn't feel scattered. With HRMetricS, bring all your company details—branches, departments, hierarchies, and policies—into one connected platform. Seamlessly define your structure, enable smoother workflows, and stay future-ready as you scale. Because better structure means better business."
+        primaryAction={
+          <a className="btn btn-hrms-primary" data-bs-target="#demoshedule-modal" data-bs-toggle="modal" href="#" onClick={(e) => e.preventDefault()}>
+            <i className="fas fa-calendar-check" /> Schedule a Demo
+          </a>
+        }
+        secondaryAction={
+          <a className="btn btn-hrms-secondary" href="#software1">
+            Learn More <i className="fas fa-arrow-right" />
+          </a>
+        }
+      />
       <section className="hr_process_section pb-0 default-padding">
         <div className="container">
           <div className="row">

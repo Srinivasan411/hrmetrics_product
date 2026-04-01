@@ -206,7 +206,7 @@ export default function HomePage() {
         </div>
       </div>
       <BannerStyleFourHero
-        badgeText="Bss HR Management"
+        badgeText="HRMS Management"
         title={<>A Full-Suite <span>HRM Software</span> that Automates all your Complex Business Operations</>}
         description="HRMetricS streamlines everything—from onboarding and attendance to payroll and performance—saving up to 25% on time and cost while delivering a smarter, paperless employee experience."
         primaryAction={
@@ -226,10 +226,10 @@ export default function HomePage() {
             <i className="fa fa-star" />
             <i className="fa fa-star" />
             <i className="fa fa-star" />
-            <i className="fa fa-star" />
             <i className="fa fa-star-half-o" />
+            <i className="fa fa-star-o" />
           </span>
-          <p>4.7+ ratings across all platforms</p>
+          <p>3+ ratings across all platforms</p>
         </div>
         <div className="row mt-3 justify-content-center animation wow fadeInUp">
           <div className="col-md-5">
@@ -430,7 +430,7 @@ export default function HomePage() {
                       <span className="svg_bg">
                         <svg fill="currentColor" height="64px" id="Layer_1" version="1.1" viewBox="0 0 491.52 491.52" width="64px" xmlSpace="preserve" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink"><g id="SVGRepo_bgCarrier" strokeWidth={0} /><g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round" /><g id="SVGRepo_iconCarrier"> <g> <g> <rect height="20.48" width="92.16" x="71.68" y="102.4" /> </g> </g> <g> <g> <rect height="20.48" width="51.2" x="184.32" y="102.4" /> </g> </g> <g> <g> <rect height="20.48" width="92.16" x="71.68" y={256} /> </g> </g> <g> <g> <rect height="20.48" width="51.2" x="184.32" y={256} /> </g> </g> <g> <g> <rect height="20.48" width="61.44" x="71.68" y="204.8" /> </g> </g> <g> <g> <rect height="20.48" width="30.72" x="296.96" y="204.8" /> </g> </g> <g> <g> <rect height="20.48" width="122.88" x="153.6" y="204.8" /> </g> </g> <g> <g> <rect height="20.48" width="40.96" x="204.8" y="153.6" /> </g> </g> <g> <g> <rect height="20.48" width="112.64" x="71.68" y="153.6" /> </g> </g> <g> <g> <rect height="20.48" width="153.6" x="266.24" y="153.6" /> </g> </g> <g> <g> <rect height="20.48" width="153.6" x="71.68" y="307.2" /> </g> </g> <g> <g> <polygon points="391.24,243.64 376.76,258.12 405.36,286.72 376.76,315.32 391.24,329.8 434.32,286.72 " /> </g> </g> <g> <g> <polygon points="309.32,258.12 294.84,243.64 251.76,286.72 294.84,329.8 309.32,315.32 280.72,286.72 " /> </g> </g> <g> <g> <rect height="20.48" transform="matrix(0.3711 -0.9286 0.9286 0.3711 -50.5861 498.917)" width="110.284" x="287.878" y="276.562" /> </g> </g> <g> <g> <path d="M471.04,358.4V51.2H20.48v307.2H0v44.06l25.24,37.86h441.04l25.24-37.86V358.4H471.04z M40.96,71.68h409.6V358.4H40.96 V71.68z M471.04,396.26l-15.72,23.58H36.2l-15.72-23.58v-17.38h450.56V396.26z" /> </g> </g> <g> <g> <rect height="20.48" width="20.48" x="276.48" y="389.12" /> </g> </g> <g> <g> <rect height="20.48" width="20.48" x="235.52" y="389.12" /> </g> </g> <g> <g> <rect height="20.48" width="20.48" x="194.56" y="389.12" /> </g> </g> </g></svg>
                       </span>
-                      <span>Asset Management</span>
+                      <span>Organisation Structure</span>
                     </button>
                   </li>
                   <li className="nav-item" role="presentation">
@@ -438,7 +438,7 @@ export default function HomePage() {
                       <span className="svg_bg">
                         <svg fill="currentColor" height="64px" id="Layer_1" version="1.1" viewBox="0 0 512 512" width="64px" xmlSpace="preserve" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink"><g id="SVGRepo_bgCarrier" strokeWidth={0} /><g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round" /><g id="SVGRepo_iconCarrier"> <g> <g> <g> <path d="M73.237,341.312l-50.539-0.021c3.797-14.379,15.125-25.92,30.101-29.675l42.069-10.517 c3.819-0.939,6.805-3.925,7.765-7.744l4.352-17.408c0.725-2.923,0.192-6.037-1.515-8.555c-1.685-2.496-4.373-4.16-7.381-4.587 c-12.992-1.813-22.933-4.565-29.803-6.955c6.763-11.648,14.251-32.405,14.251-67.115c0-49.941,36.437-60.757,45.461-60.757 c10.389,0,12.181,1.685,16.064,5.312c4.288,4.032,11.029,3.84,15.083-0.448c4.053-4.288,3.84-11.051-0.448-15.083 c-8.853-8.32-16.597-11.136-30.699-11.136c-20.928,0-66.795,20.672-66.795,82.091c0,48.576-16.149,62.891-16.128,62.891 c-2.859,2.133-4.437,5.525-4.245,9.088c0.171,3.541,2.091,6.763,5.141,8.597c0.619,0.363,13.205,7.808,37.525,12.651 l-35.861,8.981C19.584,297.941,0,323.051,0,351.979c0,5.888,4.779,10.667,10.667,10.667h62.571 c5.888,0,10.667-4.779,10.667-10.667S79.125,341.312,73.237,341.312z" /> <path d="M464.363,290.923l-35.861-8.96v-0.043c24.149-4.843,36.864-12.224,37.461-12.587c2.944-1.749,4.757-4.928,5.056-8.384 c0.277-3.435-1.237-6.912-3.861-9.131c-0.171-0.128-16.384-14.421-16.384-63.083c0-47.701-12.16-71.872-36.181-71.872h-0.811 c-7.872-7.168-14.827-10.219-29.781-10.219c-6.293,0-14.656,2.219-22.955,6.123c-5.333,2.496-7.637,8.853-5.141,14.187 c2.517,5.333,8.896,7.595,14.187,5.12c6.933-3.243,12.117-4.096,13.909-4.096c10.88,0,12.245,1.344,17.941,7.083 c2.005,1.984,4.715,3.115,7.552,3.115h5.099c9.152,0,14.848,19.371,14.848,50.539c0,34.688,7.467,55.424,14.229,67.072 c-6.891,2.411-16.875,5.163-29.803,6.976c-3.008,0.405-5.675,2.091-7.36,4.587c-1.707,2.517-2.24,5.611-1.515,8.555l4.352,17.429 c0.96,3.819,3.925,6.827,7.765,7.765l42.069,10.517c14.976,3.755,26.304,15.296,30.101,29.696h-50.496v21.333l62.549-0.021 c5.888,0,10.667-4.779,10.667-10.667C512,323.029,492.416,297.941,464.363,290.923z" /> <path d="M364.608,336.512l-51.136-12.779l-1.557-6.293c34.859-6.421,53.035-16.981,53.845-17.472 c2.987-1.771,4.864-4.971,5.12-8.448c0.256-3.477-1.28-6.933-3.989-9.131c-0.213-0.192-23.723-20.203-23.723-88.981 c0-62.464-15.296-94.144-45.461-94.144h-2.603c-10.027-9.451-18.475-13.909-39.125-13.909c-27.307,0-87.189,27.2-87.189,108.053 c0,68.779-23.488,88.789-23.552,88.853c-2.837,2.112-4.437,5.525-4.245,9.067c0.171,3.541,2.091,6.763,5.141,8.597 c0.832,0.491,18.816,11.115,53.909,17.536l-1.536,6.251l-51.136,12.779c-36.523,9.131-62.037,41.813-62.037,79.488 c0,2.837,1.109,5.568,3.115,7.552s4.715,3.115,7.552,3.115h319.979c5.888,0,10.667-4.779,10.667-10.667 C426.645,378.304,401.131,345.643,364.608,336.512z M107.605,405.291c4.117-23.189,21.44-42.24,44.949-48.107l57.344-14.336 c3.819-0.96,6.805-3.947,7.765-7.765l5.909-23.744c0.725-2.944,0.192-6.059-1.515-8.555c-1.685-2.496-4.373-4.16-7.381-4.587 c-20.992-2.923-36.309-7.659-45.824-11.307c9.365-14.229,21.291-42.389,21.291-93.525c0-71.275,52.8-86.72,65.856-86.72 c15.808,0,18.688,2.24,27.264,10.795c2.005,1.984,4.715,3.115,7.552,3.115h6.933c15.339,0,24.128,26.539,24.128,72.811 c0,51.093,11.883,79.232,21.248,93.483c-9.579,3.669-24.939,8.405-45.824,11.328c-3.008,0.405-5.675,2.091-7.36,4.587 c-1.707,2.517-2.24,5.632-1.515,8.555l5.931,23.765c0.96,3.819,3.925,6.827,7.765,7.765l57.344,14.336 c23.488,5.867,40.832,24.939,44.928,48.128L107.605,405.291z" /> </g> </g> </g> </g></svg>
                       </span>
-                      <span>Field Force Management</span>
+                      <span>Gatepass Management</span>
                     </button>
                   </li>
                 </ul>
@@ -446,13 +446,6 @@ export default function HomePage() {
                   <div aria-labelledby="hrms-tab" className="tab-pane fade" id="hrms" role="tabpanel">
                     <div className="tab_section_layout hrmstabs">
                       <ul className="nav nav-tabs" id="myTab" role="tablist">
-                        <li className="nav-item" role="presentation"> <button className="nav-link active" data-bs-target="#company" data-bs-toggle="tab" id="company-tab" role="tab" type="button"> <span className="svg_bg"><svg fill="currentColor" height="64px" viewBox="0 0 50 50" width="64px" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
-                          <g id="SVGRepo_bgCarrier" strokeWidth={0} />
-                          <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round" />
-                          <g id="SVGRepo_iconCarrier">
-                            <path d="M8 2L8 6L4 6L4 48L46 48L46 14L30 14L30 6L26 6L26 2 Z M 10 4L24 4L24 8L28 8L28 46L19 46L19 39L15 39L15 46L6 46L6 8L10 8 Z M 10 10L10 12L12 12L12 10 Z M 14 10L14 12L16 12L16 10 Z M 18 10L18 12L20 12L20 10 Z M 22 10L22 12L24 12L24 10 Z M 10 15L10 19L12 19L12 15 Z M 14 15L14 19L16 19L16 15 Z M 18 15L18 19L20 19L20 15 Z M 22 15L22 19L24 19L24 15 Z M 30 16L44 16L44 46L30 46 Z M 32 18L32 20L34 20L34 18 Z M 36 18L36 20L38 20L38 18 Z M 40 18L40 20L42 20L42 18 Z M 10 21L10 25L12 25L12 21 Z M 14 21L14 25L16 25L16 21 Z M 18 21L18 25L20 25L20 21 Z M 22 21L22 25L24 25L24 21 Z M 32 22L32 24L34 24L34 22 Z M 36 22L36 24L38 24L38 22 Z M 40 22L40 24L42 24L42 22 Z M 32 26L32 28L34 28L34 26 Z M 36 26L36 28L38 28L38 26 Z M 40 26L40 28L42 28L42 26 Z M 10 27L10 31L12 31L12 27 Z M 14 27L14 31L16 31L16 27 Z M 18 27L18 31L20 31L20 27 Z M 22 27L22 31L24 31L24 27 Z M 32 30L32 32L34 32L34 30 Z M 36 30L36 32L38 32L38 30 Z M 40 30L40 32L42 32L42 30 Z M 10 33L10 37L12 37L12 33 Z M 14 33L14 37L16 37L16 33 Z M 18 33L18 37L20 37L20 33 Z M 22 33L22 37L24 37L24 33 Z M 32 34L32 36L34 36L34 34 Z M 36 34L36 36L38 36L38 34 Z M 40 34L40 36L42 36L42 34 Z M 32 38L32 40L34 40L34 38 Z M 36 38L36 40L38 40L38 38 Z M 40 38L40 40L42 40L42 38 Z M 10 39L10 44L12 44L12 39 Z M 22 39L22 44L24 44L24 39 Z M 32 42L32 44L34 44L34 42 Z M 36 42L36 44L38 44L38 42 Z M 40 42L40 44L42 44L42 42Z" />
-                          </g>
-                        </svg></span><span>Company Management</span></button> </li>
                         <li className="nav-item" role="presentation"> <button className="nav-link" data-bs-target="#employee" data-bs-toggle="tab" id="employee-tab" role="tab" type="button"> <span className="svg_bg"> <svg enableBackground="new 0 0 511 511" fill="#000000" height="64px" version="1.1" viewBox="0 0 511 511" width="64px" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
                           <g id="SVGRepo_bgCarrier" strokeWidth={0} />
                           <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round" />
@@ -764,7 +757,7 @@ export default function HomePage() {
                     <div className="imgbox-tab text-center position-relative">
                       <img alt="" className="over1" src="assets/images/rate.gif" />
                       <div className="shadowww">
-                        <img alt="" className="img22" src="assets/images/Product/Activity-Management.jpg" />
+                        <img alt="" className="img22" src="assets/images/Product/Activity-Management.png" />
                       </div>
                       <div className="content-box-over">
                         <h5>Activity Management Software </h5>
@@ -777,7 +770,7 @@ export default function HomePage() {
                     <div className="imgbox-tab position-relative">
                       <img alt="" className="over1" src="assets/images/rate.gif" />
                       <div className="shadowww">
-                        <img alt="" className="img22" src="assets/images/Product/Task-managment.jpg" />
+                        <img alt="" className="img22" src="assets/images/Product/Task-managment.png" />
                       </div>
                       <div className="content-box-over">
                         <h5>Task Management Software</h5>
@@ -790,11 +783,11 @@ export default function HomePage() {
                     <div className="imgbox-tab position-relative">
                       <img alt="" className="over1" src="assets/images/rate.gif" />
                       <div className="shadowww">
-                        <img alt="" className="img22" src="assets/images/Product/Asset-Managment.jpg" />
+                        <img alt="" className="img22" src="assets/images/Product/OrganisationStructure.png" />
                       </div>
                       <div className="content-box-over">
-                        <h5>Asset Management Software</h5>
-                        <p>Gain complete control over your assets—track, monitor, and maintain them in real-time with a platform.</p>
+                        <h5>Organisation Structure</h5>
+                        <p>Gain complete control over your Organisation Structure, monitor, and maintain them in real-time with a platform.</p>
                         <div className="btn-center text-left mt-3"> <a className="btn btn-theme btn-md radius animation wow fadeInUp" data-bs-target="#bookdemo-modal" data-bs-toggle="modal" href="#" onClick={preventDefault} style={{ visibility: 'visible', animationName: 'fadeInUp' }}>Book a demo</a> </div>
                       </div>
                     </div>
@@ -803,10 +796,10 @@ export default function HomePage() {
                     <div className="imgbox-tab position-relative">
                       <img alt="" className="over1" src="assets/images/rate.gif" />
                       <div className="shadowww">
-                        <img alt="" className="img22" src="assets/images/Product/Field-Force-Managment.jpg" />
+                        <img alt="" className="img22" src="assets/images/Product/Gatepass.png" />
                       </div>
                       <div className="content-box-over">
-                        <h5>Field Force Management</h5>
+                        <h5>Gatepass Management</h5>
                         <p>Empower your on-ground teams with GPS-based tracking, live updates, task allocation.</p>
                         <div className="btn-center text-left mt-3"> <a className="btn btn-theme btn-md radius animation wow fadeInUp" data-bs-target="#bookdemo-modal" data-bs-toggle="modal" href="#" onClick={preventDefault} style={{ visibility: 'visible', animationName: 'fadeInUp' }}>Book a demo</a> </div>
                       </div>
@@ -1368,7 +1361,7 @@ export default function HomePage() {
             <div className="row mb-4 align-items-center">
               <div className="col-md-5">
                 <div className="f-item about">
-                  <img alt="Logo" className="logo mb-2" src="assets/images/logo.png" style={{ height: 45 }} />
+                  <img alt="Logo" className="logo mb-2" src="assets/images/Logo.png" style={{ height: 45 }} />
                   <p className="mb-0">
                     Experience the power of seamless HR management. Our solution empowers your organization by simplifying tasks, automating workflows, and optimizing HR processes for enhancing the productivity.
                   </p>

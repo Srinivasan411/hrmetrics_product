@@ -205,30 +205,6 @@ export default function PayrollManagementSoftwarePage() {
                 </div>
               </a>
             </div>
-            <div className="box bx1 box-roles">
-              <a href="#software4">
-                <div className="icon-text">
-                  <i className="fas fa-project-diagram" />
-                  <p>Employee Self-Service</p>
-                </div>
-              </a>
-            </div>
-            <div className="box bx1 box-audit">
-              <a href="#software5">
-                <div className="icon-text">
-                  <i className="fas fa-file-alt" />
-                  <p>Smooth Dispersion</p>
-                </div>
-              </a>
-            </div>
-            <div className="box bx1 box-hr">
-              <a href="#software6">
-                <div className="icon-text">
-                  <i className="fas fa-comments" />
-                  <p>Compliance Assurance</p>
-                </div>
-              </a>
-            </div>
           </div>
         </div>
       </section>
@@ -313,96 +289,6 @@ export default function PayrollManagementSoftwarePage() {
                         <li>Adapt payroll structure to changing needs.</li>
                       </ul>
                     </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div className="project-style-three-area area2" id="software4">
-        <div className="container-fluid">
-          <div className="project-style-three-items">
-            <div className="project-style-three-item">
-              <div className="row g-0">
-                <div className="col-xl-6 col-lg-6">
-                  <div className="project-style-three-info wow fadeInUp" data-wow-delay="500ms">
-                    <h4><a href="#">Employee Self-Service</a></h4>
-                    <p>
-                      Give employees control over their payroll data
-                    </p>
-                    <div className="ul-coustom">
-                      <ul>
-                        <li>Let employees download payslips anytime.</li>
-                        <li>Access tax forms and salary history on demand.</li>
-                        <li>Reduce HR workload with self-service portals.</li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-                <div className="col-xl-6 col-lg-6">
-                  <div className="procut-img bg_4 rightbox wow fadeInUp" data-wow-delay="500ms">
-                    <img alt="Image Not Found" src="../assets/images/selfservice.png" />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div className="project-style-three-area" id="software5">
-        <div className="container-fluid">
-          <div className="project-style-three-items">
-            <div className="project-style-three-item">
-              <div className="row g-0">
-                <div className="col-xl-6 col-lg-6">
-                  <div className="procut-img bg_1 leftbox wow fadeInUp" data-wow-delay="600ms">
-                    <img alt="Image Not Found" src="../assets/images/smoothdespressn.png" />
-                  </div>
-                </div>
-                <div className="col-xl-6 col-lg-6">
-                  <div className="project-style-three-info wow fadeInUp" data-wow-delay="600ms">
-                    <h4><a href="#">Smooth Dispersion</a></h4>
-                    <p>
-                      Hassle-free salary disbursement, every time
-                    </p>
-                    <div className="ul-coustom">
-                      <ul>
-                        <li>Ensure timely and accurate salary transfers.</li>
-                        <li>Minimise errors with automated validations.</li>
-                        <li>Build employee trust with consistent payouts.</li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div className="project-style-three-area area2" id="software6">
-        <div className="container-fluid">
-          <div className="project-style-three-items">
-            <div className="project-style-three-item">
-              <div className="row g-0">
-                <div className="col-xl-6 col-lg-6">
-                  <div className="project-style-three-info wow fadeInUp" data-wow-delay="700ms">
-                    <h4><a href="#">Compliance Assurance</a></h4>
-                    <p>
-                      Always aligned with legal and tax norms
-                    </p>
-                    <div className="ul-coustom">
-                      <ul>
-                        <li>Automatically handle PF, ESI, PT, and other deductions.</li>
-                        <li>Stay up to date with statutory changes.</li>
-                        <li>Maintain audit-ready payroll records.</li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-                <div className="col-xl-6 col-lg-6">
-                  <div className="procut-img bg_2 rightbox wow fadeInUp" data-wow-delay="700ms">
-                    <img alt="Image Not Found" src="../assets/images/compliencs.png" />
                   </div>
                 </div>
               </div>

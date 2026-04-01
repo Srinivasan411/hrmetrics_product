@@ -28,9 +28,9 @@ body .wow {
 }
 .bookdemo-float {
     top: auto;
-    left: calc(12px + env(safe-area-inset-left, 0px) + 64px);
-    right: calc(12px + env(safe-area-inset-right, 0px));
-    bottom: calc(12px + env(safe-area-inset-bottom, 0px));
+    left: auto;
+    right: calc(20px + env(safe-area-inset-right, 0px));
+    bottom: calc(20px + env(safe-area-inset-bottom, 0px));
     transform: none;
     flex-direction: row;
     justify-content: center;
@@ -48,9 +48,9 @@ body .wow {
 
 .box-transform {
     top: auto !important;
-    left: calc(12px + env(safe-area-inset-left, 0px) + 64px) !important;
-    right: calc(12px + env(safe-area-inset-right, 0px)) !important;
-    bottom: calc(12px + env(safe-area-inset-bottom, 0px)) !important;
+    left: auto !important;
+    right: calc(20px + env(safe-area-inset-right, 0px)) !important;
+    bottom: calc(20px + env(safe-area-inset-bottom, 0px)) !important;
     transform: none !important;
 }
 

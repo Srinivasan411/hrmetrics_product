@@ -1,3 +1,5 @@
+import { BannerStyleFourHero } from "../components/BannerStyleFourHero.jsx";
+
 export default function HrmsSoftwarePage() {
   return (
     <div className="archive tag tag-hrms-software tag-36 wp-custom-logo wp-embed-responsive wp-theme-sinatra sinatra-topbar__separators-regular sinatra-layout__boxed-separated sinatra-header-layout-1 sinatra-menu-animation-underline sinatra-header__separators-none si-blog-layout-1 si-page-title-align-left si-has-sidebar sinatra-sidebar-style-1 sinatra-sidebar-position__right-sidebar si-sidebar-r__after-content entry-media-hover-style-1 sinatra-copyright-layout-1 si-input-supported validate-comment-form si-menu-accessibility">
@@ -61,6 +63,16 @@ export default function HrmsSoftwarePage() {
             </div>
           </div>
         </header>
+      <BannerStyleFourHero
+        badgeText="HRMS Software Insights"
+        title="Discover HRMS Software Solutions & Best Practices"
+        description="Explore comprehensive guides, industry insights, and expert recommendations on HRMS software. Learn how to choose, implement, and maximize your HR technology investment."
+        primaryAction={
+          <a className="btn btn-hrms-primary" href="#latest-posts">
+            Read Articles <i className="fas fa-arrow-right" />
+          </a>
+        }
+      />
         <div className="site-main" id="main">
           <div className="si-container">
             <div className="content-area" id="primary">

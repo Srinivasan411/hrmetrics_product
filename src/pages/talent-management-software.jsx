@@ -154,27 +154,21 @@ export default function TalentManagementSoftwarePage() {
           </div>
         </div>
       </div>
-      <BannerStyleFourHero>
-          <div className="row align-center">
-            <div className="col-lg-8 wow fadeInUp" data-wow-delay="200ms">
-              <div className="banner-four-top-info">
-                <h1>Recognize and reward employee performance with Data-Driven <strong>Talent  Recognition Solution</strong></h1>
-              </div>
-              <div className="banner-four-bottom-info mt-3">
-                <div className="row align-items-center">
-                  <div className="col-md-12">
-                    <div className="info">
-                      <p>Identify top talent, align individual goals with business outcomes, and build a high-performance culture—all from a single, intelligent platform. From onboarding to performance reviews and career growth, HRMetricS empowers you to nurture, engage, and retain your best people with Talent Management.</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="col-lg-4">
-              <TryForFreeCard />
-            </div>
-          </div>
-      </BannerStyleFourHero>
+      <BannerStyleFourHero
+        badgeText="Talent Management"
+        title={<>Recognize and reward employee performance with Data-Driven <strong>Talent Recognition Solution</strong></>}
+        description="Identify top talent, align individual goals with business outcomes, and build a high-performance culture—all from a single, intelligent platform. From onboarding to performance reviews and career growth, HRMetricS empowers you to nurture, engage, and retain your best people with Talent Management."
+        primaryAction={
+          <a className="btn btn-hrms-primary" data-bs-target="#demoshedule-modal" data-bs-toggle="modal" href="#" onClick={(e) => e.preventDefault()}>
+            <i className="fas fa-calendar-check" /> Schedule a Demo
+          </a>
+        }
+        secondaryAction={
+          <a className="btn btn-hrms-secondary" href="#software1">
+            Learn More <i className="fas fa-arrow-right" />
+          </a>
+        }
+      />
       <section className="hr_process_section pb-0 default-padding">
         <div className="container">
           <div className="row">

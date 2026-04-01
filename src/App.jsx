@@ -251,16 +251,17 @@ function FloatingActions() {
       >
         <img alt="" aria-hidden="true" src="/gh/edent/SuperTinyIcons/images/svg/whatsapp.svg" />
       </a>
-      <button
+      {/* <button
         type="button"
-        className="bookdemo-float btn"
+        className="box-transform bookdemo-float btn"
+        style={{ borderRadius: "9999px 9999px 9999px 0" }}
         data-bs-toggle="modal"
         data-bs-target="#bookdemo-modal"
         aria-label="Book a demo"
       >
         <i className="fas fa-calendar-check" aria-hidden="true" />
         <span>Book a demo</span>
-      </button>
+      </button> */}
     </>
   );
 }

@@ -154,31 +154,21 @@ export default function EmployeesManagementSoftwarePage() {
           </div>
         </div>
       </div>
-      <BannerStyleFourHero>
-          <div className="row align-center">
-            <div className="col-lg-8 wow fadeInUp" data-wow-delay="200ms">
-              <div className="banner-four-top-info">
-                <h1>One click for <strong>Every Employee</strong> Detail</h1>
-              </div>
-              <div className="banner-four-bottom-info mt-3">
-                <div className="row align-items-center">
-                  <div className="col-md-12">
-                    <div className="info">
-                      <p>
-                        From onboarding to offboarding—all employee data, one click away
-                      </p>
-                      <p style={{textAlign: 'justify'}}>At HRMetricS, Employee Management acts as an HR directory that gives access to every employee's data—from personal info, education, job roles, reporting lines, to documents. HRs can manage everything related to workforce in just a few click—clean, organized, and always up to date.</p>
-                      <p>HRMetricS: Empowering HR to focus less on admin and more on people. </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="col-lg-4">
-              <TryForFreeCard />
-            </div>
-          </div>
-      </BannerStyleFourHero>
+      <BannerStyleFourHero
+        badgeText="Employee Management"
+        title={<>One click for <strong>Every Employee</strong> Detail</>}
+        description="From onboarding to offboarding—all employee data, one click away. At HRMetricS, Employee Management acts as an HR directory that gives access to every employee's data—from personal info, education, job roles, reporting lines, to documents. HRs can manage everything related to workforce in just a few click—clean, organized, and always up to date. HRMetricS: Empowering HR to focus less on admin and more on people."
+        primaryAction={
+          <a className="btn btn-hrms-primary" data-bs-target="#demoshedule-modal" data-bs-toggle="modal" href="#" onClick={(e) => e.preventDefault()}>
+            <i className="fas fa-calendar-check" /> Schedule a Demo
+          </a>
+        }
+        secondaryAction={
+          <a className="btn btn-hrms-secondary" href="#software1">
+            Learn More <i className="fas fa-arrow-right" />
+          </a>
+        }
+      />
       <section className="hr_process_section pb-0 default-padding">
         <div className="container">
           <div className="row">
@@ -244,14 +234,6 @@ export default function EmployeesManagementSoftwarePage() {
                 <div className="icon-text">
                   <i className="fas fa-comments" />
                   <p>Organizational Chart Visualization</p>
-                </div>
-              </a>
-            </div>
-            <div className="box bx1 box-hr">
-              <a href="#software8">
-                <div className="icon-text">
-                  <i className="fas fa-comments" />
-                  <p>Employee Self-Service</p>
                 </div>
               </a>
             </div>
@@ -444,7 +426,7 @@ export default function EmployeesManagementSoftwarePage() {
           </div>
         </div>
       </div>
-      <div className="project-style-three-area" id="software7">
+      <div className="project-style-three-area2" id="software7">
         <div className="container-fluid">
           <div className="project-style-three-items">
             <div className="project-style-three-item">
@@ -474,46 +456,12 @@ export default function EmployeesManagementSoftwarePage() {
           </div>
         </div>
       </div>
-      <div className="project-style-three-area area2" id="software8">
-        <div className="container-fluid">
-          <div className="project-style-three-items">
-            <div className="project-style-three-item">
-              <div className="row g-0">
-                <div className="col-xl-6 col-lg-6">
-                  <div className="project-style-three-info wow fadeInUp" data-wow-delay="900ms">
-                    <h4><a href="#">Employee Self-Service</a></h4>
-                    <p>
-                      Empower your team to manage their data
-                    </p>
-                    <div className="ul-coustom">
-                      <ul>
-                        <li>Let employees update their personal and professional info.</li>
-                        <li>Reduce HR workload with automated self-service tools.</li>
-                        <li>Improve accuracy and transparency across records.</li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-                <div className="col-xl-6 col-lg-6">
-                  <div className="procut-img bg_4 rightbox wow fadeInUp" data-wow-delay="900ms">
-                    <img alt="Image Not Found" src="../assets/images/selfservice.png" />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
       <div className="project-style-three-area" id="software9">
         <div className="container-fluid">
           <div className="project-style-three-items">
             <div className="project-style-three-item">
               <div className="row g-0">
-                <div className="col-xl-6 col-lg-6">
-                  <div className="procut-img bg_1 leftbox wow fadeInUp" data-wow-delay="1000ms">
-                    <img alt="Image Not Found" src="../assets/images/emplyesskill.png" />
-                  </div>
-                </div>
+                
                 <div className="col-xl-6 col-lg-6">
                   <div className="project-style-three-info wow fadeInUp" data-wow-delay="1000ms">
                     <h4><a href="#">Employee's Extra Skill</a></h4>
@@ -527,6 +475,11 @@ export default function EmployeesManagementSoftwarePage() {
                         <li>Build a more flexible, future-ready workforce.</li>
                       </ul>
                     </div>
+                  </div>
+                </div>
+                <div className="col-xl-6 col-lg-6">
+                  <div className="procut-img bg_1 leftbox wow fadeInUp" data-wow-delay="1000ms">
+                    <img alt="Image Not Found" src="../assets/images/emplyesskill.png" />
                   </div>
                 </div>
               </div>

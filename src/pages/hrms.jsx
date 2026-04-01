@@ -1,3 +1,5 @@
+import { BannerStyleFourHero } from "../components/BannerStyleFourHero.jsx";
+
 export default function HrmsPage() {
   return (
     <div className="archive category category-hrms category-26 wp-custom-logo wp-embed-responsive wp-theme-sinatra sinatra-topbar__separators-regular sinatra-layout__boxed-separated sinatra-header-layout-1 sinatra-menu-animation-underline sinatra-header__separators-none si-blog-layout-1 si-page-title-align-left si-has-sidebar sinatra-sidebar-style-1 sinatra-sidebar-position__right-sidebar si-sidebar-r__after-content entry-media-hover-style-1 sinatra-copyright-layout-1 si-input-supported validate-comment-form si-menu-accessibility">
@@ -61,6 +63,16 @@ export default function HrmsPage() {
             </div>
           </div>
         </header>
+      <BannerStyleFourHero
+        badgeText="HRMS Insights"
+        title="Explore HRMS Trends, Tips & Innovations"
+        description="Stay ahead with the latest insights on Human Resource Management Systems. Discover best practices, industry trends, and expert guidance to transform your HR operations."
+        primaryAction={
+          <a className="btn btn-hrms-primary" href="#latest-posts">
+            Explore Articles <i className="fas fa-arrow-right" />
+          </a>
+        }
+      />
         <div className="site-main" id="main">
           <div className="si-container">
             <div className="content-area" id="primary">
