@@ -1,5 +1,6 @@
 import { TryForFreeCard } from "../components/LeadModals";
 import { BannerStyleFourHero } from "../components/BannerStyleFourHero.jsx";
+import FaqSection from "../components/FaqSection.jsx";
 
 export default function MobileAppSoftwarePage() {
   return (
@@ -410,58 +411,30 @@ export default function MobileAppSoftwarePage() {
           </div>
         </div>
       </div>
-      <section className="faq-area default-padding">
-        <div className="container">
-          <div className="row">
-            <div className="col-lg-8 offset-lg-2">
-              <div className="site-heading mb-3 text-center">
-                <h4 className="sub-title">Faq</h4>
-                <h2 className="title split-text">Frequently Asked Questions</h2>
-                <div className="devider" />
-              </div>
-            </div>
-          </div>
-          <div className="faq-accordion-content">
-            <ul className="accordion">
-              <li className="accordion-item">
-                <a className="accordion-title active" href="javascript:void(0)">
-                  <i className="fa fa-chevron-down" />
-                  What core HR functions can employees perform on the mobile app?
-                </a>
-                <p className="accordion-content show">The HRM Mitra mobile app lets employees check in/out with geo-tagging, apply for and track leave, access personal profiles, view announcements, and download payslips—all from their smartphones.</p>
-              </li>
-              <li className="accordion-item">
-                <a className="accordion-title" href="javascript:void(0)">
-                  <i className="fa fa-chevron-down" />
-                  Does the mobile app support geo-fenced attendance?
-                </a>
-                <p className="accordion-content">Yes—it enables secure attendance marking using selfies combined with real-time GPS location, with optional virtual boundaries to ensure employees check in from authorized sites only. </p>
-              </li>
-              <li className="accordion-item">
-                <a className="accordion-title" href="javascript:void(0)">
-                  <i className="fa fa-chevron-down" />
-                  Can field workers and remote staff easily use it?
-                </a>
-                <p className="accordion-content">Absolutely. Designed for on-the-go and hybrid workflows, it offers attendance, leave applications, and instant notifications—ideal for employees working remotely or in the field. </p>
-              </li>
-              <li className="accordion-item">
-                <a className="accordion-title" href="javascript:void(0)">
-                  <i className="fa fa-chevron-down" />
-                  What kind of notifications and communication does the app support?
-                </a>
-                <p className="accordion-content">The mobile app delivers push alerts for leave approvals, attendance exceptions, essential company announcements, and upcoming events, helping teams stay updated in real time. </p>
-              </li>
-              <li className="accordion-item">
-                <a className="accordion-title" href="javascript:void(0)">
-                  <i className="fa fa-chevron-down" />
-                  Is the mobile app secure and integrated with the HRMS platform?
-                </a>
-                <p className="accordion-content">Yes—data is encrypted, the app supports secure login, and it seamlessly syncs with the broader HRM Mitra system, ensuring all actions (attendance, leave, payroll access) are reflected instantly in the central HRMS.</p>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </section>
+      <FaqSection
+        items={[
+          {
+            question: "What core HR functions can employees perform on the mobile app?",
+            answer: "The HRM Mitra mobile app lets employees check in/out with geo-tagging, apply for and track leave, access personal profiles, view announcements, and download payslips—all from their smartphones."
+          },
+          {
+            question: "Does the mobile app support geo-fenced attendance?",
+            answer: "Yes—it enables secure attendance marking using selfies combined with real-time GPS location, with optional virtual boundaries to ensure employees check in from authorized sites only."
+          },
+          {
+            question: "Can field workers and remote staff easily use it?",
+            answer: "Absolutely. Designed for on-the-go and hybrid workflows, it offers attendance, leave applications, and instant notifications—ideal for employees working remotely or in the field."
+          },
+          {
+            question: "What kind of notifications and communication does the app support?",
+            answer: "The mobile app delivers push alerts for leave approvals, attendance exceptions, essential company announcements, and upcoming events, helping teams stay updated in real time."
+          },
+          {
+            question: "Is the mobile app secure and integrated with the HRMS platform?",
+            answer: "Yes—data is encrypted, the app supports secure login, and it seamlessly syncs with the broader HRM Mitra system, ensuring all actions (attendance, leave, payroll access) are reflected instantly in the central HRMS."
+          }
+        ]}
+      />
       <footer className="footer-bg text-light bg-cover">
         <div className="footer-shape">
           <div className="item">

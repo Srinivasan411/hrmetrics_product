@@ -1,5 +1,6 @@
 import { TryForFreeCard } from "../components/LeadModals";
 import { BannerStyleFourHero } from "../components/BannerStyleFourHero.jsx";
+import FaqSection from "../components/FaqSection.jsx";
 
 export default function EmployeesManagementSoftwarePage() {
   return (
@@ -487,58 +488,30 @@ export default function EmployeesManagementSoftwarePage() {
           </div>
         </div>
       </div>
-      <section className="faq-area default-padding">
-        <div className="container">
-          <div className="row">
-            <div className="col-lg-8 offset-lg-2">
-              <div className="site-heading mb-3 text-center">
-                <h4 className="sub-title">Faq</h4>
-                <h2 className="title split-text">Frequently Asked Questions</h2>
-                <div className="devider" />
-              </div>
-            </div>
-          </div>
-          <div className="faq-accordion-content">
-            <ul className="accordion">
-              <li className="accordion-item">
-                <a className="accordion-title active" href="javascript:void(0)">
-                  <i className="fa fa-chevron-down" />
-                  What does the Employee Management module in HRMetricS do?
-                </a>
-                <p className="accordion-content show">It securely stores personal, educational, and employment data in one centralized system, allowing users to manage profiles, hierarchy, skills, and documentation efficiently.</p>
-              </li>
-              <li className="accordion-item">
-                <a className="accordion-title" href="javascript:void(0)">
-                  <i className="fa fa-chevron-down" />
-                  How does HRM Mitra support employee onboarding and access control?
-                </a>
-                <p className="accordion-content">The module automates onboarding workflows, allows Excel import/export of employee data, assigns reporting managers, and sets up role-based access rights. <a href="../index.html">hrmetrics.in</a></p>
-              </li>
-              <li className="accordion-item">
-                <a className="accordion-title" href="javascript:void(0)">
-                  <i className="fa fa-chevron-down" />
-                  Can I visualize the organizational hierarchy?
-                </a>
-                <p className="accordion-content">Yes—the module features an interactive org chart, enabling clear visibility of designations, reporting lines, and departmental structure.</p>
-              </li>
-              <li className="accordion-item">
-                <a className="accordion-title" href="javascript:void(0)">
-                  <i className="fa fa-chevron-down" />
-                  What self‑service capabilities are included for employees?
-                </a>
-                <p className="accordion-content">Employees can view and update personal info, access documents, track their skills, and interact with system features without relying on HR staff.</p>
-              </li>
-              <li className="accordion-item">
-                <a className="accordion-title" href="javascript:void(0)">
-                  <i className="fa fa-chevron-down" />
-                  How does this module enhance confidentiality and compliance?
-                </a>
-                <p className="accordion-content">It provides secure access controls and centralized documentation to ensure confidentiality, compliance with legal requirements, and effective data governance.</p>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </section>
+      <FaqSection
+        items={[
+          {
+            question: "What does the Employee Management module in HRMetricS do?",
+            answer: "It securely stores personal, educational, and employment data in one centralized system, allowing users to manage profiles, hierarchy, skills, and documentation efficiently."
+          },
+          {
+            question: "How does HRM Mitra support employee onboarding and access control?",
+            answer: "The module automates onboarding workflows, allows Excel import/export of employee data, assigns reporting managers, and sets up role-based access rights."
+          },
+          {
+            question: "Can I visualize the organizational hierarchy?",
+            answer: "Yes—the module features an interactive org chart, enabling clear visibility of designations, reporting lines, and departmental structure."
+          },
+          {
+            question: "What self-service capabilities are included for employees?",
+            answer: "Employees can view and update personal info, access documents, track their skills, and interact with system features without relying on HR staff."
+          },
+          {
+            question: "How does this module enhance confidentiality and compliance?",
+            answer: "It provides secure access controls and centralized documentation to ensure confidentiality, compliance with legal requirements, and effective data governance."
+          }
+        ]}
+      />
       <footer className="footer-bg text-light bg-cover">
         <div className="footer-shape">
           <div className="item">

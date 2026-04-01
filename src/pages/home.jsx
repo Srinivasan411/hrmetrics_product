@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { TryForFreeCard } from "../components/LeadModals.jsx";
 import { BannerStyleFourHero } from "../components/BannerStyleFourHero.jsx";
 import { useSiteSettings } from "../siteSettings.jsx";
+import FaqSection from "../components/FaqSection.jsx";
 
 const COOKIE_CONSENT_NAME = "hrmetrics_cookie_consent";
 const COOKIE_CONSENT_MAX_AGE = 60 * 60 * 24 * 180;
@@ -954,65 +955,7 @@ export default function HomePage() {
         </div>
       </section>
       <hr />
-      <section className="faq-area default-padding">
-        <div className="container">
-          <div className="row">
-            <div className="col-lg-8 offset-lg-2">
-              <div className="site-heading mb-3 text-center">
-                <h4 className="sub-title">Faq</h4>
-                <h2 className="title split-text">Frequently Asked Questions</h2>
-                <div className="devider" />
-              </div>
-            </div>
-          </div>
-          <div className="faq-accordion-content">
-            <ul className="accordion">
-              <li className="accordion-item">
-                <a className="accordion-title active" href="#" onClick={preventDefault}>
-                  <i className="fa fa-chevron-down" />
-                  Is HRMetricS suitable for small businesses and large enterprises alike?
-                </a>
-                <p className="accordion-content show">Yes, HRMetricS is designed to cater to the needs of businesses of all sizes. It can be easily customized and scaled to fit the requirements of small startups, medium-sized companies, and large enterprises.</p>
-              </li>
-              <li className="accordion-item">
-                <a className="accordion-title" href="#" onClick={preventDefault}>
-                  <i className="fa fa-chevron-down" />
-                  How user-friendly is HRMetricS?
-                </a>
-                <p className="accordion-content">HRMetricS boasts an intuitive user interface that requires minimal training for users to navigate and operate. Its user-friendly design ensures a smooth onboarding process and allows HR professionals and employees to adapt quickly to the system.</p>
-              </li>
-              <li className="accordion-item">
-                <a className="accordion-title" href="#" onClick={preventDefault}>
-                  <i className="fa fa-chevron-down" />
-                  Does HRMetricS comply with data security standards?
-                </a>
-                <p className="accordion-content">Absolutely. HRMetricS prioritizes data security and confidentiality. It adheres to industry best practices and complies with data protection regulations to safeguard sensitive employee information.</p>
-              </li>
-              <li className="accordion-item">
-                <a className="accordion-title" href="#" onClick={preventDefault}>
-                  <i className="fa fa-chevron-down" />
-                  How does HRMetricS help with employee engagement?
-                </a>
-                <p className="accordion-content">HRMetricS includes features like employee self-service portals, performance feedback mechanisms, and recognition programs that promote a positive employee experience and foster higher levels of engagement within the workforce.</p>
-              </li>
-              <li className="accordion-item">
-                <a className="accordion-title" href="#" onClick={preventDefault}>
-                  <i className="fa fa-chevron-down" />
-                  How can I get started with HRMetricS for my organization?
-                </a>
-                <p className="accordion-content">To get started with HRMetricS, you can request a demo or contact our sales team. They will guide you through the process of implementing HRMetricS to transform your HR operations and elevate your organizational efficiency.</p>
-              </li>
-              <li className="accordion-item">
-                <a className="accordion-title" href="#" onClick={preventDefault}>
-                  <i className="fa fa-chevron-down" />
-                  What additional solutions does HRMetricS offer?
-                </a>
-                <p className="accordion-content">In addition to its core services, HRMetricS provides solutions for Activity Management, Task Management, Asset Management, and Field Force Management.</p>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </section>
+      <FaqSection />
       <div className="tesimoinial-style-four-area bg-gray default-padding bg-cover" style={{ backgroundImage: 'url(assets/img/shape/38.png)' }}>
         <div className="container">
           <div className="left-heading">
@@ -1255,7 +1198,7 @@ export default function HomePage() {
           </div>
         </div>
       </div>
-      <div className="technolgy-index-two-area default-padding bg-dark text-light bg-cover">
+      {/* <div className="technolgy-index-two-area default-padding bg-dark text-light bg-cover">
         <div className="container">
           <div className="row">
             <div className="col-lg-12">
@@ -1314,7 +1257,7 @@ export default function HomePage() {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
       <div className="dem-section bg-gradientt position-relative py-5">
         <div className="circle-img" style={{ backgroundImage: 'url(assets/images/circlbg.png)' }}>
         </div>

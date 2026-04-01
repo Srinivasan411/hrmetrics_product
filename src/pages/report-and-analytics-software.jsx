@@ -1,5 +1,6 @@
 import { TryForFreeCard } from "../components/LeadModals";
 import { BannerStyleFourHero } from "../components/BannerStyleFourHero.jsx";
+import FaqSection from "../components/FaqSection.jsx";
 
 export default function ReportAndAnalyticsSoftwarePage() {
   return (
@@ -410,58 +411,30 @@ export default function ReportAndAnalyticsSoftwarePage() {
           </div>
         </div>
       </div>
-      <section className="faq-area default-padding">
-        <div className="container">
-          <div className="row">
-            <div className="col-lg-8 offset-lg-2">
-              <div className="site-heading mb-3 text-center">
-                <h4 className="sub-title">Faq</h4>
-                <h2 className="title split-text">Frequently Asked Questions</h2>
-                <div className="devider" />
-              </div>
-            </div>
-          </div>
-          <div className="faq-accordion-content">
-            <ul className="accordion">
-              <li className="accordion-item">
-                <a className="accordion-title active" href="javascript:void(0)">
-                  <i className="fa fa-chevron-down" />
-                  What types of reports are available in HRM Mitra's analytics module?
-                </a>
-                <p className="accordion-content show">HRM Mitra lets you generate fully customizable reports across all HR modules—including attendance, leave, payroll, performance, and appraisals. It supports statutory reports such as ESIC, PF, PT, appraisal summaries, arrears, bonus, and more.</p>
-              </li>
-              <li className="accordion-item">
-                <a className="accordion-title" href="javascript:void(0)">
-                  <i className="fa fa-chevron-down" />
-                  Can I monitor KPIs and trends in real time?
-                </a>
-                <p className="accordion-content">Yes. The Reports &amp; Analytics module includes real-time dashboards for tracking key performance indicators and workforce trends, enabling HR leaders to make informed decisions based on current data.</p>
-              </li>
-              <li className="accordion-item">
-                <a className="accordion-title" href="javascript:void(0)">
-                  <i className="fa fa-chevron-down" />
-                  How does HRM Mitra support data-driven decision-making?
-                </a>
-                <p className="accordion-content">By providing actionable insight into employee performance, attendance patterns, leave utilization, payroll costs, and more, the analytics engine empowers organizations to optimize strategies, reduce risk, and align HR efforts with business goals.</p>
-              </li>
-              <li className="accordion-item">
-                <a className="accordion-title" href="javascript:void(0)">
-                  <i className="fa fa-chevron-down" />
-                  Are the reporting features customizable for different user needs?
-                </a>
-                <p className="accordion-content">Absolutely. HRM Mitra offers flexible, module-wise reporting where HR teams can tailor data fields, filters, and formats, making it easy to deliver executive summaries, departmental breakdowns, or granular analyses as required.</p>
-              </li>
-              <li className="accordion-item">
-                <a className="accordion-title" href="javascript:void(0)">
-                  <i className="fa fa-chevron-down" />
-                  What are the main benefits of using HRM Mitra's reporting platform?
-                </a>
-                <p className="accordion-content">The analytics tools drive improved HR efficiency, faster and more accurate decision-making, resource optimization, cost savings, and enhanced organizational performance, with minimal manual effort.</p>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </section>
+      <FaqSection
+        items={[
+          {
+            question: "What types of reports are available in HRM Mitra's analytics module?",
+            answer: "HRM Mitra lets you generate fully customizable reports across all HR modules—including attendance, leave, payroll, performance, and appraisals. It supports statutory reports such as ESIC, PF, PT, appraisal summaries, arrears, bonus, and more."
+          },
+          {
+            question: "Can I monitor KPIs and trends in real time?",
+            answer: "Yes. The Reports & Analytics module includes real-time dashboards for tracking key performance indicators and workforce trends, enabling HR leaders to make informed decisions based on current data."
+          },
+          {
+            question: "How does HRM Mitra support data-driven decision-making?",
+            answer: "By providing actionable insight into employee performance, attendance patterns, leave utilization, payroll costs, and more, the analytics engine empowers organizations to optimize strategies, reduce risk, and align HR efforts with business goals."
+          },
+          {
+            question: "Are the reporting features customizable for different user needs?",
+            answer: "Absolutely. HRM Mitra offers flexible, module-wise reporting where HR teams can tailor data fields, filters, and formats, making it easy to deliver executive summaries, departmental breakdowns, or granular analyses as required."
+          },
+          {
+            question: "What are the main benefits of using HRM Mitra's reporting platform?",
+            answer: "The analytics tools drive improved HR efficiency, faster and more accurate decision-making, resource optimization, cost savings, and enhanced organizational performance, with minimal manual effort."
+          }
+        ]}
+      />
       <footer className="footer-bg text-light bg-cover">
         <div className="footer-shape">
           <div className="item">

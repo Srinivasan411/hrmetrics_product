@@ -1,5 +1,6 @@
 import { TryForFreeCard } from "../components/LeadModals";
 import { BannerStyleFourHero } from "../components/BannerStyleFourHero.jsx";
+import FaqSection from "../components/FaqSection.jsx";
 
 export default function CompanyManagementSoftwarePage() {
   return (
@@ -353,53 +354,30 @@ export default function CompanyManagementSoftwarePage() {
           </div>
         </div>
       </div>
-      <section className="faq-area default-padding">
-        <div className="container">
-          <div className="row">
-            <div className="col-lg-8 offset-lg-2">
-              <div className="site-heading mb-3 text-center">
-                <h4 className="sub-title">Faq</h4>
-                <h2 className="title split-text">Frequently Asked Questions</h2>
-                <div className="devider" />
-              </div>
-            </div>
-          </div>
-          <div className="faq-accordion-content">
-            <ul className="accordion">
-              <li className="accordion-item">
-                <a className="accordion-title active" href="javascript:void(0)">
-                  <i className="fa fa-chevron-down" /> What is HRM Mitra's Company Management module?
-                </a>
-                <p className="accordion-content show">A centralized platform to define your organizational structure, branches, departments, and company policies—whether running one entity or multiple companies under one roof. </p>
-              </li>
-              <li className="accordion-item">
-                <a className="accordion-title" href="javascript:void(0)">
-                  <i className="fa fa-chevron-down" /> Can I establish shifts, salary structures, and attendance policies?
-                </a>
-                <p className="accordion-content">Yes—you can configure office shifts, salary and leave structures, attendance rules, holiday calendars, and compliance policies easily for each branch or company.</p>
-              </li>
-              <li className="accordion-item">
-                <a className="accordion-title" href="javascript:void(0)">
-                  <i className="fa fa-chevron-down" /> How does document management work?
-                </a>
-                <p className="accordion-content">You can securely store official documents—such as company policies, certifications, and legal paperwork—in a centralized digital repository with proper version control.</p>
-              </li>
-              <li className="accordion-item">
-                <a className="accordion-title" href="javascript:void(0)">
-                  <i className="fa fa-chevron-down" /> Is organizational hierarchy visible in the system?
-                </a>
-                <p className="accordion-content">Absolutely—you can view and navigate the entire company hierarchy, including levels, designations, and reporting lines, directly in the module.</p>
-              </li>
-              <li className="accordion-item">
-                <a className="accordion-title" href="javascript:void(0)">
-                  <i className="fa fa-chevron-down" /> What are the benefits of using this module?
-                </a>
-                <p className="accordion-content">It establishes a strong foundation for your HR ecosystem—reducing manual setup time, ensuring consistency, and enabling efficient tracking and management of teams across all units. </p>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </section>
+      <FaqSection
+        items={[
+          {
+            question: "What is HRM Mitra's Company Management module?",
+            answer: "A centralized platform to define your organizational structure, branches, departments, and company policies—whether running one entity or multiple companies under one roof."
+          },
+          {
+            question: "Can I establish shifts, salary structures, and attendance policies?",
+            answer: "Yes—you can configure office shifts, salary and leave structures, attendance rules, holiday calendars, and compliance policies easily for each branch or company."
+          },
+          {
+            question: "How does document management work?",
+            answer: "You can securely store official documents—such as company policies, certifications, and legal paperwork—in a centralized digital repository with proper version control."
+          },
+          {
+            question: "Is organizational hierarchy visible in the system?",
+            answer: "Absolutely—you can view and navigate the entire company hierarchy, including levels, designations, and reporting lines, directly in the module."
+          },
+          {
+            question: "What are the benefits of using this module?",
+            answer: "It establishes a strong foundation for your HR ecosystem—reducing manual setup time, ensuring consistency, and enabling efficient tracking and management of teams across all units."
+          }
+        ]}
+      />
       <footer className="footer-bg text-light bg-cover">
         <div className="footer-shape">
           <div className="item">

@@ -1,5 +1,6 @@
 import React from 'react';
 import { useSiteSettings } from "../siteSettings.jsx";
+import FaqSection from "../components/FaqSection.jsx";
 
 const AboutPage = () => {
   const { siteSettings } = useSiteSettings();
@@ -80,8 +81,6 @@ const AboutPage = () => {
                 <ul className="wsmenu-list">
                   <li aria-haspopup="true"><a className="navtext" href="/"><span></span> <span>Home</span></a></li>
                   <li aria-haspopup="true"><a className="navtext" href="/about"><span></span> <span>About</span></a></li>
-                  <li aria-haspopup="true"><a className="navtext" href="/dashboard"><span></span> <span>Dashboard</span></a></li>
-
                   <li aria-haspopup="true"><a className="navtext" href="/contact"><span></span> <span>Contact</span></a></li>
                   <li className="wscarticon clearfix">
                     <a className="btn btn-theme text-white btn-md radius" href={siteSettings.demo_login_url} target="_blank" rel="noopener noreferrer">Login</a>
@@ -122,7 +121,7 @@ const AboutPage = () => {
             <div className="col-lg-6">
               <div className="about-style-two-thumb">
                 <img alt="Image Not Found" className="wow fadeInUp" src="../assets/images/aboutmain.png"/>
-                <img alt="Image Not Found" className="wow fadeInDown" data-wow-delay="100ms" src="../assets/images/hrmetrics-building.png"/>
+                <img alt="Image Not Found" className="wow fadeInDown" data-wow-delay="100ms" src="../assets/images/hrmetrics-building.jpg"/>
                 <div className="certification wow fadeInUp" data-wow-delay="250ms">
                   <img alt="Image Not Found" src="../assets/images/abtcerti.png"/>
                   <h4> Certified Company</h4>
@@ -134,206 +133,32 @@ const AboutPage = () => {
                 <h4 className="sub-title">About Us</h4>
                 <h2 className="title mb-3 split-text">Who We Are</h2>
                 <p>HRMetricS is the brainchild of the HRMetricS team.</p>
-                <p>With an extensive experience in the HRM space, we build automated products that help HR and organizations simplify their processes and meet their goals at a faster rate. Our HRM Software is designed to suit all industry types and sizes with more focus on a user-centric interface. HRMetricS is interwind using products ranging from company, employee, payroll, leave & attendance, <strong>Talent Recognition,</strong> real-time reports & analytics to an easily accessible mobile app. HRMetricS has been designed for quick implementation that enhances productivity using the automated workflow and processes which will reduce work time for HRs by 25%. It also provide great experience to employees with mobile application. Gain more success for your business using the add-on modules for better employee and employer experience. Our Activity management, Task Management, Asset Management, and Field Force Management create a more lucrative work environment, whether your team is working from the office or at home.</p>
+                <p>Systems Solutions Pvt Ltd is a tech-leading IT consulting and software development company in the Digital Era! We have provisioned our esteemed clients with the Best-Suite Software Solutions. We mainly focus on <strong>HR-MetricS </strong> and <strong>ERP Development </strong> , Implementation, and integration.</p>
+                <p>Our journey began out of the passion for a unique monarch in the industry. To save time and money and to free up the platform owners to concentrate on their main offering, we identified the common denominator. Because of this, we have teamed up to create fresh, prosperous businesspeople all over the world!</p>
+              
+              <div className="grid grid-cols-3 gap-15 text-center" style={{ display: 'flex', gap: '50px' }}>
+                  <div>
+                      <div className="text-3xl font-bold text-primary">300+</div>
+                      <div className="text-gray-600">Projects Completed</div>
+                  </div>
+                  <div>
+                      <div className="text-3xl font-bold text-primary">50+</div>
+                      <div className="text-gray-600">Happy Clients</div>
+                  </div>
+                  <div>
+                      <div className="text-3xl font-bold text-primary">100%</div>
+                      <div className="text-gray-600">Client Satisfaction</div>
+                  </div>
+              </div>
               </div>
             </div>
           </div>
         </div>
       </div>
       {/* End About */}
-      
-      {/* Start Our Features */}
-      <div className="faeture-style-three-area default-padding full-border">
-        <div className="container">
-          <div className="row">
-            <div className="col-lg-12">
-              <div className="site-heading text-center">
-                <h2 className="title split-text">Our pioneering</h2>
-                <p>HRM solution comes with 4 additional modules that help improve the work process - Activity, Task, and Field Force Management.</p>
-                <p>Join us on this advanced journey and experience the power of HRMetricS in transforming your organization's HR landscape. We are committed to delivering excellence, continuous innovation, and exceptional customer support to help you unlock your organization's full potential. Let HRMetricS be your trusted partner in navigating the dynamic world of Human Resource management.</p>
-                <p>Together, let's simplify, automate, and streamline your HR processes for a brighter and more productive future. Thank you for choosing HRMetricS</p>
-                <div className="devider"></div>
-              </div>
-            </div>
-          </div>
-          <div className="row">
-            <div className="col-lg-12">
-              <div className="feature-style-three-items">
-                {/* Single Item */}
-                <div className="feature-style-three hover-active-item">
-                  <a href="/hrm-soultion-software">
-                    <div className="shape">
-                      <img alt="Image Not Found" src="../assets/images/feat4.png"/>
-                    </div>
-                    <div className="item">
-                      <div className="icon">
-                        <img alt="Image Not Found" src="../assets/images/feat1.png"/>
-                      </div>
-                      <h4>Human Resource Management System</h4>
-                      <p>
-                        Simplify and streamline your HR processes with a flexible solution built for your unique needs. From onboarding to payroll, our HRM Software helps you manage people, policies, and performance—all in one place
-                      </p>
-                    </div>
-                  </a>
-                </div>
-                {/* End Single Item */}
-                {/* Single Item */}
-                <div className="feature-style-three hover-active-item active">
-                  <a href="/activity-management-software">
-                    <div className="shape">
-                      <img alt="Image Not Found" src="../assets/images/feat4.png"/>
-                    </div>
-                    <div className="item">
-                      <div className="icon">
-                        <img alt="Image Not Found" src="../assets/images/feat2.png"/>
-                      </div>
-                      <h4>Activity Reporter</h4>
-                      <p>
-                        Track, manage, and analyse employee activities in real time to ensure optimal performance. Our Activity Management Software helps you identify bottlenecks, streamline workflows, and empower your workforce to work smarter every day.
-                      </p>
-                    </div>
-                  </a>
-                </div>
-                {/* End Single Item */}
-                {/* Single Item */}
-                <div className="feature-style-three hover-active-item">
-                  <a href="/task-management-software">
-                    <div className="shape">
-                      <img alt="Image Not Found" src="../assets/images/feat4.png"/>
-                    </div>
-                    <div className="item">
-                      <div className="icon">
-                        <img alt="Image Not Found" src="../assets/images/feat3.png"/>
-                      </div>
-                      <h4>Task Management</h4>
-                      <p>
-                        Juggling multiple tasks and deadlines? Our Task Management Software helps teams stay focused, aligned, and in control. Assign tasks, set priorities, track progress, and collaborate seamlessly—all from one intuitive platform.
-                      </p>
-                    </div>
-                  </a>
-                </div>
-                {/* End Single Item */}
-                {/* Single Item */}
-                <div className="feature-style-three hover-active-item">
-                  <a href="/asset-management-software">
-                    <div className="shape">
-                      <img alt="Image Not Found" src="../assets/images/feat4.png"/>
-                    </div>
-                    <div className="item">
-                      <div className="icon">
-                        <img alt="Image Not Found" src="../assets/images/feat1.png"/>
-                      </div>
-                      <h4>Asset Management</h4>
-                      <p>
-                        Keep a close eye on every asset—whether it's IT equipment, machinery, tools, or infrastructure. Our intuitive Asset Management Software helps you tag, monitor, and manage assets in real-time
-                      </p>
-                    </div>
-                  </a>
-                </div>
-                {/* End Single Item */}
-                {/* Single Item */}
-                <div className="feature-style-three hover-active-item">
-                  <a href="/attendance-management-software">
-                    <div className="shape">
-                      <img alt="Image Not Found" src="../assets/images/feat4.png"/>
-                    </div>
-                    <div className="item">
-                      <div className="icon">
-                        <img alt="Image Not Found" src="../assets/images/feat3.png"/>
-                      </div>
-                      <h4>Attendance Management</h4>
-                      <p>
-                        The Attendance Management System by HRMetricS involves the systematic tracking, recording, and analysis of employees' work hours, including shift roster, while ensuring accurate and efficient time and attendance management of every employee.
-                      </p>
-                    </div>
-                  </a>
-                </div>
-                {/* End Single Item */}
-                {/* Single Item */}
-                <div className="feature-style-three hover-active-item">
-                  <a href="/field-force-management-software">
-                    <div className="shape">
-                      <img alt="Image Not Found" src="../assets/images/feat4.png"/>
-                    </div>
-                    <div className="item">
-                      <div className="icon">
-                        <img alt="Image Not Found" src="../assets/images/feat2.png"/>
-                      </div>
-                      <h4>Field Force Management</h4>
-                      <p>
-                        Stay connected to your on-ground sales team with real-time tracking, task assignments, and performance insights. Boost productivity, reduce gaps, and make smarter decisions with a complete Field Force Management solution designed for efficiency.
-                      </p>
-                    </div>
-                  </a>
-                </div>
-                {/* End Single Item */}
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      {/* End Our Features */}
-      
+            
       {/* Start FAQ Area */}
-      <section className="faq-area default-padding pt-2">
-        <div className="container">
-          <div className="row">
-            <div className="col-lg-8 offset-lg-2">
-              <div className="site-heading mb-3 text-center">
-                <h4 className="sub-title">Faq</h4>
-                <h2 className="title split-text">Frequently Asked Questions</h2>
-                <div className="devider"></div>
-              </div>
-            </div>
-          </div>
-          <div className="faq-accordion-content">
-            <ul className="accordion">
-              <li className="accordion-item">
-                <a className="accordion-title active" href="javascript:void(0)">
-                  <i className="fa fa-chevron-down"></i>
-                  Is HRMetricS suitable for small businesses and large enterprises alike?
-                </a>
-                <p className="accordion-content show">Yes, HRMetricS is designed to cater to the needs of businesses of all sizes. It can be easily customized and scaled to fit the requirements of small startups, medium-sized companies, and large enterprises.</p>
-              </li>
-              <li className="accordion-item">
-                <a className="accordion-title" href="javascript:void(0)">
-                  <i className="fa fa-chevron-down"></i>
-                  How user-friendly is HRMetricS?
-                </a>
-                <p className="accordion-content">HRMetricS boasts an intuitive user interface that requires minimal training for users to navigate and operate. Its user-friendly design ensures a smooth onboarding process and allows HR professionals and employees to adapt quickly to the system.</p>
-              </li>
-              <li className="accordion-item">
-                <a className="accordion-title" href="javascript:void(0)">
-                  <i className="fa fa-chevron-down"></i>
-                  Does HRMetricS comply with data security standards?
-                </a>
-                <p className="accordion-content">Absolutely. HRMetricS prioritizes data security and confidentiality. It adheres to industry best practices and complies with data protection regulations to safeguard sensitive employee information.</p>
-              </li>
-              <li className="accordion-item">
-                <a className="accordion-title" href="javascript:void(0)">
-                  <i className="fa fa-chevron-down"></i>
-                  How does HRMetricS help with employee engagement?
-                </a>
-                <p className="accordion-content">HRMetricS includes features like employee self-service portals, performance feedback mechanisms, and recognition programs that promote a positive employee experience and foster higher levels of engagement within the workforce.</p>
-              </li>
-              <li className="accordion-item">
-                <a className="accordion-title" href="javascript:void(0)">
-                  <i className="fa fa-chevron-down"></i>
-                  How can I get started with HRMetricS for my organization?
-                </a>
-                <p className="accordion-content">To get started with HRMetricS, you can request a demo or contact our sales team. They will guide you through the process of implementing HRMetricS to transform your HR operations and elevate your organizational efficiency.</p>
-              </li>
-              <li className="accordion-item">
-                <a className="accordion-title" href="javascript:void(0)">
-                  <i className="fa fa-chevron-down"></i>
-                  What additional solutions does HRMetricS offer?
-                </a>
-                <p className="accordion-content">In addition to its core services, HRMetricS provides solutions for Activity Management, Task Management, Asset Management, and Field Force Management.</p>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </section>
+      <FaqSection className="pt-2" />
       {/* End FAQ Area */}
       
       <div className="dem-section bg-gradientt position-relative py-5">

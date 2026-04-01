@@ -1,5 +1,6 @@
 import { TryForFreeCard } from "../components/LeadModals";
 import { BannerStyleFourHero } from "../components/BannerStyleFourHero.jsx";
+import FaqSection from "../components/FaqSection.jsx";
 
 export default function HrmSoultionSoftwarePage() {
   return (
@@ -528,65 +529,35 @@ export default function HrmSoultionSoftwarePage() {
           </div>
         </div>
       </div>
-      <section className="faq-area default-padding bg-cover">
-        <div className="container">
-          <div className="row">
-            <div className="col-lg-8 offset-lg-2">
-              <div className="site-heading mb-3 text-center">
-                <h4 className="sub-title">Faq</h4>
-                <h2 className="title split-text">Frequently Asked Questions</h2>
-                <div className="devider" />
-              </div>
-            </div>
-          </div>
-          <div className="faq-accordion-content">
-            <ul className="accordion">
-              <li className="accordion-item">
-                <a className="accordion-title active" href="javascript:void(0)">
-                  <i className="fa fa-chevron-down" />
-                  What features does HRMetricS' HRMS include?
-                </a>
-                <p className="accordion-content show">HRMetricS covers Company and Employee Management, Payroll, Leave, Attendance, Talent Management, Events &amp; Meetings, and Reports &amp; Analytics. It also includes a mobile app for easy access on the go.</p>
-              </li>
-              <li className="accordion-item">
-                <a className="accordion-title" href="javascript:void(0)">
-                  <i className="fa fa-chevron-down" />
-                  What is the Activity Reporter in HRMetricS?
-                </a>
-                <p className="accordion-content">The Activity Reporter enables employees to record their daily work activities. It allows managers to monitor productivity and task completion in real-time.</p>
-              </li>
-              <li className="accordion-item">
-                <a className="accordion-title" href="javascript:void(0)">
-                  <i className="fa fa-chevron-down" />
-                  How does Task Management work in HRMetricS?
-                </a>
-                <p className="accordion-content">Managers can assign tasks, set deadlines, and track progress. Employees can update their status, ensuring clear accountability and reporting.</p>
-              </li>
-              <li className="accordion-item">
-                <a className="accordion-title" href="javascript:void(0)">
-                  <i className="fa fa-chevron-down" />
-                  What does Asset Management cover?
-                </a>
-                <p className="accordion-content">Asset Management tracks company-owned items, such as laptops or phones, assigned to staff. It records issuance, return, and asset history.</p>
-              </li>
-              <li className="accordion-item">
-                <a className="accordion-title" href="javascript:void(0)">
-                  <i className="fa fa-chevron-down" />
-                  How does Attendance Management function?
-                </a>
-                <p className="accordion-content">Employees can mark attendance using GPS or biometric systems. HR and managers get real-time reports and auto-sync with payroll.</p>
-              </li>
-              <li className="accordion-item">
-                <a className="accordion-title" href="javascript:void(0)">
-                  <i className="fa fa-chevron-down" />
-                  What is Field Force Management in HRMetricS?
-                </a>
-                <p className="accordion-content">It tracks field employees using GPS and enables remote check-ins. Managers can efficiently assign and monitor field tasks.</p>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </section>
+      <FaqSection
+        bgCover
+        items={[
+          {
+            question: "What features does HRMetricS' HRMS include?",
+            answer: "HRMetricS covers Company and Employee Management, Payroll, Leave, Attendance, Talent Management, Events & Meetings, and Reports & Analytics. It also includes a mobile app for easy access on the go."
+          },
+          {
+            question: "What is the Activity Reporter in HRMetricS?",
+            answer: "The Activity Reporter enables employees to record their daily work activities. It allows managers to monitor productivity and task completion in real-time."
+          },
+          {
+            question: "How does Task Management work in HRMetricS?",
+            answer: "Managers can assign tasks, set deadlines, and track progress. Employees can update their status, ensuring clear accountability and reporting."
+          },
+          {
+            question: "What does Asset Management cover?",
+            answer: "Asset Management tracks company-owned items, such as laptops or phones, assigned to staff. It records issuance, return, and asset history."
+          },
+          {
+            question: "How does Attendance Management function?",
+            answer: "Employees can mark attendance using GPS or biometric systems. HR and managers get real-time reports and auto-sync with payroll."
+          },
+          {
+            question: "What is Field Force Management in HRMetricS?",
+            answer: "It tracks field employees using GPS and enables remote check-ins. Managers can efficiently assign and monitor field tasks."
+          }
+        ]}
+      />
       <footer className="footer-bg text-light bg-cover">
         <div className="footer-shape">
           <div className="item">

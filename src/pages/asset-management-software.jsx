@@ -1,5 +1,6 @@
 import { TryForFreeCard } from "../components/LeadModals";
 import { BannerStyleFourHero } from "../components/BannerStyleFourHero.jsx";
+import FaqSection from "../components/FaqSection.jsx";
 
 export default function AssetManagementSoftwarePage() {
   return (
@@ -532,58 +533,30 @@ export default function AssetManagementSoftwarePage() {
           </div>
         </div>
       </div>
-      <section className="faq-area default-padding">
-        <div className="container">
-          <div className="row">
-            <div className="col-lg-8 offset-lg-2">
-              <div className="site-heading mb-3 text-center">
-                <h4 className="sub-title">Faq</h4>
-                <h2 className="title split-text">Frequently Asked Questions</h2>
-                <div className="devider" />
-              </div>
-            </div>
-          </div>
-          <div className="faq-accordion-content">
-            <ul className="accordion">
-              <li className="accordion-item">
-                <a className="accordion-title active" href="javascript:void(0)">
-                  <i className="fa fa-chevron-down" />
-                  What is HRM Mitra's Asset Management module?
-                </a>
-                <p className="accordion-content show">It's a centralized solution for tracking, monitoring, and managing all types of assets—movable, fixed, consumable, and digital—throughout their lifecycle, from procurement to disposal. </p>
-              </li>
-              <li className="accordion-item">
-                <a className="accordion-title" href="javascript:void(0)">
-                  <i className="fa fa-chevron-down" />
-                  How does it track asset usage and location?
-                </a>
-                <p className="accordion-content">Assets assigned to employees are tagged and monitored in real-time, providing HR and managers with visibility on where items are and how they're being utilized. </p>
-              </li>
-              <li className="accordion-item">
-                <a className="accordion-title" href="javascript:void(0)">
-                  <i className="fa fa-chevron-down" />
-                  Can the module manage maintenance schedules and lifecycle?
-                </a>
-                <p className="accordion-content">Yes—its automated alerts notify you of maintenance, renewals, or disposal deadlines, helping extend asset lifespan and reduce downtime.</p>
-              </li>
-              <li className="accordion-item">
-                <a className="accordion-title" href="javascript:void(0)">
-                  <i className="fa fa-chevron-down" />
-                  What reporting capabilities are included?
-                </a>
-                <p className="accordion-content">The module offers customizable reports and dashboards that provide insights on asset usage, maintenance costs, lifecycle status, and compliance metrics. </p>
-              </li>
-              <li className="accordion-item">
-                <a className="accordion-title" href="javascript:void(0)">
-                  <i className="fa fa-chevron-down" />
-                  Is Asset Management integrated with other HRM Mitra modules?
-                </a>
-                <p className="accordion-content">Absolutely—it integrates seamlessly with HR functions like attendance, payroll, and employee management, ensuring unified and efficient data handling. </p>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </section>
+      <FaqSection
+        items={[
+          {
+            question: "What is HRM Mitra's Asset Management module?",
+            answer: "It's a centralized solution for tracking, monitoring, and managing all types of assets—movable, fixed, consumable, and digital—throughout their lifecycle, from procurement to disposal."
+          },
+          {
+            question: "How does it track asset usage and location?",
+            answer: "Assets assigned to employees are tagged and monitored in real-time, providing HR and managers with visibility on where items are and how they're being utilized."
+          },
+          {
+            question: "Can the module manage maintenance schedules and lifecycle?",
+            answer: "Yes—its automated alerts notify you of maintenance, renewals, or disposal deadlines, helping extend asset lifespan and reduce downtime."
+          },
+          {
+            question: "What reporting capabilities are included?",
+            answer: "The module offers customizable reports and dashboards that provide insights on asset usage, maintenance costs, lifecycle status, and compliance metrics."
+          },
+          {
+            question: "Is Asset Management integrated with other HRM Mitra modules?",
+            answer: "Absolutely—it integrates seamlessly with HR functions like attendance, payroll, and employee management, ensuring unified and efficient data handling."
+          }
+        ]}
+      />
       <footer className="footer-bg text-light bg-cover">
         <div className="footer-shape">
           <div className="item">

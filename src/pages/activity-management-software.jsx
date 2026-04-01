@@ -1,6 +1,7 @@
 import React from 'react';
 import { TryForFreeCard } from "../components/LeadModals";
 import { BannerStyleFourHero } from "../components/BannerStyleFourHero.jsx";
+import FaqSection from "../components/FaqSection.jsx";
 
 const ActivityManagementSoftwarePage = () => {
   return (
@@ -601,59 +602,30 @@ const ActivityManagementSoftwarePage = () => {
       </div>
       
       {/* Start FAQ Area */}
-      <section className="faq-area default-padding">
-        <div className="container">
-          <div className="row">
-            <div className="col-lg-8 offset-lg-2">
-              <div className="site-heading mb-3 text-center">
-                <h4 className="sub-title">Faq</h4>
-                <h2 className="title split-text">Frequently Asked Questions</h2>
-                <div className="devider"></div>
-              </div>
-            </div>
-          </div>
-          <div className="faq-accordion-content">
-            <ul className="accordion">
-              <li className="accordion-item">
-                <a className="accordion-title active" href="javascript:void(0)">
-                  <i className="fa fa-chevron-down"></i>
-                  What is HRM Mitra's Activity Management module?
-                </a>
-                <p className="accordion-content show">It's a comprehensive tracker that records employee online activity—screen time, keystrokes, screenshots, and app usage—to help managers monitor productivity in real-time, utilizing geolocation and device access.</p>
-              </li>
-              <li className="accordion-item">
-                <a className="accordion-title" href="javascript:void(0)">
-                  <i className="fa fa-chevron-down"></i>
-                  How does Activity Management improve time monitoring?
-                </a>
-                <p className="accordion-content">It ensures accurate tracking of work hours, activity vs. idle time, and compliance with labor regulations, helping identify efficiency gaps and avoid payroll errors. </p>
-              </li>
-              <li className="accordion-item">
-                <a className="accordion-title" href="javascript:void(0)">
-                  <i className="fa fa-chevron-down"></i>
-                  What kind of data can managers access?
-                </a>
-                <p className="accordion-content">Managers can view real-time screen monitoring, desktop snapshots every few minutes, app/website usage logs, mouse/keystroke activity, and work/rest period data.</p>
-              </li>
-              <li className="accordion-item">
-                <a className="accordion-title" href="javascript:void(0)">
-                  <i className="fa fa-chevron-down"></i>
-                  Can Activity Management help streamline payroll?
-                </a>
-                <p className="accordion-content">Yes—by syncing precise activity and attendance data directly with payroll, it minimizes manual effort, reduces errors, and ensures fair compensation.</p>
-              </li>
-              <li className="accordion-item">
-                <a className="accordion-title" href="javascript:void(0)">
-                  <i className="fa fa-chevron-down"></i>
-                  Is Activity Management suitable for remote or field teams?
-                </a>
-                <p className="accordion-content">Absolutely. HRMetricS' cloud-based module supports remote access and geolocation, enabling effective monitoring of mobile or off-site employees without requiring additional infrastructure.</p>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </section>
-      {/* End FAQ Area */}
+      <FaqSection
+        items={[
+          {
+            question: "What is HRM Mitra's Activity Management module?",
+            answer: "It's a comprehensive tracker that records employee online activity—screen time, keystrokes, screenshots, and app usage—to help managers monitor productivity in real-time, utilizing geolocation and device access."
+          },
+          {
+            question: "How does Activity Management improve time monitoring?",
+            answer: "It ensures accurate tracking of work hours, activity vs. idle time, and compliance with labor regulations, helping identify efficiency gaps and avoid payroll errors."
+          },
+          {
+            question: "What kind of data can managers access?",
+            answer: "Managers can view real-time screen monitoring, desktop snapshots every few minutes, app/website usage logs, mouse/keystroke activity, and work/rest period data."
+          },
+          {
+            question: "Can Activity Management help streamline payroll?",
+            answer: "Yes—by syncing precise activity and attendance data directly with payroll, it minimizes manual effort, reduces errors, and ensures fair compensation."
+          },
+          {
+            question: "Is Activity Management suitable for remote or field teams?",
+            answer: "Absolutely. HRMetricS' cloud-based module supports remote access and geolocation, enabling effective monitoring of mobile or off-site employees without requiring additional infrastructure."
+          }
+        ]}
+      />
       
       {/* Start Footer */}
       <footer className="footer-bg text-light bg-cover">

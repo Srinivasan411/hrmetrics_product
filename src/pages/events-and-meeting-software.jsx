@@ -1,5 +1,6 @@
 import { TryForFreeCard } from "../components/LeadModals";
 import { BannerStyleFourHero } from "../components/BannerStyleFourHero.jsx";
+import FaqSection from "../components/FaqSection.jsx";
 
 export default function EventsAndMeetingSoftwarePage() {
   return (
@@ -410,58 +411,30 @@ export default function EventsAndMeetingSoftwarePage() {
           </div>
         </div>
       </div>
-      <section className="faq-area default-padding">
-        <div className="container">
-          <div className="row">
-            <div className="col-lg-8 offset-lg-2">
-              <div className="site-heading mb-3 text-center">
-                <h4 className="sub-title">Faq</h4>
-                <h2 className="title split-text">Frequently Asked Questions</h2>
-                <div className="devider" />
-              </div>
-            </div>
-          </div>
-          <div className="faq-accordion-content">
-            <ul className="accordion">
-              <li className="accordion-item">
-                <a className="accordion-title active" href="javascript:void(0)">
-                  <i className="fa fa-chevron-down" />
-                  How do I schedule meetings using HRM Mitra?
-                </a>
-                <p className="accordion-content show">HRM Mitra simplifies meeting planning by allowing you to set custom meeting dates and times directly in the system. You can send calendar invites to all participants, ensuring everyone is notified and equipped with the necessary details in advance—no last-minute coordination required. </p>
-              </li>
-              <li className="accordion-item">
-                <a className="accordion-title" href="javascript:void(0)">
-                  <i className="fa fa-chevron-down" />
-                  Can I plan and manage larger events across the organisation?
-                </a>
-                <p className="accordion-content">Yes. The Events &amp; Meetings module empowers you to organize, manage, and evaluate both small team meetings and larger organizational events, maintaining clarity and structure throughout the event lifecycle.</p>
-              </li>
-              <li className="accordion-item">
-                <a className="accordion-title" href="javascript:void(0)">
-                  <i className="fa fa-chevron-down" />
-                  Is there an integrated calendar for announcements and reminders?
-                </a>
-                <p className="accordion-content">Absolutely. Your meetings and events are integrated with the central HRMetricS calendar and announcement tools, so employees receive timely reminders and event details via the portal and mobile app.</p>
-              </li>
-              <li className="accordion-item">
-                <a className="accordion-title" href="javascript:void(0)">
-                  <i className="fa fa-chevron-down" />
-                  How can I measure the success of an event or meeting?
-                </a>
-                <p className="accordion-content">After events, HRM Mitra tracks participant engagement and allows evaluation through built-in feedback tools. This helps teams assess effectiveness, gather insights, and continuously improve future meetings or events.</p>
-              </li>
-              <li className="accordion-item">
-                <a className="accordion-title" href="javascript:void(0)">
-                  <i className="fa fa-chevron-down" />
-                  Can remote or field users join meetings on the go?
-                </a>
-                <p className="accordion-content">Yes. The HRM Mitra mobile app integrates events and meeting invites seamlessly. Employees can view upcoming meetings, accept invitations, receive reminders, and participate in event-related activities from anywhere—ideal for remote or field-based teams.</p>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </section>
+      <FaqSection
+        items={[
+          {
+            question: "How do I schedule meetings using HRM Mitra?",
+            answer: "HRM Mitra simplifies meeting planning by allowing you to set custom meeting dates and times directly in the system. You can send calendar invites to all participants, ensuring everyone is notified and equipped with the necessary details in advance—no last-minute coordination required."
+          },
+          {
+            question: "Can I plan and manage larger events across the organisation?",
+            answer: "Yes. The Events & Meetings module empowers you to organize, manage, and evaluate both small team meetings and larger organizational events, maintaining clarity and structure throughout the event lifecycle."
+          },
+          {
+            question: "Is there an integrated calendar for announcements and reminders?",
+            answer: "Absolutely. Your meetings and events are integrated with the central HRMetricS calendar and announcement tools, so employees receive timely reminders and event details via the portal and mobile app."
+          },
+          {
+            question: "How can I measure the success of an event or meeting?",
+            answer: "After events, HRM Mitra tracks participant engagement and allows evaluation through built-in feedback tools. This helps teams assess effectiveness, gather insights, and continuously improve future meetings or events."
+          },
+          {
+            question: "Can remote or field users join meetings on the go?",
+            answer: "Yes. The HRM Mitra mobile app integrates events and meeting invites seamlessly. Employees can view upcoming meetings, accept invitations, receive reminders, and participate in event-related activities from anywhere—ideal for remote or field-based teams."
+          }
+        ]}
+      />
       <footer className="footer-bg text-light bg-cover">
         <div className="footer-shape">
           <div className="item">

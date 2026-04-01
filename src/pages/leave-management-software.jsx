@@ -1,5 +1,6 @@
 import { TryForFreeCard } from "../components/LeadModals";
 import { BannerStyleFourHero } from "../components/BannerStyleFourHero.jsx";
+import FaqSection from "../components/FaqSection.jsx";
 
 export default function LeaveManagementSoftwarePage() {
   return (
@@ -410,58 +411,30 @@ export default function LeaveManagementSoftwarePage() {
           </div>
         </div>
       </div>
-      <section className="faq-area default-padding">
-        <div className="container">
-          <div className="row">
-            <div className="col-lg-8 offset-lg-2">
-              <div className="site-heading mb-3 text-center">
-                <h4 className="sub-title">Faq</h4>
-                <h2 className="title split-text">Frequently Asked Questions</h2>
-                <div className="devider" />
-              </div>
-            </div>
-          </div>
-          <div className="faq-accordion-content">
-            <ul className="accordion">
-              <li className="accordion-item">
-                <a className="accordion-title active" href="javascript:void(0)">
-                  <i className="fa fa-chevron-down" />
-                  How are leave requests submitted and tracked?
-                </a>
-                <p className="accordion-content show">Employees can submit leave requests via both the web portal and mobile app, specifying leave type, dates, and reason. Managers receive notifications and can review and approve or reject requests with a single click. The system logs all pending, approved, and rejected requests, making tracking easy for both employees and HR teams. </p>
-              </li>
-              <li className="accordion-item">
-                <a className="accordion-title" href="javascript:void(0)">
-                  <i className="fa fa-chevron-down" />
-                  Can leave policies and entitlements be customized?
-                </a>
-                <p className="accordion-content">Yes. HRM Mitra offers fully customizable leave policies per employee, department, or location, covering accrual rules, carry‑over limits, and balance tracking. System-generated reminders help employees stay aware of their leave entitlements.</p>
-              </li>
-              <li className="accordion-item">
-                <a className="accordion-title" href="javascript:void(0)">
-                  <i className="fa fa-chevron-down" />
-                  Does it handle complex leave types like half-days and comp off?
-                </a>
-                <p className="accordion-content">Absolutely. The leave module supports various leave types—including full days, half-days, comp off, and unpaid leave—and integrates these seamlessly into remaining balances and payroll calculations.</p>
-              </li>
-              <li className="accordion-item">
-                <a className="accordion-title" href="javascript:void(0)">
-                  <i className="fa fa-chevron-down" />
-                  How is leave data integrated with attendance and payroll?
-                </a>
-                <p className="accordion-content">Approved leave entries automatically sync with the attendance management module. These records then flow into the payroll engine—ensuring accurate calculations for leave, overtime, and payroll compliance—minimizing errors and manual processing.</p>
-              </li>
-              <li className="accordion-item">
-                <a className="accordion-title" href="javascript:void(0)">
-                  <i className="fa fa-chevron-down" />
-                  What reporting and analytics does the leave module offer?
-                </a>
-                <p className="accordion-content">HRM Mitra provides detailed reports and dashboards on leave patterns—total leave taken, balances, pending requests, departmental trends, and utilisation metrics. These insights help HR spot absence hot spots, forecast staffing needs, and drive compliant leave policy adjustments.</p>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </section>
+      <FaqSection
+        items={[
+          {
+            question: "How are leave requests submitted and tracked?",
+            answer: "Employees can submit leave requests via both the web portal and mobile app, specifying leave type, dates, and reason. Managers receive notifications and can review and approve or reject requests with a single click. The system logs all pending, approved, and rejected requests, making tracking easy for both employees and HR teams."
+          },
+          {
+            question: "Can leave policies and entitlements be customized?",
+            answer: "Yes. HRM Mitra offers fully customizable leave policies per employee, department, or location, covering accrual rules, carry-over limits, and balance tracking. System-generated reminders help employees stay aware of their leave entitlements."
+          },
+          {
+            question: "Does it handle complex leave types like half-days and comp off?",
+            answer: "Absolutely. The leave module supports various leave types—including full days, half-days, comp off, and unpaid leave—and integrates these seamlessly into remaining balances and payroll calculations."
+          },
+          {
+            question: "How is leave data integrated with attendance and payroll?",
+            answer: "Approved leave entries automatically sync with the attendance management module. These records then flow into the payroll engine—ensuring accurate calculations for leave, overtime, and payroll compliance—minimizing errors and manual processing."
+          },
+          {
+            question: "What reporting and analytics does the leave module offer?",
+            answer: "HRM Mitra provides detailed reports and dashboards on leave patterns—total leave taken, balances, pending requests, departmental trends, and utilisation metrics. These insights help HR spot absence hot spots, forecast staffing needs, and drive compliant leave policy adjustments."
+          }
+        ]}
+      />
       <footer className="footer-bg text-light bg-cover">
         <div className="footer-shape">
           <div className="item">

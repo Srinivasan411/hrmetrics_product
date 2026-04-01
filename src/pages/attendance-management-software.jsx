@@ -1,5 +1,6 @@
 import { TryForFreeCard } from "../components/LeadModals";
 import { BannerStyleFourHero } from "../components/BannerStyleFourHero.jsx";
+import FaqSection from "../components/FaqSection.jsx";
 
 export default function AttendanceManagementSoftwarePage() {
   return (
@@ -524,58 +525,30 @@ export default function AttendanceManagementSoftwarePage() {
           </div>
         </div>
       </div>
-      <section className="faq-area default-padding">
-        <div className="container">
-          <div className="row">
-            <div className="col-lg-8 offset-lg-2">
-              <div className="site-heading mb-3 text-center">
-                <h4 className="sub-title">Faq</h4>
-                <h2 className="title split-text">Frequently Asked Questions</h2>
-                <div className="devider" />
-              </div>
-            </div>
-          </div>
-          <div className="faq-accordion-content">
-            <ul className="accordion">
-              <li className="accordion-item">
-                <a className="accordion-title active" href="javascript:void(0)">
-                  <i className="fa fa-chevron-down" />
-                  What attendance capture methods does HRM Mitra support?
-                </a>
-                <p className="accordion-content show">HRM Mitra provides highly flexible attendance recording through multiple methods—web portal, mobile app, biometric devices, and even Excel/CSV imports. It also supports selfie-based check-ins, geotagging, and configurable geo-fencing to ensure employees are present at the correct location.</p>
-              </li>
-              <li className="accordion-item">
-                <a className="accordion-title" href="javascript:void(0)">
-                  <i className="fa fa-chevron-down" />
-                  Can employees mark attendance when working remotely or in the field?
-                </a>
-                <p className="accordion-content">Absolutely. The mobile app allows remote attendance marking with GPS-based geo-tagging and live tracking, making it ideal for remote, field-based, or work-from-home staff.</p>
-              </li>
-              <li className="accordion-item">
-                <a className="accordion-title" href="javascript:void(0)">
-                  <i className="fa fa-chevron-down" />
-                  How does the platform handle attendance discrepancies or corrections?
-                </a>
-                <p className="accordion-content">HRM Mitra lets employees raise attendance regularization requests directly via the mobile app or web interface. Managers can quickly review and approve requests, ensuring real-time updates to attendance logs.</p>
-              </li>
-              <li className="accordion-item">
-                <a className="accordion-title" href="javascript:void(0)">
-                  <i className="fa fa-chevron-down" />
-                  How does attendance data integration work with payroll?
-                </a>
-                <p className="accordion-content">The system automatically syncs confirmed attendance with payroll. With support for biometric devices and remote check-ins, attendance data feeds into payroll computations—covering working hours, leaves, overtime, incentives, and tax compliance—reducing errors and speeding up the pay cycle.</p>
-              </li>
-              <li className="accordion-item">
-                <a className="accordion-title" href="javascript:void(0)">
-                  <i className="fa fa-chevron-down" />
-                  What reporting and analytics features are available?
-                </a>
-                <p className="accordion-content">You get real-time dashboards with detailed insights into attendance trends, absenteeism, late-ins/outs, and overall workforce productivity. This aids in quick decision-making and helps HR align attendance policies with organizational goals.</p>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </section>
+      <FaqSection
+        items={[
+          {
+            question: "What attendance capture methods does HRM Mitra support?",
+            answer: "HRM Mitra provides highly flexible attendance recording through multiple methods—web portal, mobile app, biometric devices, and even Excel/CSV imports. It also supports selfie-based check-ins, geotagging, and configurable geo-fencing to ensure employees are present at the correct location."
+          },
+          {
+            question: "Can employees mark attendance when working remotely or in the field?",
+            answer: "Absolutely. The mobile app allows remote attendance marking with GPS-based geo-tagging and live tracking, making it ideal for remote, field-based, or work-from-home staff."
+          },
+          {
+            question: "How does the platform handle attendance discrepancies or corrections?",
+            answer: "HRM Mitra lets employees raise attendance regularization requests directly via the mobile app or web interface. Managers can quickly review and approve requests, ensuring real-time updates to attendance logs."
+          },
+          {
+            question: "How does attendance data integration work with payroll?",
+            answer: "The system automatically syncs confirmed attendance with payroll. With support for biometric devices and remote check-ins, attendance data feeds into payroll computations—covering working hours, leaves, overtime, incentives, and tax compliance—reducing errors and speeding up the pay cycle."
+          },
+          {
+            question: "What reporting and analytics features are available?",
+            answer: "You get real-time dashboards with detailed insights into attendance trends, absenteeism, late-ins/outs, and overall workforce productivity. This aids in quick decision-making and helps HR align attendance policies with organizational goals."
+          }
+        ]}
+      />
       <footer className="footer-bg text-light bg-cover">
         <div className="footer-shape">
           <div className="item">

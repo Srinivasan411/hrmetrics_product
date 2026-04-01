@@ -1,5 +1,6 @@
 import { TryForFreeCard } from "../components/LeadModals";
 import { BannerStyleFourHero } from "../components/BannerStyleFourHero.jsx";
+import FaqSection from "../components/FaqSection.jsx";
 
 export default function TaskManagementSoftwarePage() {
   return (
@@ -554,58 +555,30 @@ export default function TaskManagementSoftwarePage() {
           </div>
         </div>
       </div>
-      <section className="faq-area default-padding">
-        <div className="container">
-          <div className="row">
-            <div className="col-lg-8 offset-lg-2">
-              <div className="site-heading mb-3 text-center">
-                <h4 className="sub-title">Faq</h4>
-                <h2 className="title split-text">Frequently Asked Questions</h2>
-                <div className="devider" />
-              </div>
-            </div>
-          </div>
-          <div className="faq-accordion-content">
-            <ul className="accordion">
-              <li className="accordion-item">
-                <a className="accordion-title active" href="javascript:void(0)">
-                  <i className="fa fa-chevron-down" />
-                  What is HRM Mitra's Task Management module?
-                </a>
-                <p className="accordion-content show">It enables creation, assignment, and tracking of individual or project tasks, with workflow controls and customizable dashboards to streamline collaboration and boost productivity. </p>
-              </li>
-              <li className="accordion-item">
-                <a className="accordion-title" href="javascript:void(0)">
-                  <i className="fa fa-chevron-down" />
-                  How do managers assign and prioritize tasks?
-                </a>
-                <p className="accordion-content">Managers can assign tasks to individuals or teams, set deadlines, priorities, and dependencies. Tasks can be tagged and organized by project or department for clarity.</p>
-              </li>
-              <li className="accordion-item">
-                <a className="accordion-title" href="javascript:void(0)">
-                  <i className="fa fa-chevron-down" />
-                  How is progress tracked and monitored?
-                </a>
-                <p className="accordion-content">Task status can be viewed in real time—such as "To‑Do", "In Progress", or "Completed"—via dashboards and milestone charts, ensuring apparent oversight and timely delivery.</p>
-              </li>
-              <li className="accordion-item">
-                <a className="accordion-title" href="javascript:void(0)">
-                  <i className="fa fa-chevron-down" />
-                  What collaboration features does it offer?
-                </a>
-                <p className="accordion-content">Team members can add comments, upload attachments, share updates, and interact on task cards within the module, promoting transparency and reducing reliance on emails. </p>
-              </li>
-              <li className="accordion-item">
-                <a className="accordion-title" href="javascript:void(0)">
-                  <i className="fa fa-chevron-down" />
-                  How does Task Management integrate with HRM processes?
-                </a>
-                <p className="accordion-content">Seamlessly integrates with other HR modules in HRM Mitra (e.g. attendance, leave, payroll), enabling unified reporting and analytics across tasks and HR functions. </p>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </section>
+      <FaqSection
+        items={[
+          {
+            question: "What is HRM Mitra's Task Management module?",
+            answer: "It enables creation, assignment, and tracking of individual or project tasks, with workflow controls and customizable dashboards to streamline collaboration and boost productivity."
+          },
+          {
+            question: "How do managers assign and prioritize tasks?",
+            answer: "Managers can assign tasks to individuals or teams, set deadlines, priorities, and dependencies. Tasks can be tagged and organized by project or department for clarity."
+          },
+          {
+            question: "How is progress tracked and monitored?",
+            answer: "Task status can be viewed in real time—such as 'To-Do', 'In Progress', or 'Completed'—via dashboards and milestone charts, ensuring apparent oversight and timely delivery."
+          },
+          {
+            question: "What collaboration features does it offer?",
+            answer: "Team members can add comments, upload attachments, share updates, and interact on task cards within the module, promoting transparency and reducing reliance on emails."
+          },
+          {
+            question: "How does Task Management integrate with HRM processes?",
+            answer: "Seamlessly integrates with other HR modules in HRM Mitra (e.g. attendance, leave, payroll), enabling unified reporting and analytics across tasks and HR functions."
+          }
+        ]}
+      />
       <footer className="footer-bg text-light bg-cover">
         <div className="footer-shape">
           <div className="item">

@@ -1,5 +1,6 @@
 import { TryForFreeCard } from "../components/LeadModals";
 import { BannerStyleFourHero } from "../components/BannerStyleFourHero.jsx";
+import FaqSection from "../components/FaqSection.jsx";
 
 export default function FieldForceManagementSoftwarePage() {
   return (
@@ -381,58 +382,30 @@ export default function FieldForceManagementSoftwarePage() {
           </div>
         </div>
       </div>
-      <section className="faq-area default-padding">
-        <div className="container">
-          <div className="row">
-            <div className="col-lg-8 offset-lg-2">
-              <div className="site-heading mb-3 text-center">
-                <h4 className="sub-title">Faq</h4>
-                <h2 className="title split-text">Frequently Asked Questions</h2>
-                <div className="devider" />
-              </div>
-            </div>
-          </div>
-          <div className="faq-accordion-content">
-            <ul className="accordion">
-              <li className="accordion-item">
-                <a className="accordion-title active" href="javascript:void(0)">
-                  <i className="fa fa-chevron-down" />
-                  What is HRM Mitra's Field Force Management module?
-                </a>
-                <p className="accordion-content show">It empowers managers to track field teams in real-time using GPS, geofencing, and distance monitoring. Daily attendance, visit logs, and travel data are recorded automatically. </p>
-              </li>
-              <li className="accordion-item">
-                <a className="accordion-title" href="javascript:void(0)">
-                  <i className="fa fa-chevron-down" />
-                  How does geo-tracking enhance field operations?
-                </a>
-                <p className="accordion-content">Geo-tagged attendance and live movement tracking help ensure employees are at the right locations. Geo-fencing also enforces predefined routes and zones for compliance. </p>
-              </li>
-              <li className="accordion-item">
-                <a className="accordion-title" href="javascript:void(0)">
-                  <i className="fa fa-chevron-down" />
-                  Can managers monitor visits and distance traveled?
-                </a>
-                <p className="accordion-content">Yes, the module logs daily client visits and calculates distances covered. Automated visit reports help managers assess productivity and efficiency.</p>
-              </li>
-              <li className="accordion-item">
-                <a className="accordion-title" href="javascript:void(0)">
-                  <i className="fa fa-chevron-down" />
-                  Is Field Force Management accessible on mobile?
-                </a>
-                <p className="accordion-content">Absolutely. The mobile app supports remote check-ins, real-time location updates, and on-the-go task tracking for field employees.</p>
-              </li>
-              <li className="accordion-item">
-                <a className="accordion-title" href="javascript:void(0)">
-                  <i className="fa fa-chevron-down" />
-                  How does this module benefit my business?
-                </a>
-                <p className="accordion-content">It provides transparency over mobile staff, enhances accountability, and makes data maintenance and performance evaluation seamless.</p>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </section>
+      <FaqSection
+        items={[
+          {
+            question: "What is HRM Mitra's Field Force Management module?",
+            answer: "It empowers managers to track field teams in real-time using GPS, geofencing, and distance monitoring. Daily attendance, visit logs, and travel data are recorded automatically."
+          },
+          {
+            question: "How does geo-tracking enhance field operations?",
+            answer: "Geo-tagged attendance and live movement tracking help ensure employees are at the right locations. Geo-fencing also enforces predefined routes and zones for compliance."
+          },
+          {
+            question: "Can managers monitor visits and distance traveled?",
+            answer: "Yes, the module logs daily client visits and calculates distances covered. Automated visit reports help managers assess productivity and efficiency."
+          },
+          {
+            question: "Is Field Force Management accessible on mobile?",
+            answer: "Absolutely. The mobile app supports remote check-ins, real-time location updates, and on-the-go task tracking for field employees."
+          },
+          {
+            question: "How does this module benefit my business?",
+            answer: "It provides transparency over mobile staff, enhances accountability, and makes data maintenance and performance evaluation seamless."
+          }
+        ]}
+      />
       <footer className="footer-bg text-light bg-cover">
         <div className="footer-shape">
           <div className="item">

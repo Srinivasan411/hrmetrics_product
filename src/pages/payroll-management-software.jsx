@@ -1,5 +1,6 @@
 import { TryForFreeCard } from "../components/LeadModals";
 import { BannerStyleFourHero } from "../components/BannerStyleFourHero.jsx";
+import FaqSection from "../components/FaqSection.jsx";
 
 export default function PayrollManagementSoftwarePage() {
   return (
@@ -296,58 +297,30 @@ export default function PayrollManagementSoftwarePage() {
           </div>
         </div>
       </div>
-      <section className="faq-area default-padding">
-        <div className="container">
-          <div className="row">
-            <div className="col-lg-8 offset-lg-2">
-              <div className="site-heading mb-3 text-center">
-                <h4 className="sub-title">Faq</h4>
-                <h2 className="title split-text">Frequently Asked Questions</h2>
-                <div className="devider" />
-              </div>
-            </div>
-          </div>
-          <div className="faq-accordion-content">
-            <ul className="accordion">
-              <li className="accordion-item">
-                <a className="accordion-title active" href="javascript:void(0)">
-                  <i className="fa fa-chevron-down" />
-                  How does HRM Mitra calculate payroll automatically?
-                </a>
-                <p className="accordion-content show">HRM Mitra auto-calculates employee salaries by integrating attendance, leave, overtime, and incentive data. It factors in income tax, TDS, bonuses, arrears, and cost-to-company (CTC) components configured per pay head, eliminating manual input errors.</p>
-              </li>
-              <li className="accordion-item">
-                <a className="accordion-title" href="javascript:void(0)">
-                  <i className="fa fa-chevron-down" />
-                  Is the system compliant with tax and regulatory requirements?
-                </a>
-                <p className="accordion-content">HRM Mitra supports thorough compliance by automating TDS and income tax calculations, generating statutory reports like Form 16, and staying up‑to‑date with local payroll laws, minimizing compliance risk.</p>
-              </li>
-              <li className="accordion-item">
-                <a className="accordion-title" href="javascript:void(0)">
-                  <i className="fa fa-chevron-down" />
-                  Can employees access payslips and payroll details themselves?
-                </a>
-                <p className="accordion-content">Absolutely. The integrated self-service portal and mobile app let employees securely view payslips, salary breakdowns, tax deductions, and bank remittance details, boosting transparency and reducing HR queries.</p>
-              </li>
-              <li className="accordion-item">
-                <a className="accordion-title" href="javascript:void(0)">
-                  <i className="fa fa-chevron-down" />
-                  How does payroll integrate with attendance and leave?
-                </a>
-                <p className="accordion-content">Payroll is tightly linked with the attendance and leave modules. Approved time-offs and biometric or GPS check-ins feed directly into payroll logic, ensuring accurate pay calculations without manual reconciliation.</p>
-              </li>
-              <li className="accordion-item">
-                <a className="accordion-title" href="javascript:void(0)">
-                  <i className="fa fa-chevron-down" />
-                  What reporting and analytics are provided in payroll?
-                </a>
-                <p className="accordion-content">HRM Mitra delivers detailed payroll reports, including payroll summaries, cost center breakdowns, tax reports, and bank CMS files for payroll disbursal. It also provides real-time dashboards on labor costs and compliance metrics.</p>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </section>
+      <FaqSection
+        items={[
+          {
+            question: "How does HRM Mitra calculate payroll automatically?",
+            answer: "HRM Mitra auto-calculates employee salaries by integrating attendance, leave, overtime, and incentive data. It factors in income tax, TDS, bonuses, arrears, and cost-to-company (CTC) components configured per pay head, eliminating manual input errors."
+          },
+          {
+            question: "Is the system compliant with tax and regulatory requirements?",
+            answer: "HRM Mitra supports thorough compliance by automating TDS and income tax calculations, generating statutory reports like Form 16, and staying up-to-date with local payroll laws, minimizing compliance risk."
+          },
+          {
+            question: "Can employees access payslips and payroll details themselves?",
+            answer: "Absolutely. The integrated self-service portal and mobile app let employees securely view payslips, salary breakdowns, tax deductions, and bank remittance details, boosting transparency and reducing HR queries."
+          },
+          {
+            question: "How does payroll integrate with attendance and leave?",
+            answer: "Payroll is tightly linked with the attendance and leave modules. Approved time-offs and biometric or GPS check-ins feed directly into payroll logic, ensuring accurate pay calculations without manual reconciliation."
+          },
+          {
+            question: "What reporting and analytics are provided in payroll?",
+            answer: "HRM Mitra delivers detailed payroll reports, including payroll summaries, cost center breakdowns, tax reports, and bank CMS files for payroll disbursal. It also provides real-time dashboards on labor costs and compliance metrics."
+          }
+        ]}
+      />
       <footer className="footer-bg text-light bg-cover">
         <div className="footer-shape">
           <div className="item">

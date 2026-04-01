@@ -1,5 +1,6 @@
 import { TryForFreeCard } from "../components/LeadModals";
 import { BannerStyleFourHero } from "../components/BannerStyleFourHero.jsx";
+import FaqSection from "../components/FaqSection.jsx";
 
 export default function TalentManagementSoftwarePage() {
   return (
@@ -410,58 +411,30 @@ export default function TalentManagementSoftwarePage() {
           </div>
         </div>
       </div>
-      <section className="faq-area default-padding">
-        <div className="container">
-          <div className="row">
-            <div className="col-lg-8 offset-lg-2">
-              <div className="site-heading mb-3 text-center">
-                <h4 className="sub-title">Faq</h4>
-                <h2 className="title split-text">Frequently Asked Questions</h2>
-                <div className="devider" />
-              </div>
-            </div>
-          </div>
-          <div className="faq-accordion-content">
-            <ul className="accordion">
-              <li className="accordion-item">
-                <a className="accordion-title active" href="javascript:void(0)">
-                  <i className="fa fa-chevron-down" />
-                  What components are included in HRM Mitra's Talent Management suite?
-                </a>
-                <p className="accordion-content show">The talent management module integrates key HR functions—recruitment, performance management, learning &amp; development, competency mapping, succession planning, and compensation alignment—delivering comprehensive support across the entire employee lifecycle.</p>
-              </li>
-              <li className="accordion-item">
-                <a className="accordion-title" href="javascript:void(0)">
-                  <i className="fa fa-chevron-down" />
-                  How does performance management work within HRM Mitra?
-                </a>
-                <p className="accordion-content">Managers and employees can set goals (KRAs), conduct regular reviews, and provide continuous feedback via the system. It supports 360° assessments, performance analytics, bell‑curve normalization, and insights to drive promotions, rewards, and development plans.</p>
-              </li>
-              <li className="accordion-item">
-                <a className="accordion-title" href="javascript:void(0)">
-                  <i className="fa fa-chevron-down" />
-                  Can HRM Mitra support learning and development needs?
-                </a>
-                <p className="accordion-content">Yes. The platform facilitates training needs analysis, course and faculty management, feedback collection, and competency-gap identification. Development plans are aligned with performance goals and succession pipelines.</p>
-              </li>
-              <li className="accordion-item">
-                <a className="accordion-title" href="javascript:void(0)">
-                  <i className="fa fa-chevron-down" />
-                  Is there support for succession planning and competency modeling?
-                </a>
-                <p className="accordion-content">Absolutely. HRM Mitra offers competency frameworks based on knowledge, skills, and attributes, alongside succession tools like Nine‑Box grids, talent scorecards, and tracking of high‑potential employees for leadership pipelines.</p>
-              </li>
-              <li className="accordion-item">
-                <a className="accordion-title" href="javascript:void(0)">
-                  <i className="fa fa-chevron-down" />
-                  What analytics and insights does Talent Management provide?
-                </a>
-                <p className="accordion-content">Real-time dashboards and reports provide visibility into performance trends, succession readiness, competency gaps, recruitment efficiency, training impact, and engagement indicators—empowering HR to make strategic talent decisions.</p>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </section>
+      <FaqSection
+        items={[
+          {
+            question: "What components are included in HRM Mitra's Talent Management suite?",
+            answer: "The talent management module integrates key HR functions—recruitment, performance management, learning & development, competency mapping, succession planning, and compensation alignment—delivering comprehensive support across the entire employee lifecycle."
+          },
+          {
+            question: "How does performance management work within HRM Mitra?",
+            answer: "Managers and employees can set goals (KRAs), conduct regular reviews, and provide continuous feedback via the system. It supports 360° assessments, performance analytics, bell-curve normalization, and insights to drive promotions, rewards, and development plans."
+          },
+          {
+            question: "Can HRM Mitra support learning and development needs?",
+            answer: "Yes. The platform facilitates training needs analysis, course and faculty management, feedback collection, and competency-gap identification. Development plans are aligned with performance goals and succession pipelines."
+          },
+          {
+            question: "Is there support for succession planning and competency modeling?",
+            answer: "Absolutely. HRM Mitra offers competency frameworks based on knowledge, skills, and attributes, alongside succession tools like Nine-Box grids, talent scorecards, and tracking of high-potential employees for leadership pipelines."
+          },
+          {
+            question: "What analytics and insights does Talent Management provide?",
+            answer: "Real-time dashboards and reports provide visibility into performance trends, succession readiness, competency gaps, recruitment efficiency, training impact, and engagement indicators—empowering HR to make strategic talent decisions."
+          }
+        ]}
+      />
       <footer className="footer-bg text-light bg-cover">
         <div className="footer-shape">
           <div className="item">
