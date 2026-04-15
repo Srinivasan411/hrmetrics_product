@@ -470,13 +470,98 @@ async function handleScheduleDemo(req, res) {
   return respond(req, res, 200, { status: "ok", message: "Submitted successfully." });
 }
 
-// Backwards-compatible routes (match existing <form action="..."> values)
-app.post("/sendMail.php", handleBookDemo);
-app.post("/sheduleMail.php", handleScheduleDemo);
+async function handleContactForm(req, res) {
+  const asJson = isJsonPreferred(req);
 
-// Cleaner API aliases (optional)
+  const honeypot = normalizeString(req.body.website);
+  if (honeypot) return respond(req, res, 200, { status: "ok", message: "Thanks." });
+
+  const ip = getClientIp(req);
+  const key = `${ip}:contact`;
+  if (!checkRateLimit(key, 20)) {
+    return respond(req, res, 429, { status: "error", message: "Please wait a moment and try again." });
+  }
+
+  const name = normalizeString(req.body.name);
+  const company = normalizeString(req.body.company);
+  const email = normalizeString(req.body.email);
+  const phoneRaw = normalizeString(req.body.phone);
+  const employees = normalizeString(req.body.employees);
+  const address = normalizeString(req.body.address);
+  const city = normalizeString(req.body.city);
+  const pincode = normalizeString(req.body.pincode);
+  const message = normalizeString(req.body.message);
+
+  if (!name || !email || !phoneRaw || !company) {
+    return respond(req, res, 400, { status: "error", message: "Missing required fields." });
+  }
+  if (!validEmail(email)) {
+    return respond(req, res, 400, { status: "error", message: "Invalid email address." });
+  }
+  const phone = normalizePhone(phoneRaw);
+  if (!phone) {
+    return respond(req, res, 400, { status: "error", message: "Invalid phone number." });
+  }
+
+  const to = pickRecipient();
+  if (!to) {
+    return respond(req, res, 500, { status: "error", message: "Server mail recipient is not configured." });
+  }
+  const subject = "HRMetricS Lead - Contact Form";
+
+  const userAgent = normalizeString(req.get("user-agent"));
+  const origin = normalizeString(req.get("origin"));
+  const referer = normalizeString(req.get("referer"));
+
+  const lines = [
+    "New contact form submission received:",
+    "",
+    `Name: ${name}`,
+    `Company: ${company}`,
+    `Official Email: ${email}`,
+    `Phone: ${phone}`,
+    `Employees: ${employees || "(not provided)"}`,
+    `Address: ${address || "(not provided)"}`,
+    `City: ${city || "(not provided)"}`,
+    `Pincode: ${pincode || "(not provided)"}`,
+    `Message: ${message || "(not provided)"}`,
+    "",
+    "Meta:",
+    `IP: ${ip}`,
+    `User-Agent: ${userAgent}`,
+    `Origin: ${origin}`,
+    `Referer: ${referer}`,
+    `Time (server): ${new Date().toISOString()}`,
+  ];
+  const text = `${lines.join("\r\n")}\r\n`;
+  const html = `<pre style="font:14px/1.4 ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace; white-space:pre-wrap;">${escapeHtml(
+    lines.join("\n"),
+  )}</pre>`;
+
+  try {
+    await sendEmail({ to, subject, text, html, replyTo: `${name} <${email}>` });
+  } catch (err) {
+    console.error("contactMail failed:", err);
+    return respond(req, res, 500, { status: "error", message: "Unable to send email right now. Please try again later." });
+  }
+
+  if (!asJson) {
+    const returnUrl = safeSameOriginReturnUrl(req);
+    const sep = returnUrl.includes("?") ? "&" : "?";
+    return res.redirect(303, `${returnUrl}${sep}mail=success`);
+  }
+
+  return respond(req, res, 200, { status: "ok", message: "Submitted successfully." });
+}
+
+// API endpoints for form submissions
 app.post("/api/send-mail", handleBookDemo);
 app.post("/api/schedule-mail", handleScheduleDemo);
+app.post("/api/contact-mail", handleContactForm);
+
+// Backwards-compatible routes (for legacy PHP form actions)
+app.post("/sendMail.php", handleBookDemo);
+app.post("/contactMail.php", handleContactForm);
 
 app.get("/api/testimonials", (req, res) => {
   res.json({ status: "ok", data: listPublicTestimonials() });
@@ -603,7 +688,7 @@ app.use((req, res, next) => {
   res.sendFile(path.join(distDir, "index.html"));
 });
 
-const port = Number.parseInt(process.env.PORT ?? "3001", 10) || 3001;
+const port = Number.parseInt(process.env.PORT ?? "3002", 10) || 3002;
 const httpServer = http.createServer(app);
 
 httpServer.listen(port, () => {

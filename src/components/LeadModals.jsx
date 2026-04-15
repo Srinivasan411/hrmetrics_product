@@ -179,7 +179,7 @@ export function ScheduleDemoForm({ formId = "sheduledemo-modal" }) {
     const timeout = setTimeout(() => controller.abort(), 15000);
 
     try {
-      const payload = await postUrlEncoded({ endpoint: "/sheduleMail.php", formEl, signal: controller.signal });
+      const payload = await postUrlEncoded({ endpoint: "/api/schedule-mail", formEl, signal: controller.signal });
       setMessage(payload.message || "Submitted successfully.");
       formEl.reset();
     } catch (err) {

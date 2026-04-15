@@ -1,7 +1,93 @@
+import { useState } from "react";
 import { useSiteSettings } from "../siteSettings.jsx";
+
+const FREE_EMAIL_DOMAINS = new Set([
+  "gmail.com",
+  "yahoo.com",
+  "hotmail.com",
+  "outlook.com",
+  "aol.com",
+  "icloud.com",
+  "yopmail.com",
+]);
+
+function isOfficialEmail(email) {
+  const normalized = String(email ?? "").trim().toLowerCase();
+  const domain = normalized.split("@")[1] ?? "";
+  if (!domain) return false;
+  return !FREE_EMAIL_DOMAINS.has(domain);
+}
+
+function SubmitAlert({ variant, message }) {
+  if (!message) return null;
+  const klass = variant === "success" ? "alert alert-success" : "alert alert-danger";
+  const role = variant === "success" ? "status" : "alert";
+  return (
+    <div className={`${klass} mt-3 mb-0 py-2`} role={role}>
+      {message}
+    </div>
+  );
+}
 
 export default function ContactPage() {
   const { siteSettings } = useSiteSettings();
+  const [submitting, setSubmitting] = useState(false);
+  const [message, setMessage] = useState("");
+  const [submitError, setSubmitError] = useState("");
+
+  async function handleSubmit(event) {
+    event.preventDefault();
+    if (submitting) return;
+
+    setSubmitting(true);
+    setMessage("");
+    setSubmitError("");
+
+    const formEl = event.currentTarget;
+    const formData = new FormData(formEl);
+    const email = String(formData.get("email") ?? "").trim();
+
+    if (!isOfficialEmail(email)) {
+      setSubmitError("Please enter your official (work) email address.");
+      setSubmitting(false);
+      return;
+    }
+
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 15000);
+
+    try {
+      const body = new URLSearchParams();
+      for (const [key, value] of formData.entries()) {
+        body.append(key, String(value));
+      }
+
+      const response = await fetch("/contactMail.php", {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "X-Requested-With": "XMLHttpRequest",
+          "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
+        },
+        body: body.toString(),
+        signal: controller.signal,
+      });
+
+      const payload = await response.json().catch(() => ({}));
+      if (!response.ok) {
+        throw new Error(payload.message || "Unable to submit right now. Please try again.");
+      }
+
+      setMessage(payload.message || "Message sent successfully! We'll get back to you soon.");
+      formEl.reset();
+    } catch (err) {
+      const errorMessage = err?.name === "AbortError" ? "Request timed out. Please try again." : err?.message || "Request failed.";
+      setSubmitError(errorMessage);
+    } finally {
+      clearTimeout(timeout);
+      setSubmitting(false);
+    }
+  }
 
   return (
     <div>
@@ -64,86 +150,7 @@ export default function ContactPage() {
                   </li>
                   <li aria-haspopup="true"><a className="navtext" href="../about/index.html"><span /> <span>About</span></a>
                   </li>
-                  <li aria-haspopup="true" className="megmeanu">
-                    <a className="navtext" href="#">
-                      <span />
-                      <span>Product</span>
-                    </a>
-                    <div className="wsshoptabing wtsbrandmenu clearfix">
-                      <div className="wsshoptabingwp clearfix">
-                        <ul className="wstabitem02 clearfix">
-                          <li className="wsshoplink-active">
-                            <a href="../hrm-soultion-software/index.html">
-                              <i className="fas fa-female" />HRMS </a>
-                            <div className="wsshoptab-active wstbrandbottom clearfix">
-                              <div className="container-fluid">
-                                <div className="row">
-                                  <div className="col-lg-4 col-md-12">
-                                    <ul className="wstliststy02 clearfix">
-                                      <li>
-                                        <a href="../company-management-software/index.html">
-                                          <span className="menu-iconn"><img alt="" src="../assets/images/icon/organization.png" /></span> Company Management </a>
-                                      </li>
-                                      <li>
-                                        <a href="../employees-management-software/index.html"><span className="menu-iconn"><img alt="" src="../assets/images/icon/employee.png" /></span> Employee Management </a>
-                                      </li>
-                                      <li>
-                                        <a href="../attendance-management-software/index.html"><span className="menu-iconn"><img alt="" src="../assets/images/icon/attendance.png" /></span> Attendance Management </a>
-                                      </li>
-                                    </ul>
-                                  </div>
-                                  <div className="col-lg-4 col-md-12">
-                                    <ul className="wstliststy02 clearfix">
-                                      <li>
-                                        <a href="../leave-management-software/index.html"><span className="menu-iconn"><img alt="" src="../assets/images/icon/leave.png" /></span> Leave Management </a>
-                                      </li>
-                                      <li>
-                                        <a href="../payroll-management-software/index.html"><span className="menu-iconn"><img alt="" src="../assets/images/icon/payroll.png" /></span> Payroll Management </a>
-                                      </li>
-                                      <li>
-                                        <a href="../talent-management-software/index.html"><span className="menu-iconn"><img alt="" src="../assets/images/icon/talent-management.png" /></span> Talent Recognition </a>
-                                      </li>
-                                    </ul>
-                                  </div>
-                                  <div className="col-lg-4 col-md-12">
-                                    <ul className="wstliststy02 clearfix">
-                                      <li>
-                                        <a href="../report-and-analytics-software/index.html"><span className="menu-iconn"><img alt="" src="../assets/images/icon/analytics.png" /></span>Reports and Analytics </a>
-                                      </li>
-                                      <li>
-                                        <a href="../events-and-meeting-software/index.html"><span className="menu-iconn"><img alt="" src="../assets/images/icon/meeting.png" /></span> Events and Meetings </a>
-                                      </li>
-                                      <li>
-                                        <a href="../mobile-app-software/index.html"><span className="menu-iconn"><img alt="" src="../assets/images/icon/booking.png" /></span> Mobile App </a>
-                                      </li>
-                                    </ul>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </li>
-                          <li>
-                            <a href="../activity-management-software/index.html">
-                              <i className="fas fa-male" /> Activity Management </a>
-                          </li>
-                          <li>
-                            <a href="../task-management-software/index.html">
-                              <i className="fas fa-play-circle" /> Task Management </a>
-                          </li>
-                          <li>
-                            <a href="../asset-management-software/index.html">
-                              <i className="fas fa-utensils" />
-                              Asset Management </a>
-                          </li>
-                          <li>
-                            <a href="../field-force-management-software/index.html">
-                              <i className="fas fa-tv" />Field Force Management </a>
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-                  </li>
-                  <li aria-haspopup="true"><a className="navtext" href="index.html"><span /> <span>Contact</span></a>
+                  <li aria-haspopup="true"><a className="navtext" href="contact/index.html"><span /> <span>Contact</span></a>
                   </li>
                   <li className="wscarticon clearfix">
                     <a className="btn btn-theme text-white btn-md radius" href={siteSettings.demo_login_url} target="_blank" rel="noopener noreferrer">Login</a>
@@ -215,7 +222,7 @@ export default function ContactPage() {
               <div className="contact-form-style-one">
                 <h5 className="sub-title">Have Questions?</h5>
                 <h2 className="title">Send us a Massage</h2>
-                <form action="contactMail.php" className="contact-form1" method="POST">
+                <form className="contact-form1" onSubmit={handleSubmit}>
                   <div className="row">
                     <div className="col-lg-12">
                       <div className="form-group">
@@ -271,12 +278,20 @@ export default function ContactPage() {
                       </div>
                     </div>
                     <div className="col-lg-12">
-                      <button id="submit" name="submit" type="submit">
-                        <i className="fa fa-paper-plane" /> Get in Touch
+                      <button id="submit" name="submit" type="submit" disabled={submitting}>
+                        {submitting ? (
+                          <>
+                            <span className="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true" />
+                            Sending...
+                          </>
+                        ) : (
+                          <><i className="fa fa-paper-plane" /> Get in Touch</>
+                        )}
                       </button>
                     </div>
                     <div className="col-lg-12 alert-notification">
-                      <div className="alert-msg" id="message" />
+                      <SubmitAlert variant="success" message={message} />
+                      <SubmitAlert variant="error" message={submitError} />
                     </div>
                   </div>
                 </form>
@@ -397,8 +412,6 @@ export default function ContactPage() {
         </div>
       </footer>
       <button id="scrollTopBtn">↑</button>
-      
-      
     </div>
   );
 }

@@ -24,6 +24,31 @@ async function parseJson(response) {
   return payload;
 }
 
+function SettingsIcon() {
+  return (
+    <svg className="hr-admin__nav-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+      <path strokeLinecap="round" strokeLinejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.807 2.885 2.165a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.807 3.31-2.165 2.885a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.807-2.885-2.165a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.807-3.31 2.165-2.885a1.724 1.724 0 002.572-1.065z" />
+      <path strokeLinecap="round" strokeLinejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+    </svg>
+  );
+}
+
+function ChatIcon() {
+  return (
+    <svg className="hr-admin__nav-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+      <path strokeLinecap="round" strokeLinejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+    </svg>
+  );
+}
+
+function LogoutIcon() {
+  return (
+    <svg className="hr-admin__nav-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+      <path strokeLinecap="round" strokeLinejoin="round" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+    </svg>
+  );
+}
+
 export default function AdminPage() {
   const [session, setSession] = useState(null);
   const [checkingSession, setCheckingSession] = useState(true);
@@ -35,6 +60,7 @@ export default function AdminPage() {
   const [error, setError] = useState("");
   const [busy, setBusy] = useState(false);
   const [uploadingImage, setUploadingImage] = useState(false);
+  const [activeTab, setActiveTab] = useState("settings");
 
   useEffect(() => {
     let ignore = false;
@@ -166,7 +192,7 @@ export default function AdminPage() {
       isActive: Boolean(item.isActive),
       sortOrder: item.sortOrder || 0,
     });
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    setActiveTab("testimonials");
   }
 
   async function handleSubmit(event) {
@@ -288,16 +314,67 @@ export default function AdminPage() {
     }
   }
 
+  const userInitial = session?.username ? session.username.charAt(0).toUpperCase() : "A";
+
   if (checkingSession) {
     return (
       <div className="hr-admin">
-        <div className="hr-admin__panel">
-          <div className="hr-admin__content">
-            <div className="hr-admin__loading">
-              <p className="hr-admin__subtext">Checking admin session…</p>
-              <span className="hr-admin__spinner" aria-hidden="true" />
-            </div>
+        <div className="hr-admin__loading">
+          <div className="hr-admin__spinner" />
+          <p className="hr-admin__subtext">Checking admin session...</p>
+        </div>
+      </div>
+    );
+  }
+
+  if (!session) {
+    return (
+      <div className="hr-admin__login-page">
+        <div className="hr-admin__login-card">
+          <div className="hr-admin__login-header">
+            <h1 className="hr-admin__login-logo">HR<span>MetricS</span></h1>
+            <p className="hr-admin__login-subtitle">Sign in to manage your site</p>
           </div>
+
+          {status ? (
+            <div className="hr-admin__alert hr-admin__alert--success" role="status">
+              <p className="hr-admin__alert-text">{status}</p>
+              <button type="button" className="hr-admin__alert-close" onClick={() => setStatus("")}>×</button>
+            </div>
+          ) : null}
+          {error ? (
+            <div className="hr-admin__alert hr-admin__alert--error" role="alert">
+              <p className="hr-admin__alert-text">{error}</p>
+              <button type="button" className="hr-admin__alert-close" onClick={() => setError("")}>×</button>
+            </div>
+          ) : null}
+
+          <form onSubmit={handleLogin} className="hr-admin__form">
+            <label className="hr-admin__label">
+              Username
+              <input
+                className="hr-admin__input"
+                value={loginForm.username}
+                onChange={(event) => setLoginForm((current) => ({ ...current, username: event.target.value }))}
+                placeholder="Enter username"
+                autoComplete="username"
+              />
+            </label>
+            <label className="hr-admin__label">
+              Password
+              <input
+                className="hr-admin__input"
+                type="password"
+                value={loginForm.password}
+                onChange={(event) => setLoginForm((current) => ({ ...current, password: event.target.value }))}
+                placeholder="Enter password"
+                autoComplete="current-password"
+              />
+            </label>
+            <button type="submit" disabled={busy} className="hr-admin__btn hr-admin__btn--primary">
+              {busy ? "Signing in..." : "Sign In"}
+            </button>
+          </form>
         </div>
       </div>
     );
@@ -305,105 +382,96 @@ export default function AdminPage() {
 
   return (
     <div className="hr-admin">
-      <div className="hr-admin__panel">
-        <header className="hr-admin__topbar">
-          <div className="hr-admin__topbar-inner">
-            <div>
-              <h1 className="hr-admin__title">HRMetricS</h1>
-            </div>
-            {session ? (
-              <button type="button" onClick={handleLogout} disabled={busy} className="hr-admin__btn hr-admin__btn--logout">
-                Logout {session.username ? `(${session.username})` : ""}
-              </button>
-            ) : null}
+      <div className="hr-admin__layout">
+        <aside className="hr-admin__sidebar">
+          <div className="hr-admin__sidebar-brand">
+            <h1 className="hr-admin__sidebar-logo">HR<span>MetricS</span></h1>
           </div>
-        </header>
 
-        <main className="hr-admin__content">
-          {status ? (
-            <div className="hr-admin__alert hr-admin__alert--success" role="status">
-              <p className="hr-admin__alert-text">{status}</p>
-              <button type="button" className="hr-admin__alert-close" onClick={() => setStatus("")} aria-label="Dismiss message">
-                ×
-              </button>
-            </div>
-          ) : null}
-          {error ? (
-            <div className="hr-admin__alert hr-admin__alert--error" role="alert">
-              <p className="hr-admin__alert-text">{error}</p>
-              <button type="button" className="hr-admin__alert-close" onClick={() => setError("")} aria-label="Dismiss error">
-                ×
-              </button>
-            </div>
-          ) : null}
+          <nav className="hr-admin__sidebar-nav">
+            <button
+              type="button"
+              className={`hr-admin__nav-item ${activeTab === "settings" ? "hr-admin__nav-item--active" : ""}`}
+              onClick={() => setActiveTab("settings")}
+            >
+              <SettingsIcon />
+              Site Settings
+            </button>
+            <button
+              type="button"
+              className={`hr-admin__nav-item ${activeTab === "testimonials" ? "hr-admin__nav-item--active" : ""}`}
+              onClick={() => setActiveTab("testimonials")}
+            >
+              <ChatIcon />
+              Testimonials
+            </button>
+          </nav>
 
-          {!session ? (
-            <div className="hr-admin__card hr-admin__login-card">
-              <form onSubmit={handleLogin} className="hr-admin__form">
-                <div>
-                  <h2 className="hr-admin__h2">Sign in</h2>
-                  <p className="hr-admin__subtext">Use your admin credentials to manage site settings and testimonials.</p>
-                </div>
-
-                <label className="hr-admin__label">
-                  Username
-                  <input
-                    className="hr-admin__input"
-                    value={loginForm.username}
-                    onChange={(event) => setLoginForm((current) => ({ ...current, username: event.target.value }))}
-                    placeholder="admin"
-                    autoComplete="username"
-                  />
-                </label>
-                <label className="hr-admin__label">
-                  Password
-                  <input
-                    className="hr-admin__input"
-                    type="password"
-                    value={loginForm.password}
-                    onChange={(event) => setLoginForm((current) => ({ ...current, password: event.target.value }))}
-                    placeholder="Enter password"
-                    autoComplete="current-password"
-                  />
-                </label>
-                <div className="hr-admin__actions">
-                  <button type="submit" disabled={busy} className="hr-admin__btn hr-admin__btn--primary">
-                    {busy ? "Signing in..." : "Login"}
-                  </button>
-                </div>
-                <p className="hr-admin__subtext">
-                  Default login is <strong>admin</strong> / <strong>admin123</strong> until you change the admin env variables.
-                </p>
-              </form>
+          <div className="hr-admin__sidebar-footer">
+            <div className="hr-admin__user">
+              <div className="hr-admin__user-avatar">{userInitial}</div>
+              <div className="hr-admin__user-info">
+                <p className="hr-admin__user-name">{session.username}</p>
+                <p className="hr-admin__user-role">Administrator</p>
+              </div>
             </div>
-          ) : (
-            <div className="hr-admin__stack">
-              <section className="hr-admin__card">
+            <button type="button" onClick={handleLogout} disabled={busy} className="hr-admin__btn hr-admin__btn--logout" style={{ width: "100%", marginTop: "12px" }}>
+              <LogoutIcon />
+              Sign Out
+            </button>
+          </div>
+        </aside>
+
+        <main className="hr-admin__main">
+          <header className="hr-admin__header">
+            <h2 className="hr-admin__header-title">
+              {activeTab === "settings" ? "Site Settings" : "Testimonials"}
+            </h2>
+          </header>
+
+          <div className="hr-admin__content">
+            {status ? (
+              <div className="hr-admin__alert hr-admin__alert--success" role="status">
+                <p className="hr-admin__alert-text">{status}</p>
+                <button type="button" className="hr-admin__alert-close" onClick={() => setStatus("")}>×</button>
+              </div>
+            ) : null}
+            {error ? (
+              <div className="hr-admin__alert hr-admin__alert--error" role="alert">
+                <p className="hr-admin__alert-text">{error}</p>
+                <button type="button" className="hr-admin__alert-close" onClick={() => setError("")}>×</button>
+              </div>
+            ) : null}
+
+            {activeTab === "settings" && (
+              <div className="hr-admin__card">
                 <div className="hr-admin__card-header">
                   <div>
-                    <h2 className="hr-admin__h2">Site settings</h2>
-                    <p className="hr-admin__subtext">These values update contact details and social links across the website.</p>
+                    <h2 className="hr-admin__card-title">Contact & Social Settings</h2>
+                    <p className="hr-admin__subtext">Update contact details and social links across the website.</p>
                   </div>
-                  <div className="hr-admin__actions">
-                    <button
-                      type="button"
-                      onClick={handleLoadExistingSettings}
-                      disabled={busy}
-                      className="hr-admin__btn hr-admin__btn--secondary hr-admin__btn--sm"
-                    >
-                      Load existing
-                    </button>
-                  </div>
+                  <button
+                    type="button"
+                    onClick={handleLoadExistingSettings}
+                    disabled={busy}
+                    className="hr-admin__btn hr-admin__btn--secondary hr-admin__btn--sm"
+                  >
+                    Load Existing
+                  </button>
                 </div>
 
                 <form onSubmit={handleSettingsSubmit} className="hr-admin__form">
                   <div className="hr-admin__form-grid">
                     <label className="hr-admin__label">
-                      Company name
-                      <input className="hr-admin__input" value={settingsForm.company_name} onChange={(event) => updateSettingsForm("company_name", event.target.value)} />
+                      Company Name
+                      <input
+                        className="hr-admin__input"
+                        value={settingsForm.company_name}
+                        onChange={(event) => updateSettingsForm("company_name", event.target.value)}
+                      />
                     </label>
                     <label className="hr-admin__label">
-                      Legal name
+                      Legal Name
                       <input
                         className="hr-admin__input"
                         value={settingsForm.company_legal_name}
@@ -412,10 +480,14 @@ export default function AdminPage() {
                     </label>
                     <label className="hr-admin__label">
                       Company URL
-                      <input className="hr-admin__input" value={settingsForm.company_url} onChange={(event) => updateSettingsForm("company_url", event.target.value)} />
+                      <input
+                        className="hr-admin__input"
+                        value={settingsForm.company_url}
+                        onChange={(event) => updateSettingsForm("company_url", event.target.value)}
+                      />
                     </label>
                     <label className="hr-admin__label">
-                      Demo login URL
+                      Demo Login URL
                       <input
                         className="hr-admin__input"
                         value={settingsForm.demo_login_url}
@@ -423,7 +495,7 @@ export default function AdminPage() {
                       />
                     </label>
                     <label className="hr-admin__label">
-                      WhatsApp number
+                      WhatsApp Number
                       <input
                         className="hr-admin__input"
                         value={settingsForm.whatsapp_number}
@@ -431,7 +503,7 @@ export default function AdminPage() {
                       />
                     </label>
                     <label className="hr-admin__label">
-                      WhatsApp message
+                      WhatsApp Message
                       <input
                         className="hr-admin__input"
                         value={settingsForm.whatsapp_message}
@@ -439,7 +511,7 @@ export default function AdminPage() {
                       />
                     </label>
                     <label className="hr-admin__label">
-                      Primary phone
+                      Primary Phone
                       <input
                         className="hr-admin__input"
                         value={settingsForm.primary_phone}
@@ -447,7 +519,7 @@ export default function AdminPage() {
                       />
                     </label>
                     <label className="hr-admin__label">
-                      Secondary phone
+                      Secondary Phone
                       <input
                         className="hr-admin__input"
                         value={settingsForm.secondary_phone}
@@ -455,7 +527,7 @@ export default function AdminPage() {
                       />
                     </label>
                     <label className="hr-admin__label">
-                      Primary email
+                      Primary Email
                       <input
                         className="hr-admin__input"
                         value={settingsForm.primary_email}
@@ -464,71 +536,107 @@ export default function AdminPage() {
                     </label>
                     <label className="hr-admin__label">
                       LinkedIn URL
-                      <input className="hr-admin__input" value={settingsForm.linkedin_url} onChange={(event) => updateSettingsForm("linkedin_url", event.target.value)} />
+                      <input
+                        className="hr-admin__input"
+                        value={settingsForm.linkedin_url}
+                        onChange={(event) => updateSettingsForm("linkedin_url", event.target.value)}
+                      />
                     </label>
                     <label className="hr-admin__label">
                       Facebook URL
-                      <input className="hr-admin__input" value={settingsForm.facebook_url} onChange={(event) => updateSettingsForm("facebook_url", event.target.value)} />
+                      <input
+                        className="hr-admin__input"
+                        value={settingsForm.facebook_url}
+                        onChange={(event) => updateSettingsForm("facebook_url", event.target.value)}
+                      />
                     </label>
                     <label className="hr-admin__label">
                       X URL
-                      <input className="hr-admin__input" value={settingsForm.x_url} onChange={(event) => updateSettingsForm("x_url", event.target.value)} />
+                      <input
+                        className="hr-admin__input"
+                        value={settingsForm.x_url}
+                        onChange={(event) => updateSettingsForm("x_url", event.target.value)}
+                      />
                     </label>
                     <label className="hr-admin__label">
                       Instagram URL
-                      <input className="hr-admin__input" value={settingsForm.instagram_url} onChange={(event) => updateSettingsForm("instagram_url", event.target.value)} />
+                      <input
+                        className="hr-admin__input"
+                        value={settingsForm.instagram_url}
+                        onChange={(event) => updateSettingsForm("instagram_url", event.target.value)}
+                      />
                     </label>
                   </div>
 
                   <label className="hr-admin__label">
-                    Maldives address
+                    New Delhi Address
                     <textarea
-                      className="hr-admin__textarea"
+                      className="hr-admin__input hr-admin__textarea"
                       value={settingsForm.new_delhi_address}
                       onChange={(event) => updateSettingsForm("new_delhi_address", event.target.value)}
                     />
                   </label>
                   <label className="hr-admin__label">
-                    Madurai address
-                    <textarea className="hr-admin__textarea" value={settingsForm.noida_address} onChange={(event) => updateSettingsForm("noida_address", event.target.value)} />
+                    Noida Address
+                    <textarea
+                      className="hr-admin__input hr-admin__textarea"
+                      value={settingsForm.noida_address}
+                      onChange={(event) => updateSettingsForm("noida_address", event.target.value)}
+                    />
                   </label>
                   <label className="hr-admin__label">
-                    Google Maps embed URL
+                    Google Maps Embed URL
                     <textarea
-                      className="hr-admin__textarea hr-admin__textarea--lg"
+                      className="hr-admin__input hr-admin__textarea"
                       value={settingsForm.google_maps_embed_url}
                       onChange={(event) => updateSettingsForm("google_maps_embed_url", event.target.value)}
                     />
                   </label>
-                  <div className="hr-admin__actions">
-                    <button type="submit" disabled={busy} className="hr-admin__btn hr-admin__btn--primary">
-                      {busy ? "Saving..." : "Save site settings"}
-                    </button>
-                  </div>
-                </form>
-              </section>
 
+                  <button type="submit" disabled={busy} className="hr-admin__btn hr-admin__btn--primary">
+                    {busy ? "Saving..." : "Save Settings"}
+                  </button>
+                </form>
+              </div>
+            )}
+
+            {activeTab === "testimonials" && (
               <div className="hr-admin__split">
-                <section className="hr-admin__card">
+                <div className="hr-admin__card">
                   <div className="hr-admin__card-header">
                     <div>
-                      <h2 className="hr-admin__h2">{form.id ? "Edit testimonial" : "Create testimonial"}</h2>
-                      <p className="hr-admin__subtext">Only testimonials marked visible appear on the website.</p>
+                      <h2 className="hr-admin__card-title">{form.id ? "Edit Testimonial" : "Add Testimonial"}</h2>
+                      <p className="hr-admin__subtext">Only visible testimonials appear on the website.</p>
                     </div>
                   </div>
 
                   <form onSubmit={handleSubmit} className="hr-admin__form">
+                    <div className="hr-admin__form-grid">
+                      <label className="hr-admin__label">
+                        Client Name
+                        <input
+                          className="hr-admin__input"
+                          value={form.clientName}
+                          onChange={(event) => updateForm("clientName", event.target.value)}
+                        />
+                      </label>
+                      <label className="hr-admin__label">
+                        Client Role
+                        <input
+                          className="hr-admin__input"
+                          value={form.clientRole}
+                          onChange={(event) => updateForm("clientRole", event.target.value)}
+                        />
+                      </label>
+                    </div>
+
                     <label className="hr-admin__label">
-                      Client name
-                      <input className="hr-admin__input" value={form.clientName} onChange={(event) => updateForm("clientName", event.target.value)} />
-                    </label>
-                    <label className="hr-admin__label">
-                      Client role
-                      <input className="hr-admin__input" value={form.clientRole} onChange={(event) => updateForm("clientRole", event.target.value)} />
-                    </label>
-                    <label className="hr-admin__label">
-                      Company name
-                      <input className="hr-admin__input" value={form.companyName} onChange={(event) => updateForm("companyName", event.target.value)} />
+                      Company Name
+                      <input
+                        className="hr-admin__input"
+                        value={form.companyName}
+                        onChange={(event) => updateForm("companyName", event.target.value)}
+                      />
                     </label>
 
                     <div className="hr-admin__form-grid">
@@ -542,36 +650,65 @@ export default function AdminPage() {
                         />
                       </label>
                       <label className="hr-admin__label">
-                        Upload image
-                        <input className="hr-admin__file" type="file" accept="image/*" onChange={handleImageUpload} disabled={uploadingImage || busy} />
+                        Upload Image
+                        <input
+                          type="file"
+                          accept="image/*"
+                          onChange={handleImageUpload}
+                          disabled={uploadingImage || busy}
+                          className="hr-admin__input"
+                        />
                       </label>
                     </div>
 
                     {form.imageUrl ? (
-                      <div className="hr-admin__preview" aria-busy={uploadingImage ? "true" : "false"}>
-                        <span className="hr-admin__subtext">{uploadingImage ? "Uploading image..." : "Image preview"}</span>
-                        <img src={form.imageUrl} alt="Testimonial preview" />
+                      <div className="hr-admin__preview">
+                        <img src={form.imageUrl} alt="Preview" />
+                        <span className="hr-admin__subtext">
+                          {uploadingImage ? "Uploading..." : "Image preview"}
+                        </span>
                       </div>
                     ) : null}
 
                     <label className="hr-admin__label">
                       Testimonial
-                      <textarea className="hr-admin__textarea hr-admin__textarea--lg" value={form.testimonial} onChange={(event) => updateForm("testimonial", event.target.value)} />
+                      <textarea
+                        className="hr-admin__input hr-admin__textarea"
+                        value={form.testimonial}
+                        onChange={(event) => updateForm("testimonial", event.target.value)}
+                      />
                     </label>
 
                     <div className="hr-admin__form-grid">
                       <label className="hr-admin__label">
                         Rating
-                        <input className="hr-admin__input" type="number" min="1" max="5" value={form.rating} onChange={(event) => updateForm("rating", event.target.value)} />
+                        <input
+                          className="hr-admin__input"
+                          type="number"
+                          min="1"
+                          max="5"
+                          value={form.rating}
+                          onChange={(event) => updateForm("rating", event.target.value)}
+                        />
                       </label>
                       <label className="hr-admin__label">
-                        Sort order
-                        <input className="hr-admin__input" type="number" min="0" value={form.sortOrder} onChange={(event) => updateForm("sortOrder", event.target.value)} />
+                        Sort Order
+                        <input
+                          className="hr-admin__input"
+                          type="number"
+                          min="0"
+                          value={form.sortOrder}
+                          onChange={(event) => updateForm("sortOrder", event.target.value)}
+                        />
                       </label>
                     </div>
 
                     <label className="hr-admin__checkbox">
-                      <input type="checkbox" checked={form.isActive} onChange={(event) => updateForm("isActive", event.target.checked)} />
+                      <input
+                        type="checkbox"
+                        checked={form.isActive}
+                        onChange={(event) => updateForm("isActive", event.target.checked)}
+                      />
                       Show on website
                     </label>
 
@@ -584,47 +721,68 @@ export default function AdminPage() {
                       </button>
                     </div>
                   </form>
-                </section>
+                </div>
 
-                <section className="hr-admin__card">
+                <div className="hr-admin__card">
                   <div className="hr-admin__card-header">
                     <div>
-                      <h2 className="hr-admin__h2">Saved testimonials</h2>
+                      <h2 className="hr-admin__card-title">Saved Testimonials</h2>
                       <p className="hr-admin__subtext">{items.length ? `${items.length} saved` : "No testimonials yet"}</p>
                     </div>
                   </div>
 
-                  <div className="hr-admin__list">
-                    {items.map((item) => (
-                      <article key={item.id} className={item.isActive ? "hr-admin__item" : "hr-admin__item hr-admin__item--inactive"}>
-                        <div className="hr-admin__item-top">
-                          <div>
-                            <h3 className="hr-admin__item-title">{item.clientName}</h3>
-                            <p className="hr-admin__item-meta">{[item.clientRole, item.companyName].filter(Boolean).join(", ") || "No role/company set"}</p>
+                  {items.length > 0 ? (
+                    <div className="hr-admin__list">
+                      {items.map((item) => (
+                        <article key={item.id} className={item.isActive ? "hr-admin__item" : "hr-admin__item hr-admin__item--inactive"}>
+                          <div className="hr-admin__item-top">
+                            <div>
+                              <h3 className="hr-admin__item-title">{item.clientName}</h3>
+                              <p className="hr-admin__item-meta">{[item.clientRole, item.companyName].filter(Boolean).join(", ") || "No role/company set"}</p>
+                            </div>
+                            <span className={item.isActive ? "hr-admin__badge hr-admin__badge--active" : "hr-admin__badge"}>
+                              {item.isActive ? "Visible" : "Hidden"}
+                            </span>
                           </div>
-                          <span className={item.isActive ? "hr-admin__badge hr-admin__badge--active" : "hr-admin__badge"}>{item.isActive ? "Visible" : "Hidden"}</span>
-                        </div>
-                        <p className="hr-admin__item-body">{item.testimonial}</p>
-                        <p className="hr-admin__item-foot">Rating: {item.rating}/5 · Sort: {item.sortOrder} · Image: {item.imageUrl || "default"}</p>
-                        <div className="hr-admin__actions">
-                          <button type="button" onClick={() => handleEdit(item)} className="hr-admin__btn hr-admin__btn--info hr-admin__btn--sm" disabled={busy}>
-                            Edit
-                          </button>
-                          <button type="button" onClick={() => handleDelete(item.id)} className="hr-admin__btn hr-admin__btn--danger hr-admin__btn--sm" disabled={busy}>
-                            Delete
-                          </button>
-                        </div>
-                      </article>
-                    ))}
-                    {items.length === 0 ? <p className="hr-admin__subtext">No testimonials saved yet.</p> : null}
-                  </div>
-                </section>
+                          <p className="hr-admin__item-body">
+                            {item.testimonial?.length > 120 ? `${item.testimonial.slice(0, 120)}...` : item.testimonial}
+                          </p>
+                          <p className="hr-admin__item-foot">
+                            <span>Rating: {item.rating}/5</span>
+                            <span>Sort: {item.sortOrder}</span>
+                          </p>
+                          <div className="hr-admin__actions">
+                            <button
+                              type="button"
+                              onClick={() => handleEdit(item)}
+                              className="hr-admin__btn hr-admin__btn--secondary hr-admin__btn--sm"
+                              disabled={busy}
+                            >
+                              Edit
+                            </button>
+                            <button
+                              type="button"
+                              onClick={() => handleDelete(item.id)}
+                              className="hr-admin__btn hr-admin__btn--danger hr-admin__btn--sm"
+                              disabled={busy}
+                            >
+                              Delete
+                            </button>
+                          </div>
+                        </article>
+                      ))}
+                    </div>
+                  ) : (
+                    <div className="hr-admin__empty">
+                      <p>No testimonials saved yet.</p>
+                    </div>
+                  )}
+                </div>
               </div>
-            </div>
-          )}
+            )}
+          </div>
         </main>
       </div>
     </div>
   );
 }
-

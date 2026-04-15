@@ -1,7 +1,7 @@
 const { execSync, spawn } = require("child_process");
 const path = require("path");
 
-const port = Number.parseInt(process.env.PORT ?? "3001", 10) || 3001;
+const port = Number.parseInt(process.env.PORT ?? "3002", 10) || 3002;
 const serverEntry = path.join(__dirname, "server.cjs");
 
 function getListeningPids(targetPort) {

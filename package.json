@@ -9,7 +9,14 @@
     "dev:server": "node server/dev-server.cjs",
     "build": "vite build",
     "preview": "vite preview",
-    "start": "node server/server.cjs"
+    "start": "node server/server.cjs",
+    "pm2:start": "pm2 start ecosystem.config.cjs --env production",
+    "pm2:stop": "pm2 stop hrmetrics",
+    "pm2:restart": "pm2 restart hrmetrics",
+    "pm2:reload": "pm2 reload hrmetrics",
+    "pm2:logs": "pm2 logs hrmetrics",
+    "pm2:status": "pm2 status",
+    "pm2:save": "pm2 save"
   },
   "dependencies": {
     "better-sqlite3": "^12.8.0",
@@ -27,6 +34,7 @@
     "@vitejs/plugin-react": "^6.0.1",
     "concurrently": "^9.2.1",
     "htmltojsx": "^0.3.0",
+    "pm2": "^6.0.14",
     "vite": "^8.0.0"
   }
 }
