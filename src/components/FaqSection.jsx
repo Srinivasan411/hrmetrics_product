@@ -44,12 +44,11 @@ export default function FaqSection({ items = defaultFaqs, subHeading = "Faq", he
           <ul className="accordion">
             {items.map((faq, index) => (
               <li className="accordion-item" key={index}>
-                <a
+                <button
                   className={`accordion-title${index === 0 ? " active" : ""}`}
-                  href="javascript:void(0)"
                 >
                   <i className="fa fa-chevron-down" /> {faq.question}
-                </a>
+                </button>
                 <p className={`accordion-content${index === 0 ? " show" : ""}`}>{faq.answer}</p>
               </li>
             ))}

@@ -4,7 +4,7 @@ module.exports = {
       name: "hrmetrics",
       cwd: __dirname,
       script: "server/server.cjs",
-      exec_mode: "fork",
+      exec_mode: "fork", //cluster
       instances: 1,
       autorestart: true,
       max_restarts: 10,

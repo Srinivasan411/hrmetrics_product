@@ -62,7 +62,7 @@ const ActivityManagementSoftwarePage = () => {
       <div className="header-new">
         {/* Mobile Header */}
         <div className="wsmobileheader clearfix">
-          <a className="wsanimated-arrow" href="javascript:void(0)" id="wsnavtoggle"><span></span></a>
+          <button className="wsanimated-arrow" id="wsnavtoggle"><span></span></button>
           <span className="smllogo">
             <img alt="HRMetricS" className="brand-logo" src="/assets/images/logo1.png" />
           </span>
@@ -183,7 +183,7 @@ const ActivityManagementSoftwarePage = () => {
                   <li aria-haspopup="true"><a className="navtext" href="/contact"><span></span> <span>Contact</span></a></li>
                   <li className="wscarticon clearfix">
                     <a className="btn btn-theme text-white btn-md radius" href="https://demo.hrmetrics.in/" target="_blank">Login</a>
-                    <a className="btn btn-theme text-white btn-md radius" data-bs-target="#demoshedule-modal" data-bs-toggle="modal" href="javascript:void(0)">Schedule a demo</a>
+                    <button className="btn btn-theme text-white btn-md radius" data-bs-target="#demoshedule-modal" data-bs-toggle="modal">Schedule a demo</button>
                   </li>
                 </ul>
               </nav>

@@ -63,7 +63,7 @@ const AboutPage = () => {
         <div className="header-new">
         {/* Mobile Header */}
         <div className="wsmobileheader clearfix">
-          <a className="wsanimated-arrow" href="javascript:void(0)" id="wsnavtoggle"><span></span></a>
+          <button className="wsanimated-arrow" id="wsnavtoggle"><span></span></button>
           <span className="smllogo">
             <img alt="HRMetricS" className="brand-logo" src="/assets/images/logo1.png" />
           </span>
@@ -84,7 +84,7 @@ const AboutPage = () => {
                   <li aria-haspopup="true"><a className="navtext" href="/contact"><span></span> <span>Contact</span></a></li>
                   <li className="wscarticon clearfix">
                     <a className="btn btn-theme text-white btn-md radius" href={siteSettings.demo_login_url} target="_blank" rel="noopener noreferrer">Login</a>
-                    <a className="btn btn-theme text-white btn-md radius" data-bs-target="#demoshedule-modal" data-bs-toggle="modal" href="javascript:void(0)">Schedule a demo</a>
+                    <button className="btn btn-theme text-white btn-md radius" data-bs-target="#demoshedule-modal" data-bs-toggle="modal">Schedule a demo</button>
                   </li>
                 </ul>
               </nav>
@@ -167,7 +167,7 @@ const AboutPage = () => {
         <div className="container">
           <div className="btn-center text-center myflex">
             <h3>Transform Your HR Process: Take the First Step Towards Automation</h3>
-            <a className="btn btn-theme btn-md radius scrollToForm animation wow fadeInUp" data-bs-target="#bookdemo-modal" data-bs-toggle="modal" href="javascript:void(0)" id="" style={{visibility: 'visible', animationName: 'fadeInUp'}}>Book a demo</a>
+            <button className="btn btn-theme btn-md radius scrollToForm animation wow fadeInUp" data-bs-target="#bookdemo-modal" data-bs-toggle="modal" style={{visibility: 'visible', animationName: 'fadeInUp'}}>Book a demo</button>
           </div>
         </div>
       </div>

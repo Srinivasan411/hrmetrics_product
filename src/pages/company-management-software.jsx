@@ -49,7 +49,7 @@ export default function CompanyManagementSoftwarePage() {
       </div>
       <div className="header-new">
         <div className="wsmobileheader clearfix">
-          <a className="wsanimated-arrow" href="javascript:void(0)" id="wsnavtoggle"><span /></a>
+          <button className="wsanimated-arrow" id="wsnavtoggle"><span /></button>
           <span className="smllogo"><img alt="" src="../assets/images/logo1.png" width={80} /></span>
         </div>
         <div className="headerfull">
@@ -147,7 +147,7 @@ export default function CompanyManagementSoftwarePage() {
                   </li>
                   <li className="wscarticon clearfix">
                     <a className="btn btn-theme text-white btn-md radius" href="https://demo.hrmetrics.in/" target="_blank">Login</a>
-                    <a className="btn btn-theme text-white btn-md radius" data-bs-target="#demoshedule-modal" data-bs-toggle="modal" href="javascript:void(0)">Schedule a demo</a>
+                    <button className="btn btn-theme text-white btn-md radius" data-bs-target="#demoshedule-modal" data-bs-toggle="modal">Schedule a demo</button>
                   </li>
                 </ul>
               </nav>
