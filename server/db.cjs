@@ -85,6 +85,106 @@ const seedTestimonials = [
   },
 ];
 
+const seedPricingPlans = [
+  {
+    name: "Starter",
+    plan_key: "starter",
+    subtitle: "Up to 350 pages / month",
+    price_monthly: 25,
+    price_yearly: 300,
+    cta_label: "Choose Plan",
+    cta_url: "#contact",
+    badge_text: "",
+    page_limit_label: "350 pages / month",
+    is_custom: 0,
+    is_popular: 0,
+    is_active: 1,
+    sort_order: 1,
+    points: [
+      "27+ document types",
+      "Full REST API access",
+      "Real-time SES JSON output",
+      "Auto document classification",
+      "IP whitelisting per key",
+      "Email support",
+      "Audit log & CSV export",
+    ],
+  },
+  {
+    name: "Professional",
+    plan_key: "pro",
+    subtitle: "Up to 500 pages / month",
+    price_monthly: 32,
+    price_yearly: 372,
+    cta_label: "Get Started",
+    cta_url: "#contact",
+    badge_text: "Most Popular",
+    page_limit_label: "500 pages / month",
+    is_custom: 0,
+    is_popular: 1,
+    is_active: 1,
+    sort_order: 2,
+    points: [
+      "27+ document types",
+      "Full REST API access",
+      "Real-time SES JSON output",
+      "Auto document classification",
+      "IP whitelisting per key",
+      "Email support",
+      "Audit log & CSV export",
+      "Priority support",
+    ],
+  },
+  {
+    name: "Enterprise",
+    plan_key: "corp",
+    subtitle: "Up to 1,200 pages / month",
+    price_monthly: 50,
+    price_yearly: 600,
+    cta_label: "Choose Plan",
+    cta_url: "#contact",
+    badge_text: "",
+    page_limit_label: "1,200 pages / month",
+    is_custom: 0,
+    is_popular: 0,
+    is_active: 1,
+    sort_order: 3,
+    points: [
+      "27+ document types",
+      "Full REST API access",
+      "Real-time SES JSON output",
+      "Auto document classification",
+      "IP whitelisting per key",
+      "Email support",
+      "Audit log & CSV export",
+      "Dedicated account manager",
+      "SLA guarantee",
+      "Custom schema setup",
+    ],
+  },
+  {
+    name: "Custom Plan",
+    plan_key: "custom",
+    subtitle: "High-volume or unique requirements?",
+    price_monthly: 0,
+    price_yearly: 0,
+    cta_label: "Contact Us",
+    cta_url: "#contact",
+    badge_text: "",
+    page_limit_label: "",
+    is_custom: 1,
+    is_popular: 0,
+    is_active: 1,
+    sort_order: 4,
+    points: [
+      "Unlimited pages",
+      "Custom document schemas",
+      "On-premise deployment option",
+      "Dedicated SLA & support",
+    ],
+  },
+];
+
 const defaultSiteSettings = {
   company_name: "HRMetricS",
   company_legal_name: "HRMetricS",
@@ -127,10 +227,41 @@ function mapRow(row) {
   };
 }
 
+function mapPricingPlanRow(row, points) {
+  return {
+    id: row.id,
+    name: row.name,
+    planKey: row.plan_key,
+    subtitle: row.subtitle,
+    priceMonthly: row.price_monthly,
+    priceYearly: row.price_yearly,
+    ctaLabel: row.cta_label,
+    ctaUrl: row.cta_url,
+    badgeText: row.badge_text,
+    pageLimitLabel: row.page_limit_label,
+    isCustom: Boolean(row.is_custom),
+    isPopular: Boolean(row.is_popular),
+    isActive: Boolean(row.is_active),
+    sortOrder: row.sort_order,
+    points,
+    createdAt: row.created_at,
+    updatedAt: row.updated_at,
+  };
+}
+
 ensureDirectory(dataDir);
 
 const db = new Database(dbPath);
 db.pragma("journal_mode = WAL");
+db.pragma("foreign_keys = ON");
+
+function checkpointWal() {
+  try {
+    db.pragma("wal_checkpoint(TRUNCATE)");
+  } catch {
+    // Ignore checkpoint errors; writes are already committed in WAL mode.
+  }
+}
 
 db.exec(`
   CREATE TABLE IF NOT EXISTS testimonials (
@@ -153,6 +284,39 @@ db.exec(`
     key TEXT PRIMARY KEY,
     value TEXT NOT NULL DEFAULT '',
     updated_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP
+  );
+`);
+
+db.exec(`
+  CREATE TABLE IF NOT EXISTS pricing_plans (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT NOT NULL,
+    plan_key TEXT NOT NULL UNIQUE,
+    subtitle TEXT NOT NULL DEFAULT '',
+    price_monthly REAL NOT NULL DEFAULT 0,
+    price_yearly REAL NOT NULL DEFAULT 0,
+    cta_label TEXT NOT NULL DEFAULT 'Choose Plan',
+    cta_url TEXT NOT NULL DEFAULT '#contact',
+    badge_text TEXT NOT NULL DEFAULT '',
+    page_limit_label TEXT NOT NULL DEFAULT '',
+    is_custom INTEGER NOT NULL DEFAULT 0,
+    is_popular INTEGER NOT NULL DEFAULT 0,
+    is_active INTEGER NOT NULL DEFAULT 1,
+    sort_order INTEGER NOT NULL DEFAULT 0,
+    created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP
+  );
+`);
+
+db.exec(`
+  CREATE TABLE IF NOT EXISTS pricing_plan_points (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    plan_id INTEGER NOT NULL,
+    point_text TEXT NOT NULL,
+    sort_order INTEGER NOT NULL DEFAULT 0,
+    created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (plan_id) REFERENCES pricing_plans(id) ON DELETE CASCADE
   );
 `);
 
@@ -181,6 +345,47 @@ for (const [key, value] of Object.entries(defaultSiteSettings)) {
     insertSetting.run(key, String(value));
   }
 }
+
+const existingPlansCount = db.prepare("SELECT COUNT(*) AS count FROM pricing_plans").get().count;
+if (existingPlansCount === 0) {
+  const insertPlan = db.prepare(`
+    INSERT INTO pricing_plans (
+      name, plan_key, subtitle, price_monthly, price_yearly, cta_label, cta_url, badge_text, page_limit_label,
+      is_custom, is_popular, is_active, sort_order
+    ) VALUES (
+      @name, @plan_key, @subtitle, @price_monthly, @price_yearly, @cta_label, @cta_url, @badge_text, @page_limit_label,
+      @is_custom, @is_popular, @is_active, @sort_order
+    )
+  `);
+  const insertPoint = db.prepare(`
+    INSERT INTO pricing_plan_points (plan_id, point_text, sort_order)
+    VALUES (@plan_id, @point_text, @sort_order)
+  `);
+  const transaction = db.transaction((plans) => {
+    for (const plan of plans) {
+      const result = insertPlan.run(plan);
+      const planId = result.lastInsertRowid;
+      for (let i = 0; i < plan.points.length; i += 1) {
+        insertPoint.run({
+          plan_id: planId,
+          point_text: plan.points[i],
+          sort_order: i + 1,
+        });
+      }
+    }
+  });
+  transaction(seedPricingPlans);
+}
+
+const backfillYearlyPricing = db.prepare(`
+  UPDATE pricing_plans
+  SET price_yearly = @price_yearly, updated_at = CURRENT_TIMESTAMP
+  WHERE plan_key = @plan_key AND price_yearly = @old_price_yearly
+`);
+
+backfillYearlyPricing.run({ plan_key: "starter", old_price_yearly: 20, price_yearly: 300 });
+backfillYearlyPricing.run({ plan_key: "pro", old_price_yearly: 26, price_yearly: 372 });
+backfillYearlyPricing.run({ plan_key: "corp", old_price_yearly: 40, price_yearly: 600 });
 
 const selectPublicTestimonials = db.prepare(`
   SELECT * FROM testimonials
@@ -240,6 +445,74 @@ const upsertSiteSetting = db.prepare(`
     updated_at = CURRENT_TIMESTAMP
 `);
 
+const selectPublicPricingPlans = db.prepare(`
+  SELECT * FROM pricing_plans
+  WHERE is_active = 1
+  ORDER BY sort_order ASC, id ASC
+`);
+
+const selectAllPricingPlans = db.prepare(`
+  SELECT * FROM pricing_plans
+  ORDER BY sort_order ASC, id ASC
+`);
+
+const selectPricingPlanById = db.prepare(`
+  SELECT * FROM pricing_plans
+  WHERE id = ?
+`);
+
+const selectPricingPointsByPlanId = db.prepare(`
+  SELECT point_text, sort_order
+  FROM pricing_plan_points
+  WHERE plan_id = ?
+  ORDER BY sort_order ASC, id ASC
+`);
+
+const insertPricingPlan = db.prepare(`
+  INSERT INTO pricing_plans (
+    name, plan_key, subtitle, price_monthly, price_yearly, cta_label, cta_url, badge_text, page_limit_label,
+    is_custom, is_popular, is_active, sort_order, created_at, updated_at
+  ) VALUES (
+    @name, @plan_key, @subtitle, @price_monthly, @price_yearly, @cta_label, @cta_url, @badge_text, @page_limit_label,
+    @is_custom, @is_popular, @is_active, @sort_order, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP
+  )
+`);
+
+const updatePricingPlan = db.prepare(`
+  UPDATE pricing_plans
+  SET
+    name = @name,
+    plan_key = @plan_key,
+    subtitle = @subtitle,
+    price_monthly = @price_monthly,
+    price_yearly = @price_yearly,
+    cta_label = @cta_label,
+    cta_url = @cta_url,
+    badge_text = @badge_text,
+    page_limit_label = @page_limit_label,
+    is_custom = @is_custom,
+    is_popular = @is_popular,
+    is_active = @is_active,
+    sort_order = @sort_order,
+    updated_at = CURRENT_TIMESTAMP
+  WHERE id = @id
+`);
+
+const deletePricingPlan = db.prepare(`
+  DELETE FROM pricing_plans
+  WHERE id = ?
+`);
+
+const deletePricingPointsByPlanId = db.prepare(`
+  DELETE FROM pricing_plan_points
+  WHERE plan_id = ?
+`);
+
+const insertPricingPoint = db.prepare(`
+  INSERT INTO pricing_plan_points (plan_id, point_text, sort_order, created_at, updated_at)
+  VALUES (@plan_id, @point_text, @sort_order, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
+`);
+
 function listPublicTestimonials() {
   return selectPublicTestimonials.all().map(mapRow);
 }
@@ -255,16 +528,20 @@ function getTestimonial(id) {
 
 function createTestimonial(input) {
   const result = insertTestimonial.run(input);
+  checkpointWal();
   return getTestimonial(result.lastInsertRowid);
 }
 
 function saveTestimonial(id, input) {
   updateTestimonial.run({ ...input, id });
+  checkpointWal();
   return getTestimonial(id);
 }
 
 function removeTestimonial(id) {
-  return deleteTestimonial.run(id);
+  const result = deleteTestimonial.run(id);
+  checkpointWal();
+  return result;
 }
 
 function getAllSiteSettings() {
@@ -284,7 +561,70 @@ function saveSiteSettings(input) {
   });
 
   transaction(Object.entries(input));
+  checkpointWal();
   return getAllSiteSettings();
+}
+
+function getPricingPlan(id) {
+  const row = selectPricingPlanById.get(id);
+  if (!row) return null;
+  const points = selectPricingPointsByPlanId.all(id).map((point) => point.point_text);
+  return mapPricingPlanRow(row, points);
+}
+
+function listPublicPricingPlans() {
+  return selectPublicPricingPlans.all().map((row) => {
+    const points = selectPricingPointsByPlanId.all(row.id).map((point) => point.point_text);
+    return mapPricingPlanRow(row, points);
+  });
+}
+
+function listAllPricingPlans() {
+  return selectAllPricingPlans.all().map((row) => {
+    const points = selectPricingPointsByPlanId.all(row.id).map((point) => point.point_text);
+    return mapPricingPlanRow(row, points);
+  });
+}
+
+function createPricingPlan(input) {
+  const transaction = db.transaction((payload) => {
+    const result = insertPricingPlan.run(payload);
+    const planId = result.lastInsertRowid;
+    for (let i = 0; i < payload.points.length; i += 1) {
+      insertPricingPoint.run({
+        plan_id: planId,
+        point_text: payload.points[i],
+        sort_order: i + 1,
+      });
+    }
+    return planId;
+  });
+  const planId = transaction(input);
+  checkpointWal();
+  return getPricingPlan(planId);
+}
+
+function savePricingPlan(id, input) {
+  const transaction = db.transaction((planId, payload) => {
+    updatePricingPlan.run({ ...payload, id: planId });
+    deletePricingPointsByPlanId.run(planId);
+    for (let i = 0; i < payload.points.length; i += 1) {
+      insertPricingPoint.run({
+        plan_id: planId,
+        point_text: payload.points[i],
+        sort_order: i + 1,
+      });
+    }
+  });
+  transaction(id, input);
+  checkpointWal();
+  return getPricingPlan(id);
+}
+
+function removePricingPlan(id) {
+  const result = deletePricingPlan.run(id);
+  checkpointWal();
+  return result;
 }
 
 module.exports = {
@@ -299,4 +639,10 @@ module.exports = {
   removeTestimonial,
   getAllSiteSettings,
   saveSiteSettings,
+  listPublicPricingPlans,
+  listAllPricingPlans,
+  getPricingPlan,
+  createPricingPlan,
+  savePricingPlan,
+  removePricingPlan,
 };

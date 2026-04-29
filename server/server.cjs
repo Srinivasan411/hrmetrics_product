@@ -18,6 +18,12 @@ const {
   removeTestimonial,
   getAllSiteSettings,
   saveSiteSettings,
+  listPublicPricingPlans,
+  listAllPricingPlans,
+  getPricingPlan,
+  createPricingPlan,
+  savePricingPlan,
+  removePricingPlan,
 } = require("./db.cjs");
 
 dotenv.config();
@@ -278,6 +284,68 @@ function validateSiteSettingsInput(body) {
     next[key] = normalizeString(body[key]);
   }
   return next;
+}
+
+function normalizePrice(value) {
+  const parsed = Number.parseFloat(String(value ?? "0"));
+  if (!Number.isFinite(parsed)) return 0;
+  return Math.max(0, Number(parsed.toFixed(2)));
+}
+
+function normalizePlanKey(value) {
+  return normalizeString(value)
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "")
+    .slice(0, 40);
+}
+
+function normalizePoints(value) {
+  if (!Array.isArray(value)) return [];
+  return value
+    .map((item) => normalizeString(item))
+    .filter(Boolean)
+    .slice(0, 25);
+}
+
+function validatePricingPlanInput(body) {
+  const name = normalizeString(body.name);
+  const planKey = normalizePlanKey(body.planKey);
+  const subtitle = normalizeString(body.subtitle);
+  const priceMonthly = normalizePrice(body.priceMonthly);
+  const priceYearly = normalizePrice(body.priceYearly);
+  const ctaLabel = normalizeString(body.ctaLabel) || "Choose Plan";
+  const ctaUrl = normalizeString(body.ctaUrl) || "#contact";
+  const badgeText = normalizeString(body.badgeText);
+  const pageLimitLabel = normalizeString(body.pageLimitLabel);
+  const sortOrder = Math.max(0, normalizeInteger(body.sortOrder, 0));
+  const isCustom = body.isCustom === true || String(body.isCustom).toLowerCase() === "true" ? 1 : 0;
+  const isPopular = body.isPopular === true || String(body.isPopular).toLowerCase() === "true" ? 1 : 0;
+  const isActive = body.isActive === false || String(body.isActive).toLowerCase() === "false" ? 0 : 1;
+  const points = normalizePoints(body.points);
+
+  if (!name) return { error: "Plan name is required." };
+  if (!planKey) return { error: "Plan key is required." };
+  if (points.length === 0) return { error: "At least one plan point is required." };
+
+  return {
+    value: {
+      name,
+      plan_key: planKey,
+      subtitle,
+      price_monthly: priceMonthly,
+      price_yearly: priceYearly,
+      cta_label: ctaLabel,
+      cta_url: ctaUrl,
+      badge_text: badgeText,
+      page_limit_label: pageLimitLabel,
+      is_custom: isCustom,
+      is_popular: isPopular,
+      is_active: isActive,
+      sort_order: sortOrder,
+      points,
+    },
+  };
 }
 
 const lastSubmitByKey = new Map();
@@ -571,6 +639,10 @@ app.get("/api/site-settings", (req, res) => {
   res.json({ status: "ok", data: getAllSiteSettings() });
 });
 
+app.get("/api/pricing-plans", (req, res) => {
+  res.json({ status: "ok", data: listPublicPricingPlans() });
+});
+
 app.post("/api/admin/login", (req, res) => {
   const username = normalizeString(req.body.username);
   const password = String(req.body.password ?? "");
@@ -611,6 +683,10 @@ app.get("/api/admin/testimonials", requireAdmin, (req, res) => {
 
 app.get("/api/admin/site-settings", requireAdmin, (req, res) => {
   res.json({ status: "ok", data: getAllSiteSettings() });
+});
+
+app.get("/api/admin/pricing-plans", requireAdmin, (req, res) => {
+  res.json({ status: "ok", data: listAllPricingPlans() });
 });
 
 function handleSaveSiteSettings(req, res) {
@@ -665,6 +741,41 @@ app.delete("/api/admin/testimonials/:id", requireAdmin, (req, res) => {
   }
 
   removeTestimonial(id);
+  res.json({ status: "ok" });
+});
+
+app.post("/api/admin/pricing-plans", requireAdmin, (req, res) => {
+  const parsed = validatePricingPlanInput(req.body);
+  if (parsed.error) return res.status(400).json({ status: "error", message: parsed.error });
+  try {
+    const plan = createPricingPlan(parsed.value);
+    res.status(201).json({ status: "ok", data: plan });
+  } catch {
+    res.status(409).json({ status: "error", message: "Plan key already exists." });
+  }
+});
+
+app.put("/api/admin/pricing-plans/:id", requireAdmin, (req, res) => {
+  const id = normalizeInteger(req.params.id, 0);
+  if (!id || !getPricingPlan(id)) {
+    return res.status(404).json({ status: "error", message: "Pricing plan not found." });
+  }
+  const parsed = validatePricingPlanInput(req.body);
+  if (parsed.error) return res.status(400).json({ status: "error", message: parsed.error });
+  try {
+    const plan = savePricingPlan(id, parsed.value);
+    res.json({ status: "ok", data: plan });
+  } catch {
+    res.status(409).json({ status: "error", message: "Plan key already exists." });
+  }
+});
+
+app.delete("/api/admin/pricing-plans/:id", requireAdmin, (req, res) => {
+  const id = normalizeInteger(req.params.id, 0);
+  if (!id || !getPricingPlan(id)) {
+    return res.status(404).json({ status: "error", message: "Pricing plan not found." });
+  }
+  removePricingPlan(id);
   res.json({ status: "ok" });
 });
 

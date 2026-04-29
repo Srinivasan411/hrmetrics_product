@@ -99,7 +99,7 @@
 }
 .trust-section {
     background: #fff;
-    padding: 25px 0;
+    padding: 10px 0;
 }
 .tab_section_layout ul li button svg {
     width: 25px;
@@ -916,7 +916,7 @@ Faq Area CSS
 }
 
 .faq-accordion-content .accordion .accordion-title {
-  padding: 12px 20px 12px 55px;
+  padding: 8px 15px 8px 50px;
   color: #0d1820;
   position: relative;
   border-bottom: 1px solid transparent;

@@ -40,7 +40,7 @@
 }
 
 .hr-admin__sidebar-brand {
-  padding: 24px 20px;
+  padding: 16px 16px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
@@ -58,7 +58,7 @@
 
 .hr-admin__sidebar-nav {
   flex: 1;
-  padding: 16px 12px;
+  padding: 10px 10px;
   display: flex;
   flex-direction: column;
   gap: 4px;
@@ -68,7 +68,7 @@
   display: flex;
   align-items: center;
   gap: 12px;
-  padding: 12px 16px;
+  padding: 9px 12px;
   color: var(--hr-admin-sidebar-text);
   text-decoration: none;
   border-radius: 10px;
@@ -99,7 +99,7 @@
 }
 
 .hr-admin__sidebar-footer {
-  padding: 16px 20px;
+  padding: 12px 16px;
   border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
 
@@ -154,7 +154,7 @@
 .hr-admin__header {
   background: var(--hr-admin-panel);
   border-bottom: 1px solid var(--hr-admin-border);
-  padding: 16px 28px;
+  padding: 10px 16px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -177,7 +177,7 @@
 
 .hr-admin__content {
   flex: 1;
-  padding: 5px;
+  padding: 4px;
 }
 
 .hr-admin__loading {
@@ -203,32 +203,42 @@
 }
 
 .hr-admin__alert {
+  position: fixed;
+  top: 18px;
+  right: 18px;
+  z-index: 99999;
+  width: min(420px, calc(100vw - 24px));
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  gap: 12px;
-  margin-bottom: 20px;
-  padding: 14px 16px;
+  gap: 10px;
+  margin: 0;
+  padding: 10px 12px;
   border-radius: 12px;
-  border: 1px solid var(--hr-admin-border);
+  border: 1px solid #15803d;
+  background: #16a34a;
+  color: #ffffff;
+  box-shadow: 0 10px 24px rgba(2, 18, 45, 0.16);
+  animation: hr-admin-toast-in 180ms ease-out;
 }
 
 .hr-admin__alert--success {
-  background: rgba(34, 197, 94, 0.1);
-  border-color: rgba(34, 197, 94, 0.25);
-  color: #166534;
+  background: #16a34a;
+  border-color: #15803d;
+  color: #ffffff;
 }
 
 .hr-admin__alert--error {
-  background: rgba(239, 68, 68, 0.1);
-  border-color: rgba(239, 68, 68, 0.25);
-  color: #991b1b;
+  background: #dc2626;
+  border-color: #b91c1c;
+  color: #ffffff;
 }
 
 .hr-admin__alert-text {
   margin: 0;
   line-height: 1.4;
   font-weight: 600;
+  color: white;
 }
 
 .hr-admin__alert-close {
@@ -249,21 +259,32 @@
   opacity: 1;
 }
 
+@keyframes hr-admin-toast-in {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .hr-admin__card {
   background: var(--hr-admin-panel);
   border: 1px solid var(--hr-admin-border);
-  border-radius: 16px;
-  padding: 10px;
+  border-radius: 12px;
+  padding: 8px;
 }
 
 .hr-admin__card-header {
   display: flex;
   justify-content: space-between;
-  gap: 16px;
+  gap: 10px;
   align-items: center;
   flex-wrap: wrap;
-  margin-bottom: 20px;
-  padding-bottom: 16px;
+  margin-bottom: 12px;
+  padding-bottom: 10px;
   border-bottom: 1px solid var(--hr-admin-border);
 }
 
@@ -274,7 +295,7 @@
 }
 
 .hr-admin__subtext {
-  margin: 6px 0 0;
+  margin: 3px 0 0;
   color: var(--hr-admin-muted);
   font-size: 14px;
 }
@@ -291,14 +312,14 @@
   width: 100%;
   max-width: 420px;
   background: var(--hr-admin-panel);
-  border-radius: 20px;
-  padding: 40px;
+  border-radius: 14px;
+  padding: 24px;
   box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.35);
 }
 
 .hr-admin__login-header {
   text-align: center;
-  margin-bottom: 32px;
+  margin-bottom: 18px;
 }
 
 .hr-admin__login-logo {
@@ -319,24 +340,22 @@
 
 .hr-admin__form {
   display: grid;
-  gap: 18px;
+  gap: 12px;
 }
 
 .hr-admin__label {
   display: grid;
-  gap: 8px;
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 700;
   color: var(--hr-admin-text);
-  letter-spacing: 0.04em;
 }
 
 .hr-admin__input {
   width: 100%;
   border: 1px solid var(--hr-admin-border);
-  border-radius: 12px;
-  padding: 14px 16px;
-  font-size: 15px;
+  border-radius: 10px;
+  padding: 10px 12px;
+  font-size: 14px;
   outline: none;
   background: #f8fafc;
   color: var(--hr-admin-text);
@@ -349,29 +368,39 @@
   background: #ffffff;
 }
 
+.hr-admin__input:required:invalid {
+  border-color: #dc2626;
+  background: #fef2f2;
+}
+
+.hr-admin__input:required:invalid:focus {
+  border-color: #dc2626;
+  box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.15);
+}
+
 .hr-admin__textarea {
-  min-height: 100px;
+  min-height: 80px;
   resize: vertical;
 }
 
 .hr-admin__form-grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 14px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 5px;
 }
 
 .hr-admin__actions {
   display: flex;
-  gap: 12px;
+  gap: 8px;
   flex-wrap: wrap;
-  margin-top: 8px;
+  margin-top: 4px;
 }
 
 .hr-admin__btn {
   appearance: none;
   border: 0;
-  border-radius: 12px;
-  padding: 14px 24px;
+  border-radius: 10px;
+  padding: 10px 16px;
   font-weight: 700;
   font-size: 14px;
   cursor: pointer;
@@ -417,7 +446,7 @@
 }
 
 .hr-admin__btn--sm {
-  padding: 10px 16px;
+  padding: 8px 12px;
   font-size: 13px;
 }
 
@@ -447,9 +476,9 @@
 .hr-admin__preview {
   display: flex;
   align-items: center;
-  gap: 16px;
-  padding: 16px;
-  border-radius: 14px;
+  gap: 12px;
+  padding: 10px;
+  border-radius: 10px;
   border: 2px dashed var(--hr-admin-border);
   background: #f8fafc;
 }
@@ -463,13 +492,13 @@
 
 .hr-admin__list {
   display: grid;
-  gap: 12px;
+  gap: 8px;
 }
 
 .hr-admin__item {
   border: 1px solid var(--hr-admin-border);
-  border-radius: 14px;
-  padding: 18px;
+  border-radius: 10px;
+  padding: 12px;
   background: #ffffff;
   transition: all 120ms ease;
 }
@@ -497,7 +526,7 @@
 }
 
 .hr-admin__item-meta {
-  margin: 4px 0 0;
+  margin: 2px 0 0;
   color: var(--hr-admin-muted);
   font-size: 13px;
 }
@@ -517,7 +546,7 @@
 }
 
 .hr-admin__item-body {
-  margin: 14px 0;
+  margin: 8px 0;
   color: #334155;
   line-height: 1.5;
   font-size: 14px;
@@ -533,7 +562,7 @@
 
 .hr-admin__empty {
   text-align: center;
-  padding: 40px 20px;
+  padding: 24px 12px;
   color: var(--hr-admin-muted);
 }
 
@@ -546,13 +575,13 @@
 
 .hr-admin__stack {
   display: grid;
-  gap: 24px;
+  gap: 14px;
 }
 
 .hr-admin__split {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 24px;
+  gap: 12px;
   align-items: start;
 }
 
@@ -562,7 +591,7 @@
   background: #f1f5f9;
   padding: 4px;
   border-radius: 12px;
-  margin-bottom: 24px;
+  margin-bottom: 12px;
 }
 
 .hr-admin__tab {
@@ -603,8 +632,14 @@
 }
 
 @media (max-width: 640px) {
+  .hr-admin__alert {
+    top: 10px;
+    right: 10px;
+    width: calc(100vw - 20px);
+  }
+
   .hr-admin__content {
-    padding: 16px;
+    padding: 10px;
   }
   
   .hr-admin__form-grid {

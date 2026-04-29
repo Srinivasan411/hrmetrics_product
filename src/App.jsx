@@ -1,5 +1,4 @@
-import { Suspense, lazy, useEffect, useMemo } from "react";
-import { Navigate, Route, Routes, useLocation, useParams } from "react-router-dom";
+import { Suspense, lazy, useEffect, useMemo, useState } from "react";
 import { initLegacyDomEnhancements } from "./legacyDomEnhancements.js";
 import { useSiteSettings } from "./siteSettings.jsx";
 import { LeadModals } from "./components/LeadModals.jsx";
@@ -17,6 +16,7 @@ const DEFAULT_MARKETING_PATHS = new Set([
   "/privacy-policy",
   "/terms-services",
 ]);
+const HOME_SECTION_HASHES = new Set(["home", "about", "contact", "software", "pricing", "faq"]);
 
 const ROUTE_TITLES = {
   "/activity-management": "Activity Management Archives - HRMetricS",
@@ -92,18 +92,20 @@ function getPageSeo(path) {
 }
 
 export default function App() {
-  const location = useLocation();
   const { siteSettings } = useSiteSettings();
-  const seo = useMemo(() => getPageSeo(location.pathname), [location.pathname]);
+  const [activePath, setActivePath] = useState(() =>
+    typeof window === "undefined" ? "/" : getSpaPath(window.location),
+  );
+  const seo = useMemo(() => getPageSeo(activePath), [activePath]);
   const canonicalUrl = useMemo(() => {
-    if (typeof window === "undefined") return location.pathname;
-    return new URL(location.pathname, window.location.origin).toString();
-  }, [location.pathname]);
+    if (typeof window === "undefined") return activePath;
+    return new URL(activePath, window.location.origin).toString();
+  }, [activePath]);
   const socialImage = useMemo(() => {
     if (typeof window === "undefined") return DEFAULT_SOCIAL_IMAGE;
     return new URL(DEFAULT_SOCIAL_IMAGE, window.location.origin).toString();
   }, []);
-  const routes = useMemo(() => {
+  const routeComponents = useMemo(() => {
     const pageModules = import.meta.glob("./pages/*.jsx");
 
     const entries = Object.entries(pageModules).map(([filePath, loader]) => {
@@ -113,10 +115,9 @@ export default function App() {
       return [routePath, lazy(loader)];
     });
 
-    entries.sort((a, b) => a[0].localeCompare(b[0]));
-    entries.sort((a, b) => (a[0] === "/" ? -1 : b[0] === "/" ? 1 : 0));
-    return entries;
+    return new Map(entries);
   }, []);
+  const ActiveComponent = routeComponents.get(activePath) || routeComponents.get("/") || null;
 
   useEffect(() => {
     const onScroll = () => {
@@ -140,15 +141,46 @@ export default function App() {
       cancelAnimationFrame(id);
       cleanup();
     };
-  }, [location.pathname]);
+  }, [activePath]);
+
+  useEffect(() => {
+    const onLocationChange = () => {
+      const hash = String(window.location.hash || "").replace(/^#\/?/, "").trim();
+      const nextPath = getSpaPath(window.location);
+
+      setActivePath(nextPath);
+      if (HOME_SECTION_HASHES.has(hash)) {
+        requestAnimationFrame(() => {
+          const target = document.getElementById(hash);
+          if (target) {
+            target.scrollIntoView({ behavior: "smooth", block: "start" });
+          } else if (hash === "home") {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+          }
+        });
+        return;
+      }
+
+      window.scrollTo({ top: 0, behavior: "auto" });
+    };
+
+    window.addEventListener("hashchange", onLocationChange);
+    window.addEventListener("popstate", onLocationChange);
+    return () => {
+      window.removeEventListener("hashchange", onLocationChange);
+      window.removeEventListener("popstate", onLocationChange);
+    };
+  }, []);
 
   useEffect(() => {
     const handleSoftwareAnchorClick = (event) => {
-      const link = event.target instanceof Element ? event.target.closest('a[href^="#software"]') : null;
+      const link = event.target instanceof Element ? event.target.closest('a[href^="#"]') : null;
       if (!link) return;
 
       const targetSelector = link.getAttribute("href");
       if (!targetSelector) return;
+      const targetId = targetSelector.replace(/^#/, "").trim();
+      if (!HOME_SECTION_HASHES.has(targetId)) return;
 
       const target = document.querySelector(targetSelector);
       if (!target) return;
@@ -158,11 +190,49 @@ export default function App() {
         behavior: "smooth",
         block: "start",
       });
+      if (window.location.hash !== targetSelector) {
+        window.history.replaceState(null, "", targetSelector);
+      }
     };
 
     document.addEventListener("click", handleSoftwareAnchorClick);
     return () => document.removeEventListener("click", handleSoftwareAnchorClick);
   }, []);
+
+  useEffect(() => {
+    const handleSpaNavigationClick = (event) => {
+      if (event.defaultPrevented) return;
+      const link = event.target instanceof Element ? event.target.closest("a[href]") : null;
+      if (!link) return;
+
+      const href = link.getAttribute("href");
+      if (!href) return;
+      if (
+        href.startsWith("#") ||
+        href.startsWith("mailto:") ||
+        href.startsWith("tel:") ||
+        href.startsWith("javascript:") ||
+        link.hasAttribute("download")
+      ) {
+        return;
+      }
+      if (link.target && link.target.toLowerCase() === "_blank") return;
+      if (/^https?:\/\//i.test(href)) return;
+
+      const nextPath = normalizeSpaPathFromHref(href);
+      if (!nextPath) return;
+
+      event.preventDefault();
+      if (nextPath === activePath) {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+        return;
+      }
+      window.location.hash = nextPath === "/" ? "#home" : `#${nextPath.slice(1)}`;
+    };
+
+    document.addEventListener("click", handleSpaNavigationClick);
+    return () => document.removeEventListener("click", handleSpaNavigationClick);
+  }, [activePath]);
 
   useEffect(() => {
     const socialMap = new Map([
@@ -203,7 +273,7 @@ export default function App() {
         anchor.textContent = siteSettings.company_legal_name;
       }
     }
-  }, [location.pathname, siteSettings]);
+  }, [activePath, siteSettings]);
 
   return (
     <Suspense fallback={null}>
@@ -216,14 +286,7 @@ export default function App() {
           title={seo.title}
           type={seo.type}
         />
-        <Routes>
-          {routes.map(([path, Component]) => (
-            <Route key={path} path={path} element={<Component />} />
-          ))}
-          <Route path="/index.html" element={<Navigate to="/" replace />} />
-          <Route path="/:slug/index.html" element={<IndexHtmlRedirect />} />
-          <Route path="*" element={<Navigate to="/" replace />} />
-        </Routes>
+        {ActiveComponent ? <ActiveComponent /> : null}
         <FloatingActions />
         <LeadModals />
       </>
@@ -231,9 +294,45 @@ export default function App() {
   );
 }
 
-function IndexHtmlRedirect() {
-  const { slug } = useParams();
-  return <Navigate to={`/${slug || ""}`.replace(/\/+$/, "") || "/"} replace />;
+function getSpaPathFromHash(hash) {
+  const clean = String(hash || "")
+    .replace(/^#\/?/, "")
+    .replace(/\/+$/, "")
+    .trim();
+  if (HOME_SECTION_HASHES.has(clean)) return "/";
+  if (!clean || clean === "home" || clean === "index.html") return "/";
+  return `/${clean}`;
+}
+
+function getSpaPath(locationLike) {
+  const hashPath = getSpaPathFromHash(locationLike?.hash);
+  if (hashPath !== "/") return hashPath;
+
+  const pathname = String(locationLike?.pathname || "/")
+    .trim()
+    .replace(/\/+$/, "") || "/";
+
+  if (pathname === "/" || pathname === "/index.html") return "/";
+  return pathname.startsWith("/") ? pathname : `/${pathname}`;
+}
+
+function normalizeSpaPathFromHref(href) {
+  const normalized = String(href || "")
+    .trim()
+    .replace(/^(\.\/|\.\.\/)+/g, "")
+    .replace(/^\/+/, "")
+    .replace(/\/+$/, "");
+
+  if (!normalized || normalized === "index.html") return "/";
+
+  if (normalized.endsWith("/index.html")) {
+    const slug = normalized.slice(0, -"/index.html".length);
+    return slug ? `/${slug}` : "/";
+  }
+
+  if (normalized.endsWith(".html")) return null;
+  if (normalized.includes("/")) return `/${normalized.split("/")[0]}`;
+  return `/${normalized}`;
 }
 
 function FloatingActions() {

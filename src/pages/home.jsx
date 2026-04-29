@@ -6,6 +6,15 @@ import FaqSection from "../components/FaqSection.jsx";
 
 const COOKIE_CONSENT_NAME = "hrmetrics_cookie_consent";
 const COOKIE_CONSENT_MAX_AGE = 60 * 60 * 24 * 180;
+const FREE_EMAIL_DOMAINS = new Set([
+  "gmail.com",
+  "yahoo.com",
+  "hotmail.com",
+  "outlook.com",
+  "aol.com",
+  "icloud.com",
+  "yopmail.com",
+]);
 
 const fallbackTestimonials = [
   {
@@ -50,6 +59,65 @@ const fallbackTestimonials = [
   },
 ];
 
+const fallbackPricingPlans = [
+  {
+    id: 1,
+    name: "Starter",
+    subtitle: "Up to 350 pages / month",
+    priceMonthly: 25,
+    priceYearly: 300,
+    ctaLabel: "Choose Plan",
+    ctaUrl: "#contact",
+    pageLimitLabel: "350 pages / month",
+    badgeText: "",
+    isCustom: false,
+    isPopular: false,
+    points: ["27+ document types", "Full REST API access", "Real-time SES JSON output", "Auto document classification", "IP whitelisting per key", "Email support", "Audit log & CSV export"],
+  },
+  {
+    id: 2,
+    name: "Professional",
+    subtitle: "Up to 500 pages / month",
+    priceMonthly: 32,
+    priceYearly: 372,
+    ctaLabel: "Get Started",
+    ctaUrl: "#contact",
+    pageLimitLabel: "500 pages / month",
+    badgeText: "Most Popular",
+    isCustom: false,
+    isPopular: true,
+    points: ["27+ document types", "Full REST API access", "Real-time SES JSON output", "Auto document classification", "IP whitelisting per key", "Email support", "Audit log & CSV export", "Priority support"],
+  },
+  {
+    id: 3,
+    name: "Enterprise",
+    subtitle: "Up to 1,200 pages / month",
+    priceMonthly: 50,
+    priceYearly: 600,
+    ctaLabel: "Choose Plan",
+    ctaUrl: "#contact",
+    pageLimitLabel: "1,200 pages / month",
+    badgeText: "",
+    isCustom: false,
+    isPopular: false,
+    points: ["27+ document types", "Full REST API access", "Real-time SES JSON output", "Auto document classification", "IP whitelisting per key", "Email support", "Audit log & CSV export", "Dedicated account manager", "SLA guarantee", "Custom schema setup"],
+  },
+  {
+    id: 4,
+    name: "Custom Plan",
+    subtitle: "High-volume or unique requirements?",
+    priceMonthly: 0,
+    priceYearly: 0,
+    ctaLabel: "Contact Us",
+    ctaUrl: "#contact",
+    pageLimitLabel: "",
+    badgeText: "",
+    isCustom: true,
+    isPopular: false,
+    points: ["Unlimited pages", "Custom document schemas", "On-premise deployment option", "Dedicated SLA & support"],
+  },
+];
+
 function formatClientMeta(testimonial) {
   const clientRole = String(testimonial.clientRole ?? "").trim();
   const companyName = String(testimonial.companyName ?? "").trim();
@@ -89,9 +157,54 @@ function preventDefault(event) {
   event.preventDefault();
 }
 
+function activateFeatureTab(tabId) {
+  if (!tabId || typeof document === "undefined") return;
+  const trigger = document.querySelector(`[data-bs-target="#${tabId}"]`);
+  if (trigger) trigger.click();
+}
+
+function handleFeatureMenuClick(event, primaryTabId, nestedTabId = "") {
+  event.preventDefault();
+
+  if (typeof document !== "undefined") {
+    const softwareSection = document.getElementById("software");
+    if (softwareSection) {
+      softwareSection.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  }
+
+  activateFeatureTab(primaryTabId);
+  if (nestedTabId) {
+    setTimeout(() => activateFeatureTab(nestedTabId), 90);
+  }
+}
+
+function isOfficialEmail(email) {
+  const normalized = String(email ?? "").trim().toLowerCase();
+  const domain = normalized.split("@")[1] ?? "";
+  if (!domain) return false;
+  return !FREE_EMAIL_DOMAINS.has(domain);
+}
+
+function SubmitAlert({ variant, message }) {
+  if (!message) return null;
+  const klass = variant === "success" ? "alert alert-success" : "alert alert-danger";
+  const role = variant === "success" ? "status" : "alert";
+  return (
+    <div className={`${klass} mt-3 mb-0 py-2`} role={role}>
+      {message}
+    </div>
+  );
+}
+
 export default function HomePage() {
   const [testimonials, setTestimonials] = useState(fallbackTestimonials);
+  const [pricingPlans, setPricingPlans] = useState(fallbackPricingPlans);
+  const [billingCycle, setBillingCycle] = useState("monthly");
   const [cookieConsent, setCookieConsent] = useState(null);
+  const [submitting, setSubmitting] = useState(false);
+  const [message, setMessage] = useState("");
+  const [submitError, setSubmitError] = useState("");
   const { siteSettings } = useSiteSettings();
 
   useEffect(() => {
@@ -101,6 +214,28 @@ export default function HomePage() {
       setCookieConsent(savedConsent);
       updateGoogleConsent(savedConsent === "accepted");
     }
+  }, []);
+
+  useEffect(() => {
+    let ignore = false;
+
+    async function loadPricingPlans() {
+      try {
+        const response = await fetch("/api/pricing-plans");
+        if (!response.ok) return;
+        const payload = await response.json();
+        if (!ignore && Array.isArray(payload.data) && payload.data.length > 0) {
+          setPricingPlans(payload.data);
+        }
+      } catch {
+        // Keep fallback pricing plans if API is unavailable.
+      }
+    }
+
+    loadPricingPlans();
+    return () => {
+      ignore = true;
+    };
   }, []);
 
   useEffect(() => {
@@ -129,6 +264,60 @@ export default function HomePage() {
     setCookieConsent(nextConsent);
     writeCookie(COOKIE_CONSENT_NAME, nextConsent, COOKIE_CONSENT_MAX_AGE);
     updateGoogleConsent(nextConsent === "accepted");
+  }
+
+  async function handleContactSubmit(event) {
+    event.preventDefault();
+    if (submitting) return;
+
+    setSubmitting(true);
+    setMessage("");
+    setSubmitError("");
+
+    const formEl = event.currentTarget;
+    const formData = new FormData(formEl);
+    const email = String(formData.get("email") ?? "").trim();
+
+    if (!isOfficialEmail(email)) {
+      setSubmitError("Please enter your official (work) email address.");
+      setSubmitting(false);
+      return;
+    }
+
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 15000);
+
+    try {
+      const body = new URLSearchParams();
+      for (const [key, value] of formData.entries()) {
+        body.append(key, String(value));
+      }
+
+      const response = await fetch("/contactMail.php", {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "X-Requested-With": "XMLHttpRequest",
+          "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
+        },
+        body: body.toString(),
+        signal: controller.signal,
+      });
+
+      const payload = await response.json().catch(() => ({}));
+      if (!response.ok) {
+        throw new Error(payload.message || "Unable to submit right now. Please try again.");
+      }
+
+      setMessage(payload.message || "Message sent successfully! We'll get back to you soon.");
+      formEl.reset();
+    } catch (err) {
+      const errorMessage = err?.name === "AbortError" ? "Request timed out. Please try again." : err?.message || "Request failed.";
+      setSubmitError(errorMessage);
+    } finally {
+      clearTimeout(timeout);
+      setSubmitting(false);
+    }
   }
 
   return (
@@ -190,11 +379,29 @@ export default function HomePage() {
                 <ul className="wsmenu-list">
                   <li aria-haspopup="true"><a className="navtext" href="index.html"><span /> <span>Home</span></a>
                   </li>
-                  <li aria-haspopup="true"><a className="navtext" href="about/index.html"><span /> <span>About</span></a>
+                  <li aria-haspopup="true">
+                    <a className="navtext" href="#" onClick={preventDefault}>
+                      <span /> <span>Features</span> <span className="wsarrow" />
+                    </a>
+                    <ul className="sub-menu">
+                      <li aria-haspopup="true"><a href="#software" onClick={(event) => handleFeatureMenuClick(event, "hrms", "company")}>Company Management</a></li>
+                      <li aria-haspopup="true"><a href="#software" onClick={(event) => handleFeatureMenuClick(event, "hrms", "employee")}>Employee Management</a></li>
+                      <li aria-haspopup="true"><a href="#software" onClick={(event) => handleFeatureMenuClick(event, "hrms", "attendance")}>Attendance Management</a></li>
+                      <li aria-haspopup="true"><a href="#software" onClick={(event) => handleFeatureMenuClick(event, "hrms", "leave")}>Leave Management</a></li>
+                      <li aria-haspopup="true"><a href="#software" onClick={(event) => handleFeatureMenuClick(event, "hrms", "payroll")}>Payroll Management</a></li>
+                      <li aria-haspopup="true"><a href="#software" onClick={(event) => handleFeatureMenuClick(event, "hrms", "talent")}>Talent Management</a></li>
+                      <li aria-haspopup="true"><a href="#software" onClick={(event) => handleFeatureMenuClick(event, "hrms", "reports")}>Reports & Analytics</a></li>
+                      <li aria-haspopup="true"><a href="#software" onClick={(event) => handleFeatureMenuClick(event, "hrms", "events")}>Events & Meetings</a></li>
+                      <li aria-haspopup="true"><a href="#software" onClick={(event) => handleFeatureMenuClick(event, "hrms", "mobile")}>Mobile App</a></li>
+                      <li aria-haspopup="true"><a href="#software" onClick={(event) => handleFeatureMenuClick(event, "activityreporter")}>Activity Reporter</a></li>
+                      <li aria-haspopup="true"><a href="#software" onClick={(event) => handleFeatureMenuClick(event, "taskmanagement")}>Task Management</a></li>
+                      <li aria-haspopup="true"><a href="#software" onClick={(event) => handleFeatureMenuClick(event, "assetmanagement")}>Organisation Structure</a></li>
+                      <li aria-haspopup="true"><a href="#software" onClick={(event) => handleFeatureMenuClick(event, "forcemanagement")}>Gatepass Management</a></li>
+                    </ul>
                   </li>
-                  {/* Product menu hidden as per request */}
-
-                  <li aria-haspopup="true"><a className="navtext" href="contact/index.html"><span /> <span>Contact</span></a>
+                  <li aria-haspopup="true"><a className="navtext" href="#pricing"><span /> <span>Pricing</span></a>
+                  </li>
+                  <li aria-haspopup="true"><a className="navtext" href="#faq"><span /> <span>FAQ</span></a>
                   </li>
                   <li className="wscarticon clearfix">
                     <a className="btn btn-theme text-white btn-md radius" href={siteSettings.demo_login_url} target="_blank" rel="noopener noreferrer">Login</a>
@@ -208,8 +415,8 @@ export default function HomePage() {
       </div>
       <BannerStyleFourHero
         badgeText="HRMS Management"
-        title={<>A Full-Suite <span>HRM Software</span> that Automates all your Complex Business Operations</>}
-        description="HRMetricS streamlines everything—from onboarding and attendance to payroll and performance—saving up to 25% on time and cost while delivering a smarter, paperless employee experience."
+        title={<>Ready to Dive into <span>HR & Payroll</span> Bliss? that Automates all your Complex Business Operations</>}
+        description="HRMetricS streamlines everythingâ€”from onboarding and attendance to payroll and performanceâ€”saving up to 25% on time and cost while delivering a smarter, paperless employee experience."
         primaryAction={
           <a className="btn btn-hrms-primary" data-bs-target="#demoshedule-modal" data-bs-toggle="modal" href="#" onClick={(e) => e.preventDefault()}>
             <i className="fas fa-calendar-check" /> Schedule a Demo
@@ -347,47 +554,96 @@ export default function HomePage() {
           </div>
         </div>
       </div>
-      <div className="about-style-one-area default-padding">
-        <img alt="" className="imageabt-over" src="assets/images/linee.png" />
-        <div className="shape-animated-left">
-          <img alt="Image Not Found" src="assets/images/3.png" />
-          <img alt="Image Not Found" src="assets/images/4.png" />
-        </div>
+      <section className="hr_process_section default-padding pt-0" id="hrms-overview">
         <div className="container">
-          <div className="row align-items-center">
-            <div className="about-style-one col-xl-5 col-lg-6">
-              <div className="about-thumb">
-                <img alt="Image Not Found" className="wow fadeInRight" src="assets/images/about.jpg" />
-                <div className="about-card wow fadeInUp" data-wow-delay="500ms">
-                  <ul>
-                    <li>
-                      <div className="icon">
-                        <i className="flaticon-license" />
-                      </div>
-                      <div className="fun-fact">
-                        <div className="counter">
-                          <div className="timer" data-speed={2000} data-to={30}>30</div>
-                          <div className="operator">+</div>
-                        </div>
-                        <span className="medium">Years of experience</span>
-                      </div>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-            <div className="about-style-one col-xl-7 col-lg-6 pl-50">
-              <h4 className="sub-title">About Us</h4>
-              <h2 className="title split-text mb-25">Discover HRMetricS Solutions &amp; Technology</h2>
-              <div className="wow fadeInUp" data-wow-delay="200ms">
-                <p className="text-justify"> The most trusted All-in-one HRMS suite for your people operations. Run your entire business on HRMetricS with our unified cloud-based HR platform, designed to help you break down silos between departments and increase organizational efficiency. </p>
-                <div className="btn-center text-left mt-3"> <a className="btn btn-theme btn-md radius animation wow fadeInUp" href="about.php" style={{ visibility: 'visible', animationName: 'fadeInUp' }}>Read More</a> </div>
+          <div className="row">
+            <div className="col-lg-8 offset-lg-2">
+              <div className="site-heading mb-0 text-center">
+                <h4 className="sub-title">Automate HR Processes</h4>
+                <h2 className="title split-text mb-0">Simplify HR Work </h2>
+                <p className="split-text">With HRMetricS' flexible platform, streamline every process—from onboarding and attendance to payroll and performance reviews. Each module adapts to your organisation's unique structures and policies. Fully automated with integrated
+                  self-service tools and robust analytics, HRMetricS empowers your HR team to move beyond paperwork and focus on strategy, enhancing efficiency, accuracy, and employee engagement. </p>
+                <div className="devider" />
               </div>
             </div>
           </div>
+          <div className="grid-container mt-4">
+            <div className="box box-org">
+              <a className="scrollbtnn" href="#software" onClick={(e) => handleFeatureMenuClick(e, 'hrms', 'company')}>
+                <div className="icon-text">
+                  <i className="fas fa-sitemap" />
+                  <p>Company Management</p>
+                </div>
+              </a>
+            </div>
+            <div className="box box-emp ddd">
+              <a className="scrollbtnn" href="#software" onClick={(e) => handleFeatureMenuClick(e, 'hrms', 'employee')}>
+                <div className="icon-text">
+                  <i className="fas fa-project-diagram" />
+                  <p>Employee Management</p>
+                </div>
+              </a>
+            </div>
+            <div className="box box-access">
+              <a className="scrollbtnn" href="#software" onClick={(e) => handleFeatureMenuClick(e, 'hrms', 'reports')}>
+                <div className="icon-text">
+                  <i className="fas fa-lock" />
+                  <p>Reports and Analytics</p>
+                </div>
+              </a>
+            </div>
+            <div className="box box-roles">
+              <a className="scrollbtnn" href="#software" onClick={(e) => handleFeatureMenuClick(e, 'hrms', 'leave')}>
+                <div className="icon-text">
+                  <i className="fas fa-user" />
+                  <p>Leave Management</p>
+                </div>
+              </a>
+            </div>
+            <div className="box box-audit">
+              <a className="scrollbtnn" href="#software" onClick={(e) => handleFeatureMenuClick(e, 'hrms', 'payroll')}>
+                <div className="icon-text">
+                  <i className="fas fa-file-alt" />
+                  <p>Payroll Management</p>
+                </div>
+              </a>
+            </div>
+            <div className="box box-hr">
+              <a className="scrollbtnn" href="#software" onClick={(e) => handleFeatureMenuClick(e, 'hrms', 'events')}>
+                <div className="icon-text">
+                  <i className="fas fa-comments" />
+                  <p>Events and Meetings</p>
+                </div>
+              </a>
+            </div>
+            <div className="box box-notif">
+              <a className="scrollbtnn" href="#software" onClick={(e) => handleFeatureMenuClick(e, 'hrms', 'attendance')}>
+                <div className="icon-text">
+                  <i className="fas fa-bell" />
+                  <p>Attendance Management</p>
+                </div>
+              </a>
+            </div>
+            <div className="box box-know">
+              <a className="scrollbtnn" href="#software" onClick={(e) => handleFeatureMenuClick(e, 'hrms', 'talent')}>
+                <div className="icon-text">
+                  <i className="fas fa-user-check" />
+                  <p>Talent Management</p>
+                </div>
+              </a>
+            </div>
+            <div className="box box-know1">
+              <a className="scrollbtnn" href="#software" onClick={(e) => handleFeatureMenuClick(e, 'hrms', 'mobile')}>
+                <div className="icon-text">
+                  <i className="fas fa-mobile-alt" />
+                  <p>Mobile App</p>
+                </div>
+              </a>
+            </div>
+          </div>
         </div>
-      </div>
-      <div className="brand-section default-padding animatedBackground" style={{ backgroundImage: 'url(assets/images/patten1.png)' }}>
+      </section>
+      <div className="brand-section default-padding animatedBackground" id="software" style={{ backgroundImage: 'url(assets/images/patten1.png)' }}>
         <div className="container">
           <div className="row">
             <div className="col-lg-8 offset-lg-2">
@@ -403,9 +659,9 @@ export default function HomePage() {
               <div className="tab_section_layout layoet_main_2">
                 <ul className="nav nav-tabs" id="myTab" role="tablist">
                   <li className="nav-item" role="presentation">
-                    <button className="nav-link" data-bs-target="#hrms" data-bs-toggle="tab" id="hrms-tab" role="tab" type="button">
+                    <button className="nav-link active" data-bs-target="#hrms" data-bs-toggle="tab" id="hrms-tab" role="tab" type="button">
                       <span className="svg_bg">
-                        <svg fill="currentColor" height="64px" id="Capa_1" version="1.1" viewBox="0 0 60 60" width="64px" xmlSpace="preserve" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink"><g id="SVGRepo_bgCarrier" strokeWidth={0} /><g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round" /><g id="SVGRepo_iconCarrier"> <g> <g> <path d="M25,15c-3.9,0-7,3.1-7,7v14h2V22c0-2.8,2.2-5,5-5h4v5h2v-5h4c2.8,0,5,2.2,5,5v14h2V22c0-3.9-3.1-7-7-7H25z" /> <path d="M29,14h2c2.8,0,5-2.2,5-5V6c0-2.8-2.2-5-5-5h-2c-2.8,0-5,2.2-5,5v3C24,11.8,26.2,14,29,14z M26,6c0-1.7,1.3-3,3-3h2 c1.7,0,3,1.3,3,3v3c0,1.7-1.3,3-3,3h-2c-1.7,0-3-1.3-3-3V6z" /> <rect height={2} width={2} x={29} y={32} /> <rect height={2} width={2} x={29} y={28} /> <rect height={2} width={2} x={29} y={24} /> <path d="M48,54c0-1.7-1.3-3-3-3h-2v-5c0-0.6-0.4-1-1-1h-5V23h-2v22h-4v-8h-2v8h-4V23h-2v22h-5c-0.6,0-1,0.4-1,1v5h-2 c-1.7,0-3,1.3-3,3v3H0v2h13h34h13v-2H48V54z M14,57v-3c0-0.6,0.4-1,1-1h3h15v-2H19v-4h22v5c0,0.6,0.4,1,1,1h3c0.6,0,1,0.4,1,1v3 H14z" /> <path d="M3.3,10.7l1.4-1.4L3.4,8H21V6H3.4l1.3-1.3L3.3,3.3l-3,3c-0.4,0.4-0.4,1,0,1.4L3.3,10.7z" /> <path d="M3.3,31.7l1.4-1.4L3.4,29H15v-2H3.4l1.3-1.3l-1.4-1.4l-3,3c-0.4,0.4-0.4,1,0,1.4L3.3,31.7z" /> <path d="M55.3,19.3l1.4,1.4l3-3c0.4-0.4,0.4-1,0-1.4l-3-3l-1.4,1.4l1.3,1.3H45v2h11.6L55.3,19.3z" /> <path d="M56.7,37.3l-1.4,1.4l1.3,1.3H41v2h15.6l-1.3,1.3l1.4,1.4l3-3c0.4-0.4,0.4-1,0-1.4L56.7,37.3z" /> <rect height={2} width={2} x={45} y={27} /> <rect height={2} width={2} x={49} y={27} /> <rect height={2} width={2} x={53} y={27} /> <rect height={2} width={2} x={57} y={27} /> <rect height={2} width={2} x={1} y={37} /> <rect height={2} width={2} x={5} y={37} /> <rect height={2} width={2} x={9} y={37} /> <rect height={2} width={2} x={13} y={37} /> <rect height={2} width={2} x={1} y={15} /> <rect height={2} width={2} x={5} y={15} /> <rect height={2} width={2} x={9} y={15} /> <rect height={2} width={2} x={13} y={15} /> </g> </g> </g></svg>
+                        <svg fill="currentColor" height="64px" id="Capa_1" version="1.1" viewBox="0 0 60 60" width="64px" xmlSpace="preserve" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink"><g id="SVGRepo_bgCarrier" strokeWidth={0} /><g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round" /><g id="SVGRepo_iconCarrier"> <g> <g> <path d="M25,15c-3.9,0-7,3.1-7,7v14h2V22c0-2.8,2.2-5,5-5h4v5h2v-5h4c2.8,0,5,2.2,5,5v14h2V22c0-3.9-3.1-7-7-7H25z" /> <path d="M29,14h2c2.8,0,5-2.2,5-5V6c0-2.8-2.2-5-5-5h-2c-2.8,0-5,2.2-5,5v3C24,11.8,26.2,14,29,14z M26,6c0-1.7,1.3-3,3-3h2 c1.7,0,3,1.3,3,3v3c0,1.7-1.3,3-3,3h-2c-1.7,0-3-1.3-3-3V6z" /> <rect height={2} width={2} x={29} y={32} /> <rect height={2} width={2} x={29} y={28} /> <rect height={2} width={2} x={29} y={24} /> <path d="M48,54c0-1.7-1.3-3-3-3h-2v-5c0-0.6-0.4-1-1-1H11v41h13h34h13v-2H48V54z M14,57v-3c0-0.6,0.4-1,1-1h3h15v-2H19v-4h22v5c0,0.6,0.4,1,1,1h3c0.6,0,1,0.4,1,1v3 H14z" /> <path d="M3.3,10.7l1.4-1.4L3.4,8H21V6H3.4l1.3-1.3L3.3,3.3l-3,3c-0.4,0.4-0.4,1,0,1.4L3.3,10.7z" /> <path d="M3.3,31.7l1.4-1.4L3.4,29H15v-2H3.4l1.3-1.3l-1.4-1.4l-3,3c-0.4,0.4-0.4,1,0,1.4L3.3,31.7z" /> <path d="M55.3,19.3l1.4,1.4l3-3c0.4-0.4,0.4-1,0-1.4l-3-3l-1.4,1.4l1.3,1.3H45v2h11.6L55.3,19.3z" /> <path d="M56.7,37.3l-1.4,1.4l1.3,1.3H41v2h15.6l-1.3,1.3l1.4,1.4l3-3c0.4-0.4,0.4-1,0-1.4L56.7,37.3z" /> <rect height={2} width={2} x={45} y={27} /> <rect height={2} width={2} x={49} y={27} /> <rect height={2} width={2} x={53} y={27} /> <rect height={2} width={2} x={57} y={27} /> <rect height={2} width={2} x={1} y={37} /> <rect height={2} width={2} x={5} y={37} /> <rect height={2} width={2} x={9} y={37} /> <rect height={2} width={2} x={13} y={37} /> <rect height={2} width={2} x={1} y={15} /> <rect height={2} width={2} x={5} y={15} /> <rect height={2} width={2} x={9} y={15} /> <rect height={2} width={2} x={13} y={15} /> </g> </g> </g></svg>
                       </span>
                       <span>HRMS</span>
                     </button>
@@ -419,7 +675,7 @@ export default function HomePage() {
                     </button>
                   </li>
                   <li className="nav-item" role="presentation">
-                    <button className="nav-link active" data-bs-target="#taskmanagement" data-bs-toggle="tab" id="task-tab" role="tab" type="button">
+                    <button className="nav-link" data-bs-target="#taskmanagement" data-bs-toggle="tab" id="task-tab" role="tab" type="button">
                       <span className="svg_bg akkbg">
                         <svg fill="currentColor" height="64px" viewBox="0 0 28 28" width="64px" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" strokeWidth={0} /><g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round" /><g id="SVGRepo_iconCarrier"> <path d="M4 5.25C4 3.45508 5.45507 2 7.25 2H20.75C22.5449 2 24 3.45507 24 5.25V17.3787C23.8796 17.4592 23.7653 17.5527 23.659 17.659L22.5 18.818V5.25C22.5 4.2835 21.7165 3.5 20.75 3.5H7.25C6.2835 3.5 5.5 4.2835 5.5 5.25V22.7497C5.5 23.7162 6.2835 24.4997 7.25 24.4997H15.3177L16.8177 25.9997H7.25C5.45507 25.9997 4 24.5446 4 22.7497V5.25Z" fill="#212121" /> <path d="M10.5 8.75C10.5 9.44036 9.94036 10 9.25 10C8.55964 10 8 9.44036 8 8.75C8 8.05964 8.55964 7.5 9.25 7.5C9.94036 7.5 10.5 8.05964 10.5 8.75Z" fill="#212121" /> <path d="M9.25 15.2498C9.94036 15.2498 10.5 14.6902 10.5 13.9998C10.5 13.3095 9.94036 12.7498 9.25 12.7498C8.55964 12.7498 8 13.3095 8 13.9998C8 14.6902 8.55964 15.2498 9.25 15.2498Z" fill="#212121" /> <path d="M9.25 20.5C9.94036 20.5 10.5 19.9404 10.5 19.25C10.5 18.5596 9.94036 18 9.25 18C8.55964 18 8 18.5596 8 19.25C8 19.9404 8.55964 20.5 9.25 20.5Z" fill="#212121" /> <path d="M12.75 8C12.3358 8 12 8.33579 12 8.75C12 9.16421 12.3358 9.5 12.75 9.5H19.25C19.6642 9.5 20 9.16421 20 8.75C20 8.33579 19.6642 8 19.25 8H12.75Z" fill="#212121" /> <path d="M12 13.9998C12 13.5856 12.3358 13.2498 12.75 13.2498H19.25C19.6642 13.2498 20 13.5856 20 13.9998C20 14.414 19.6642 14.7498 19.25 14.7498H12.75C12.3358 14.7498 12 14.414 12 13.9998Z" fill="#212121" /> <path d="M12.75 18.5C12.3358 18.5 12 18.8358 12 19.25C12 19.6642 12.3358 20 12.75 20H19.25C19.6642 20 20 19.6642 20 19.25C20 18.8358 19.6642 18.5 19.25 18.5H12.75Z" fill="#212121" /> <path d="M25.7803 19.7803L19.7803 25.7803C19.6397 25.921 19.4489 26 19.25 26C19.0511 26 18.8603 25.921 18.7197 25.7803L15.7216 22.7823C15.4287 22.4894 15.4287 22.0145 15.7216 21.7216C16.0145 21.4287 16.4894 21.4287 16.7823 21.7216L19.25 24.1893L24.7197 18.7197C25.0126 18.4268 25.4874 18.4268 25.7803 18.7197C26.0732 19.0126 26.0732 19.4874 25.7803 19.7803Z" fill="#212121" /> </g></svg>
                       </span>
@@ -444,9 +700,17 @@ export default function HomePage() {
                   </li>
                 </ul>
                 <div className="tab-content mt-4" id="myTabContent">
-                  <div aria-labelledby="hrms-tab" className="tab-pane fade" id="hrms" role="tabpanel">
+                  <div aria-labelledby="hrms-tab" className="tab-pane fade show active" id="hrms" role="tabpanel">
                     <div className="tab_section_layout hrmstabs">
                       <ul className="nav nav-tabs" id="myTab" role="tablist">
+                        <li className="nav-item" role="presentation">
+                          <button className="nav-link active" data-bs-target="#company" data-bs-toggle="tab" id="company-tab" role="tab" type="button">
+                            <span className="svg_bg">
+                              <svg fill="currentColor" height="64px" id="Layer_1" version="1.1" viewBox="0 0 512 512" width="64px" xmlSpace="preserve" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink"><g id="SVGRepo_bgCarrier" strokeWidth={0} /><g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round" /><g id="SVGRepo_iconCarrier"> <g> <g> <path d="M471,160V48c0-26.51-21.49-48-48-48H89C62.49,0,41,21.49,41,48v416c0,26.51,21.49,48,48,48h334c26.51,0,48-21.49,48-48V352h-32v112c0,8.837-7.163,16-16,16H89c-8.837,0-16-7.163-16-16V48c0-8.837,7.163-16,16-16h334c8.837,0,16,7.163,16,16v112H471z" /> <rect height={32} width={320} x={113} y={96} /> <rect height={32} width={320} x={113} y={192} /> <rect height={32} width={320} x={113} y={288} /> <rect height={32} width={320} x={113} y={384} /> </g> </g> </g></svg>
+                            </span>
+                            <span>Company Management</span>
+                          </button>
+                        </li>
                         <li className="nav-item" role="presentation"> <button className="nav-link" data-bs-target="#employee" data-bs-toggle="tab" id="employee-tab" role="tab" type="button"> <span className="svg_bg"> <svg enableBackground="new 0 0 511 511" fill="#000000" height="64px" version="1.1" viewBox="0 0 511 511" width="64px" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
                           <g id="SVGRepo_bgCarrier" strokeWidth={0} />
                           <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round" />
@@ -646,8 +910,13 @@ export default function HomePage() {
                             <div className="imgbox-tab position-relative"> <img alt="" className="over1" src="assets/images/rate.gif" />
                               <div className="shadowww"> <img alt="" className="img22" src="assets/images/Product/HRMS.JPG" /> </div>
                               <div className="content-box-over">
-                                <h5>Company Management</h5>
-                                <p>Manage your company the way you work best. Our Company Management solution.</p>
+                                <h5>Company Management Software</h5>
+                                <p>Drive growth through centralised control</p>
+                                <ul className="text-left text-white mt-2 mb-3" style={{fontSize: '14px', listStyleType: 'disc', paddingLeft: '20px'}}>
+                                  <li>Manage company structure, branches, and departments</li>
+                                  <li>Align operations with business goals</li>
+                                  <li>Ensure smooth coordination across all units</li>
+                                </ul>
                                 <div className="btn-center text-left mt-3"> <a className="btn btn-theme btn-md radius animation wow fadeInUp" data-bs-target="#bookdemo-modal" data-bs-toggle="modal" href="#" onClick={preventDefault}>Book a demo</a> </div>
                               </div>
                             </div>
@@ -658,9 +927,13 @@ export default function HomePage() {
                             <div className="imgbox-tab position-relative"> <img alt="" className="over1" src="assets/images/rate.gif" />
                               <div className="shadowww"> <img alt="" className="img22" src="assets/images/employees.png" /> </div>
                               <div className="content-box-over">
-                                <h5>Employee Management</h5>
-                                <p>With HRMetricS' Employee Management Software, you can give your employees the autonomy they deserve.
-                                </p>
+                                <h5>Employee Management Software</h5>
+                                <p>Unlock your workforce's full potential</p>
+                                <ul className="text-left text-white mt-2 mb-3" style={{fontSize: '14px', listStyleType: 'disc', paddingLeft: '20px'}}>
+                                  <li>Maintain comprehensive employee profiles</li>
+                                  <li>Streamline onboarding, transitions, and exits</li>
+                                  <li>Boost engagement with effective communication tools</li>
+                                </ul>
                                 <div className="btn-center text-left mt-3"> <a className="btn btn-theme btn-md radius animation wow fadeInUp" data-bs-target="#bookdemo-modal" data-bs-toggle="modal" href="#" onClick={preventDefault}>Book a demo</a> </div>
                               </div>
                             </div>
@@ -671,8 +944,13 @@ export default function HomePage() {
                             <div className="imgbox-tab position-relative"> <img alt="" className="over1" src="assets/images/rate.gif" />
                               <div className="shadowww"> <img alt="" className="img22" src="assets/images/attandence.png" /> </div>
                               <div className="content-box-over">
-                                <h5>Attendance Management</h5>
-                                <p>Automatically calculate employee pay, time off, in-outs, and more with Attendance Management Software. </p>
+                                <h5>Attendance Management Software</h5>
+                                <p>Track time and presence with accuracy</p>
+                                <ul className="text-left text-white mt-2 mb-3" style={{fontSize: '14px', listStyleType: 'disc', paddingLeft: '20px'}}>
+                                  <li>Enable geo-tagged, geo-fenced, and selfie-based attendance</li>
+                                  <li>Monitor check-in/out times in real-time</li>
+                                  <li>Generate accurate reports for payroll processing</li>
+                                </ul>
                                 <div className="btn-center text-left mt-3"> <a className="btn btn-theme btn-md radius animation wow fadeInUp" data-bs-target="#bookdemo-modal" data-bs-toggle="modal" href="#" onClick={preventDefault}>Book a demo</a> </div>
                               </div>
                             </div>
@@ -684,8 +962,12 @@ export default function HomePage() {
                               <div className="shadowww"> <img alt="" className="img22" src="assets/images/levemanagement.png" /> </div>
                               <div className="content-box-over">
                                 <h5>Leave Management System</h5>
-                                <p>HRMetricS' Leave Management System offers a streamlined approach to workforce management.
-                                </p>
+                                <p>Simplify leave requests and planning</p>
+                                <ul className="text-left text-white mt-2 mb-3" style={{fontSize: '14px', listStyleType: 'disc', paddingLeft: '20px'}}>
+                                  <li>Allow employees to apply and track leaves digitally</li>
+                                  <li>Automate approvals and policy adherence</li>
+                                  <li>Plan resources better with clear leave insights</li>
+                                </ul>
                                 <div className="btn-center text-left mt-3"> <a className="btn btn-theme btn-md radius animation wow fadeInUp" data-bs-target="#bookdemo-modal" data-bs-toggle="modal" href="#" onClick={preventDefault}>Book a demo</a> </div>
                               </div>
                             </div>
@@ -696,8 +978,13 @@ export default function HomePage() {
                             <div className="imgbox-tab position-relative"> <img alt="" className="over1" src="assets/images/rate.gif" />
                               <div className="shadowww"> <img alt="" className="img22" src="assets/images/payroll-management.png" /> </div>
                               <div className="content-box-over">
-                                <h5>Payroll Management</h5>
-                                <p>HRMetricS' Payroll Management Software is an integral part of its HRM Solution.</p>
+                                <h5>Payroll Management Software</h5>
+                                <p>Seamless and compliant salary processing</p>
+                                <ul className="text-left text-white mt-2 mb-3" style={{fontSize: '14px', listStyleType: 'disc', paddingLeft: '20px'}}>
+                                  <li>Automate salary, tax, and benefit calculations</li>
+                                  <li>Generate payslips, handle TDS, PF, and ESI with ease</li>
+                                  <li>Ensure timely, error-free disbursements</li>
+                                </ul>
                                 <div className="btn-center text-left mt-3"> <a className="btn btn-theme btn-md radius animation wow fadeInUp" data-bs-target="#bookdemo-modal" data-bs-toggle="modal" href="#" onClick={preventDefault}>Book a demo</a> </div>
                               </div>
                             </div>
@@ -708,8 +995,13 @@ export default function HomePage() {
                             <div className="imgbox-tab position-relative"> <img alt="" className="over1" src="assets/images/rate.gif" />
                               <div className="shadowww"> <img alt="" className="img22" src="assets/images/talentmanagement.png" /> </div>
                               <div className="content-box-over">
-                                <h5>Talent Management</h5>
-                                <p>Empower your HR team to focus on what truly matters—your people. Our Talent Management Software.</p>
+                                <h5>Talent Management Software</h5>
+                                <p>Build high-performing teams effortlessly</p>
+                                <ul className="text-left text-white mt-2 mb-3" style={{fontSize: '14px', listStyleType: 'disc', paddingLeft: '20px'}}>
+                                  <li>Set goals, track performance, and provide feedback</li>
+                                  <li>Recognise achievements and address gaps</li>
+                                  <li>Align employee growth with business success</li>
+                                </ul>
                                 <div className="btn-center text-left mt-3"> <a className="btn btn-theme btn-md radius animation wow fadeInUp" data-bs-target="#bookdemo-modal" data-bs-toggle="modal" href="#" onClick={preventDefault}>Book a demo</a> </div>
                               </div>
                             </div>
@@ -720,8 +1012,13 @@ export default function HomePage() {
                             <div className="imgbox-tab position-relative"> <img alt="" className="over1" src="assets/images/rate.gif" />
                               <div className="shadowww"> <img alt="" className="img22" src="assets/images/reportanalytics.png" /> </div>
                               <div className="content-box-over">
-                                <h5>Reports and Analytics</h5>
-                                <p>Give your HR team the insights they need to plan confidently. Our reporting tool makes it easy to analyze workforce.</p>
+                                <h5>Reports and Analytics Software</h5>
+                                <p>Turn data into actionable insights</p>
+                                <ul className="text-left text-white mt-2 mb-3" style={{fontSize: '14px', listStyleType: 'disc', paddingLeft: '20px'}}>
+                                  <li>Access customised reports across HR functions</li>
+                                  <li>Monitor KPIs and workforce trends in real-time</li>
+                                  <li>Make faster, smarter decisions with reliable data</li>
+                                </ul>
                                 <div className="btn-center text-left mt-3"> <a className="btn btn-theme btn-md radius animation wow fadeInUp" data-bs-target="#bookdemo-modal" data-bs-toggle="modal" href="#" onClick={preventDefault}>Book a demo</a> </div>
                               </div>
                             </div>
@@ -732,8 +1029,13 @@ export default function HomePage() {
                             <div className="imgbox-tab position-relative"> <img alt="" className="over1" src="assets/images/rate.gif" />
                               <div className="shadowww"> <img alt="" className="img22" src="assets/images/eventmanagement.png" /> </div>
                               <div className="content-box-over">
-                                <h5>Events and Meetings</h5>
-                                <p>With Event Management Software like HRMetricS, you can easily plan, manage, and evaluate events and meetings across your organisation. </p>
+                                <h5>Events and Meetings Management Software</h5>
+                                <p>Foster collaboration and drive alignment</p>
+                                <ul className="text-left text-white mt-2 mb-3" style={{fontSize: '14px', listStyleType: 'disc', paddingLeft: '20px'}}>
+                                  <li>Schedule and manage meetings company-wide</li>
+                                  <li>Send invites, share updates, and track participation</li>
+                                  <li>Host effective virtual or in-person events</li>
+                                </ul>
                                 <div className="btn-center text-left mt-3"> <a className="btn btn-theme btn-md radius animation wow fadeInUp" data-bs-target="#bookdemo-modal" data-bs-toggle="modal" href="#" onClick={preventDefault}>Book a demo</a> </div>
                               </div>
                             </div>
@@ -745,7 +1047,12 @@ export default function HomePage() {
                               <div className="shadowww"> <img alt="" className="img22" src="assets/images/mobileapp.png" /> </div>
                               <div className="content-box-over">
                                 <h5>Mobile App</h5>
-                                <p>The HRMetricS Mobile App revolutionises human resource management, putting power in the palms. </p>
+                                <p>Manage HR tasks anytime, anywhere</p>
+                                <ul className="text-left text-white mt-2 mb-3" style={{fontSize: '14px', listStyleType: 'disc', paddingLeft: '20px'}}>
+                                  <li>Empower employees with self-service access</li>
+                                  <li>Track attendance, apply for leave, and view payslips on the go</li>
+                                  <li>Stay connected and productive from any location</li>
+                                </ul>
                                 <div className="btn-center text-left mt-3"> <a className="btn btn-theme btn-md radius animation wow fadeInUp" data-bs-target="#bookdemo-modal" data-bs-toggle="modal" href="#" onClick={preventDefault}>Book a demo</a> </div>
                               </div>
                             </div>
@@ -767,7 +1074,7 @@ export default function HomePage() {
                       </div>
                     </div>
                   </div>
-                  <div aria-labelledby="task-tab" className="tab-pane fade show active text-center" id="taskmanagement" role="tabpanel">
+                  <div aria-labelledby="task-tab" className="tab-pane fade text-center" id="taskmanagement" role="tabpanel">
                     <div className="imgbox-tab position-relative">
                       <img alt="" className="over1" src="assets/images/rate.gif" />
                       <div className="shadowww">
@@ -878,7 +1185,7 @@ export default function HomePage() {
                   </div>
                   <div className="mt-3 p-4 rad10 bg2 bg-opacity-25">
                     <h5 className="fw-bold">With HRMetricS</h5>
-                    <p>Managers can track team activities in real time through Attendance Regularization (AR), task assignments, and performance dashboards—bringing structure, speed, and visibility to daily operations.</p>
+                    <p>Managers can track team activities in real time through Attendance Regularization (AR), task assignments, and performance dashboardsâ€”bringing structure, speed, and visibility to daily operations.</p>
                   </div>
                 </div>
                 <div className="col-md-6 text-center">
@@ -899,7 +1206,7 @@ export default function HomePage() {
                   </div>
                   <div className="mt-3 p-4 rad10 bg1 bg-opacity-25">
                     <h5 className="fw-bold">With HRMetricS</h5>
-                    <p className="text-justify">Experience zero compliance hassles. Our expert team works closely with your IT department to ensure seamless implementation, secure data management, and scalable, future-ready operations. Gain complete visibility with graphical and analytical reports that track project start and end dates, monitor actual vs. planned progress, and maintain comprehensive document records—all in one place.</p>
+                    <p className="text-justify">Experience zero compliance hassles. Our expert team works closely with your IT department to ensure seamless implementation, secure data management, and scalable, future-ready operations. Gain complete visibility with graphical and analytical reports that track project start and end dates, monitor actual vs. planned progress, and maintain comprehensive document recordsâ€”all in one place.</p>
                   </div>
                 </div>
                 <div className="col-md-6 text-center">
@@ -921,7 +1228,7 @@ export default function HomePage() {
                   </div>
                   <div className="mt-3 p-4 rad10 bg1 bg-opacity-25">
                     <h5 className="fw-bold">With HRMetricS</h5>
-                    <p className="text-justify">Empower your workforce with a seamless self-service experience! Through our easy-to-use mobile app, employees can apply for leave, view shifts, download payslips, and access training—anytime, anywhere. They can also track their daily tasks, helping them manage their workload and time more efficiently.</p>
+                    <p className="text-justify">Empower your workforce with a seamless self-service experience! Through our easy-to-use mobile app, employees can apply for leave, view shifts, download payslips, and access trainingâ€”anytime, anywhere. They can also track their daily tasks, helping them manage their workload and time more efficiently.</p>
                   </div>
                 </div>
                 <div className="col-md-6 text-center">
@@ -942,7 +1249,7 @@ export default function HomePage() {
                   </div>
                   <div className="mt-3 p-4 rad10 bg1 bg-opacity-25">
                     <h5 className="fw-bold">With HRMetricS</h5>
-                    <p className="text-justify">Run payroll like a pro! HRMetricS' advanced Payroll Management module ensures complete accuracy, statutory compliance, and seamless salary disbursement. It automatically generates Form 16, gives access to detailed reports, and simplifies every aspect of payroll processing. HRMetricS also generates the Bank CMS file, ready for direct download and upload to your bank portal—saving time and reducing manual effort.</p>
+                    <p className="text-justify">Run payroll like a pro! HRMetricS' advanced Payroll Management module ensures complete accuracy, statutory compliance, and seamless salary disbursement. It automatically generates Form 16, gives access to detailed reports, and simplifies every aspect of payroll processing. HRMetricS also generates the Bank CMS file, ready for direct download and upload to your bank portalâ€”saving time and reducing manual effort.</p>
                   </div>
                 </div>
                 <div className="col-md-6 text-center">
@@ -955,7 +1262,6 @@ export default function HomePage() {
         </div>
       </section>
       <hr />
-      <FaqSection />
       <div className="tesimoinial-style-four-area bg-gray default-padding bg-cover" style={{ backgroundImage: 'url(assets/img/shape/38.png)' }}>
         <div className="container">
           <div className="left-heading">
@@ -1048,7 +1354,7 @@ export default function HomePage() {
                               <span>HR Head, Simsona</span>
                             </div>
                           </div>
-                          <p className="moretext" data-fulltext="At Simsona, we have completely transformed the way we handle recruitment and performance reviews. The platform is intuitive, fast, and incredibly powerful. We’ve reduced our employee onboarding  to exit process by nearly 40% and gained real-time visibility into employee performance metrics. It's like having an extra HR manager onboard—only smarter!" />
+                          <p className="moretext" data-fulltext="At Simsona, we have completely transformed the way we handle recruitment and performance reviews. The platform is intuitive, fast, and incredibly powerful. Weâ€™ve reduced our employee onboarding  to exit process by nearly 40% and gained real-time visibility into employee performance metrics. It's like having an extra HR manager onboardâ€”only smarter!" />
                           <div className="bottom-info mt-2">
                             <div className="icon">
                               <i className="fas fa-star" />
@@ -1074,7 +1380,7 @@ export default function HomePage() {
                               <span>VP of Employee Relations</span>
                             </div>
                           </div>
-                          <p className="moretext" data-fulltext=" HRMetricS has made our payroll processing seamless and efficient. What used to take several days now takes less than two days —with error-free calculations and payslip generation at the click of a button" />
+                          <p className="moretext" data-fulltext=" HRMetricS has made our payroll processing seamless and efficient. What used to take several days now takes less than two days â€”with error-free calculations and payslip generation at the click of a button" />
                           <div className="bottom-info mt-2">
                             <div className="icon">
                               <i className="fas fa-star" />
@@ -1126,7 +1432,7 @@ export default function HomePage() {
                               <span>Talent Acquisition Coordinator</span>
                             </div>
                           </div>
-                          <p className="moretext" data-fulltext=" Our employees appreciate the transparency and convenience HRMetricS offers—easy access to personal data, a clear and timely payroll process, and smooth leave and attendance management. The platform’s secure data handling also builds trust. It’s more than just an HR tool—it’s an asset to employee satisfaction." />
+                          <p className="moretext" data-fulltext=" Our employees appreciate the transparency and convenience HRMetricS offersâ€”easy access to personal data, a clear and timely payroll process, and smooth leave and attendance management. The platformâ€™s secure data handling also builds trust. Itâ€™s more than just an HR toolâ€”itâ€™s an asset to employee satisfaction." />
                           <div className="bottom-info mt-2">
                             <div className="icon">
                               <i className="fas fa-star" />
@@ -1152,7 +1458,7 @@ export default function HomePage() {
                               <span>Talent Acquisition Specialist</span>
                             </div>
                           </div>
-                          <p className="moretext" data-fulltext="I’ve always liked the software we were using for years, but after exploring other platforms like HRMetricS, it tuned out to be the best fit for our needs. HRMetricS stood out with its powerful customization options. We’re able to create tailored workflows that fit our unique processes—something I haven’t seen with other HR solutions. It offers outstanding value." />
+                          <p className="moretext" data-fulltext="Iâ€™ve always liked the software we were using for years, but after exploring other platforms like HRMetricS, it tuned out to be the best fit for our needs. HRMetricS stood out with its powerful customization options. Weâ€™re able to create tailored workflows that fit our unique processesâ€”something I havenâ€™t seen with other HR solutions. It offers outstanding value." />
                           <div className="bottom-info mt-2">
                             <div className="icon">
                               <i className="fas fa-star" />
@@ -1178,7 +1484,7 @@ export default function HomePage() {
                               <span>Chief Human Resources&nbsp;Officer</span>
                             </div>
                           </div>
-                          <p className="moretext" data-fulltext="One of the standout features of HRMetricS is its versatility. It’s not just limited to the HR team—our Assets, Office Management, Training, and Finance departments. All use it effectively to streamline their operations." />
+                          <p className="moretext" data-fulltext="One of the standout features of HRMetricS is its versatility. Itâ€™s not just limited to the HR teamâ€”our Assets, Office Management, Training, and Finance departments. All use it effectively to streamline their operations." />
                           <div className="bottom-info mt-2">
                             <div className="icon">
                               <i className="fas fa-star" />
@@ -1208,7 +1514,7 @@ export default function HomePage() {
                   <h2 className="title">Awards We Won</h2>
                 </div>
                 <div className="right-info">
-                  <p className="text-white">We’re honored to be recognized for our innovation, impact, and commitment to excellence. These awards reflect the hard work of our team and the trust of our partners, clients, and community.</p>
+                  <p className="text-white">Weâ€™re honored to be recognized for our innovation, impact, and commitment to excellence. These awards reflect the hard work of our team and the trust of our partners, clients, and community.</p>
                 </div>
               </div>
             </div>
@@ -1258,6 +1564,68 @@ export default function HomePage() {
           </div>
         </div>
       </div> */}
+      <section id="pricing" className="default-padding bg-gray">
+        <div className="container">
+          <div className="row">
+            <div className="col-lg-8 offset-lg-2 text-center">
+              <h5 className="sub-title">Pricing</h5>
+              <h2 className="title mb-2">Transparent Plans. No Hidden Fees.</h2>
+              <p className="mb-4">Pay only for pages you process. Start monthly, save with yearly billing.</p>
+              <div className="pricing-billing-toggle">
+                <button type="button" onClick={() => setBillingCycle("monthly")} className={`pricing-billing-btn ${billingCycle === "monthly" ? "is-active" : ""}`}>
+                  Monthly
+                </button>
+                <button type="button" onClick={() => setBillingCycle("yearly")} className={`pricing-billing-btn ${billingCycle === "yearly" ? "is-active" : ""}`}>
+                  Yearly <span className="save-badge">Save 20%</span>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div className="row g-4">
+            {pricingPlans.map((plan) => (
+              <div key={plan.id} className="col-xl-3 col-lg-6 col-md-6">
+                <div className={`pricing-style-one h-100 ${plan.isPopular ? "active" : ""}`} style={{ border: "1px solid #d9dff2", borderRadius: 12, background: "#fff", padding: 20, position: "relative" }}>
+                  {plan.badgeText ? (
+                    <span style={{ position: "absolute", top: -10, left: 20, background: "#2f41e9", color: "#fff", fontSize: 11, fontWeight: 700, padding: "4px 10px", borderRadius: 6, textTransform: "uppercase", letterSpacing: 0.5 }}>
+                      {plan.badgeText}
+                    </span>
+                  ) : null}
+                  <h6 style={{ color: "#2f41e9", fontSize: 12, textTransform: "uppercase", letterSpacing: 1, marginBottom: 8 }}>{plan.planKey || plan.name}</h6>
+                  <h4 style={{ marginBottom: 6 }}>{plan.name}</h4>
+                  <p style={{ fontSize: 14, minHeight: 44 }}>{plan.subtitle || "\u00a0"}</p>
+                  {plan.isCustom ? (
+                    <h3 style={{ color: "#2f41e9", margin: "10px 0 12px" }}>Let's talk</h3>
+                  ) : (
+                    <h3 style={{ margin: "10px 0 12px" }}>
+                      ${billingCycle === "yearly" ? plan.priceYearly : plan.priceMonthly}
+                      <span style={{ fontSize: 16, fontWeight: 500 }}>/ {billingCycle === "yearly" ? "yr" : "mo"}</span>
+                    </h3>
+                  )}
+                  {plan.pageLimitLabel ? (
+                    <div style={{ border: "1px solid #b7dfc4", background: "#ecfff2", color: "#0d8b4e", borderRadius: 8, padding: "8px 10px", fontSize: 13, fontWeight: 600, marginBottom: 14 }}>
+                      {plan.pageLimitLabel}
+                    </div>
+                  ) : null}
+                  <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
+                    {(plan.points || []).map((point, index) => (
+                      <li key={`${plan.id}-${index}`} style={{ marginBottom: 8, fontSize: 14 }}>
+                        <i className="fas fa-check" style={{ color: "#3857f1", marginRight: 8 }} />
+                        {point}
+                      </li>
+                    ))}
+                  </ul>
+                  <a
+                    className={`btn mt-3 w-100 ${plan.isPopular ? "btn-theme text-white" : "btn-theme btn-md radius"}`}
+                    href={plan.ctaUrl || "#contact"}
+                  >
+                    {plan.ctaLabel || "Choose Plan"} <i className="fas fa-arrow-right" />
+                  </a>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
       <div className="dem-section bg-gradientt position-relative py-5">
         <div className="circle-img" style={{ backgroundImage: 'url(assets/images/circlbg.png)' }}>
         </div>
@@ -1268,11 +1636,136 @@ export default function HomePage() {
           </div>
         </div>
       </div>
+      <section id="about">
+        <div className="about-style-two-area default-padding overflow-hidden bg-gray">
+          <div className="shape">
+            <img alt="Shape" src="assets/images/line-side.png" />
+          </div>
+          <div className="container">
+            <div className="row align-center">
+              <div className="col-lg-6">
+                <div className="about-style-two-thumb">
+                  <img alt="Image Not Found" className="wow fadeInUp" src="assets/images/aboutmain.png" />
+                  <img alt="Image Not Found" className="wow fadeInDown" data-wow-delay="100ms" src="assets/images/hrmetrics-building.jpg" />
+                  <div className="certification wow fadeInUp" data-wow-delay="250ms">
+                    <img alt="Image Not Found" src="assets/images/abtcerti.png" />
+                    <h4> Certified Company</h4>
+                  </div>
+                </div>
+              </div>
+              <div className="col-lg-6 pl-50 pl-md-15 pl-xs-15">
+                <div className="about-style-two-info">
+                  <h4 className="sub-title">About Us</h4>
+                  <h2 className="title mb-3 split-text">Who We Are</h2>
+                  <p>HRMetricS is the brainchild of the HRMetricS team.</p>
+                  <p>Systems Solutions Pvt Ltd is a tech-leading IT consulting and software development company in the Digital Era! We have provisioned our esteemed clients with the Best-Suite Software Solutions. We mainly focus on <strong>HR-MetricS </strong> and <strong>ERP Development </strong> , Implementation, and integration.</p>
+                  <p>Our journey began out of the passion for a unique monarch in the industry. To save time and money and to free up the platform owners to concentrate on their main offering, we identified the common denominator. Because of this, we have teamed up to create fresh, prosperous businesspeople all over the world!</p>
+
+                  <div className="grid grid-cols-3 gap-15 text-center" style={{ display: "flex", gap: "50px" }}>
+                    <div>
+                      <div className="text-3xl font-bold text-primary">300+</div>
+                      <div className="text-gray-600">Projects Completed</div>
+                    </div>
+                    <div>
+                      <div className="text-3xl font-bold text-primary">50+</div>
+                      <div className="text-gray-600">Happy Clients</div>
+                    </div>
+                    <div>
+                      <div className="text-3xl font-bold text-primary">100%</div>
+                      <div className="text-gray-600">Client Satisfaction</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="faq">
+          <FaqSection className="pt-2 faq-minimal" subHeading="FAQ" heading="" />
+        </div>
+      </section>
+      <section id="contact">
+        <div className="contact-style-one-area overflow-hidden default-padding">
+          <div className="contact-shape">
+            <img alt="Image Not Found" src="assets/img/shape/37.png" />
+          </div>
+          <div className="container">
+            <div className="row">
+              <div className="contact-stye-one col-lg-5 mb-md-50 mb-xs-20">
+                <div className="contact-style-one-info">
+                  <h2 className="split-text">Contact Information</h2>
+                  <ul>
+                    <li className="wow fadeInUp">
+                      <div className="icon">
+                        <i className="fas fa-phone-alt" />
+                      </div>
+                      <div className="content">
+                        <h5 className="title">Call</h5>
+                        <a href={siteSettings.whatsapp_direct_url} target="_blank" rel="noopener noreferrer"> {siteSettings.primary_phone}</a><span className="text-white">,</span> <a href={siteSettings.secondary_phone_href}>{siteSettings.secondary_phone}</a>
+                      </div>
+                    </li>
+                    <li className="wow fadeInUp" data-wow-delay="300ms">
+                      <div className="icon">
+                        <i className="fas fa-map-marker-alt" />
+                      </div>
+                      <div className="info">
+                        <h5 className="title">Our Location</h5>
+                        <p><strong><span className="dottt" /> Maldives:</strong> {siteSettings.new_delhi_address}</p>
+                        <p><strong><span className="dottt" /> Madurai:</strong> {siteSettings.noida_address}</p>
+                      </div>
+                    </li>
+                    <li className="wow fadeInUp" data-wow-delay="500ms">
+                      <div className="icon">
+                        <i className="fas fa-envelope-open-text" />
+                      </div>
+                      <div className="info">
+                        <h5 className="title">Email</h5>
+                        <a href={siteSettings.primary_email_href}>{siteSettings.primary_email}</a>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div className="contact-stye-one col-lg-7 pl-60 pl-md-15 pl-xs-15">
+                <div className="contact-form-style-one">
+                  <h5 className="sub-title">Have Questions?</h5>
+                  <h2 className="title">Send us a Massage</h2>
+                  <form className="contact-form1" onSubmit={handleContactSubmit}>
+                    <div className="row">
+                      <div className="col-lg-12"><div className="form-group"><input className="form-control" id="name" name="name" placeholder="Name*" required type="text" /><span className="alert-error" /></div></div>
+                      <div className="col-lg-6"><div className="form-group"><input className="form-control" id="email" name="email" placeholder="Official Email*" required type="email" /><span className="alert-error" /></div></div>
+                      <div className="col-lg-6"><div className="form-group"><input className="form-control" id="phone" maxLength={10} minLength={10} name="phone" placeholder="Mobile*" required type="text" /><span className="alert-error" /></div></div>
+                      <div className="col-lg-6"><div className="form-group"><input className="form-control" id="company" name="company" placeholder="Organization Name*" required type="text" /><span className="alert-error" /></div></div>
+                      <div className="col-lg-6"><div className="form-group"><input className="form-control" id="employees" name="employees" placeholder="Number of Employees*" required type="text" /><span className="alert-error" /></div></div>
+                      <div className="col-lg-6"><div className="form-group"><input className="form-control" id="address" name="address" placeholder="Address" type="text" /><span className="alert-error" /></div></div>
+                      <div className="col-lg-6"><div className="form-group"><input className="form-control" id="city" name="city" placeholder="City" type="text" /><span className="alert-error" /></div></div>
+                      <div className="col-lg-12"><div className="form-group"><input className="form-control" id="pincode" name="pincode" placeholder="Pincode" type="text" /><span className="alert-error" /></div></div>
+                      <div className="col-lg-12"><div className="form-group comments"><textarea className="form-control" id="message" name="message" placeholder="Message*" defaultValue="" /></div></div>
+                      <div className="col-lg-12">
+                        <button id="submit" name="submit" type="submit" disabled={submitting}>
+                          {submitting ? <><span className="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true" />Sending...</> : <><i className="fa fa-paper-plane" /> Get in Touch</>}
+                        </button>
+                      </div>
+                      <div className="col-lg-12 alert-notification">
+                        <SubmitAlert variant="success" message={message} />
+                        <SubmitAlert variant="error" message={submitError} />
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="google-map">
+          <iframe allowFullScreen frameBorder={0} loading="lazy" referrerPolicy="no-referrer-when-downgrade" src={siteSettings.google_maps_embed_url} style={{ border: 0, width: "100%", height: 350 }} />
+        </div>
+      </section>
       {cookieConsent === null ? (
         <div className="cookie-consent-banner" role="dialog" aria-live="polite" aria-label="Cookie consent">
           <p>
             We use cookies to enhance your experience.
-            <a href="privacy-policy/index.html"> Policy</a>
+            <a href="/privacy-policy"> Policy</a>
           </p>
           <div className="cookie-consent-actions">
             <button
@@ -1293,98 +1786,63 @@ export default function HomePage() {
         </div>
       ) : null}
 
-      <footer className="footer-bg text-light bg-cover">
-        <div className="footer-shape">
-          <div className="item">
-            <img alt="Shape" src="assets/images/footerbg.png" />
-          </div>
-        </div>
+            <footer className="footer-bg text-light bg-cover footer-clean">
         <div className="container">
-          <div className="f-items relative pt-50 pb-60 pt-xs-0 pb-xs-50">
-            <div className="row mb-4 align-items-center">
-              <div className="col-md-5">
+          <div className="f-items relative pt-50 pb-40 pt-xs-0 pb-xs-30">
+            <div className="row g-4">
+              <div className="col-lg-4 col-md-6">
                 <div className="f-item about">
-                  <img alt="Logo" className="logo mb-2" src="assets/images/Logo.png" style={{ height: 45 }} />
-                  <p className="mb-0">
-                    Experience the power of seamless HR management. Our solution empowers your organization by simplifying tasks, automating workflows, and optimizing HR processes for enhancing the productivity.
-                  </p>
-                  <ul className="footer-social mt-0">
-                    <li>
-                      <a href={siteSettings.linkedin_url} target="_blank" rel="noopener noreferrer">
-                        <i className="fab fa-linkedin-in" />
-                      </a>
-                    </li>
-                    <li>
-                      <a href={siteSettings.facebook_url} target="_blank" rel="noopener noreferrer">
-                        <i className="fab fa-facebook-f" />
-                      </a>
-                    </li>
-                    <li>
-                      <a href={siteSettings.x_url} target="_blank" rel="noopener noreferrer">
-                        <i className="">X</i>
-                      </a>
-                    </li>
-                    <li>
-                      <a href={siteSettings.instagram_url} target="_blank" rel="noopener noreferrer">
-                        <i className="fab fa-instagram" />
-                      </a>
-                    </li>
-                    <li>
-                      <a href={siteSettings.whatsapp_url} target="_blank" rel="noopener noreferrer">
-                        <i className="fab fa-whatsapp" />
-                      </a>
-                    </li>
+                  <img alt="Logo" className="logo mb-2" src="assets/images/Logo.png" style={{ height: 44 }} />
+                  <h5 className="mb-2">HRMetricS</h5>
+                  <p className="mb-0">AI-powered document and HR automation for enterprises. Built to simplify operations and improve workforce productivity.</p>
+                  <ul className="footer-social mt-3">
+                    <li><a href={siteSettings.linkedin_url} target="_blank" rel="noopener noreferrer"><i className="fab fa-linkedin-in" /></a></li>
+                    <li><a href={siteSettings.facebook_url} target="_blank" rel="noopener noreferrer"><i className="fab fa-facebook-f" /></a></li>
+                    <li><a href={siteSettings.x_url} target="_blank" rel="noopener noreferrer"><i className="">X</i></a></li>
+                    <li><a href={siteSettings.instagram_url} target="_blank" rel="noopener noreferrer"><i className="fab fa-instagram" /></a></li>
+                    <li><a href={siteSettings.whatsapp_url} target="_blank" rel="noopener noreferrer"><i className="fab fa-whatsapp" /></a></li>
                   </ul>
                 </div>
               </div>
-              <div className="col-md-7">
-                <div className="awrd-box text-end">
-                  <img alt="" src="assets/images/certificate1.png" />
-                  <img alt="" src="assets/images/certificate2.png" />
-                  <img alt="Shape" src="assets/images/dmca.webp" />
-                </div>
-              </div>
-            </div>
-            <hr />
-            <div className="row">
-              <div className="col-lg-4 col-md-6 footer-item">
+              <div className="col-lg-2 col-md-6">
                 <div className="f-item link">
-                  <h4 className="widget-title">HRMetricS' Modules</h4>
-                  <ul className="hr-ul">
-                    <li><a href="hrm-soultion-software/index.html">HRM Solution</a></li>
-                    <li><a href="attendance-management-software/index.html">Attendance Management</a></li>
-                    <li><a href="payroll-management-software/index.html">Payroll Management</a></li>
-                    <li><a href="leave-management-software/index.html">Leave Management</a></li>
-                    <li><a href="task-management-software/index.html">Task Management</a></li>
-                    <li><a href="asset-management-software/index.html">Asset Management</a></li>
-                    <li><a href="activity-management-software/index.html">Activity Management</a></li>
-                    <li><a href="field-force-management-software/index.html">Field Force Management </a></li>
+                  <h4 className="widget-title">Product</h4>
+                  <ul>
+                    <li><a href="#software">How it Works</a></li>
+                    <li><a href="#software">Features</a></li>
+                    <li><a href="#about">Industries</a></li>
+                    <li><a href="#pricing">Pricing</a></li>
                   </ul>
                 </div>
               </div>
-              <div className="col-lg-4 col-md-6 footer-item">
+              <div className="col-lg-3 col-md-6">
                 <div className="f-item link">
+                  <h4 className="widget-title">MV Maldives</h4>
+                  <ul>
+                    <li><a href={siteSettings.company_url} target="_blank" rel="noopener noreferrer">solutions.com.mv</a></li>
+                    <li><a href={siteSettings.whatsapp_direct_url} target="_blank" rel="noopener noreferrer">{siteSettings.primary_phone}</a></li>
+                    <li><a href={siteSettings.primary_email_href}>{siteSettings.primary_email}</a></li>
+                  </ul>
+                  <h4 className="widget-title mt-3">BT Bhutan</h4>
+                  <ul>
+                    <li><a href={siteSettings.secondary_phone_href}>{siteSettings.secondary_phone}</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div className="col-lg-3 col-md-6">
+                <div className="f-item link">
+                  <h4 className="widget-title">IN India</h4>
+                  <ul>
+                    <li><a href={siteSettings.company_url} target="_blank" rel="noopener noreferrer">bsyssolutions.com</a></li>
+                    <li><a href={siteSettings.whatsapp_direct_url} target="_blank" rel="noopener noreferrer">{siteSettings.secondary_phone}</a></li>
+                    <li><a href={siteSettings.primary_email_href}>{siteSettings.primary_email}</a></li>
+                  </ul>
                   <h4 className="widget-title">Company</h4>
                   <ul>
-                    <li><a href="about/index.html">About</a></li>
-                    <li><a href="contact/index.html">Contact</a></li>
-                    <li><a href="terms-services/index.html">Terms of service</a></li>
-                    <li><a href="privacy-policy/index.html">Privacy policy</a></li>
-                  </ul>
-                </div>
-              </div>
-              <div className="col-lg-4 col-md-6 footer-item">
-                <div className="f-item link">
-                  <h4 className="widget-title">Contact Us</h4>
-                  <ul className="mt-3 mb-3">
-                    <li>
-                      <strong>Location:</strong>
-                      <div className="working-day mb-2"><strong>Madurai:</strong>  {siteSettings.noida_address}</div>
-                      <div className="working-day"><strong>Maldives:</strong> {siteSettings.new_delhi_address}</div>
-                      <div className="working-hour mt-2"><strong>Phone:</strong><a href={siteSettings.whatsapp_direct_url} target="_blank" rel="noopener noreferrer"> {siteSettings.primary_phone}</a>, <a href={siteSettings.secondary_phone_href}>{siteSettings.secondary_phone}</a></div>
-                      <div className="working-hour"><strong>Email:</strong>
-                        <a href={siteSettings.primary_email_href}>{siteSettings.primary_email}</a></div>
-                    </li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="/terms-services">Terms of service</a></li>
+                    <li><a href="/privacy-policy">Privacy policy</a></li>
                   </ul>
                 </div>
               </div>
@@ -1394,16 +1852,23 @@ export default function HomePage() {
         <div className="footer-bottom">
           <div className="container">
             <div className="row">
-              <div className="col-lg-12 text-center">
-                <p>© Copyright 2026 <a href={siteSettings.company_url} style={{ color: 'var(--color-primary)', fontWeight: 500 }} target="_blank" rel="noopener noreferrer">{siteSettings.company_legal_name}</a> All Rights Reserved</p>
+              <div className="col-lg-6 col-md-6">
+                <p>© 2026 {siteSettings.company_legal_name}. All rights reserved.</p>
+              </div>
+              <div className="col-lg-6 col-md-6 text-md-end">
+                <p><a href="/privacy-policy">Privacy Policy</a> <span className="mx-2">|</span> <a href="/terms-services">Terms of Use</a></p>
               </div>
             </div>
           </div>
         </div>
       </footer>
-      <button id="scrollTopBtn">↑</button>
+      <button id="scrollTopBtn">â†‘</button>
 
 
     </div>
   );
 }
+
+
+
+

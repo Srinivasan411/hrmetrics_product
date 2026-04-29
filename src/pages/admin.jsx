@@ -15,6 +15,23 @@ const emptyForm = {
 };
 
 const emptySettingsForm = { ...defaultSiteSettings };
+const emptyPricingForm = {
+  id: null,
+  name: "",
+  planKey: "",
+  subtitle: "",
+  priceMonthly: 0,
+  priceYearly: 0,
+  ctaLabel: "Choose Plan",
+  ctaUrl: "#contact",
+  badgeText: "",
+  pageLimitLabel: "",
+  pointsText: "",
+  isCustom: false,
+  isPopular: false,
+  isActive: true,
+  sortOrder: 0,
+};
 
 async function parseJson(response) {
   const payload = await response.json().catch(() => ({}));
@@ -49,6 +66,14 @@ function LogoutIcon() {
   );
 }
 
+function PricingIcon() {
+  return (
+    <svg className="hr-admin__nav-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+      <path strokeLinecap="round" strokeLinejoin="round" d="M12 8c-2.21 0-4 .896-4 2s1.79 2 4 2 4 .896 4 2-1.79 2-4 2m0-8c1.11 0 2.12.228 2.892.6M12 8V6m0 10v2m0-2c-1.11 0-2.12-.228-2.892-.6M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+    </svg>
+  );
+}
+
 export default function AdminPage() {
   const [session, setSession] = useState(null);
   const [checkingSession, setCheckingSession] = useState(true);
@@ -56,11 +81,24 @@ export default function AdminPage() {
   const [form, setForm] = useState(emptyForm);
   const [items, setItems] = useState([]);
   const [settingsForm, setSettingsForm] = useState(emptySettingsForm);
+  const [pricingForm, setPricingForm] = useState(emptyPricingForm);
+  const [pricingItems, setPricingItems] = useState([]);
   const [status, setStatus] = useState("");
   const [error, setError] = useState("");
   const [busy, setBusy] = useState(false);
   const [uploadingImage, setUploadingImage] = useState(false);
   const [activeTab, setActiveTab] = useState("settings");
+
+  useEffect(() => {
+    if (!status && !error) return undefined;
+
+    const timer = setTimeout(() => {
+      setStatus("");
+      setError("");
+    }, 5000);
+
+    return () => clearTimeout(timer);
+  }, [status, error]);
 
   useEffect(() => {
     let ignore = false;
@@ -76,6 +114,7 @@ export default function AdminPage() {
           setSession(payload.data);
           await loadSettings();
           loadTestimonials();
+          loadPricingPlans();
         }
       } catch {
         if (!ignore) setSession(null);
@@ -118,6 +157,19 @@ export default function AdminPage() {
     }
   }
 
+  async function loadPricingPlans() {
+    try {
+      const payload = await parseJson(
+        await fetch("/api/admin/pricing-plans", {
+          credentials: "include",
+        }),
+      );
+      setPricingItems(payload.data || []);
+    } catch (err) {
+      setError(err.message);
+    }
+  }
+
   function resetMessages() {
     setStatus("");
     setError("");
@@ -142,6 +194,7 @@ export default function AdminPage() {
       setLoginForm({ username: "", password: "" });
       await loadSettings();
       await loadTestimonials();
+      await loadPricingPlans();
     } catch (err) {
       setError(err.message);
     } finally {
@@ -300,6 +353,91 @@ export default function AdminPage() {
     }
   }
 
+  function updatePricingForm(key, value) {
+    setPricingForm((current) => ({ ...current, [key]: value }));
+  }
+
+  function handleEditPricing(item) {
+    resetMessages();
+    setPricingForm({
+      id: item.id,
+      name: item.name || "",
+      planKey: item.planKey || "",
+      subtitle: item.subtitle || "",
+      priceMonthly: item.priceMonthly || 0,
+      priceYearly: item.priceYearly || 0,
+      ctaLabel: item.ctaLabel || "Choose Plan",
+      ctaUrl: item.ctaUrl || "#contact",
+      badgeText: item.badgeText || "",
+      pageLimitLabel: item.pageLimitLabel || "",
+      pointsText: Array.isArray(item.points) ? item.points.join("\n") : "",
+      isCustom: Boolean(item.isCustom),
+      isPopular: Boolean(item.isPopular),
+      isActive: Boolean(item.isActive),
+      sortOrder: item.sortOrder || 0,
+    });
+    setActiveTab("pricing");
+  }
+
+  async function handlePricingSubmit(event) {
+    event.preventDefault();
+    resetMessages();
+    setBusy(true);
+
+    const points = pricingForm.pointsText
+      .split("\n")
+      .map((entry) => entry.trim())
+      .filter(Boolean);
+    const method = pricingForm.id ? "PUT" : "POST";
+    const url = pricingForm.id ? `/api/admin/pricing-plans/${pricingForm.id}` : "/api/admin/pricing-plans";
+
+    try {
+      await parseJson(
+        await fetch(url, {
+          method,
+          headers: { "Content-Type": "application/json" },
+          credentials: "include",
+          body: JSON.stringify({
+            ...pricingForm,
+            points,
+            priceMonthly: Number(pricingForm.priceMonthly),
+            priceYearly: Number(pricingForm.priceYearly),
+            sortOrder: Number(pricingForm.sortOrder),
+          }),
+        }),
+      );
+      setPricingForm(emptyPricingForm);
+      setStatus(pricingForm.id ? "Pricing plan updated." : "Pricing plan created.");
+      await loadPricingPlans();
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setBusy(false);
+    }
+  }
+
+  async function handleDeletePricing(id) {
+    if (!window.confirm("Delete this pricing plan?")) return;
+
+    resetMessages();
+    setBusy(true);
+    try {
+      await parseJson(
+        await fetch(`/api/admin/pricing-plans/${id}`, {
+          method: "DELETE",
+          credentials: "include",
+        }),
+      );
+      if (pricingForm.id === id) setPricingForm(emptyPricingForm);
+      setStatus("Pricing plan deleted.");
+      await loadPricingPlans();
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setBusy(false);
+    }
+  }
+
   async function handleLoadExistingSettings() {
     resetMessages();
     setBusy(true);
@@ -358,6 +496,7 @@ export default function AdminPage() {
                 onChange={(event) => setLoginForm((current) => ({ ...current, username: event.target.value }))}
                 placeholder="Enter username"
                 autoComplete="username"
+                required
               />
             </label>
             <label className="hr-admin__label">
@@ -369,6 +508,7 @@ export default function AdminPage() {
                 onChange={(event) => setLoginForm((current) => ({ ...current, password: event.target.value }))}
                 placeholder="Enter password"
                 autoComplete="current-password"
+                required
               />
             </label>
             <button type="submit" disabled={busy} className="hr-admin__btn hr-admin__btn--primary">
@@ -399,6 +539,14 @@ export default function AdminPage() {
             </button>
             <button
               type="button"
+              className={`hr-admin__nav-item ${activeTab === "pricing" ? "hr-admin__nav-item--active" : ""}`}
+              onClick={() => setActiveTab("pricing")}
+            >
+              <PricingIcon />
+              Pricing
+            </button>
+            <button
+              type="button"
               className={`hr-admin__nav-item ${activeTab === "testimonials" ? "hr-admin__nav-item--active" : ""}`}
               onClick={() => setActiveTab("testimonials")}
             >
@@ -425,7 +573,7 @@ export default function AdminPage() {
         <main className="hr-admin__main">
           <header className="hr-admin__header">
             <h2 className="hr-admin__header-title">
-              {activeTab === "settings" ? "Site Settings" : "Testimonials"}
+              {activeTab === "settings" ? "Site Settings" : activeTab === "pricing" ? "Pricing" : "Testimonials"}
             </h2>
           </header>
 
@@ -569,7 +717,7 @@ export default function AdminPage() {
                   </div>
 
                   <label className="hr-admin__label">
-                    New Delhi Address
+                    Maldives Address
                     <textarea
                       className="hr-admin__input hr-admin__textarea"
                       value={settingsForm.new_delhi_address}
@@ -577,7 +725,7 @@ export default function AdminPage() {
                     />
                   </label>
                   <label className="hr-admin__label">
-                    Noida Address
+                    Madurai Address
                     <textarea
                       className="hr-admin__input hr-admin__textarea"
                       value={settingsForm.noida_address}
@@ -600,6 +748,147 @@ export default function AdminPage() {
               </div>
             )}
 
+            {activeTab === "pricing" && (
+              <div className="hr-admin__split">
+                <div className="hr-admin__card">
+                  <div className="hr-admin__card-header">
+                    <div>
+                      <h2 className="hr-admin__card-title">{pricingForm.id ? "Edit Pricing Plan" : "Add Pricing Plan"}</h2>
+                      <p className="hr-admin__subtext">Add one point per line.</p>
+                    </div>
+                  </div>
+
+                  <form onSubmit={handlePricingSubmit} className="hr-admin__form">
+                    <div className="hr-admin__form-grid">
+                      <label className="hr-admin__label">
+                        Plan Name
+                        <input className="hr-admin__input" value={pricingForm.name} onChange={(event) => updatePricingForm("name", event.target.value)} required />
+                      </label>
+                      <label className="hr-admin__label">
+                        Plan Key
+                        <input className="hr-admin__input" value={pricingForm.planKey} onChange={(event) => updatePricingForm("planKey", event.target.value)} required />
+                      </label>
+                    </div>
+
+                    <label className="hr-admin__label">
+                      Subtitle
+                      <input className="hr-admin__input" value={pricingForm.subtitle} onChange={(event) => updatePricingForm("subtitle", event.target.value)} />
+                    </label>
+
+                    <div className="hr-admin__form-grid">
+                      <label className="hr-admin__label">
+                        Monthly Price
+                        <input className="hr-admin__input" type="number" min="0" step="0.01" value={pricingForm.priceMonthly} onChange={(event) => updatePricingForm("priceMonthly", event.target.value)} />
+                      </label>
+                      <label className="hr-admin__label">
+                        Yearly Price
+                        <input className="hr-admin__input" type="number" min="0" step="0.01" value={pricingForm.priceYearly} onChange={(event) => updatePricingForm("priceYearly", event.target.value)} />
+                      </label>
+                    </div>
+
+                    <div className="hr-admin__form-grid">
+                      <label className="hr-admin__label">
+                        CTA Label
+                        <input className="hr-admin__input" value={pricingForm.ctaLabel} onChange={(event) => updatePricingForm("ctaLabel", event.target.value)} />
+                      </label>
+                      <label className="hr-admin__label">
+                        CTA URL
+                        <input className="hr-admin__input" value={pricingForm.ctaUrl} onChange={(event) => updatePricingForm("ctaUrl", event.target.value)} />
+                      </label>
+                    </div>
+
+                    <div className="hr-admin__form-grid">
+                      <label className="hr-admin__label">
+                        Badge Text
+                        <input className="hr-admin__input" value={pricingForm.badgeText} onChange={(event) => updatePricingForm("badgeText", event.target.value)} />
+                      </label>
+                      <label className="hr-admin__label">
+                        Page Limit Label
+                        <input className="hr-admin__input" value={pricingForm.pageLimitLabel} onChange={(event) => updatePricingForm("pageLimitLabel", event.target.value)} />
+                      </label>
+                        
+                      <label className="hr-admin__label">
+                        Sort Order
+                        <input className="hr-admin__input" type="number" min="0" value={pricingForm.sortOrder} onChange={(event) => updatePricingForm("sortOrder", event.target.value)} />
+                      </label>
+
+                    </div>
+
+                    <label className="hr-admin__label">
+                      Plan Points
+                      <textarea
+                        className="hr-admin__input hr-admin__textarea"
+                        value={pricingForm.pointsText}
+                        onChange={(event) => updatePricingForm("pointsText", event.target.value)}
+                        required
+                      />
+                    </label>
+
+                    <div className="hr-admin__form-grid">
+                      <label className="hr-admin__checkbox">
+                        <input type="checkbox" checked={pricingForm.isCustom} onChange={(event) => updatePricingForm("isCustom", event.target.checked)} />
+                        Custom plan
+                      </label>
+                      <label className="hr-admin__checkbox">
+                        <input type="checkbox" checked={pricingForm.isPopular} onChange={(event) => updatePricingForm("isPopular", event.target.checked)} />
+                        Mark as popular
+                      </label>
+                      <label className="hr-admin__checkbox">
+                        <input type="checkbox" checked={pricingForm.isActive} onChange={(event) => updatePricingForm("isActive", event.target.checked)} />
+                        Show on website
+                      </label>
+                    </div>
+                    <div className="hr-admin__actions">
+                      <button type="submit" disabled={busy} className="hr-admin__btn hr-admin__btn--primary">
+                        {busy ? "Saving..." : pricingForm.id ? "Update Plan" : "Create Plan"}
+                      </button>
+                      <button type="button" onClick={() => setPricingForm(emptyPricingForm)} disabled={busy} className="hr-admin__btn hr-admin__btn--secondary">
+                        Reset
+                      </button>
+                    </div>
+                  </form>
+                </div>
+
+                <div className="hr-admin__card">
+                  <div className="hr-admin__card-header">
+                    <div>
+                      <h2 className="hr-admin__card-title">Saved Pricing Plans</h2>
+                      <p className="hr-admin__subtext">{pricingItems.length ? `${pricingItems.length} saved` : "No plans yet"}</p>
+                    </div>
+                  </div>
+                  {pricingItems.length > 0 ? (
+                    <div className="hr-admin__list">
+                      {pricingItems.map((item) => (
+                        <article key={item.id} className={item.isActive ? "hr-admin__item" : "hr-admin__item hr-admin__item--inactive"}>
+                          <div className="hr-admin__item-top">
+                            <div>
+                              <h3 className="hr-admin__item-title">{item.name}</h3>
+                              <p className="hr-admin__item-meta">{item.subtitle || item.planKey}</p>
+                            </div>
+                            <span className={item.isActive ? "hr-admin__badge hr-admin__badge--active" : "hr-admin__badge"}>
+                              {item.isActive ? "Visible" : "Hidden"}
+                            </span>
+                          </div>
+                          <p className="hr-admin__item-foot">
+                            <span>${item.priceMonthly}/mo</span>
+                            <span>Sort: {item.sortOrder}</span>
+                          </p>
+                          <div className="hr-admin__actions">
+                            <button type="button" onClick={() => handleEditPricing(item)} className="hr-admin__btn hr-admin__btn--secondary hr-admin__btn--sm" disabled={busy}>Edit</button>
+                            <button type="button" onClick={() => handleDeletePricing(item.id)} className="hr-admin__btn hr-admin__btn--danger hr-admin__btn--sm" disabled={busy}>Delete</button>
+                          </div>
+                        </article>
+                      ))}
+                    </div>
+                  ) : (
+                    <div className="hr-admin__empty">
+                      <p>No pricing plans saved yet.</p>
+                    </div>
+                  )}
+                </div>
+              </div>
+            )}
+
             {activeTab === "testimonials" && (
               <div className="hr-admin__split">
                 <div className="hr-admin__card">
@@ -614,11 +903,12 @@ export default function AdminPage() {
                     <div className="hr-admin__form-grid">
                       <label className="hr-admin__label">
                         Client Name
-                        <input
-                          className="hr-admin__input"
-                          value={form.clientName}
-                          onChange={(event) => updateForm("clientName", event.target.value)}
-                        />
+                          <input
+                            className="hr-admin__input"
+                            value={form.clientName}
+                            onChange={(event) => updateForm("clientName", event.target.value)}
+                            required
+                          />
                       </label>
                       <label className="hr-admin__label">
                         Client Role
@@ -676,6 +966,7 @@ export default function AdminPage() {
                         className="hr-admin__input hr-admin__textarea"
                         value={form.testimonial}
                         onChange={(event) => updateForm("testimonial", event.target.value)}
+                        required
                       />
                     </label>
 

@@ -35,8 +35,7 @@ export default function FaqSection({ items = defaultFaqs, subHeading = "Faq", he
           <div className="col-lg-8 offset-lg-2">
             <div className="site-heading mb-3 text-center">
               <h4 className="sub-title">{subHeading}</h4>
-              <h2 className="title split-text">{heading}</h2>
-              <div className="devider" />
+              {heading ? <h2 className="title split-text">{heading}</h2> : null}
             </div>
           </div>
         </div>
