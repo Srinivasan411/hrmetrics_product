@@ -416,7 +416,7 @@ export default function HomePage() {
       <BannerStyleFourHero
         badgeText="HRMS Management"
         title={<>Ready to Dive into <span>HR & Payroll</span> Bliss? that Automates all your Complex Business Operations</>}
-        description="HRMetricS streamlines everythingâ€”from onboarding and attendance to payroll and performanceâ€”saving up to 25% on time and cost while delivering a smarter, paperless employee experience."
+        description="HRMetricS streamlines everything from onboarding and attendance to payroll and performance saving up to 25% on time and cost while delivering a smarter, paperless employee experience."
         primaryAction={
           <a className="btn btn-hrms-primary" data-bs-target="#demoshedule-modal" data-bs-toggle="modal" href="#" onClick={(e) => e.preventDefault()}>
             <i className="fas fa-calendar-check" /> Schedule a Demo

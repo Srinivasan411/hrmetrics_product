@@ -68,7 +68,7 @@
 .btn-hrms-primary {
     background: var(--color-primary);
     color: #ffffff;
-    padding: 16px 36px;
+    padding: 12px 28px;
     border-radius: 10px;
     font-weight: 600;
     display: flex;
@@ -89,7 +89,7 @@
 .btn-hrms-secondary {
     background: #ffffff;
     color: var(--color-heading);
-    padding: 16px 36px;
+    padding: 12px 28px;
     border-radius: 10px;
     font-weight: 600;
     border: 1px solid #e2e8f0;

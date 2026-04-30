@@ -615,7 +615,7 @@ p {
 
 .default-padding {
 	padding-top: 15px;
-	padding-bottom: 15px;
+	padding-bottom: 10px;
 }
 
 @media only screen and (max-width: 767px) {
@@ -964,10 +964,10 @@ p {
 	position: relative;
 	background: var(--bg-gradient-two);
 	border-radius: 8px;
-	font-size: 16px;
+	font-size: 15px;
 	font-weight: 500;
 	text-align: center;
-	padding: 10px 40px;
+	padding: 8px 30px;
 	color: #fff !important;
 }
 
@@ -1576,9 +1576,9 @@ p {
 	border: 2px solid transparent;
 	-webkit-box-shadow: inherit;
 	box-shadow: none;
-	font-size: 16px;
+	font-size: 14px;
 	letter-spacing: 0;
-	padding: 7px 20px;
+	padding: 6px 18px;
 	background: #E7EDF8;
 	position: relative;
 	z-index: 1;
@@ -1643,7 +1643,7 @@ p {
 .btn.btn-border-dark {
 	border: 1px solid #96a1bd;
 	background: transparent;
-	padding: 13px 35px;
+	padding: 10px 24px;
 }
 
 .btn.btn-border-dark:hover {
@@ -2265,10 +2265,10 @@ p {
 	animation-fill-mode: forwards;
 	-webkit-text-size-adjust: none;
 	font-weight: 600;
-	font-size: 16px;
+	font-size: 15px;
 	text-decoration: none;
 	white-space: nowrap;
-	padding: 12px 48px;
+	padding: 10px 28px;
 }
 
 .animate-inout {
@@ -2401,8 +2401,8 @@ p {
 
 
 .btn-sm {
-	padding: 13px 30px;
-	font-size: 15px;
+	padding: 6px 14px;
+	font-size: 14px;
 }
 
 /* Btn Animation */
@@ -10741,7 +10741,7 @@ ul.list-card li p {
 	color: var(--color-heading);
 	transition: all 0.35s ease-in-out;
 	border-radius: 30px;
-	padding: 13px 35px;
+	padding: 10px 24px;
 	display: inline-block;
 	box-shadow: none;
 	background: transparent;
@@ -10853,8 +10853,8 @@ ul.list-card li p {
 	background: var(--white);
 	text-transform: uppercase;
 	border-radius: 0;
-	padding: 20px 30px;
-	font-size: 20px;
+	padding: 12px 24px;
+	font-size: 18px;
 	color: var(--color-heading);
 	border-right: 2px solid #ddeaed;
 }
@@ -11495,14 +11495,14 @@ p.note {
 	border-radius: 6px;
 	-webkit-box-shadow: inherit;
 	box-shadow: inherit;
-	font-size: 17px;
+	font-size: 16px;
 	letter-spacing: 0;
 	position: relative;
 	z-index: 1;
 	color: var(--white);
 	border: none;
 	background: var(--color-primary);
-	padding: 16px 52px;
+	padding: 12px 32px;
 }
 
 .contact-form-style-one button::after {
